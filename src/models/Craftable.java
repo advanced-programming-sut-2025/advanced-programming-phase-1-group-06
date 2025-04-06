@@ -1,8 +1,14 @@
 package models;
 
-public abstract class Craftable{
+import java.util.Map;
+
+public abstract class Craftable extends Placeable {
     protected Map<Craftable, Integer> requiredItems;
     protected Craftable craftedItem;
-    public boolean isCraftable(Player player) {}
-    public Craftable craft(){}
+    protected Recipe recipe;
+
+    public boolean canCraft(Player player) {
+    }
+    public Craftable craft(){
+    }
 }

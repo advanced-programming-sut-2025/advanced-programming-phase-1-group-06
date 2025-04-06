@@ -7,7 +7,7 @@ public class DateTime {
     int month;
     int season;
 
-    public void startNewDay(){}
+    public void advanceTime(){}
 
 
     public String getTime(){}
