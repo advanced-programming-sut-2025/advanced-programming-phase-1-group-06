@@ -4,6 +4,7 @@ public class Skill {
     private int foraging;
     private int farming;
     private int mining;
+    private int fishing;
 
     public void increaseForaging(int amount) {
     }
@@ -13,5 +14,9 @@ public class Skill {
 
     public void increaseMining(int amount) {
     }
+
+    public void increaseFishing(int amount) {
+    }
+
 }
 

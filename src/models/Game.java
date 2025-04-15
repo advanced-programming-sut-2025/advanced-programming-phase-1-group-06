@@ -11,6 +11,7 @@ public class Game {
     private Player currentPlayer;
     private int currentTurn;
 
+
     public void goNextTurn() {
     }
 
@@ -26,6 +27,10 @@ public class Game {
     }
 
     public void generateForaging() {
+    }
+
+    public void changeWeather(){
+
     }
 }
 

@@ -14,6 +14,7 @@ public class Player {
     private Tool currentTool;
     private Recipe[] cookableFoods;
     private Recipe[] craftableItems;
+    private boolean trashcan;
 
     public boolean canWalk(Coordinate coordinate) {
         return false;
@@ -22,10 +23,15 @@ public class Player {
     public void walk(Coordinate coordinate) {
     }
 
+    //backpack
+
     public void upgradeInventory() {
     }
 
     public void upgradeTrashcan() {
+    }
+
+    public void useTrashcan(){
     }
 
     public void passOut() {
@@ -39,5 +45,6 @@ public class Player {
 
     public void gift(Player player, Item item) {
     }
+
 }
 
