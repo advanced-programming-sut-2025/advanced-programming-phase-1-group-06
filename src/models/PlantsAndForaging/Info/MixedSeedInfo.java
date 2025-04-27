@@ -1,4 +1,4 @@
-package PlantsAndForaging.Info;
+package models.PlantsAndForaging.Info;
 
 public enum MixedSeedInfo {
     CAULIFLOWER_SEEDS(SeedInfo.CAULIFLOWER_SEEDS, "1"),

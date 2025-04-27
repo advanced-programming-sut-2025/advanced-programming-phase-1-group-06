@@ -1,4 +1,4 @@
-package PlantsAndForaging.Info;
+package models.PlantsAndForaging.Info;
 
 public enum TreeProductInfo {
     // Spring Fruits

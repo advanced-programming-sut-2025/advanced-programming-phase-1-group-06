@@ -1,4 +1,4 @@
-package PlantsAndForaging;
+package models.PlantsAndForaging;
 
 import models.Game.Tile;
 

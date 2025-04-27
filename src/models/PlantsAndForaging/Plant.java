@@ -1,6 +1,6 @@
-package PlantsAndForaging;
+package models.PlantsAndForaging;
 
-import PlantsAndForaging.Info.CropInfo;
+import models.PlantsAndForaging.Info.CropInfo;
 import models.Game.Tile;
 
 public class Plant extends Tile implements Growable {

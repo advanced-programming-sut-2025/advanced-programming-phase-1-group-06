@@ -1,6 +1,6 @@
 package models.Game;
 
-import PlantsAndForaging.Growable;
+import models.PlantsAndForaging.Growable;
 import models.Player.Player;
 
 public class Game {

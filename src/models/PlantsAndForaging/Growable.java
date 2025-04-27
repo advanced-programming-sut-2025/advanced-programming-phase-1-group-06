@@ -1,4 +1,4 @@
-package PlantsAndForaging;
+package models.PlantsAndForaging;
 
 public interface Growable {
     int growthTime = 0;

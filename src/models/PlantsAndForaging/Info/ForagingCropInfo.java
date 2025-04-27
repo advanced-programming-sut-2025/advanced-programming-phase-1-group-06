@@ -1,4 +1,4 @@
-package PlantsAndForaging.Info;
+package models.PlantsAndForaging.Info;
 
 public enum ForagingCropInfo {
     // Foraged items (using a special FORAGE_SOURCE SeedInfo for consistency)

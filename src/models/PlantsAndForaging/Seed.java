@@ -1,7 +1,7 @@
-package PlantsAndForaging;
+package models.PlantsAndForaging;
 
-import PlantsAndForaging.Info.CropInfo;
-import PlantsAndForaging.Info.SeedInfo;
+import models.PlantsAndForaging.Info.CropInfo;
+import models.PlantsAndForaging.Info.SeedInfo;
 import models.Player.InventoryItem;
 import models.Interfaces.Sellable;
 

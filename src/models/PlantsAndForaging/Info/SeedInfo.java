@@ -1,4 +1,4 @@
-package PlantsAndForaging.Info;
+package models.PlantsAndForaging.Info;
 
 // info for each seed
 // additional (probably temporary forage_source)

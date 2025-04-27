@@ -1,4 +1,4 @@
-package PlantsAndForaging;
+package models.PlantsAndForaging;
 
 import models.Player.InventoryItem;
 import models.Interfaces.Sellable;
