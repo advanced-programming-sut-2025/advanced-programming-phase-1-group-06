@@ -1,6 +1,6 @@
 package models.tools;
 
-import models.Coordinate;
+import models.Game.Coordinate;
 
 public abstract class Tool {
     private int energyConsumption;

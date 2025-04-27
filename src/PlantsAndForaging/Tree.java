@@ -1,0 +1,12 @@
+package PlantsAndForaging;
+
+import models.Game.Tile;
+
+public class Tree extends Tile implements Growable {
+    private boolean isFruitful;
+    private Crop product;
+
+    public void chop() {
+    }
+}
+

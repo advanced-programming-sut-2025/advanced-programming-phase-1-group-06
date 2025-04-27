@@ -1,5 +1,7 @@
 package models;
 
+import models.Animals.Animal;
+
 public class Builder {
     private String itemType;
     private String itemName;

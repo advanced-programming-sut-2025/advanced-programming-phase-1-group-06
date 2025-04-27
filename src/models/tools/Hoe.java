@@ -1,6 +1,6 @@
 package models.tools;
 
-import models.Coordinate;
+import models.Game.Coordinate;
 
 public class Hoe extends Tool {
     public void till() {

@@ -1,6 +1,6 @@
 package models.shops;
 
-import models.Player;
+import models.Player.Player;
 import models.buildings.Building;
 
 public abstract class Shop extends Building {
