@@ -2,6 +2,7 @@ package models.Game.GameMap;
 
 import com.google.gson.Gson;
 import models.Game.Coordinates;
+import models.Tiles.Tile;
 
 
 public class GameMap {
