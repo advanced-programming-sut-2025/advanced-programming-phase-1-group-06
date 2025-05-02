@@ -1,6 +1,6 @@
 package models.PlantsAndForaging;
 
-import models.Game.Tile;
+import Tile;
 
 public class Tree extends Tile implements Growable {
     private boolean isFruitful;

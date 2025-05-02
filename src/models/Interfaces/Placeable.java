@@ -1,5 +1,7 @@
 package models.Interfaces;
 
+import models.Game.Coordinates;
+
 public interface Placeable {
-    void place(Coordinate coordinate);
+    void place(Coordinates coordinate);
 }

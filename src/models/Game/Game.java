@@ -1,12 +1,13 @@
 package models.Game;
 
+import models.Game.GameMap.GameMap;
 import models.PlantsAndForaging.Growable;
 import models.Player.Player;
 
 public class Game {
     private Player[] players;
     private Weather weather;
-    private Tile[] map;
+    private GameMap[] gameMaps;
     private Growable[] growables;
     private DateTime dateTime;
     private Player currentPlayer;
