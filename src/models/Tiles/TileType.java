@@ -1,6 +1,6 @@
 package models.Tiles;
 
-public enum TileType {
+public enum     TileType {
     DIRT(),
     HOED_DIRT(),
     GRASS(),
