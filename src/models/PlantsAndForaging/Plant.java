@@ -1,24 +1,23 @@
 package models.PlantsAndForaging;
 
 import models.PlantsAndForaging.Info.CropInfo;
-import Tile;
+import models.Tiles.Dirt;
+import models.Tiles.OverlayTile;
 
-public class Plant extends Tile implements Growable {
 
+public class Plant extends OverlayTile implements Growable {
+
+    private final int regrowthTime;
+    private final boolean oneTime;
+    private final String seasons;
     private int[] growingStages;
-
-    private int totalHarvestTime;
-    private int regrowthTime;
-    private boolean oneTime;
-    private String seasons;
-
+    private int daysSincePlanting;
     private boolean isHarvestable = false;
     private boolean isWatered;
     private boolean isFertilized;
-
     private CropInfo product;
 
-    public Plant(CropInfo product, String growingStages, int totalHarvestTime, int regrowthTime, boolean oneTime, String seasons) {
+    public Plant(Dirt dirt, CropInfo product, String growingStages, int regrowthTime, boolean oneTime, String seasons) {
         this.product = product;
 
         String[] stages = growingStages.split("-");
@@ -27,16 +26,25 @@ public class Plant extends Tile implements Growable {
             this.growingStages[i] = Integer.parseInt(stages[i]);
         }
 
-        this.totalHarvestTime = totalHarvestTime;
         this.regrowthTime = regrowthTime;
         this.oneTime = oneTime;
         this.seasons = seasons;
         this.isHarvestable = false;
-        this.isWatered = false;
-        this.isFertilized = false;
+        this.isWatered = dirt.isWatered();
+        this.isFertilized = dirt.isFertilized();
     }
 
     public void harvest() {
+    }
+
+    @Override
+    public String getType() {
+        return "PLANT";
+    }
+
+    @Override
+    public int currentGrowthDay() {
+        return daysSincePlanting;
     }
 
     public void grow() {

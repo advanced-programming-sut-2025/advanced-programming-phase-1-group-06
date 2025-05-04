@@ -1,22 +1,62 @@
 package models.Game.GameMap;
 
-import com.google.gson.Gson;
-import models.Game.Coordinates;
+import com.google.gson.*;
+import models.Game.GameMap.LoadAndSave.*;
+import models.PlantsAndForaging.Growable;
+import models.Tiles.OverlayTile;
 import models.Tiles.Tile;
 
+import com.google.gson.*;
+import java.io.*;
+import java.nio.file.*;
 
 public class GameMap {
     private final int length;
     private final int width;
-    private Tile[][] lowerLayerMap; // for the base ground like dirt, grass, water, sand
-    private Tile[][] upperLayerMap; // for the objects on top like rocks, trees, plants, etc
+    private Tile[][] tiles;  // Now just a single array of tiles
 
-    public GameMap(int mapPreset) {
-        Gson gson = new Gson();
-        this.lowerLayerMap = gson.fromJson("Maps/GameMap".concat(String.valueOf(mapPreset)).concat(".json"), Tile[][].class);
-        length = lowerLayerMap.length;
-        width = lowerLayerMap[0].length;
+    public GameMap(int length, int width) {
+        this.length = length;
+        this.width = width;
+        this.tiles = new Tile[length][width];
     }
+
+    public void saveToFile(String filename) throws IOException {
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(Tile.class, new TileSerializer())
+                .registerTypeAdapter(OverlayTile.class, new OverlayTileSerializer())
+                .registerTypeAdapter(Growable.class, new GrowableSerializer())
+                .setPrettyPrinting()
+                .create();
+
+        JsonObject mapJson = new JsonObject();
+        mapJson.addProperty("length", length);
+        mapJson.addProperty("width", width);
+        mapJson.add("tiles", gson.toJsonTree(tiles));
+
+        String json = gson.toJson(mapJson);
+        Files.writeString(Path.of(filename), json);
+    }
+
+    public static GameMap loadFromFile(String filename) throws IOException {
+        String json = Files.readString(Path.of(filename));
+
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(Tile.class, new TileDeserializer())
+                .registerTypeAdapter(OverlayTile.class, new OverlayTileDeserializer())
+                .registerTypeAdapter(Growable.class, new GrowableDeserializer())
+                .create();
+
+        JsonObject mapJson = JsonParser.parseString(json).getAsJsonObject();
+        int length = mapJson.get("length").getAsInt();
+        int width = mapJson.get("width").getAsInt();
+
+        GameMap map = new GameMap(length, width);
+        map.tiles = gson.fromJson(mapJson.get("tiles"), Tile[][].class);
+
+        return map;
+    }
+
 
     public int getLength() {
         return length;
