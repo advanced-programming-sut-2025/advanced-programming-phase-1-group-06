@@ -41,6 +41,22 @@ public class RegisterMenuController {
         String nickname = matcher.group("nickname");
         String genderString = matcher.group("gender");
         String output;
+        if (password.equals("@") && password.equals(passwordConfirmation)){
+            while (true){
+                String error;
+                password = randomPassword();
+                if ((error = checkPassword(password)) != null) {
+                    System.out.println(error);
+                    continue;
+                }
+                System.out.println("suggested password: " + randomPassword() + "\ndo you want to set the generated password as your password? (y/n?)");
+                String answer = scanner.nextLine();
+                if (answer.equals("y")){
+                    break;
+                }
+            }
+            passwordConfirmation = password;
+        }
         int gender;
 
         if (App.getUserByUsername(username) != null)
@@ -70,29 +86,52 @@ public class RegisterMenuController {
                 return "gender not valid";
         }
         User user = new User(username, password, email, nickname, gender);
+
+        for(String q : questions){
+            System.out.println(q);
+        }
+        System.out.println("pick a question from the above.");
+        int questionNumber;
+        int questionCount = questions.size();
+        while (true) {
+            try {
+                System.out.println("Please enter a question number:");
+                questionNumber = scanner.nextInt();
+                if (questionNumber >= 1 && questionNumber <= questionCount) {
+                    System.out.println("You selected question number: " + questionNumber);
+                    break;
+                } else {
+                    System.out.println("Number is out of range. Please enter a number between 1 and " + questionCount + ".");
+                }
+            } catch (Exception e) {
+
+                System.out.println("Please enter a valid number.");
+                scanner.nextLine();
+            }
+        }
         App.addUser(user);
         return null;
     }
 
-    public String randomPassword() {
-        final char [] specialChars = {'?', '<', '>', ',', '"', '\'', ':', ';', '/', '\\', '|', '[', ']', '{', '}', '+', '=', ')', '(', '*', '@', '&', '^', '%', '$', '#', '!'};
+    public static String randomPassword() {
+        final char [] specialChars = {'?', '<', '>', ',', '"', '\'', ':', ';', '/', '\\', '|', '[', ']', '{', '}', '+', '=', ')', '(', '*', '&', '^', '%', '$', '#', '!'};
         Random r = new Random();
         StringBuilder sb = new StringBuilder();
-        int randomInt = r.nextInt(8,16);
+        int randomInt = r.nextInt(8) + 8;
         for (int i = 0; i < randomInt; i ++) {
-            int rando = (r.nextInt(0, 4));
+            int rando = (r.nextInt(4));
             switch (rando){
                 case 0:
-                    sb.append((specialChars[r.nextInt(0, 27)]));
+                    sb.append((specialChars[r.nextInt(specialChars.length)]));
                     break;
                 case 1:
-                    sb.append((char)r.nextInt('a', 'z' + 1));
+                    sb.append((char)(r.nextInt('z' - 'a') + 'a'));
                     break;
                 case 2:
-                    sb.append((char) r.nextInt('A', 'Z' + 1));
+                    sb.append((char)(r.nextInt('Z' - 'A') + 'A'));
                     break;
                 case 3:
-                    sb.append((char) r.nextInt('0', '9' + 1));
+                    sb.append((char)(r.nextInt('9' - '0') + '0'));
                     break;
                 default:
                     break;
