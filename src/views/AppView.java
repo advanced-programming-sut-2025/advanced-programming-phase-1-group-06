@@ -7,11 +7,11 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 
 public class AppView {
-    public void run(){
+    public static void run(){
         Matcher matcher;
         Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
         while (true){
+            String input = scanner.nextLine();
             if ((matcher = Regex.EXIT.getMatcher(input)) != null){
                 App.exit();
                 return;
