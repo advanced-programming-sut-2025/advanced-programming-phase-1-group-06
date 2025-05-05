@@ -3,8 +3,8 @@ package models.PlantsAndForaging;
 import models.PlantsAndForaging.Info.CropInfo;
 import models.PlantsAndForaging.Info.ForagingCropInfo;
 import models.PlantsAndForaging.Info.SeedInfo;
-import models.Edible;
-import models.Player.InventoryItem;
+import models.Interfaces.Edible;
+import models.Interfaces.InventoryItem;
 import models.Interfaces.Sellable;
 
 public class Crop implements Edible, Sellable, InventoryItem {
@@ -34,6 +34,6 @@ public class Crop implements Edible, Sellable, InventoryItem {
     }
 
     public String showDetails() {
-
+        return "";
     }
 }

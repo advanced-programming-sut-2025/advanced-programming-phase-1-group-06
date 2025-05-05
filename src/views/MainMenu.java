@@ -1,7 +1,12 @@
 package views;
 
-public class MainMenu {
-    public void checkInput() {
+
+import java.util.Scanner;
+
+public class MainMenu implements AppMenu {
+    @Override
+    public void checkInput(String input, Scanner scanner) {
+        return;
     }
 }
 

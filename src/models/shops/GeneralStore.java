@@ -1,9 +1,11 @@
 package models.shops;
 
-public class GeneralStore extends Shop {
-    private Item[] items;
+import models.Interfaces.InventoryItem;
 
-    public void buyItem(Item item) {
+public class GeneralStore extends Shop {
+    private InventoryItem[] items;
+
+    public void buyItem(InventoryItem item) {
     }
 
     public void upgradeBackpack() {

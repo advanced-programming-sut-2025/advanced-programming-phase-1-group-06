@@ -1,5 +1,6 @@
 package models.Animals;
 
+import models.Interfaces.InventoryItem;
 import models.enums.AnimalProducts;
 
 public class Animal {
@@ -14,7 +15,7 @@ public class Animal {
     public void pet() {
     }
 
-    public Item getProduct() {
+    public InventoryItem getProduct() {
         return null;
     }
 }

@@ -1,0 +1,41 @@
+package models;
+
+import models.enums.Menu;
+
+import java.util.ArrayList;
+
+public class App {
+
+    private static Menu currentMenu = Menu.REGISTER;
+    private static ArrayList<User> users = new ArrayList<>();
+
+
+
+    public static User getUserByUsername(String username){
+        for (User user : users){
+            if (user.getUsername().equals(username)){
+                return user;
+            }
+        }
+        return null;
+    }
+
+    public static ArrayList<User> getUsers() {
+        return users;
+    }
+
+    public static void addUser(User user) {
+        users.add(user);
+    }
+
+    public static Menu getCurrentMenu(){
+        return currentMenu;
+    }
+    public static void setCurrentMenu(Menu menu){
+        currentMenu = menu;
+    }
+
+    public static void exit(){
+        return;
+    }
+}

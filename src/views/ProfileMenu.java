@@ -1,6 +1,10 @@
 package views;
 
-public class ProfileMenu {
-    public void checkInput() {
+import java.util.Scanner;
+
+public class ProfileMenu implements AppMenu{
+    @Override
+    public void checkInput(String input, Scanner scanner) {
+        return;
     }
 }

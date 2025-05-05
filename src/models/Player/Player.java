@@ -3,6 +3,7 @@ package models.Player;
 import models.*;
 import models.Game.Coordinate;
 import models.Game.Recipe;
+import models.Interfaces.InventoryItem;
 import models.tools.Tool;
 
 public class Player {
@@ -43,10 +44,10 @@ public class Player {
     public void useCurrentTool() {
     }
 
-    public void sell(Item item) {
+    public void sell(InventoryItem item) {
     }
 
-    public void gift(Player player, Item item) {
+    public void gift(Player player, InventoryItem item) {
     }
 
 }

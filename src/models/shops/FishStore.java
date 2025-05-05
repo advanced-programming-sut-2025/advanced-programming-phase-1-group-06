@@ -1,8 +1,10 @@
 package models.shops;
 
-public class FishStore extends Shop {
-    private Item[] items;
+import models.Interfaces.InventoryItem;
 
-    public void buyItem(Item item) {
+public class FishStore extends Shop {
+    private InventoryItem[] items;
+
+    public void buyItem(InventoryItem item) {
     }
 }

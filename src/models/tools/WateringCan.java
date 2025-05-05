@@ -1,5 +1,7 @@
 package models.tools;
 
+import models.Game.Coordinate;
+
 public class WateringCan extends Tool {
     public void water() {
         // Implement watering logic

@@ -2,7 +2,7 @@ package models.PlantsAndForaging;
 
 import models.PlantsAndForaging.Info.CropInfo;
 import models.PlantsAndForaging.Info.SeedInfo;
-import models.Player.InventoryItem;
+import models.Interfaces.InventoryItem;
 import models.Interfaces.Sellable;
 
 public class Seed implements InventoryItem, Sellable {
@@ -29,7 +29,6 @@ public class Seed implements InventoryItem, Sellable {
         return new Plant(cropInfo, growingStages, totalHarvestTime, regrowthTime, oneTime, seasons);
     }
 
-    public GiantPlant getGiantPlant() {
-
-    }
+//    public GiantPlant getGiantPlant() {
+//    }
 }

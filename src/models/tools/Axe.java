@@ -1,5 +1,7 @@
 package models.tools;
 
+import models.Game.Coordinate;
+
 public class Axe extends Tool {
     public void chop() {
         // Implement chopping logic

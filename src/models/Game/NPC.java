@@ -1,4 +1,9 @@
 package models.Game;
+
+import models.Interfaces.InventoryItem;
+
+import java.util.Map;
+
 public class NPC {
     private String name;
     private String[] favorite;
@@ -15,7 +20,7 @@ public class NPC {
     public void completeQuest(){
 
     }
-    public void getGift(Item item) {
+    public void getGift(InventoryItem item) {
 
     }
 

@@ -1,5 +1,7 @@
 package models.tools;
 
+import models.Game.Coordinate;
+
 public class Pickaxe extends Tool {
     public void mine() {
         // Implement mining logic
