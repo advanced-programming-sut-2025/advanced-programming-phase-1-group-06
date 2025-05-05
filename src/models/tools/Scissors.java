@@ -1,6 +1,7 @@
 package models.tools;
 
-import models.Game.Coordinate;
+import models.Game.Coordinates;
+
 
 public class Scissors extends Tool {
     public void cut() {
@@ -10,6 +11,11 @@ public class Scissors extends Tool {
     @Override
     public void use(Coordinate coordinate) {
         // Implement logic to use scissors on coordinate
+    }
+
+    @Override
+    public void use(Coordinates coordinates) {
+
     }
 
     @Override

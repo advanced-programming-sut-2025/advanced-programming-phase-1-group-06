@@ -1,18 +1,24 @@
 package models.Player;
 
 import models.*;
-import models.Game.Coordinate;
+import models.Game.Coordinates;
+import models.Game.GameMap.GameMap;
 import models.Game.Recipe;
 import models.Interfaces.InventoryItem;
 import models.tools.Tool;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Player {
     private User user;
     private String name;
+    private GameMap currentMap;
+    private int x, y;
     private int money;
     private Inventory inventory;
     private Skill skills;
-    private int energy;
+    private Double energy;
     private int maxEnergy;
     private boolean isPassedOut;
     private Tool currentTool;
@@ -20,11 +26,14 @@ public class Player {
     private Recipe[] craftableItems;
     private boolean trashcan;
 
-    public boolean canWalk(Coordinate coordinate) {
+    public boolean canWalk(Coordinates coordinates) {
         return false;
     }
 
-    public void walk(Coordinate coordinate) {
+    public void walk(int x, int y) {
+        ArrayList<Coordinates> coordinates = AStar.findPath(currentMap, this.x, this.y, x, y);
+        ArrayList<Integer> energyCosts = AStar.calculateEachMoveCost(coordinates); //energy costs should be divided by 200
+        // you should do the menus first so we can get confirmation from player that they want to walk
     }
 
     //backpack

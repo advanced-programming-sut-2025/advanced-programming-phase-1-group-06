@@ -1,6 +1,6 @@
 package models.tools;
 
-import models.Game.Coordinate;
+import models.Game.Coordinates;
 
 public class Shovel extends Tool {
     public void dig() {
@@ -8,7 +8,7 @@ public class Shovel extends Tool {
     }
 
     @Override
-    public void use(Coordinate coordinate) {
+    public void use(Coordinates coordinates) {
         // Implement logic to use shovel on coordinate
     }
 
