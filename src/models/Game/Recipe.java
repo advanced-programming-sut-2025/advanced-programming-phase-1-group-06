@@ -1,5 +1,7 @@
 package models.Game;
 
+import models.Interfaces.InventoryItem;
+
 import java.util.Map;
 
 public class Recipe {
@@ -10,7 +12,7 @@ public class Recipe {
         return true;
     }
 
-    public Item craft() {
+    public InventoryItem craft() {
         // Implement logic to craft item
         return null;
     }

@@ -2,16 +2,17 @@ package models.Player;
 
 import java.util.Arrays;
 import java.util.Objects;
+import models.Interfaces.InventoryItem;
 
 public class Inventory {
     private InventoryItem[] items;
     private int capacity;
     private int level;
 
-    public void addItem(Item item) {
+    public void addItem(InventoryItem item) {
     }
 
-    public void removeItem(Item item) {
+    public void removeItem(InventoryItem item) {
     }
 
     public boolean hasItemAmount(String name, int amount) {

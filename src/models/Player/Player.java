@@ -4,6 +4,7 @@ import models.*;
 import models.Game.Coordinates;
 import models.Game.GameMap.GameMap;
 import models.Game.Recipe;
+import models.Interfaces.InventoryItem;
 import models.tools.Tool;
 
 import java.util.ArrayList;
@@ -52,10 +53,10 @@ public class Player {
     public void useCurrentTool() {
     }
 
-    public void sell(Item item) {
+    public void sell(InventoryItem item) {
     }
 
-    public void gift(Player player, Item item) {
+    public void gift(Player player, InventoryItem item) {
     }
 
 }

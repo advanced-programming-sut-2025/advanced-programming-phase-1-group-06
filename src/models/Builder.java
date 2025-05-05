@@ -1,6 +1,8 @@
 package models;
 
 import models.Animals.Animal;
+import models.PlantsAndForaging.Crop;
+import models.tools.Tool;
 
 public class Builder {
     private String itemType;

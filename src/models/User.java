@@ -1,10 +1,41 @@
 package models;
 
+import java.util.ArrayList;
+
 public class User {
     private String username;
     private String password;
     private String email;
-    private static ArrayList<User>;
+    private String nickname;
+    private int gender; // male -> 1 female -> 2 others -> 3 or any number you want we're all open-minded here.
+    private int points;
+    private int questionNumber;
+    private String answer;
+
+
+    public User(String username, String password, String email, String nickname, int gender){
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.nickname = nickname;
+        this.gender = gender;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public int getGender() {
+        return gender;
+    }
+    public void setGender(int gender) {
+        this.gender = gender;
+    }
+
 
     public String getUsername() {
         return username;
@@ -37,6 +68,4 @@ public class User {
     public void setPoints(int points) {
         this.points = points;
     }
-
-    private int points;
 }

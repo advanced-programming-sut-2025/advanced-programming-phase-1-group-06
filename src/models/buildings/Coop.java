@@ -1,5 +1,7 @@
 package models.buildings;
 
+import models.Animals.Animal;
+
 public class Coop extends Building {
     private int capacity;
     private int currentStorage;

@@ -1,11 +1,11 @@
 package models.shops;
 
-import models.Item;
+import models.Interfaces.InventoryItem;
 
 public class Carpenter extends Shop {
-    private Item[] items;
+    private InventoryItem[] items;
 
-    public void buyItem(Item item) {
+    public void buyItem(InventoryItem item) {
     }
 
     public void buildBuilding(String buildingName) {

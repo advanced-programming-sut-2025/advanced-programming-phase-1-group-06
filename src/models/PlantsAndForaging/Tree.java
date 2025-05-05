@@ -9,5 +9,14 @@ public class Tree extends OverlayTile implements Growable {
 
     public void chop() {
     }
+    @Override
+    public void grow(){
+
+    }
+
+    @Override
+    public void harvest() {
+
+    }
 }
 

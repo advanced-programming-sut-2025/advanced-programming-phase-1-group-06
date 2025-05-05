@@ -2,6 +2,7 @@ package models.tools;
 
 import models.Game.Coordinates;
 
+
 public class Scissors extends Tool {
     public void cut() {
         // Implement cutting logic
