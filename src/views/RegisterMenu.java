@@ -15,10 +15,8 @@ public class RegisterMenu implements AppMenu {
         RegisterMenuController controller = new RegisterMenuController();
         if ((matcher = Regex.REGISTER.getMatcher(input)) != null){
             output = controller.register(matcher, scanner);
-        }else if ((matcher = Regex.LOGIN.getMatcher(input)) != null){
-            output = controller.login(matcher, scanner);
-        }
-
+        } else
+            System.out.println("wtf");
         if (output != null)
             System.out.println(output);
     }

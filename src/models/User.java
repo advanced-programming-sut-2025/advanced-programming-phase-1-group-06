@@ -1,5 +1,7 @@
 package models;
 
+import controllers.RegisterMenuController;
+
 import java.util.ArrayList;
 
 public class User {
@@ -12,13 +14,40 @@ public class User {
     private int questionNumber;
     private String answer;
 
-
-    public User(String username, String password, String email, String nickname, int gender){
+    private static final String [] questions =
+    {
+            ("1. what was the name of your first pet?"),
+            ("2. what's the name of the first school you went to?"),
+            ("3. what's the name of your favorite movie/show?"),
+            ("4. what's the name your favorite signer/band?"),
+            ("5. what's the name of your favorite animal?"),
+//        add some more questions;
+    };
+    private static final char [] specialChars = {'?', '<', '>', ',', '"', '\'', ':', ';', '/', '\\', '|', '[', ']', '{', '}', '+', '=', ')', '(', '*', '@', '&', '^', '%', '$', '#', '!'};
+    public User(String username, String password, String email, String nickname, int gender, int questionNumber, String answer){
         this.username = username;
         this.password = password;
         this.email = email;
         this.nickname = nickname;
         this.gender = gender;
+        this.questionNumber = questionNumber;
+        this.answer = answer;
+    }
+
+    public int getQuestionNumber() {
+        return questionNumber;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public static String[] getQuestions(){
+        return questions;
+    }
+
+    public String getQuestion(){
+        return questions[questionNumber - 1];
     }
 
     public String getNickname() {

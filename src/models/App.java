@@ -9,6 +9,16 @@ public class App {
     private static Menu currentMenu = Menu.REGISTER;
     private static ArrayList<User> users = new ArrayList<>();
 
+    public static User getLoggedInUser() {
+        return loggedInUser;
+    }
+
+    public static void setLoggedInUser(User loggedInUser) {
+        App.loggedInUser = loggedInUser;
+    }
+
+    private static User loggedInUser;
+
 
 
     public static User getUserByUsername(String username){
