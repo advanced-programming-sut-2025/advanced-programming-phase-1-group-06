@@ -1,5 +1,6 @@
 package views;
 
+import controllers.LoginMenuController;
 import controllers.RegisterMenuController;
 import models.enums.Regex;
 
@@ -12,11 +13,13 @@ public class LoginMenu implements AppMenu {
     public void checkInput(String input, Scanner scanner) {
         Matcher matcher;
         String output = "";
-        RegisterMenuController controller = new RegisterMenuController();
+        LoginMenuController controller = new LoginMenuController();
         if ((matcher = Regex.LOGIN.getMatcher(input)) != null){
             output = controller.login(matcher, scanner);
+        } else if ((matcher = Regex.FORGET.getMatcher(input)) != null){
+            output = controller.forgotPassword(matcher, scanner);
         }
-        if (output != null)
+        if (!output.isEmpty())
             System.out.println(output);
     }
 }
