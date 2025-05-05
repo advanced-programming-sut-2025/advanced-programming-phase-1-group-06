@@ -1,10 +1,10 @@
 package models.shops;
 
-import models.Item;
+import models.Interfaces.InventoryItem;
 
 public class Saloon extends Shop {
-    private Item[] items;
+    private InventoryItem[] items;
 
-    public void buyItem(Item item) {
+    public void buyItem(InventoryItem item) {
     }
 }

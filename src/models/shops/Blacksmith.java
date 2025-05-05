@@ -1,9 +1,12 @@
 package models.shops;
 
-public class Blacksmith extends Shop {
-    private Item[] items;
+import models.Interfaces.InventoryItem;
+import models.tools.Tool;
 
-    public void buyItem(Item item) {
+public class Blacksmith extends Shop {
+    private InventoryItem[] items;
+
+    public void buyItem(InventoryItem item) {
     }
 
     public void upgradeTool(Tool tool) {

@@ -1,5 +1,6 @@
 package models.shops;
 
+import models.Game.NPC;
 import models.Player.Player;
 import models.buildings.Building;
 

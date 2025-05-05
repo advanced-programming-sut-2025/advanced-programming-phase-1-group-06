@@ -1,5 +1,7 @@
 package models.tools;
 
+import models.Game.Coordinate;
+
 public class Scythe extends Tool {
     public void cut() {
         // Implement cutting logic

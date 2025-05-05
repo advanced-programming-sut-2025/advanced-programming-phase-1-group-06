@@ -7,7 +7,7 @@ public class Weather {
 
     public void setEffects() {
     }
-    public void lightning(Coordiante coordiante ){
+    public void lightning(Coordinate coordiante ){
 
     }
 
