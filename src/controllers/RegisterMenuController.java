@@ -5,7 +5,6 @@ import models.User;
 import models.enums.Menu;
 import models.enums.Regex;
 
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -14,7 +13,7 @@ import static java.lang.Integer.parseInt;
 
 public class RegisterMenuController {
 
-    public String checkPassword(String password) {
+    public static String checkPassword(String password) {
         if (password.length() < 8)          return "Password too short!";
         if (!password.matches(".*[a-z].*")) return "No lowercase letter!";
         if (!password.matches(".*[A-Z].*")) return "No uppercase letter!";
@@ -75,7 +74,7 @@ public class RegisterMenuController {
                 gender = 3;
                 break;
             default:
-                return "gender not valid";
+                return "gender not valid (i'm sorry)";
         }
         String [] questions = User.getQuestions();
         for(String q : questions){
@@ -124,8 +123,8 @@ public class RegisterMenuController {
         }
         User user = new User(username, password, email, nickname, gender, questionNumber, answer);
         App.addUser(user);
-        App.setCurrentMenu(Menu.Login);
-        return null;
+        App.setCurrentMenu(Menu.LOGIN);
+        return "user created successfully";
     }
 
     public static String randomPassword() {

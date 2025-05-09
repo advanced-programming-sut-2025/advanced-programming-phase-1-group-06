@@ -97,4 +97,12 @@ public class User {
     public void setPoints(int points) {
         this.points = points;
     }
+
+    public int highScore() {
+        return 0;
+    }
+
+    public int getGameCount() {
+        return 0;
+    }
 }
