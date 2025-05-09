@@ -1,8 +1,9 @@
 package models.PlantsAndForaging;
 
-import models.Game.Tile;
 
-public class Tree extends Tile implements Growable {
+import models.Tiles.OverlayTile;
+
+public class Tree extends OverlayTile implements Growable {
     private boolean isFruitful;
     private Crop product;
 

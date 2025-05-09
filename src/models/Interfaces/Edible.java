@@ -1,4 +1,5 @@
 package models.Interfaces;
 
-public interface Edible {
+interface Edible {
+    public void eat();
 }

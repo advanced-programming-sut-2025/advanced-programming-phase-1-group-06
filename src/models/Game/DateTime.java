@@ -27,7 +27,5 @@ public class DateTime {
         hour = TIME_START_HOUR;
         minute = 0;
     }
-
-
 }
 
