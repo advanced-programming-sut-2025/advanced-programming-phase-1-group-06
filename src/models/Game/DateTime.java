@@ -3,7 +3,7 @@ package models.Game;
 
 
 public class DateTime {
-    private static final int TIME_START_HOUR = 7;
+    private static final int TIME_START_HOUR = 9;
     private static final int TIME_END_HOUR = 22;
     private int minute;
     private int hour;
