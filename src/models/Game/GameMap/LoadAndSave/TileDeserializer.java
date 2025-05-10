@@ -1,6 +1,9 @@
 package models.Game.GameMap.LoadAndSave;
 
 import com.google.gson.*;
+import models.PlantsAndForaging.Growable;
+import models.Tiles.*;
+
 import java.lang.reflect.Type;
 
 public class TileDeserializer implements JsonDeserializer<Tile> {
@@ -14,9 +17,9 @@ public class TileDeserializer implements JsonDeserializer<Tile> {
         switch (tileType) {
             case "Dirt":
                 tile = new Dirt();
+                ((Dirt) tile).setHoed(jsonObject.get("isHoed").getAsBoolean());
                 ((Dirt) tile).setWatered(jsonObject.get("isWatered").getAsBoolean());
                 ((Dirt) tile).setFertilized(jsonObject.get("isFertilized").getAsBoolean());
-                ((Dirt) tile).setHoed(jsonObject.get("isHoed").getAsBoolean());
                 if (jsonObject.has("growable")) {
                     Growable growable = context.deserialize(jsonObject.get("growable"), Growable.class);
                     ((Dirt) tile).setGrowable(growable);
@@ -24,16 +27,20 @@ public class TileDeserializer implements JsonDeserializer<Tile> {
                 break;
             case "Flooring":
                 tile = new Flooring();
+                //TODO
+                break;
+            case "Water":
+                tile = new Water();
+                //TODO
                 break;
             default:
                 throw new JsonParseException("Unknown tile type: " + tileType);
         }
 
         // Set common properties
-        tile.isBlocked = jsonObject.get("isBlocked").getAsBoolean();
-        tile.symbol = jsonObject.get("symbol").getAsCharacter();
-        tile.color = jsonObject.get("color").getAsInt();
-        tile.type = TileType.valueOf(jsonObject.get("type").getAsString());
+        tile.setBlocked(jsonObject.get("isBlocked").getAsBoolean());
+        tile.setSymbol(jsonObject.get("symbol").getAsCharacter());
+        tile.setColor(jsonObject.get("color").getAsInt());
 
         // Set OverlayTile if it exists
         if (jsonObject.has("overlayTile")) {

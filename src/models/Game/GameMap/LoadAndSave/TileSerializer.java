@@ -16,10 +16,10 @@ public class TileSerializer implements JsonSerializer<Tile> {
         json.addProperty("tileType", tile.getClass().getSimpleName());
 
         // Save common Tile properties
-        json.addProperty("isBlocked", tile.isBlocked);
-        json.addProperty("symbol", tile.symbol);
-        json.addProperty("color", tile.color);
-        json.addProperty("type", tile.type.toString());
+        json.addProperty("isBlocked", tile.isBlocked());
+        json.addProperty("symbol", tile.getSymbol());
+        json.addProperty("color", tile.getColor());
+        //json.addProperty("type", tile.type.toString());
 
         // Save OverlayTile if it exists
         if (tile.getOverlayTile() != null) {
@@ -29,12 +29,19 @@ public class TileSerializer implements JsonSerializer<Tile> {
         // Save Dirt-specific properties
         if (tile instanceof Dirt) {
             Dirt dirt = (Dirt) tile;
+            json.addProperty("isHoed", dirt.isHoed());
             json.addProperty("isWatered", dirt.isWatered());
             json.addProperty("isFertilized", dirt.isFertilized());
-            json.addProperty("isHoed", dirt.isHoed());
+
             if (dirt.getGrowable() != null) {
                 json.add("growable", context.serialize(dirt.getGrowable(), Growable.class));
             }
+        }
+        else if (tile instanceof Flooring) {
+
+        }
+        else if (tile instanceof Water) {
+
         }
 
         return json;
