@@ -18,6 +18,8 @@ public class MainMenu implements AppMenu {
             controller.goToMenu("login");
         } else if ((matcher = Regex.GO_TO_MENU.getMatcher(input)) != null){
             controller.goToMenu(matcher.group("menuName"));
+        } else if ((matcher = Regex.GAME_NEW.getMatcher(input)) != null){
+            controller.newGame(matcher, scanner);
         }
     }
 }

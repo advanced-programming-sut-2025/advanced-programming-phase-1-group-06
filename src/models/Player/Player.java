@@ -12,7 +12,9 @@ import java.util.List;
 
 public class Player {
     private User user;
+
     private String name;
+    private int gameMap;
     private GameMap currentMap;
     private int x, y;
     private int money;
@@ -22,9 +24,38 @@ public class Player {
     private int maxEnergy;
     private boolean isPassedOut;
     private Tool currentTool;
-    private Recipe[] cookableFoods;
-    private Recipe[] craftableItems;
+    private ArrayList<Recipe> cookableFoods;
+    private ArrayList<Recipe> craftableItems;
     private boolean trashcan;
+
+    public Player(User user, int gameMap){
+        this.user = user;
+        this.gameMap = gameMap;
+        money = 500;
+        Inventory inventory = new Inventory();
+        skills = new Skill();
+
+    }
+
+    public Player(User user, String name, GameMap currentMap, int x, int y, int money, Inventory inventory, Skill skills, Double energy, int maxEnergy, boolean isPassedOut, Tool currentTool, ArrayList<Recipe> cookableFoods, ArrayList<Recipe> craftableItems, boolean trashcan, int gameMap) {
+        this.gameMap = gameMap;
+        this.user = user;
+        this.name = name;
+        this.currentMap = currentMap;
+        this.x = x;
+        this.y = y;
+        this.money = money;
+        this.inventory = inventory;
+        this.skills = skills;
+        this.energy = energy;
+        this.maxEnergy = maxEnergy;
+        this.isPassedOut = isPassedOut;
+        this.currentTool = currentTool;
+        this.cookableFoods = cookableFoods;
+        this.craftableItems = craftableItems;
+        this.trashcan = trashcan;
+    }
+
 
     public boolean canWalk(Coordinates coordinates) {
         return false;

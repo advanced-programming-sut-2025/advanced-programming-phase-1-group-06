@@ -2,7 +2,12 @@ package models.tools;
 
 import models.Game.Coordinates;
 
-public class FishingRod extends Tool {
+public class FishingRod extends Tool{
+
+    int price;
+
+    FishingRod(){}
+
     public void fish() {
         // Implement fishing logic
     }

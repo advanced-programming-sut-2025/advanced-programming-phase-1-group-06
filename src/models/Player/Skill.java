@@ -6,6 +6,13 @@ public class Skill {
     private int mining;
     private int fishing;
 
+    Skill(){
+        foraging = 0;
+        farming = 0;
+        mining = 0;
+        fishing = 0;
+    }
+
     public void increaseForaging(int amount) {
     }
 

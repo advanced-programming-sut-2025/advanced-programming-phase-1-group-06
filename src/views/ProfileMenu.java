@@ -19,7 +19,7 @@ public class ProfileMenu implements AppMenu{
             System.out.println(controller.changeNickname(matcher, scanner));
         } else if ((matcher = Regex.CHANGE_EMAIL.getMatcher(input)) != null){
             System.out.println(controller.changeEmail(matcher, scanner));
-        } else if ((matcher = Regex.CHANGE_PASSSWORD.getMatcher(input)) != null){
+        } else if ((matcher = Regex.CHANGE_PASSWORD.getMatcher(input)) != null){
             System.out.println(controller.changePassword(matcher, scanner));
         } else if ((matcher = Regex.USER_INFO.getMatcher(input)) != null){
             System.out.println(controller.showUserInfo());
