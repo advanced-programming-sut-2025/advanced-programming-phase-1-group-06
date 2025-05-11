@@ -9,6 +9,7 @@ public class Game {
     private Weather weather;
     private GameMap[] gameMaps;
     private Growable[] growables;
+
     private DateTime dateTime;
     private Player currentPlayer;
     private int currentTurn;

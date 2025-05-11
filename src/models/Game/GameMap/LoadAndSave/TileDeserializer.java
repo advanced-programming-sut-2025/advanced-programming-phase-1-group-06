@@ -3,6 +3,8 @@ package models.Game.GameMap.LoadAndSave;
 import com.google.gson.*;
 import models.PlantsAndForaging.Growable;
 import models.Tiles.*;
+import models.Tiles.Info.FlooringInfo;
+import models.Tiles.OverlayTiles.OverlayTile;
 
 import java.lang.reflect.Type;
 
@@ -26,21 +28,17 @@ public class TileDeserializer implements JsonDeserializer<Tile> {
                 }
                 break;
             case "Flooring":
-                tile = new Flooring();
-                //TODO
+                tile = new Flooring(FlooringInfo.valueOf(jsonObject.get("flooringInfo").getAsString()));
                 break;
             case "Water":
                 tile = new Water();
-                //TODO
                 break;
             default:
                 throw new JsonParseException("Unknown tile type: " + tileType);
         }
 
-        // Set common properties
-        tile.setBlocked(jsonObject.get("isBlocked").getAsBoolean());
-        tile.setSymbol(jsonObject.get("symbol").getAsCharacter());
-        tile.setColor(jsonObject.get("color").getAsInt());
+
+
 
         // Set OverlayTile if it exists
         if (jsonObject.has("overlayTile")) {

@@ -80,7 +80,7 @@ public class AStar {
 
         // Validate input coordinates
         if (!isValid(startX, startY, rows, cols) || !isValid(goalX, goalY, rows, cols) ||
-                grid.getTile(startX, startY).isBlocked() || grid.getTile(goalX, goalY).isBlocked()) {
+                grid.isBlocked(startX, startY) || grid.isBlocked(goalX, goalY)) {
             return new ArrayList<>();
         }
 
@@ -105,7 +105,7 @@ public class AStar {
                 int newX = current.x + DIRECTIONS[i][0];
                 int newY = current.y + DIRECTIONS[i][1];
 
-                if (!isValid(newX, newY, rows, cols) || grid.getTile(newX, newY).isBlocked()) {
+                if (!isValid(newX, newY, rows, cols) || grid.isBlocked(newX, newY)) {
                     continue;
                 }
 

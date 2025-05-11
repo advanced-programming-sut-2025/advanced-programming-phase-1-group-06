@@ -1,6 +1,6 @@
 package models.tools;
 
-import models.Game.Coordinate;
+import models.Game.Coordinates;
 
 public class Pickaxe extends Tool {
     public void mine() {
@@ -8,8 +8,8 @@ public class Pickaxe extends Tool {
     }
 
     @Override
-    public void use(Coordinate coordinate) {
-        // Implement logic to use pickaxe on coordinate
+    public void use(Coordinates Coordinates) {
+        // Implement logic to use pickaxe on `Coordinates`
     }
 
     @Override

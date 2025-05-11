@@ -9,14 +9,11 @@ public class Scissors extends Tool {
     }
 
     @Override
-    public void use(Coordinate coordinate) {
+    public void use(Coordinates coordinate) {
         // Implement logic to use scissors on coordinate
     }
 
-    @Override
-    public void use(Coordinates coordinates) {
 
-    }
 
     @Override
     public void upgrade() {

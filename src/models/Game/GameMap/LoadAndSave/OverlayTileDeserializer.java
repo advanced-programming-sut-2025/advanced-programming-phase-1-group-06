@@ -1,13 +1,15 @@
 package models.Game.GameMap.LoadAndSave;
 
 import com.google.gson.*;
-import models.PlantsAndForaging.Info.MineralsInfo;
 import models.PlantsAndForaging.Info.SeedInfo;
 import models.PlantsAndForaging.Info.TreeSeedInfo;
 import models.PlantsAndForaging.Plant;
 import models.PlantsAndForaging.Tree;
-import models.Tiles.MineralTile;
-import models.Tiles.OverlayTile;
+import models.Tiles.Info.BuildingTileInfo;
+import models.Tiles.Info.MineralTileInfo;
+import models.Tiles.OverlayTiles.BuildingTile;
+import models.Tiles.OverlayTiles.MineralTile;
+import models.Tiles.OverlayTiles.OverlayTile;
 
 import java.lang.reflect.Type;
 
@@ -19,6 +21,7 @@ public class OverlayTileDeserializer implements JsonDeserializer<OverlayTile> {
         String overlayType = jsonObject.get("overlayType").getAsString();
 
         OverlayTile overlayTile;
+
         switch (overlayType) {
             case "Plant":
                 overlayTile = new Plant(SeedInfo.valueOf(jsonObject.get("seedInfo").getAsString()),
@@ -31,7 +34,10 @@ public class OverlayTileDeserializer implements JsonDeserializer<OverlayTile> {
                         jsonObject.get("daysSincePlanting").getAsInt());
                 break;
             case "MineralTile":
-                overlayTile = new MineralTile(MineralsInfo.valueOf(jsonObject.get("mineralsInfo").getAsString()));
+                overlayTile = new MineralTile(MineralTileInfo.valueOf(jsonObject.get("mineralsInfo").getAsString()));
+                break;
+            case "BuildingTile":
+                overlayTile = new BuildingTile(BuildingTileInfo.valueOf(jsonObject.get("buildingTileInfo").getAsString()));
                 break;
             default:
                 throw new JsonParseException("Unknown overlay tile type: " + overlayType);

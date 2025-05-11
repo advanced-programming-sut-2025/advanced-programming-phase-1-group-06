@@ -1,6 +1,7 @@
 package models.Tiles;
 
 import models.PlantsAndForaging.Growable;
+import models.enums.Color;
 
 public class Dirt extends Tile{
     private boolean isWatered;
@@ -9,17 +10,29 @@ public class Dirt extends Tile{
 
     private boolean isHoed;
 
+    public Dirt() {
+        color = Color.YELLOW_BG.getColorCode();
+        isHoed = false;
+        isWatered = false;
+        isFertilized = false;
+        growable = null;
+    }
+
+    public Dirt(boolean isWatered, boolean isFertilized, boolean isHoed, Growable growable) {
+        this.isWatered = isWatered;
+        this.isFertilized = isFertilized;
+        this.isHoed = isHoed;
+        this.growable = growable;
+    }
 
     private void setHoedDirt() {
         //TODO
         isHoed = true;
-        symbol = '+';
     }
 
     private void unsetHoedDirt() {
         //TODO
         isHoed = false;
-        symbol = '.';
     }
 
     public boolean isFertilized() {

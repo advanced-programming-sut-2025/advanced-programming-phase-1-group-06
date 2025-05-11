@@ -25,8 +25,23 @@ public class Seed implements InventoryItem, Sellable {
         this.isGiantable = seedInfo.isGiantable();
     }
 
-    public Plant getPlant() {
-        return new Plant(cropInfo, growingStages, totalHarvestTime, regrowthTime, oneTime, seasons);
+//    public Plant getPlant() {
+//        return new Plant(cropInfo, growingStages, totalHarvestTime, regrowthTime, oneTime, seasons);
+//    }
+
+    @Override
+    public void sell() {
+
+    }
+
+    @Override
+    public String getName() {
+        return "";
+    }
+
+    @Override
+    public int getAmount() {
+        return 0;
     }
 
 //    public GiantPlant getGiantPlant() {

@@ -1,17 +1,15 @@
 package models.Tiles;
 
-import models.tools.Tool;
+import models.Tiles.OverlayTiles.OverlayTile;
+import models.enums.Color;
 
 public abstract class Tile {
     public void setBlocked(boolean blocked) {
         isBlocked = blocked;
     }
 
-    public void setSymbol(char symbol) {
-        this.symbol = symbol;
-    }
 
-    public void setColor(int color) {
+    public void setColor(String color) {
         this.color = color;
     }
 
@@ -24,20 +22,13 @@ public abstract class Tile {
     }
 
     protected boolean isBlocked;
-    protected char symbol;
-    protected int color;
+    protected String color;
     protected TileType type;
     protected OverlayTile overlayTile;
 
-    public TileType getType() {
-        return type;
-    }
 
-    public char getSymbol() {
-        return symbol;
-    }
 
-    public int getColor() {
+    public String getColor() {
         return color;
     }
 
@@ -45,12 +36,12 @@ public abstract class Tile {
         return overlayTile;
     }
 
-    public char showTile() {
-        if (overlayTile != null) {
-            return overlayTile.getSymbol();
-        }
-        return symbol;
+    public String showTile() {
+        if (overlayTile == null) return color + " " + Color.RESET.getColorCode();
+        else return color + overlayTile.getColor() + overlayTile.getSymbol() + Color.RESET.getColorCode();
     }
+
+
 
     public boolean isBlocked() {
         if (overlayTile != null) {
