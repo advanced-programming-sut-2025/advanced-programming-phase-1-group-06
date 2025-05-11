@@ -24,6 +24,27 @@ public enum TreeSeedInfo {
     MYSTIC_TREE_SEEDS(TreeProductInfo.MYSTIC_SYRUP, "Mystic Tree Seeds", "7-7-7-7", 28, "1-2-3-4");
 
     private TreeProductInfo productInfo;
+
+    public String getSeedName() {
+        return seedName;
+    }
+
+    public TreeProductInfo getProductInfo() {
+        return productInfo;
+    }
+
+    public String getGrowingStages() {
+        return growingStages;
+    }
+
+    public int getTotalHarvestTime() {
+        return totalHarvestTime;
+    }
+
+    public String getSeasons() {
+        return seasons;
+    }
+
     private String seedName;
     private String growingStages;
     private int totalHarvestTime;

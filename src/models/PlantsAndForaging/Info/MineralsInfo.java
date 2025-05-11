@@ -20,8 +20,8 @@ public enum MineralsInfo {
     IRON("Iron", "A fairly common ore that can be smelted into bars.", 10),
     GOLD("Gold", "A precious ore that can be smelted into bars.", 25),
     IRIDIUM("Iridium", "An exotic ore with many curious properties. Can be smelted into bars.", 100),
-    COAL("Coal", "A combustible rock that is useful for crafting and smelting.", 15);
-
+    COAL("Coal", "A combustible rock that is useful for crafting and smelting.", 15),
+    ROCK("Rock", "Literally just a rock.", 1);
     private String name;
     private String description;
     private int sellPrice;

@@ -1,7 +1,15 @@
 package models.Tiles;
 
-public class OverlayTile { //displaying rocks, plants, trees, artisan devices, buildings
-    private boolean isBlocked;
-    private int hits;
-    public void useTool(){} //implement strategy pattern or something for different tiles
+public abstract class OverlayTile { //displaying rocks, plants, trees, artisan devices, buildings
+    protected boolean isBlocked = false;
+    protected int hits;
+    protected char symbol;
+    protected int color;
+    public abstract void useTool(); //implement strategy pattern or something for different tiles
+    public char getSymbol() {
+        return symbol;
+    }
+    public boolean isBlocked() {
+        return isBlocked;
+    }
 }
