@@ -12,6 +12,10 @@ public class Pickaxe extends Tool {
         // Implement mining logic
     }
 
+    Pickaxe(int level, String name){
+        super(level, name);
+    }
+
     @Override
     public void use(Coordinates coordinate) {
         // Implement logic to use pickaxe on coordinate
