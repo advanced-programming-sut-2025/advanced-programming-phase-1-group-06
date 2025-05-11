@@ -15,13 +15,19 @@ public class Player {
     private GameMap currentMap;
     private int x, y;
     private int money;
+
     private Inventory inventory;
+
     private Skill skills;
     private double energy;
     private int mapNumber;
 
     public int getMoney() {
         return money;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
     }
 
     public void setMoney(int money) {

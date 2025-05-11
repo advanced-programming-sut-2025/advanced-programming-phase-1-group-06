@@ -63,7 +63,7 @@ public enum Regex {
     ENERGY_UNLIMITED("^\\s*energy\\s+unlimited\\s*$"),
     INVENTORY_SHOW("^\\s*inventory\\s+show\\s*$"),
     INVENTORY_TRASH("^\\s*inventory\\s+trash\\s+-i\\s+(?<item>\\S+)(\\s+-n\\s+(?<count>\\d+))?\\s*$"),
-    TOOLS_EQUIP("^\\s*tools\\s+equip\\s+(?<tool>\\S+)\\s*$"),
+    TOOLS_EQUIP("^\\s*tools\\s+equip\\s+(?<toolName>\\S+)\\s*$"),
     TOOLS_SHOW_CURRENT("^\\s*tools\\s+show\\s+current\\s*$"),
     TOOLS_SHOW_AVAILABLE("^\\s*tools\\s+show\\s+available\\s*$"),
     TOOLS_UPGRADE("^\\s*tools\\s+upgrade\\s+(?<tool>\\S+)\\s*$"),

@@ -3,7 +3,12 @@ package models.Player;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.regex.Matcher;
+
+import models.App;
+import models.Game.Game;
 import models.Interfaces.InventoryItem;
+import models.tools.Tool;
 import models.tools.ToolType;
 
 public class Inventory {
@@ -61,5 +66,14 @@ public class Inventory {
             return false;
         }
         return false;
+    }
+
+    public InventoryItem getItemByName(String name){
+        for (InventoryItem item : items){
+            if (item.getName().equals(name)){
+                return item;
+            }
+        }
+        return null;
     }
 }
