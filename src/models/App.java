@@ -9,11 +9,14 @@ public class App {
 
     private static Menu currentMenu = Menu.REGISTER;
     private static ArrayList<User> users = new ArrayList<>();
-    private static Game game;
+    private static  Game game;
 
     public static Game getGame() {
         return game;
     }
+
+    public static void setGame(Game game){App.game = game;}
+
 
     public static void setUsers(ArrayList<User> users) {
         App.users = users;

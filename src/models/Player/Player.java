@@ -18,6 +18,7 @@ public class Player {
     private Inventory inventory;
     private Skill skills;
     private double energy;
+    private int mapNumber;
 
     public int getMoney() {
         return money;
@@ -82,7 +83,7 @@ public class Player {
     private ArrayList<Recipe> craftableItems;
     private boolean trashcan;
 
-    public Player(User user, GameMap currentMap, int x, int y, int money, Inventory inventory, Skill skills, double energy, double maxEnergy, boolean isPassedOut, Tool currentTool, ArrayList<Recipe> cookableFoods, ArrayList<Recipe> craftableItems, boolean trashcan) {
+    public Player(User user, GameMap currentMap, int x, int y, int money, Inventory inventory, Skill skills, double energy, double maxEnergy, boolean isPassedOut, Tool currentTool, ArrayList<Recipe> cookableFoods, ArrayList<Recipe> craftableItems, boolean trashcan, int mapNumber) {
         this.user = user;
         this.currentMap = currentMap;
         this.x = x;
@@ -97,10 +98,12 @@ public class Player {
         this.cookableFoods = cookableFoods;
         this.craftableItems = craftableItems;
         this.trashcan = trashcan;
+        this.mapNumber = mapNumber;
     }
 
-    public Player(User user){
+    public Player(User user, int mapNumber){
         this.user = user;
+        this.mapNumber = mapNumber;
         inventory = new Inventory();
         cookableFoods = new ArrayList<Recipe>();
         craftableItems = new ArrayList<>();
@@ -109,7 +112,6 @@ public class Player {
         money = 500;
         isPassedOut = false;
         skills = new Skill();
-
     }
 
 

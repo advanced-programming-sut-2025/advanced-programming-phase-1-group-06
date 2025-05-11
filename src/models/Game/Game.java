@@ -13,7 +13,7 @@ public class Game {
     private Growable[] growables;
     private DateTime dateTime;
 
-    Game(ArrayList<Player> players){
+    public Game(ArrayList<Player> players){
         this.players = players;
     }
 

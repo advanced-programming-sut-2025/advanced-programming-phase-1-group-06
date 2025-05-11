@@ -6,6 +6,7 @@ public class Skill {
     private int farming;
     private int mining;
     private int fishing;
+
     public Skill(){
         foraging = 0;
         farming = 0;
@@ -18,13 +19,6 @@ public class Skill {
         this.farming = farming;
         this.mining = mining;
         this.fishing = fishing;
-    }
-
-    Skill(){
-        foraging = 0;
-        farming = 0;
-        mining = 0;
-        fishing = 0;
     }
 
     public void increaseForaging(int amount) {

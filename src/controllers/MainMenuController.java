@@ -1,12 +1,16 @@
 package controllers;
 
 import models.App;
+import models.Game.Game;
+import models.Player.Player;
 import models.User;
 import models.enums.Menu;
 import models.enums.Regex;
 import views.LoginMenu;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.locks.ReentrantLock;
 import java.util.regex.Matcher;
 
 public class MainMenuController {
@@ -18,16 +22,35 @@ public class MainMenuController {
         System.out.println("you are now in " + App.getCurrentMenu().getName() + " menu.");
     }
 
-    public void newGame(Matcher matcher, Scanner scanner){
-        User user1 = App.getUserByUsername(matcher.group("username1"));
-        User user2 = App.getUserByUsername(matcher.group("username2"));
-        User user3 = App.getUserByUsername(matcher.group("username3"));
-
+    public String newGame(Matcher matcher, Scanner scanner){
+        ArrayList<User> users = new ArrayList<>();
+        for (int i = 0; i < 3; i ++) {
+            User user = App.getUserByUsername(matcher.group(STR."username\{i}"));
+            if (user == null){
+                return STR."user \{i} does not exist";
+            }
+        }
+        ArrayList<Player> players = new ArrayList<>();
         Matcher mapMatcher;
         int mapNumber;
-        while (true){
-            System.out.println("pick your map number choose a number between 1 to 3");
-        }
+        String input;
+        int userCount = 0;
+        while (userCount != 3){
+            System.out.println("pick your map. choose a number between 1 to 3");
+            input = scanner.nextLine();
+            if ((mapMatcher = Regex.GAME_MAP.getMatcher(input)) != null){
+                mapNumber = Integer.parseInt(mapMatcher.group("map_number"));
+                if (mapNumber > 3 || mapNumber < 1){
+                    System.out.println("number out of range please choose a number from 1 to 3.");
+                    continue;
+                }
+                Player player = new Player(users.get(userCount), mapNumber);
+                userCount ++;
+            }else
+                System.out.println("please answer in the format bellow.\n\"game map <map_number>\"");
 
+        }
+        App.setGame(new Game(players));
+        return "game created successfully";
     }
 }
