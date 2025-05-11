@@ -1,6 +1,8 @@
 package models.Game.GameMap.LoadAndSave;
 
 import com.google.gson.*;
+import models.PlantsAndForaging.Crop;
+import models.PlantsAndForaging.Info.CropInfo;
 import models.PlantsAndForaging.Plant;
 import models.Tiles.OverlayTile;
 

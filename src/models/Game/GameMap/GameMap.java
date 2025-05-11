@@ -1,6 +1,7 @@
 package models.Game.GameMap;
 
 import com.google.gson.*;
+import models.Game.Coordinates;
 import models.Game.GameMap.LoadAndSave.*;
 import models.PlantsAndForaging.Growable;
 import models.Tiles.OverlayTile;

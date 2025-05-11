@@ -1,6 +1,11 @@
 package models.Game.GameMap.LoadAndSave;
 
 import com.google.gson.*;
+import models.PlantsAndForaging.Growable;
+import models.Tiles.Dirt;
+import models.Tiles.Flooring;
+import models.Tiles.Tile;
+
 import java.lang.reflect.Type;
 
 public class TileDeserializer implements JsonDeserializer<Tile> {

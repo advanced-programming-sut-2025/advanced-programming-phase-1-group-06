@@ -8,7 +8,6 @@ import models.Interfaces.InventoryItem;
 import models.Interfaces.Sellable;
 
 public class Crop implements Edible, Sellable, InventoryItem {
-
     private String name;
     private SeedInfo source;
     private boolean isEdible;
@@ -41,5 +40,15 @@ public class Crop implements Edible, Sellable, InventoryItem {
     @Override
     public void eat() {
 
+    }
+
+    @Override
+    public int getAmount() {
+        return 0;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }

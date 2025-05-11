@@ -17,6 +17,9 @@ public class AppView {
                 App.exit();
                 return;
             }
+            if ((matcher = Regex.GET_CURRENT_MENU.getMatcher(input)) != null){
+                System.out.println(App.getCurrentMenu().getName());
+            }
             App.getCurrentMenu().checkInput(input, scanner);
         }
     }

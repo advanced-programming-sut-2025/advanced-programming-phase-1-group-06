@@ -4,12 +4,13 @@ import models.Game.Coordinates;
 
 public class WateringCan extends Tool {
 
+    int maxCapacity;
+    int capacity;
     public WateringCan(String name, int level, int energyConsumption) {
         super(name, level, energyConsumption);
+        maxCapacity = 40;
         capacity = 40;
     }
-
-    int capacity;
 
     public void water() {
         // Implement watering logic

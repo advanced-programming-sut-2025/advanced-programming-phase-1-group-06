@@ -5,8 +5,7 @@ import models.Game.Coordinates;
 public class Hoe extends Tool {
 
     public Hoe(String name, int level, int energyConsumption){
-        super(name, level);
-        this.energyConsumption = energyConsumption;
+        super(name, level, energyConsumption);
     }
 
     public void dig() {

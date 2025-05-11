@@ -21,6 +21,7 @@ public enum Regex {
     CHANGE_PASSSWORD("^\\s*change\\s+password\\s+-p\\s+(?<password>.+)\\s+-o\\s+(?<oldPassword>.+)\\s*$"),
     BACK("^\\s*back\\s*$"),
     USER_INFO("^\\s*user\\s+info\\s*$"),
+    GET_CURRENT_MENU("^\\s*get\\s+current\\s+menu\\s*$"),
     STRONG_PASS("^(?=.{8,}$)" +        // at least 8 chars
             "(?=.*[a-z])" +        // at least one lowercase
             "(?=.*[A-Z])" +        // at least one uppercase
@@ -31,6 +32,7 @@ public enum Regex {
 //    PASSWORDNUMBER("?=.[0-9]"),
 //    PASSWORDLOWERCASE("?=.[a-z]"),
 //    PASSWORDUPPERCASE("?=.[A-Z]"),
+    NEW_GAME("\\s*game\\s+new\\s+-u\\s+(?<username1>.+)\\s+(?<username2>.+)\\s+(?<username3>.+)\\s*"),
     ;
 
     private final Pattern pattern;

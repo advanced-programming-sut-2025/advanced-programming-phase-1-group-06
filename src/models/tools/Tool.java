@@ -1,8 +1,9 @@
 package models.tools;
 
 import models.Game.Coordinates;
+import models.Interfaces.InventoryItem;
 
-public abstract class Tool {
+public abstract class Tool implements InventoryItem {
     String name;
     protected int energyConsumption;
     protected int level;
@@ -21,6 +22,11 @@ public abstract class Tool {
 
     public String getName(){
         return name;
+    }
+
+    @Override
+    public int getAmount(){
+        return 1;
     }
 
 }
