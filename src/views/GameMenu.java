@@ -12,9 +12,9 @@ public class GameMenu implements AppMenu {
     public void checkInput(String input, Scanner scanner){
         GameMenuController controller = new GameMenuController();
         Matcher matcher;
-//        if ((matcher = Regex.harkhari.getMatcher(input)) != null){
-//            controller.methodharkhario(input, scanner);
-//        }
+
+
+
         return;
     }
 

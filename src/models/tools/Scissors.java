@@ -4,18 +4,18 @@ import models.Game.Coordinates;
 
 
 public class Scissors extends Tool {
+
+    public Scissors(String name, int level, int energyConsumption){
+        super(name, level, energyConsumption);
+    }
+
     public void cut() {
         // Implement cutting logic
     }
 
     @Override
-    public void use(Coordinate coordinate) {
+    public void use(Coordinates coordinate) {
         // Implement logic to use scissors on coordinate
-    }
-
-    @Override
-    public void use(Coordinates coordinates) {
-
     }
 
     @Override

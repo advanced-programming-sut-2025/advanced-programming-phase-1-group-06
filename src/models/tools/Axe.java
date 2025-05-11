@@ -1,14 +1,20 @@
 package models.tools;
 
-import models.Game.Coordinate;
+import models.Game.Coordinates;
 
 public class Axe extends Tool {
+
+    public Axe(String name, int level, int energyConsumption){
+        super(name, level, energyConsumption);
+    }
+
     public void chop() {
         // Implement chopping logic
     }
 
+
     @Override
-    public void use(Coordinate coordinate) {
+    public void use(Coordinates coordinate) {
         // Implement logic to use axe on coordinate
     }
 

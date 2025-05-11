@@ -27,7 +27,7 @@ public enum Regex {
             "(?=.*\\d)"   +        // at least one digit
             "(?=.*[!#$%^&*()=+{}\\[\\]|\\/:;'\",<>?])" + // at least one special
             ".*$"),
-//    PASSWORDSPECIAL("?=.*[!#$%^&*()=+{}\\[\\]|\\/:;'\",<>?]"),
+    //    PASSWORDSPECIAL("?=.*[!#$%^&*()=+{}\\[\\]|\\/:;'\",<>?]"),
 //    PASSWORDNUMBER("?=.[0-9]"),
 //    PASSWORDLOWERCASE("?=.[a-z]"),
 //    PASSWORDUPPERCASE("?=.[A-Z]"),
