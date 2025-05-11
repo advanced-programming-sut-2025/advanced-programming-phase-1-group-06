@@ -20,6 +20,7 @@ public abstract class OverlayTile { //displaying rocks, plants, trees, artisan d
         this.isBlocked = isBlocked;
     }
 
+
     public int getHits() {
         return hits;
     }

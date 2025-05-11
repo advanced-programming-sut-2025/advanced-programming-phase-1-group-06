@@ -2,6 +2,7 @@ package models.Tiles;
 
 import models.PlantsAndForaging.Growable;
 import models.enums.Color;
+import models.tools.Tool;
 
 public class Dirt extends Tile{
     private boolean isWatered;
@@ -65,5 +66,10 @@ public class Dirt extends Tile{
 
     public void setGrowable(Growable growable) {
         this.growable = growable;
+    }
+
+    @Override
+    public void useTool(Tool tool) {
+        
     }
 }

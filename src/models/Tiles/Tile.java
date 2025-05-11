@@ -2,6 +2,7 @@ package models.Tiles;
 
 import models.Tiles.OverlayTiles.OverlayTile;
 import models.enums.Color;
+import models.tools.Tool;
 
 public abstract class Tile {
     public void setBlocked(boolean blocked) {
@@ -31,6 +32,8 @@ public abstract class Tile {
     public String getColor() {
         return color;
     }
+
+    public abstract void useTool(Tool tool);
 
     public OverlayTile getOverlayTile() {
         return overlayTile;
