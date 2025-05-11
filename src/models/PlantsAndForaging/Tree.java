@@ -9,6 +9,7 @@ public class Tree extends OverlayTile implements Growable {
 
     public void chop() {
     }
+
     @Override
     public void grow(){
 
@@ -17,6 +18,16 @@ public class Tree extends OverlayTile implements Growable {
     @Override
     public void harvest() {
 
+    }
+
+    @Override
+    public String getType() {
+        return "";
+    }
+
+    @Override
+    public int currentGrowthDay() {
+        return 0;
     }
 }
 

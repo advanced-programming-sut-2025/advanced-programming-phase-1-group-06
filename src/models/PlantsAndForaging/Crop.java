@@ -3,9 +3,9 @@ package models.PlantsAndForaging;
 import models.PlantsAndForaging.Info.CropInfo;
 import models.PlantsAndForaging.Info.ForagingCropInfo;
 import models.PlantsAndForaging.Info.SeedInfo;
-import models.Interfaces.Edible;
-import models.Interfaces.InventoryItem;
-import models.Interfaces.Sellable;
+import models.ItemFaces.Edible;
+import models.ItemFaces.InventoryItem;
+import models.ItemFaces.Sellable;
 
 public class Crop implements Edible, Sellable, InventoryItem {
     private String name;
@@ -35,5 +35,10 @@ public class Crop implements Edible, Sellable, InventoryItem {
 
     public String showDetails() {
         return "";
+    }
+
+    @Override
+    public void eat() {
+
     }
 }

@@ -1,5 +1,7 @@
 package models.PlantsAndForaging.Info;
 
+import models.PlantsAndForaging.Seed;
+
 public enum ForagingSeedInfo {
     // Spring Seeds
     JAZZ_SEEDS(SeedInfo.JAZZ_SEEDS, "1"),
@@ -61,5 +63,17 @@ public enum ForagingSeedInfo {
     ForagingSeedInfo(SeedInfo seedInfo, String season) {
         this.seed = seed;
         this.season = season;
+    }
+
+    public SeedInfo getSeed() {
+        return seed;
+    }
+
+    public String getSeason() {
+        return season;
+    }
+
+    public Seed create(){
+        return new Seed(this);
     }
 }

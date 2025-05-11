@@ -1,5 +1,7 @@
 package models.PlantsAndForaging.Info;
 
+import models.PlantsAndForaging.TreeSeed;
+
 public enum TreeSeedInfo {
     // Spring Trees
     APRICOT_SAPLING(TreeProductInfo.APRICOT, "Apricot Sapling", "7-7-7-7", 28, "1"),
@@ -35,5 +37,15 @@ public enum TreeSeedInfo {
         this.growingStages = growingStages;
         this.totalHarvestTime = totalHarvestTime;
         this.seasons = seasons;
+    }
+
+    public String getSeedName() {return seedName;}
+    public TreeProductInfo getProductInfo() {return productInfo;}
+    public String getGrowingStages() {return growingStages;}
+    public int getTotalHarvestTime() {return totalHarvestTime;}
+    public String getSeasons() {return seasons;}
+
+    public TreeSeed create(){
+        return new TreeSeed(this);
     }
 }

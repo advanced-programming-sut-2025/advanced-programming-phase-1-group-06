@@ -2,7 +2,7 @@ package models.Player;
 
 import java.util.Arrays;
 import java.util.Objects;
-import models.Interfaces.InventoryItem;
+import models.ItemFaces.InventoryItem;
 
 public class Inventory {
     private InventoryItem[] items;

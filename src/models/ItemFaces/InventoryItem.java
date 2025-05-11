@@ -1,4 +1,5 @@
-package models.Interfaces;
+package models.ItemFaces;
 
 public interface InventoryItem {
+
 }

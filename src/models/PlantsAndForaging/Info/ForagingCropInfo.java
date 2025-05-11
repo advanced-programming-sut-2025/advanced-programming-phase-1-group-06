@@ -1,5 +1,7 @@
 package models.PlantsAndForaging.Info;
 
+import models.PlantsAndForaging.Crop;
+
 public enum ForagingCropInfo {
     // Foraged items (using a special FORAGE_SOURCE SeedInfo for consistency)
     COMMON_MUSHROOM("Common Mushroom", SeedInfo.FORAGE_SOURCE, true, 38, 40, "0"),
@@ -58,6 +60,10 @@ public enum ForagingCropInfo {
     }
     public String getSeasons() {
         return seasons;
+    }
+
+    public Crop create (){
+        return new Crop(this);
     }
 
 }
