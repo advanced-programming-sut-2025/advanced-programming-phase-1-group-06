@@ -1,4 +1,4 @@
 *.class
-*.idea
+*.idea/
 Proj.iml
-target
+target/
