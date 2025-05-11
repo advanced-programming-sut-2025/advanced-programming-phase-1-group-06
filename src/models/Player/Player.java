@@ -34,7 +34,10 @@ public class Player {
         money = 500;
         Inventory inventory = new Inventory();
         skills = new Skill();
-
+        currentTool = null;
+        cookableFoods = new ArrayList<>();
+        craftableItems = new ArrayList<>();
+        trashcan = false;
     }
 
     public Player(User user, String name, GameMap currentMap, int x, int y, int money, Inventory inventory, Skill skills, Double energy, int maxEnergy, boolean isPassedOut, Tool currentTool, ArrayList<Recipe> cookableFoods, ArrayList<Recipe> craftableItems, boolean trashcan, int gameMap) {

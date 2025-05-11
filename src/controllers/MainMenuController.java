@@ -3,6 +3,7 @@ package controllers;
 import models.App;
 import models.User;
 import models.enums.Menu;
+import models.enums.Regex;
 import views.LoginMenu;
 
 import java.util.Scanner;
@@ -22,6 +23,11 @@ public class MainMenuController {
         User user2 = App.getUserByUsername(matcher.group("username2"));
         User user3 = App.getUserByUsername(matcher.group("username3"));
 
+        Matcher mapMatcher;
+        int mapNumber;
+        while (true){
+            System.out.println("pick your map number choose a number between 1 to 3");
+        }
 
     }
 }
