@@ -4,11 +4,10 @@ import models.*;
 import models.Game.Coordinates;
 import models.Game.GameMap.GameMap;
 import models.Game.Recipe;
-import models.Interfaces.InventoryItem;
+import models.ItemFaces.InventoryItem;
 import models.tools.Tool;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Player {
     private User user;

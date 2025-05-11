@@ -1,5 +1,7 @@
 package models.PlantsAndForaging.Info;
 
+import models.PlantsAndForaging.Seed;
+
 public enum MixedSeedInfo {
     CAULIFLOWER_SEEDS(SeedInfo.CAULIFLOWER_SEEDS, "1"),
     PARSNIP_SEEDS(SeedInfo.PARSNIP_SEEDS, "1"),
@@ -29,5 +31,10 @@ public enum MixedSeedInfo {
 
     public SeedInfo getSeed() {
         return seed;
+    }
+    public String getSeason() {return season;}
+
+    public Seed create(){
+        return new Seed(this);
     }
 }
