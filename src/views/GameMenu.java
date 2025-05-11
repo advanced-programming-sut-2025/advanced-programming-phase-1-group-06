@@ -44,7 +44,9 @@ public class GameMenu implements AppMenu {
         } else if ((matcher = Regex.INVENTORY_TRASH.getMatcher(input)) != null){
 //            Roham
         } else if ((matcher = Regex.TOOLS_EQUIP.getMatcher(input)) != null){
-
+            controller.equipTool(matcher);
+        } else if ((matcher = Regex.TOOLS_USE.getMatcher(input)) != null){
+            controller.useTool(matcher);
         }
 
 
