@@ -39,4 +39,46 @@ public class GameMenuController {
         return "tool set to equipped";
     }
 
+    public String useTool(Matcher matcher){
+        String direction = matcher.group("direction");
+        int x, y;
+        switch (direction) {
+            case "north":
+                y = -1;
+                x = 0;
+                break;
+            case "south":
+                y = 1;
+                x = 0;
+                break;
+            case "east":
+                y = 0;
+                x = 1;
+                break;
+            case "west":
+                y = 0;
+                x = -1;
+                break;
+            case "north-east":
+                y = -1;
+                x = 1;
+                break;
+            case "north-west":
+                y = -1;
+                x = -1;
+                break;
+            case "south-east":
+                y = 1;
+                x = 1;
+                break;
+            case "south-west":
+                y = 1;
+                x = -1;
+                break;
+            default:
+                return;
+                break;
+        }
+    }
+
 }
