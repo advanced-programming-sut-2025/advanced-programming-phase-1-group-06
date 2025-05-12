@@ -3,6 +3,7 @@ package models.Game.GameMap.LoadAndSave;
 import com.google.gson.*;
 import models.PlantsAndForaging.Growable;
 import models.Tiles.*;
+import models.Tiles.OverlayTiles.OverlayTile;
 
 
 import java.lang.reflect.Type;
@@ -17,8 +18,6 @@ public class TileSerializer implements JsonSerializer<Tile> {
 
         // Save common Tile properties
         json.addProperty("isBlocked", tile.isBlocked());
-        json.addProperty("symbol", tile.getSymbol());
-        json.addProperty("color", tile.getColor());
         //json.addProperty("type", tile.type.toString());
 
         // Save OverlayTile if it exists
@@ -37,8 +36,8 @@ public class TileSerializer implements JsonSerializer<Tile> {
                 json.add("growable", context.serialize(dirt.getGrowable(), Growable.class));
             }
         }
-        else if (tile instanceof Flooring) {
-
+        else if (tile instanceof Flooring flooring) {
+            json.addProperty("flooringInfo", String.valueOf(flooring.getFlooringInfo()));
         }
         else if (tile instanceof Water) {
 

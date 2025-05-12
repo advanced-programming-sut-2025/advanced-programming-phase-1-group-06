@@ -13,7 +13,7 @@ public class GrowableSerializer implements JsonSerializer<Growable> {
     @Override
     public JsonElement serialize(Growable growable, Type type, JsonSerializationContext context) {
         JsonObject json = new JsonObject();
-        json.addProperty("type", growable.getType());        // Saves whether it's a "PLANT" or "TREE"
+        json.addProperty("type", growable.getType());        // Saves whether it's a "Pant" or "Tree"
 
         // Depending on the concrete type (Plant or Tree), save the species
         if (growable instanceof Plant plant) {

@@ -1,6 +1,8 @@
 package models.PlantsAndForaging.Info;
 
 
+import models.PlantsAndForaging.Crop;
+
 public enum CropInfo {
 
         BLUE_JAZZ("Blue Jazz", SeedInfo.JAZZ_SEEDS, true, 45, 50),
@@ -74,6 +76,10 @@ public enum CropInfo {
         }
         public int getSellPrice() {
             return sellPrice;
+        }
+
+        public Crop create() {
+                return new Crop(this);
         }
 
 }
