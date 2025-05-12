@@ -1,21 +1,65 @@
 package models.Game;
 
+import models.Crafting.ArtisanDevice;
 import models.Game.GameMap.GameMap;
 import models.PlantsAndForaging.Growable;
 import models.Player.Player;
+import models.enums.WeatherType;
+
+import java.util.ArrayList;
 
 public class Game {
-    private Player[] players;
+    private ArrayList<Player> players;
     private Weather weather;
-    private GameMap[] gameMaps;
-    private Growable[] growables;
-
+    private Weather weather2;
+    private ArrayList<GameMap> gameMaps;
+    private ArrayList<Growable> growables;
+    private ArrayList<ArtisanDevice> artisanDevices;
     private DateTime dateTime;
     private Player currentPlayer;
     private int currentTurn;
 
 
-    public void goNextTurn() {
+
+    public Game(ArrayList<Player> players){
+        this.players = players;
+        weather = WeatherType.SUNNY.getWeather();
+        gameMaps = new ArrayList<>();
+        growables = new ArrayList<>();
+        dateTime = new DateTime();
+        weather2 = Weather.weatherRandomizer();
+    }
+
+    public void setCurrentPlayer(Player currentPlayer) {
+        this.currentPlayer = currentPlayer;
+    }
+
+    public DateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(DateTime dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public Weather getWeather() {
+        return weather;
+    }
+
+    public void setWeather(Weather weather) {
+        this.weather = weather;
+    }
+
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(ArrayList<Player> players) {
+        this.players = players;
+    }
+
+    public void nextTurn() {
+        currentPlayer = players.get((players.indexOf(currentPlayer) + 1) % players.size());
     }
 
     public Player getCurrentPlayer() {
@@ -32,8 +76,6 @@ public class Game {
     public void generateForaging() {
     }
 
-    public void changeWeather(){
-
-    }
+    public void changeWeather(){}
 }
 

@@ -43,17 +43,12 @@ public class Crop implements Edible, Sellable, InventoryItem {
     }
 
     @Override
-    public void sell() {
-
+    public int getAmount() {
+        return 0;
     }
 
     @Override
     public String getName() {
-        return "";
-    }
-
-    @Override
-    public int getAmount() {
-        return 0;
+        return name;
     }
 }

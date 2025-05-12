@@ -7,14 +7,18 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 
 public class AppView {
-    public void run(){
+    public static void run(){
+        System.out.println("use @generate-password instead of password for generating passwords.");
         Matcher matcher;
         Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
         while (true){
+            String input = scanner.nextLine();
             if ((matcher = Regex.EXIT.getMatcher(input)) != null){
                 App.exit();
                 return;
+            }
+            if ((matcher = Regex.GET_CURRENT_MENU.getMatcher(input)) != null){
+                System.out.println(App.getCurrentMenu().getName());
             }
             App.getCurrentMenu().checkInput(input, scanner);
         }

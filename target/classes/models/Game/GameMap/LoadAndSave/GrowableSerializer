@@ -1,0 +1,27 @@
+package models.Game.GameMap.LoadAndSave;
+
+
+import models.PlantsAndForaging.Growable;
+import com.google.gson.*;
+import models.PlantsAndForaging.Plant;
+import models.PlantsAndForaging.Tree;
+
+import java.lang.reflect.Type;
+
+public class GrowableSerializer implements JsonSerializer<Growable> {
+    @Override
+    public JsonElement serialize(Growable growable, Type type, JsonSerializationContext context) {
+        JsonObject json = new JsonObject();
+        json.addProperty("type", growable.getType());        // Saves whether it's a "PLANT" or "TREE"
+        json.addProperty("growthStage", growable.getGrowthStage());
+
+        // Depending on the concrete type (Plant or Tree), save the species
+        if (growable instanceof Plant) {
+            json.addProperty("species", ((Plant) growable).getPlantSpecies());
+        } else if (growable instanceof Tree) {
+            json.addProperty("species", ((Tree) growable).getTreeSpecies());
+        }
+
+        return json;
+    }
+}
