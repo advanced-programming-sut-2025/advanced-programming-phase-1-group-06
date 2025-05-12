@@ -1,11 +1,18 @@
 package models.PlantsAndForaging;
 
+import models.App;
+import models.Game.GameMap.GameMap;
+import models.Interfaces.InventoryItem;
 import models.PlantsAndForaging.Info.CropInfo;
 import models.PlantsAndForaging.Info.SeedInfo;
+import models.Player.Player;
 import models.Tiles.Dirt;
 import models.Tiles.OverlayTiles.OverlayTile;
 import models.enums.Color;
-import models.tools.Tool;
+import models.tools.Scythe;
+import models.tools.*;
+
+import java.util.Random;
 
 
 public class Plant extends OverlayTile implements Growable {
@@ -128,9 +135,31 @@ public class Plant extends OverlayTile implements Growable {
         this.product = seedInfo.getCropInfo();
 
     }
-
-    public void harvest() {
+    public void goNextGrowingStage() {
+        //TODO should be implemented in Growable interface
     }
+    private void destroy(GameMap gameMap) {
+        App.getGame().removeGrowable(this);
+        gameMap.removeOverlayTile(this);
+    }
+    public boolean harvest(Player player) {
+
+
+        if (isHarvestable) {
+            if (oneTime) {
+                destroy(player.getGameMap());
+            }
+            else {
+                goNextGrowingStage();
+            }
+            InventoryItem item = new Crop(this.product, isFertilized);
+            item.setAmount(new Random().nextInt( 3) + 1);
+            player.getInventory().addItem(item);
+            return true;
+        }
+        return false;
+    }
+
 
     @Override
     public String getType() {
@@ -155,8 +184,14 @@ public class Plant extends OverlayTile implements Growable {
     }
 
     @Override
-    public boolean useTool(Tool tool) {
-//        TODO
-        return true;
+    public boolean useTool(Tool tool, Player player) {
+        return switch (tool) {
+            case Scythe scythe -> harvest(player);
+            case Pickaxe pickaxe -> {
+                destroy(player.getGameMap());
+                yield false; //holy syntax
+            }
+            default -> false;
+        };
     }
 }

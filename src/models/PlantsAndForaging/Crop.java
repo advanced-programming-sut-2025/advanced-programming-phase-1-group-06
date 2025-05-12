@@ -14,13 +14,19 @@ public class Crop implements Edible, Sellable, InventoryItem {
     private int energyIncrease;
     private int sellPrice;
     private String seasons;
+    private boolean isFertilized;
 
-    public Crop(CropInfo cropInfo) {
+    public Crop(CropInfo cropInfo, boolean isFertilized) {
         name = cropInfo.getName();
         source = cropInfo.getSource();
         isEdible = cropInfo.isEdible();
         energyIncrease = cropInfo.getEnergyIncrease();
         sellPrice = cropInfo.getSellPrice();
+        this.isFertilized = isFertilized;
+        if (isFertilized) {
+            energyIncrease = (int) (energyIncrease * 1.5);
+            sellPrice = (int) (sellPrice * 1.5);
+        }
         seasons = source.getSeasons();
     }
 

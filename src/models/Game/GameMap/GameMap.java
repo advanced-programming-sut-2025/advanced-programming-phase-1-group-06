@@ -1,8 +1,13 @@
 package models.Game.GameMap;
 
 
+import models.App;
 import models.Game.Coordinates;
+import models.PlantsAndForaging.Growable;
+import models.Tiles.OverlayTiles.OverlayTile;
 import models.Tiles.Tile;
+
+import java.util.Arrays;
 
 public class GameMap {
     Tile[][] tiles;
@@ -40,6 +45,13 @@ public class GameMap {
     // Overload for Coordinates object
     public Tile getTileAt(Coordinates coordinates) {
         return getTileAt(coordinates.x(), coordinates.y());
+    }
+
+    public void removeOverlayTile(OverlayTile overlayTile) {
+        tiles[overlayTile.getCoordinates().y()][overlayTile.getCoordinates().x()].setOverlayTile(null);
+        if (overlayTile instanceof Growable g) {
+            App.getGame().removeGrowable(g);
+        }
     }
 
     public boolean isBlocked(int newX, int newY) {
