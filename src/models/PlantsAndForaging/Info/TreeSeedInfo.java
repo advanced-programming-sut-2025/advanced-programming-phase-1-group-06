@@ -18,13 +18,18 @@ public enum TreeSeedInfo {
     POMEGRANATE_SAPLING(TreeProductInfo.POMEGRANATE, "Pomegranate Sapling", "7-7-7-7", 28, "3"),
 
     // Special Trees
-    ACORNS(TreeProductInfo.OAK_RESIN, "Acorns", "7-7-7-7", 28, "1-2-3-4"),
-    MAPLE_SEEDS(TreeProductInfo.MAPLE_SYRUP, "Maple Seeds", "7-7-7-7", 28, "1-2-3-4"),
-    PINE_CONES(TreeProductInfo.PINE_TAR, "Pine Cones", "7-7-7-7", 28, "1-2-3-4"),
-    MAHOGANY_SEEDS(TreeProductInfo.SAP, "Mahogany Seeds", "7-7-7-7", 28, "1-2-3-4"),
+//    ACORNS(TreeProductInfo.OAK_RESIN, "Acorns", "7-7-7-7", 28, "1-2-3-4"),
+//    MAPLE_SEEDS(TreeProductInfo.MAPLE_SYRUP, "Maple Seeds", "7-7-7-7", 28, "1-2-3-4"),
+//    PINE_CONES(TreeProductInfo.PINE_TAR, "Pine Cones", "7-7-7-7", 28, "1-2-3-4"),
+//    MAHOGANY_SEEDS(TreeProductInfo.SAP, "Mahogany Seeds", "7-7-7-7", 28, "1-2-3-4"),
+//    MUSHROOM_TREE_SEEDS(TreeProductInfo.COMMON_MUSHROOM, "Mushroom Tree Seeds", "7-7-7-7", 28, "0"),
+//    MYSTIC_TREE_SEEDS(TreeProductInfo.MYSTIC_SYRUP, "Mystic Tree Seeds", "7-7-7-7", 28, "1-2-3-4");
+    ACORNS(null, "Acorns", "7-7-7-7", 28, "1-2-3-4"),
+    MAPLE_SEEDS(null, "Maple Seeds", "7-7-7-7", 28, "1-2-3-4"),
+    PINE_CONES(null, "Pine Cones", "7-7-7-7", 28, "1-2-3-4"),
+    MAHOGANY_SEEDS(null, "Mahogany Seeds", "7-7-7-7", 28, "1-2-3-4"),
     MUSHROOM_TREE_SEEDS(TreeProductInfo.COMMON_MUSHROOM, "Mushroom Tree Seeds", "7-7-7-7", 28, "0"),
-    MYSTIC_TREE_SEEDS(TreeProductInfo.MYSTIC_SYRUP, "Mystic Tree Seeds", "7-7-7-7", 28, "1-2-3-4");
-
+    MYSTIC_TREE_SEEDS(null, "Mystic Tree Seeds", "7-7-7-7", 28, "1-2-3-4");
     private TreeProductInfo productInfo;
 
     public String getSeedName() {

@@ -36,6 +36,7 @@ public class Crop extends InventoryItem implements Edible, Sellable {
         isEdible = info.isEdible();
         energyIncrease = info.getEnergyIncrease();
         sellPrice = info.getSellPrice();
+        isFertilized = false;
         seasons = info.getSeasons();
     }
 

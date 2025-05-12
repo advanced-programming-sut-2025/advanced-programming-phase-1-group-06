@@ -1,6 +1,7 @@
 package models.Tiles;
 
 import models.PlantsAndForaging.Growable;
+import models.Tiles.OverlayTiles.OverlayTile;
 import models.enums.Color;
 import models.tools.Tool;
 
@@ -64,11 +65,17 @@ public class Dirt extends Tile{
         this.isFertilized = isFertilized;
     }
 
-    public void setGrowable(Growable growable) {
+    private void setGrowable(Growable growable) {
         this.growable = growable;
     }
 
-
+    @Override
+    public void setOverlayTile(OverlayTile overlayTile) {
+        super.setOverlayTile(overlayTile);
+        if (growable != null && overlayTile instanceof Growable g) {
+            setGrowable(g);
+        }
+    }
     @Override
     public boolean useTool(Tool tool) {
 //        TODO

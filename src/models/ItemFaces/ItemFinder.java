@@ -2,6 +2,9 @@ package models.ItemFaces;
 
 import models.PlantsAndForaging.Info.*;
 
+/**
+ *  MAKE SURE YOU SET THE VALUES TO 1 WHEN CREATING NEW OBJECTS
+ */
 public enum ItemFinder {
     BLUE_JAZZ(CropInfo.BLUE_JAZZ.create()),
     CARROT(CropInfo.CARROT.create()),
