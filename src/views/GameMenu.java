@@ -21,7 +21,7 @@ public class GameMenu implements AppMenu {
             game.nextTurn();
             controller.nextTurn();
         } else if ((matcher = Regex.TIME.getMatcher(input)) != null){
-            System.out.println(game.getDateTime().showHour())
+            System.out.println(game.getDateTime().showHour());
         } else if ((matcher = Regex.DATE.getMatcher(input)) != null){
             System.out.println(game.getDateTime().showDate());
         } else if ((matcher = Regex.DATETIME.getMatcher(input)) != null){

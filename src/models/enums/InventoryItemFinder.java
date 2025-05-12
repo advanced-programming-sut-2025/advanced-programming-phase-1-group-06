@@ -1,6 +1,6 @@
 package models.enums;
 
-import models.Itemfaces.InventoryItem;
+import models.ItemFaces.InventoryItem;
 import models.PlantsAndForaging.Info.CropInfo;
 
 public enum InventoryItemFinder {

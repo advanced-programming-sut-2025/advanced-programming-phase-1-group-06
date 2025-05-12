@@ -1,8 +1,10 @@
 package models.Tiles.OverlayTiles;
 
 
+import models.Player.Player;
 import models.Tiles.Info.BuildingTileInfo;
 import models.enums.Color;
+import models.tools.Tool;
 
 public class BuildingTile extends OverlayTile {
     public BuildingTileInfo getBuildingTileInfo() {
@@ -16,12 +18,8 @@ public class BuildingTile extends OverlayTile {
         this.buildingTileInfo = buildingTileInfo;
     }
 
-
-
-
-
     @Override
-    public void useTool() {
-
+    public boolean useTool(Tool tool, Player player) {
+        return false;
     }
 }

@@ -2,9 +2,9 @@ package models.tools;
 
 import models.App;
 import models.Game.Coordinates;
-import models.Itemfaces.InventoryItem;
+import models.ItemFaces.InventoryItem;
 
-public abstract class Tool implements InventoryItem {
+public abstract class Tool extends InventoryItem {
     String name;
 
     public int getEnergyCost() {

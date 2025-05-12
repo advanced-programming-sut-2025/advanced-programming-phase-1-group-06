@@ -2,7 +2,7 @@ package models.Player;
 
 import java.util.ArrayList;
 
-import models.Itemfaces.InventoryItem;
+import models.ItemFaces.InventoryItem;
 import models.tools.ToolType;
 
 public class Inventory {

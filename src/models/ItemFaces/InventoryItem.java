@@ -1,4 +1,4 @@
-package models.Itemfaces;
+package models.ItemFaces;
 
 public abstract class InventoryItem {
     String name;

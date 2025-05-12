@@ -1,7 +1,7 @@
 package models.PlantsAndForaging;
 
-import models.Itemfaces.InventoryItem;
-import models.Itemfaces.Sellable;
+import models.ItemFaces.InventoryItem;
+import models.ItemFaces.Sellable;
 import models.PlantsAndForaging.Info.MineralsInfo;
 
 public class Mineral extends InventoryItem implements Sellable {
