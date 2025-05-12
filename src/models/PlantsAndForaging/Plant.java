@@ -12,15 +12,23 @@ import models.enums.Color;
 import models.tools.Scythe;
 import models.tools.*;
 
+import java.util.Currency;
 import java.util.Random;
 
 
 public class Plant extends OverlayTile implements Growable {
 
+    private int regrowthTime;
+    private boolean oneTime;
+    private String seasons;
+    private boolean status;
+    private long startDay;
+    private int growthTime; // in days
 
 //    public Plant(CropInfo cropInfo, String growingStages, int totalHarvestTime, int regrowthTime, boolean oneTime, String seasons) {
 //        super();
 //    }
+
 
     public int getRegrowthTime() {
         return regrowthTime;
@@ -81,10 +89,6 @@ public class Plant extends OverlayTile implements Growable {
     public void setProduct(CropInfo product) {
         this.product = product;
     }
-
-    private int regrowthTime;
-    private boolean oneTime;
-    private String seasons;
 
     public void setOneTime(boolean oneTime) {
         this.oneTime = oneTime;
@@ -198,5 +202,13 @@ public class Plant extends OverlayTile implements Growable {
             }
             default -> false;
         };
+    }
+
+    public int handleTime(long currentDay){
+        long remainingDay = growthTime - (startDay - currentDay);
+        if (remainingDay > 0)
+            return (int) remainingDay;
+        status = true;
+        return 0;
     }
 }

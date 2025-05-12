@@ -1,6 +1,7 @@
 package models.PlantsAndForaging;
 
 
+import models.App;
 import models.PlantsAndForaging.Info.TreeProductInfo;
 import models.PlantsAndForaging.Info.TreeSeedInfo;
 import models.Player.Player;
@@ -18,6 +19,15 @@ public class Tree extends OverlayTile implements Growable {
 
     private int regrowthTime;
     private boolean oneTime;
+    private boolean status;
+    private int growthTime;
+    private long startTime;
+    private TreeSeedInfo treeSeedInfo;
+    private String seasons;
+    private String growingStagesString;
+    private int[] growingStages;
+    private int daysSincePlanting;
+    private TreeProductInfo product;
 
 
     public int getDaysSincePlanting() {
@@ -27,13 +37,6 @@ public class Tree extends OverlayTile implements Growable {
     public TreeSeedInfo getTreeSeedInfo() {
         return treeSeedInfo;
     }
-
-    private TreeSeedInfo treeSeedInfo;
-    private String seasons;
-    private String growingStagesString;
-    private int[] growingStages;
-    private int daysSincePlanting;
-    private TreeProductInfo product;
 
     public Tree(TreeSeedInfo treeSeedInfo) {
         super('T', Color.GREEN_TEXT.getColorCode(), 15, true);
@@ -89,6 +92,15 @@ public class Tree extends OverlayTile implements Growable {
     public boolean useTool(Tool tool, Player player) {
 //        TODO
         return true;
+    }
+
+    @Override
+    public int handleTime(long Day){
+        long remainingTime = growthTime - (App.getPreciseDay() - startTime);
+        if (remainingTime > 0)
+            return (int) remainingTime;
+        status = true;
+        return 0;
     }
 }
 

@@ -1,6 +1,7 @@
 package models.tools;
 
 import models.Game.Coordinates;
+import models.Player.Player;
 
 public class Scythe extends Tool {
 
@@ -13,7 +14,7 @@ public class Scythe extends Tool {
     }
 
     @Override
-    public void use(Coordinates coordinate) {
+    public void use(Coordinates coordinate, Player player) {
         // TODO
     }
 

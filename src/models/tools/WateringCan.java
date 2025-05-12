@@ -1,6 +1,7 @@
 package models.tools;
 
 import models.Game.Coordinates;
+import models.Player.Player;
 
 public class WateringCan extends Tool {
 
@@ -17,7 +18,7 @@ public class WateringCan extends Tool {
     }
 
     @Override
-    public void use(Coordinates coordinate) {
+    public void use(Coordinates coordinate, Player player) {
         // Implement logic to use watering can on coordinate
     }
 

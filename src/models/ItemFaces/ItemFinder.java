@@ -127,7 +127,7 @@ public enum ItemFinder {
     SNOW_YAM(ForagingCropInfo.SNOW_YAM.create()),
     WINTER_ROOT(ForagingCropInfo.WINTER_ROOT.create()),
 // mineral
-QUARTZ(MineralsInfo.QUARTZ.create()),
+    QUARTZ(MineralsInfo.QUARTZ.create()),
     EARTH_CRYSTAL(MineralsInfo.EARTH_CRYSTAL.create()),
     FROZEN_TEAR(MineralsInfo.FROZEN_TEAR.create()),
     FIRE_QUARTZ(MineralsInfo.FIRE_QUARTZ.create()),
