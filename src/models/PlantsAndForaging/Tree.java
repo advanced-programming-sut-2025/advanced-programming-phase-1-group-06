@@ -3,6 +3,7 @@ package models.PlantsAndForaging;
 
 import models.PlantsAndForaging.Info.TreeProductInfo;
 import models.PlantsAndForaging.Info.TreeSeedInfo;
+import models.Player.Player;
 import models.Tiles.OverlayTiles.OverlayTile;
 import models.enums.Color;
 import models.tools.Tool;
@@ -85,7 +86,7 @@ public class Tree extends OverlayTile implements Growable {
     }
 
     @Override
-    public boolean useTool(Tool tool) {
+    public boolean useTool(Tool tool, Player player) {
 //        TODO
         return true;
     }

@@ -1,4 +1,4 @@
-package models.ItemFaces;
+package models.Itemfaces;
 
 public interface Edible {
     public void eat();

@@ -1,14 +1,19 @@
 package models.PlantsAndForaging;
 
-import models.ItemFaces.InventoryItem;
-import models.ItemFaces.Sellable;
+import models.Itemfaces.InventoryItem;
+import models.Itemfaces.Sellable;
 import models.PlantsAndForaging.Info.TreeProductInfo;
 import models.PlantsAndForaging.Info.TreeSeedInfo;
 
-public class TreeSeed implements InventoryItem, Sellable {
+public class TreeSeed extends InventoryItem implements Sellable {
     @Override
     public void sell() {
 
+    }
+
+    @Override
+    public int getPrice() {
+        return 0;
     }
 
     @Override

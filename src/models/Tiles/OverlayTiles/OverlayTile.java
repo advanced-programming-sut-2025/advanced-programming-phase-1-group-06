@@ -1,6 +1,7 @@
 package models.Tiles.OverlayTiles;
 
 import models.Game.Coordinates;
+import models.Player.Player;
 import models.tools.Tool;
 
 public abstract class OverlayTile { //displaying rocks, plants, trees, artisan devices, buildings
@@ -33,5 +34,5 @@ public abstract class OverlayTile { //displaying rocks, plants, trees, artisan d
     public String getColor() {
         return color;
     }
-    public abstract boolean useTool(Tool tool); //implement strategy pattern or something for different tiles
+    public abstract boolean useTool(Tool tool, Player player); //implement strategy pattern or something for different tiles
 }

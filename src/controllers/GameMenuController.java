@@ -1,10 +1,8 @@
 package controllers;
 
 import models.App;
-import models.Game.Coordinates;
 import models.Game.Game;
-import models.Interfaces.InventoryItem;
-import models.Player.Inventory;
+import models.Itemfaces.InventoryItem;
 import models.Player.Player;
 import models.tools.Tool;
 
@@ -13,6 +11,7 @@ import java.util.regex.Matcher;
 public class GameMenuController {
     Game game = App.getGame();
     Player player = game.getCurrentPlayer();
+    private static int turn = 0;
 
     public void loadGame() {
     }
@@ -82,9 +81,18 @@ public class GameMenuController {
         if (tool == null){
             return "you're not holding a tool right now";
         }
-        if ()
+        if (){
+//            TODO
+        }
 //        return (player.getCurrentTool().use(new Coordinates(player.getX() + x, player.getY() + y)));
         return null;
+    }
+
+    public String nextTurn(){
+        turn ++;
+        if (turn % 3 == 0){
+            
+        }
     }
 
 }

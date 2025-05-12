@@ -1,4 +1,4 @@
-package models.ItemFaces;
+package models.Itemfaces;
 
 import models.PlantsAndForaging.Info.*;
 

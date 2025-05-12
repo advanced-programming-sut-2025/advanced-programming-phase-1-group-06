@@ -2,7 +2,7 @@ package models.tools;
 
 import models.App;
 import models.Game.Coordinates;
-import models.Interfaces.InventoryItem;
+import models.Itemfaces.InventoryItem;
 
 public abstract class Tool implements InventoryItem {
     String name;

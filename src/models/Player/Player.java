@@ -4,7 +4,7 @@ import models.*;
 import models.Game.Coordinates;
 import models.Game.GameMap.GameMap;
 import models.Game.Recipe;
-import models.ItemFaces.InventoryItem;
+import models.Itemfaces.InventoryItem;
 import models.tools.Tool;
 
 import java.util.ArrayList;

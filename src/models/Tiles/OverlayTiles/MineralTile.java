@@ -29,7 +29,7 @@ public class MineralTile extends OverlayTile {
     
     
     @Override
-    public boolean useTool(Tool tool) {
+    public boolean useTool(Tool tool, Player player) {
         Player currentPlayer = App.getCurrentPlayer();
         if (tool instanceof Pickaxe){
             durability -= ((Pickaxe) tool).getDamage();

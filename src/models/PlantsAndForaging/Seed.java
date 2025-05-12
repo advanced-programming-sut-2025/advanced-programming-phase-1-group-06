@@ -4,10 +4,10 @@ import models.PlantsAndForaging.Info.CropInfo;
 import models.PlantsAndForaging.Info.ForagingSeedInfo;
 import models.PlantsAndForaging.Info.MixedSeedInfo;
 import models.PlantsAndForaging.Info.SeedInfo;
-import models.ItemFaces.InventoryItem;
-import models.ItemFaces.Sellable;
+import models.Itemfaces.InventoryItem;
+import models.Itemfaces.Sellable;
 
-public class Seed implements InventoryItem, Sellable {
+public class Seed extends InventoryItem implements Sellable {
     private CropInfo cropInfo;
     private String seedName;
     private String growingStages;
@@ -43,6 +43,11 @@ public class Seed implements InventoryItem, Sellable {
     @Override
     public void sell() {
 
+    }
+
+    @Override
+    public int getPrice() {
+        return 0;
     }
 
     @Override

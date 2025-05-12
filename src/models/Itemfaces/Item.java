@@ -1,8 +1,8 @@
 package models.PlantsAndForaging;
 
-import models.ItemFaces.InventoryItem;
+import models.Itemfaces.InventoryItem;
 
-public class Item implements InventoryItem {
+public class Item extends InventoryItem {
     private boolean isEdible;
 
     private boolean isSellable;

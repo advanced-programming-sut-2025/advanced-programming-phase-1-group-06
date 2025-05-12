@@ -19,6 +19,7 @@ public class GameMenu implements AppMenu {
         Player currentPlayer = game.getCurrentPlayer();
         if ((matcher = Regex.NEXT_TURN.getMatcher(input)) != null){
             game.nextTurn();
+            controller.nextTurn();
         } else if ((matcher = Regex.TIME.getMatcher(input)) != null){
             System.out.println(game.getDateTime().showHour())
         } else if ((matcher = Regex.DATE.getMatcher(input)) != null){

@@ -2,7 +2,7 @@ package models.PlantsAndForaging;
 
 import models.App;
 import models.Game.GameMap.GameMap;
-import models.Interfaces.InventoryItem;
+import models.Itemfaces.InventoryItem;
 import models.PlantsAndForaging.Info.CropInfo;
 import models.PlantsAndForaging.Info.SeedInfo;
 import models.Player.Player;
@@ -173,6 +173,11 @@ public class Plant extends OverlayTile implements Growable {
 
     public void grow() {
 
+    }
+
+    @Override
+    public void harvest() {
+//        TODO
     }
 
     public void setRegrowthTime(int regrowthTime) {
