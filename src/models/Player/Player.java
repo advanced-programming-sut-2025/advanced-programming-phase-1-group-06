@@ -12,7 +12,9 @@ import java.util.List;
 
 public class Player {
     private User user;
+
     private GameMap currentMap;
+
     private int x, y;
     private int money;
     private Inventory inventory;
@@ -23,6 +25,14 @@ public class Player {
 
     public int getMoney() {
         return money;
+    }
+
+    public GameMap getCurrentMap() {
+        return currentMap;
+    }
+
+    public void setCurrentMap(GameMap currentMap) {
+        this.currentMap = currentMap;
     }
 
     public Inventory getInventory() {
@@ -55,6 +65,10 @@ public class Player {
 
     public void setEnergy(double energy) {
         this.energy = energy;
+    }
+
+    public void dimnishEnergy(double energy){
+        this.energy -= energy;
     }
 
     public boolean isPassedOut() {

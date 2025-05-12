@@ -5,6 +5,7 @@ import models.PlantsAndForaging.Info.TreeProductInfo;
 import models.PlantsAndForaging.Info.TreeSeedInfo;
 import models.Tiles.OverlayTiles.OverlayTile;
 import models.enums.Color;
+import models.tools.Tool;
 
 public class Tree extends OverlayTile implements Growable {
     { //for overlay
@@ -84,8 +85,9 @@ public class Tree extends OverlayTile implements Growable {
     }
 
     @Override
-    public void useTool() {
-
+    public boolean useTool(Tool tool) {
+//        TODO
+        return true;
     }
 }
 

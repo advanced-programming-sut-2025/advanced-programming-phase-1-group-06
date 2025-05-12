@@ -12,12 +12,6 @@ public class Axe extends Tool {
         // Implement chopping logic
     }
 
-
-    @Override
-    public void use(Coordinates coordinate) {
-        // Implement logic to use axe on coordinate
-    }
-
     @Override
     public void upgrade() {
         // Implement logic to upgrade axe

@@ -27,12 +27,12 @@ public class Dirt extends Tile{
     }
 
     private void setHoedDirt() {
-        //TODO
+//        TODO
         isHoed = true;
     }
 
     private void unsetHoedDirt() {
-        //TODO
+//        TODO
         isHoed = false;
     }
 
@@ -68,8 +68,10 @@ public class Dirt extends Tile{
         this.growable = growable;
     }
 
+
     @Override
-    public void useTool(Tool tool) {
-        
+    public boolean useTool(Tool tool) {
+//        TODO
+        return true;
     }
 }

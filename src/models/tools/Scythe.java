@@ -14,7 +14,7 @@ public class Scythe extends Tool {
 
     @Override
     public void use(Coordinates coordinate) {
-        // Implement logic to use scythe on coordinate
+        // TODO
     }
 
     @Override
