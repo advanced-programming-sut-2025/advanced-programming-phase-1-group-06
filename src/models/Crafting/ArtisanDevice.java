@@ -10,4 +10,6 @@ public class ArtisanDevice {
     public void craft() {
         // Implement crafting logic
     }
+
+
 }

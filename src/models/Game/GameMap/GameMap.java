@@ -16,16 +16,29 @@ public class GameMap {
 
     public String print(Coordinates c, int size) {
         int minX = Math.max(c.x() - size, 0);
-        int maxX = Math.min(c.x() + size, length);
+        int maxX = Math.min(c.x() + size, length - 1);
         int minY = Math.max(c.y() - size, 0);
-        int maxY = Math.min(c.y() + size, width);
+        int maxY = Math.min(c.y() + size, width - 1);
         StringBuilder mapString = new StringBuilder();
         for (int y = minY; y < maxY; y++) {
             for (int x = minX; x < maxX; x++) {
-                mapString.append(tiles[y][x].getSymbol());
+                System.out.print(tiles[y][x].showTile());
             }
-            mapString.append('\n');
+            System.out.println();
         }
         return mapString.toString();
+    }
+
+
+    public boolean isBlocked(int newX, int newY) {
+        return tiles[newY][newX].isBlocked();
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public int getWidth() {
+        return width;
     }
 }

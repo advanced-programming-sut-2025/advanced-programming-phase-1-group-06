@@ -3,12 +3,16 @@ package models.PlantsAndForaging;
 import models.PlantsAndForaging.Info.CropInfo;
 import models.PlantsAndForaging.Info.SeedInfo;
 import models.Tiles.Dirt;
-import models.Tiles.OverlayTile;
+import models.Tiles.OverlayTiles.OverlayTile;
+import models.enums.Color;
 
 
 public class Plant extends OverlayTile implements Growable {
 
 
+//    public Plant(CropInfo cropInfo, String growingStages, int totalHarvestTime, int regrowthTime, boolean oneTime, String seasons) {
+//        super();
+//    }
 
     public int getRegrowthTime() {
         return regrowthTime;
@@ -91,6 +95,7 @@ public class Plant extends OverlayTile implements Growable {
     private CropInfo product;
 
     public Plant(Dirt dirt, SeedInfo seedInfo) {
+        super('|', Color.GREEN_TEXT.getColorCode(), 1, false);
         this.seedInfo = seedInfo;
         this.product = seedInfo.getCropInfo();
         this.growingStagesString = seedInfo.getGrowingStages();
@@ -106,8 +111,11 @@ public class Plant extends OverlayTile implements Growable {
         this.isHarvestable = false;
         this.isWatered = dirt.isWatered();
         this.isFertilized = dirt.isFertilized();
+
+
     }
     public Plant(SeedInfo seedInfo, int daysSincePlanting, boolean isWatered, boolean isFertilized) {
+        super('|', Color.GREEN_TEXT.getColorCode(), 1, false);
         this.seedInfo = seedInfo;
         this.regrowthTime = seedInfo.getRegrowthTime();
         this.oneTime = seedInfo.isOneTime();
@@ -117,6 +125,7 @@ public class Plant extends OverlayTile implements Growable {
         this.isWatered = isWatered;
         this.isFertilized = isFertilized;
         this.product = seedInfo.getCropInfo();
+
     }
 
     public void harvest() {
@@ -142,5 +151,10 @@ public class Plant extends OverlayTile implements Growable {
 
     public SeedInfo getSeedInfo() {
         return seedInfo;
+    }
+
+    @Override
+    public void useTool() {
+
     }
 }
