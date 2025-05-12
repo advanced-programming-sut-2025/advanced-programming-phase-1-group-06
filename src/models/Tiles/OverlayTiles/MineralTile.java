@@ -41,6 +41,7 @@ public class MineralTile extends OverlayTile {
             currentPlayer.setEnergy(currentPlayer.getEnergy() - currentPlayer.getCurrentTool().getEnergyCost());
             System.out.println("wrong tool");
         }
+        return false;
     }
 
     public void destory(){

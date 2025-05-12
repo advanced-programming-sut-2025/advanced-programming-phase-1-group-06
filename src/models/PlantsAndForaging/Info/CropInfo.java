@@ -79,6 +79,6 @@ public enum CropInfo {
         }
 
         public Crop create(){
-                return new Crop(this);
+                return new Crop(this, false);
         }
 }

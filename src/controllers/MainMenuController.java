@@ -25,9 +25,9 @@ public class MainMenuController {
     public String newGame(Matcher matcher, Scanner scanner){
         ArrayList<User> users = new ArrayList<>();
         for (int i = 0; i < 3; i ++) {
-            User user = App.getUserByUsername(matcher.group(STR."username\{i}"));
+            User user = App.getUserByUsername(matcher.group("username"+i));
             if (user == null){
-                return STR."user \{i} does not exist";
+                return "user " + i + " does not exist";
             }
         }
         ArrayList<Player> players = new ArrayList<>();

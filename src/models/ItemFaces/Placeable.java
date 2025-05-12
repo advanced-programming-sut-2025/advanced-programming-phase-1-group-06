@@ -1,4 +1,4 @@
-package models.Itemfaces;
+package models.ItemFaces;
 
 import models.Game.Coordinates;
 

@@ -1,6 +1,6 @@
 package models.shops;
 
-import models.Itemfaces.InventoryItem;
+import models.ItemFaces.InventoryItem;
 import models.tools.Tool;
 
 public class Blacksmith extends Shop {

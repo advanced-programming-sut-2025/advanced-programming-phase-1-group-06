@@ -2,7 +2,7 @@ package models.PlantsAndForaging;
 
 import models.App;
 import models.Game.GameMap.GameMap;
-import models.Itemfaces.InventoryItem;
+import models.ItemFaces.InventoryItem;
 import models.PlantsAndForaging.Info.CropInfo;
 import models.PlantsAndForaging.Info.SeedInfo;
 import models.Player.Player;

@@ -1,7 +1,7 @@
 package models.PlantsAndForaging;
 
-import models.Itemfaces.InventoryItem;
-import models.Itemfaces.Sellable;
+import models.ItemFaces.InventoryItem;
+import models.ItemFaces.Sellable;
 import models.PlantsAndForaging.Info.TreeProductInfo;
 import models.PlantsAndForaging.Info.TreeSeedInfo;
 

@@ -1,6 +1,6 @@
 package models.PlantsAndForaging;
 
-import models.Itemfaces.InventoryItem;
+import models.ItemFaces.InventoryItem;
 
 public class Item extends InventoryItem {
     private boolean isEdible;

@@ -2,7 +2,7 @@ package controllers;
 
 import models.App;
 import models.Game.Game;
-import models.Itemfaces.InventoryItem;
+import models.ItemFaces.InventoryItem;
 import models.Player.Player;
 import models.tools.Tool;
 
@@ -81,9 +81,8 @@ public class GameMenuController {
         if (tool == null){
             return "you're not holding a tool right now";
         }
-        if (){
+
 //            TODO
-        }
 //        return (player.getCurrentTool().use(new Coordinates(player.getX() + x, player.getY() + y)));
         return null;
     }
@@ -91,8 +90,9 @@ public class GameMenuController {
     public String nextTurn(){
         turn ++;
         if (turn % 3 == 0){
-            
+            return "balls";
         }
+        return "balls";
     }
 
 }

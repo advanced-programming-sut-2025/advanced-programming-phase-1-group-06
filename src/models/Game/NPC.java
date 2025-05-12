@@ -1,6 +1,6 @@
 package models.Game;
 
-import models.Itemfaces.InventoryItem;
+import models.ItemFaces.InventoryItem;
 
 import java.util.Map;
 

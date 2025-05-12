@@ -1,6 +1,6 @@
 package models.shops;
 
-import models.Itemfaces.InventoryItem;
+import models.ItemFaces.InventoryItem;
 
 public class GeneralStore extends Shop {
     private InventoryItem[] items;

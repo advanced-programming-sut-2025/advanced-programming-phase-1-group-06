@@ -25,10 +25,6 @@ public class Pickaxe extends Tool {
         // Implement mining logic
     }
 
-    Pickaxe(int level, String name){
-        super(level, name);
-    }
-
     @Override
     public void upgrade() {
         // Implement logic to upgrade pickaxe

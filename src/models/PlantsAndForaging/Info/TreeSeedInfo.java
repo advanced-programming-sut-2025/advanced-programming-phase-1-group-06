@@ -60,11 +60,6 @@ public enum TreeSeedInfo {
         this.seasons = seasons;
     }
 
-    public String getSeedName() {return seedName;}
-    public TreeProductInfo getProductInfo() {return productInfo;}
-    public String getGrowingStages() {return growingStages;}
-    public int getTotalHarvestTime() {return totalHarvestTime;}
-    public String getSeasons() {return seasons;}
 
     public TreeSeed create(){
         return new TreeSeed(this);

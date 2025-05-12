@@ -4,8 +4,8 @@ import models.PlantsAndForaging.Info.CropInfo;
 import models.PlantsAndForaging.Info.ForagingSeedInfo;
 import models.PlantsAndForaging.Info.MixedSeedInfo;
 import models.PlantsAndForaging.Info.SeedInfo;
-import models.Itemfaces.InventoryItem;
-import models.Itemfaces.Sellable;
+import models.ItemFaces.InventoryItem;
+import models.ItemFaces.Sellable;
 
 public class Seed extends InventoryItem implements Sellable {
     private CropInfo cropInfo;

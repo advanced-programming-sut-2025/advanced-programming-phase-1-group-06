@@ -1,11 +1,11 @@
 package models.PlantsAndForaging;
 
-import models.Itemfaces.InventoryItem;
+import models.ItemFaces.InventoryItem;
 import models.PlantsAndForaging.Info.CropInfo;
 import models.PlantsAndForaging.Info.ForagingCropInfo;
 import models.PlantsAndForaging.Info.SeedInfo;
-import models.Itemfaces.Edible;
-import models.Itemfaces.Sellable;
+import models.ItemFaces.Edible;
+import models.ItemFaces.Sellable;
 
 public class Crop extends InventoryItem implements Edible, Sellable {
     private String name;
