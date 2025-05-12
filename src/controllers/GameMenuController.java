@@ -1,6 +1,7 @@
 package controllers;
 
 import models.App;
+import models.Game.Coordinates;
 import models.Game.Game;
 import models.Interfaces.InventoryItem;
 import models.Player.Inventory;
@@ -76,9 +77,10 @@ public class GameMenuController {
                 x = -1;
                 break;
             default:
-                return;
-                break;
+                return "invalid direction";
         }
+//        return (player.getCurrentTool().use(new Coordinates(player.getX() + x, player.getY() + y)));
+        return null;
     }
 
 }
