@@ -4,6 +4,7 @@ import models.Crafting.ArtisanDevice;
 import models.Game.GameMap.GameMap;
 import models.PlantsAndForaging.Growable;
 import models.Player.Player;
+import models.Tiles.OverlayTiles.OverlayTile;
 import models.enums.WeatherType;
 
 import java.util.ArrayList;
@@ -77,5 +78,9 @@ public class Game {
     }
 
     public void changeWeather(){}
+
+    public void removeGrowable(Growable growable) {
+        growables.remove(growable);
+    }
 }
 

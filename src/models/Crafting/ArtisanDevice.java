@@ -10,4 +10,6 @@ import models.Game.Recipe;
     public void craft() {
         // Implement crafting logic
     }
+
+
 }

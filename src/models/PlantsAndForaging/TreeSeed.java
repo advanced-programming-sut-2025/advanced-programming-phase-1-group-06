@@ -6,6 +6,20 @@ import models.PlantsAndForaging.Info.TreeProductInfo;
 import models.PlantsAndForaging.Info.TreeSeedInfo;
 
 public class TreeSeed implements InventoryItem, Sellable {
+    @Override
+    public void sell() {
+
+    }
+
+    @Override
+    public String getName() {
+        return "";
+    }
+
+    @Override
+    public int getAmount() {
+        return 0;
+    }
 
     private TreeProductInfo productInfo;
     private String seedName;

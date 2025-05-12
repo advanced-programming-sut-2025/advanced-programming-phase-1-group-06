@@ -10,6 +10,20 @@ public class Mineral implements Sellable, InventoryItem {
     private String description;
     private int sellPrice;
 
+    @Override
+    public void sell() {
+
+    }
+
+    @Override
+    public String getName() {
+        return "";
+    }
+
+    @Override
+    public int getAmount() {
+        return 0;
+    }
     public Mineral(MineralsInfo mineralsInfo){
         name = mineralsInfo.getName();
         description = mineralsInfo.getDescription();

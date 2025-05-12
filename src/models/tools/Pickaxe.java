@@ -1,8 +1,21 @@
 package models.tools;
 
+import models.App;
 import models.Game.Coordinates;
+import models.Game.Game;
+import models.Game.GameMap.GameMap;
 
 public class Pickaxe extends Tool {
+
+    int damage;
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
 
     public Pickaxe(String name, int level, int energyConsumption){
         super(name, level, energyConsumption);
@@ -14,11 +27,6 @@ public class Pickaxe extends Tool {
 
     Pickaxe(int level, String name){
         super(level, name);
-    }
-
-    @Override
-    public void use(Coordinates coordinate) {
-        // Implement logic to use pickaxe on coordinate
     }
 
     @Override

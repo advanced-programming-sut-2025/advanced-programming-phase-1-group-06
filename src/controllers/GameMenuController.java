@@ -1,6 +1,7 @@
 package controllers;
 
 import models.App;
+import models.Game.Coordinates;
 import models.Game.Game;
 import models.Interfaces.InventoryItem;
 import models.Player.Inventory;
@@ -31,12 +32,59 @@ public class GameMenuController {
         if (item == null){
             return "you don't have this tool in your inventory.";
         }
-        if (!(item instanceof Tool)){
+        if (!(item instanceof Tool tool)){
             return "you can't equip this item as a tool";
         }
-        Tool tool = (Tool) item;
         player.setCurrentTool(tool);
         return "tool set to equipped";
+    }
+
+    public String useTool(Matcher matcher){
+        String direction = matcher.group("direction");
+        int x, y;
+        switch (direction) {
+            case "north":
+                y = -1;
+                x = 0;
+                break;
+            case "south":
+                y = 1;
+                x = 0;
+                break;
+            case "east":
+                y = 0;
+                x = 1;
+                break;
+            case "west":
+                y = 0;
+                x = -1;
+                break;
+            case "north-east":
+                y = -1;
+                x = 1;
+                break;
+            case "north-west":
+                y = -1;
+                x = -1;
+                break;
+            case "south-east":
+                y = 1;
+                x = 1;
+                break;
+            case "south-west":
+                y = 1;
+                x = -1;
+                break;
+            default:
+                return "invalid direction";
+        }
+        Tool tool = player.getCurrentTool();
+        if (tool == null){
+            return "you're not holding a tool right now";
+        }
+        if ()
+//        return (player.getCurrentTool().use(new Coordinates(player.getX() + x, player.getY() + y)));
+        return null;
     }
 
 }

@@ -11,18 +11,27 @@ import java.util.ArrayList;
 
 public class Player {
     private User user;
+
     private GameMap currentMap;
+
     private int x, y;
     private int money;
-
     private Inventory inventory;
-
     private Skill skills;
     private double energy;
     private int mapNumber;
+    private String currentBuilding;
 
     public int getMoney() {
         return money;
+    }
+
+    public GameMap getCurrentMap() {
+        return currentMap;
+    }
+
+    public void setCurrentMap(GameMap currentMap) {
+        this.currentMap = currentMap;
     }
 
     public Inventory getInventory() {
@@ -57,6 +66,10 @@ public class Player {
         this.energy = energy;
     }
 
+    public void dimnishEnergy(double energy){
+        this.energy -= energy;
+    }
+
     public boolean isPassedOut() {
         return isPassedOut;
     }
@@ -88,7 +101,8 @@ public class Player {
     private ArrayList<Recipe> craftableItems;
     private boolean trashcan;
 
-    public Player(User user, GameMap currentMap, int x, int y, int money, Inventory inventory, Skill skills, double energy, double maxEnergy, boolean isPassedOut, Tool currentTool, ArrayList<Recipe> cookableFoods, ArrayList<Recipe> craftableItems, boolean trashcan, int mapNumber) {
+    public Player(User user, GameMap currentMap, int x, int y, int money, Inventory inventory, Skill skills, double energy, double maxEnergy, boolean isPassedOut, Tool currentTool, ArrayList<Recipe> cookableFoods, ArrayList<Recipe> craftableItems, boolean trashcan, int mapNumber, String currentBuilding) {
+        this.currentBuilding =currentBuilding;
         this.user = user;
         this.currentMap = currentMap;
         this.x = x;
@@ -117,6 +131,7 @@ public class Player {
         money = 500;
         isPassedOut = false;
         skills = new Skill();
+        currentBuilding = "none";
     }
 
 
@@ -147,7 +162,8 @@ public class Player {
     public void passOut() {
     }
 
-    public void useCurrentTool() {
+    public void useCurrentTool(int x, int y) {
+        currentTool.use(new Coordinates(x, y));
     }
 
     public void sell(InventoryItem item) {
@@ -156,5 +172,8 @@ public class Player {
     public void gift(Player player, InventoryItem item) {
     }
 
+    public GameMap getGameMap() {
+        return currentMap;
+    }
 }
 

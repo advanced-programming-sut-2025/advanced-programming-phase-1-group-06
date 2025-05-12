@@ -1,7 +1,12 @@
 package models;
 
+import models.Game.Coordinates;
 import models.Game.Game;
+import models.Game.GameMap.GameMap;
+import models.Player.Player;
+import models.Tiles.Tile;
 import models.enums.Menu;
+import models.tools.Tool;
 
 import java.util.ArrayList;
 
@@ -17,6 +22,25 @@ public class App {
 
     public static void setGame(Game game){App.game = game;}
 
+    public static Player getCurrentPlayer(){
+        return game.getCurrentPlayer();
+    }
+
+    public static Tool currentTool(){
+        return getCurrentPlayer().getCurrentTool();
+    }
+
+    public static GameMap getCurrentMap(){
+        return getCurrentPlayer().getCurrentMap();
+    }
+
+    public static Tile getTile(Coordinates coordinates){
+        return getCurrentMap().getTileAt(coordinates);
+    }
+
+    public static Tile getTile(int x, int y){
+        return getCurrentMap().getTileAt(x, y);
+    }
 
     public static void setUsers(ArrayList<User> users) {
         App.users = users;

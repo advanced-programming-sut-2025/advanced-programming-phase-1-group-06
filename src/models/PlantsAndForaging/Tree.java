@@ -1,18 +1,18 @@
 package models.PlantsAndForaging;
 
 
-import models.PlantsAndForaging.Info.CropInfo;
 import models.PlantsAndForaging.Info.TreeProductInfo;
 import models.PlantsAndForaging.Info.TreeSeedInfo;
-import models.Tiles.OverlayTile;
-
-import java.util.Arrays;
+import models.Tiles.OverlayTiles.OverlayTile;
+import models.enums.Color;
+import models.tools.Tool;
 
 public class Tree extends OverlayTile implements Growable {
     { //for overlay
-        super.isBlocked = true;
-        super.hits = 15;
-        super.symbol = 'T';
+        isBlocked = true;
+        hits = 15;
+        symbol = 'T';
+        color = Color.GREEN_TEXT.getColorCode();
     }
 
     private int regrowthTime;
@@ -35,6 +35,7 @@ public class Tree extends OverlayTile implements Growable {
     private TreeProductInfo product;
 
     public Tree(TreeSeedInfo treeSeedInfo) {
+        super('T', Color.GREEN_TEXT.getColorCode(), 15, true);
         this.treeSeedInfo = treeSeedInfo;
         this.seasons = treeSeedInfo.getSeasons();
         this.growingStagesString = treeSeedInfo.getGrowingStages();
@@ -48,6 +49,7 @@ public class Tree extends OverlayTile implements Growable {
     }
 
     public Tree (TreeSeedInfo treeSeedInfo, int daysSincePlanting) {
+        super('T', Color.GREEN_TEXT.getColorCode(), 15, true);
         this.treeSeedInfo = treeSeedInfo;
         this.seasons = treeSeedInfo.getSeasons();
         this.growingStagesString = treeSeedInfo.getGrowingStages();
@@ -83,8 +85,9 @@ public class Tree extends OverlayTile implements Growable {
     }
 
     @Override
-    public void useTool() {
-
+    public boolean useTool(Tool tool) {
+//        TODO
+        return true;
     }
 }
 
