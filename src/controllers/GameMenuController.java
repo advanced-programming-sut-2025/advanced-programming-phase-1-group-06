@@ -32,10 +32,9 @@ public class GameMenuController {
         if (item == null){
             return "you don't have this tool in your inventory.";
         }
-        if (!(item instanceof Tool)){
+        if (!(item instanceof Tool tool)){
             return "you can't equip this item as a tool";
         }
-        Tool tool = (Tool) item;
         player.setCurrentTool(tool);
         return "tool set to equipped";
     }
@@ -79,6 +78,11 @@ public class GameMenuController {
             default:
                 return "invalid direction";
         }
+        Tool tool = player.getCurrentTool();
+        if (tool == null){
+            return "you're not holding a tool right now";
+        }
+        if ()
 //        return (player.getCurrentTool().use(new Coordinates(player.getX() + x, player.getY() + y)));
         return null;
     }

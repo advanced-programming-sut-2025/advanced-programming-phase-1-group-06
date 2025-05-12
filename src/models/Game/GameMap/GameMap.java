@@ -29,6 +29,18 @@ public class GameMap {
         return mapString.toString();
     }
 
+    public Tile getTileAt(int x, int y) {
+        // Bounds checking
+        if (x < 0 || x >= width || y < 0 || y >= length) {
+            return null;
+        }
+        return tiles[y][x];
+    }
+
+    // Overload for Coordinates object
+    public Tile getTileAt(Coordinates coordinates) {
+        return getTileAt(coordinates.x(), coordinates.y());
+    }
 
     public boolean isBlocked(int newX, int newY) {
         return tiles[newY][newX].isBlocked();

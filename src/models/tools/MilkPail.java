@@ -5,7 +5,7 @@ import models.Game.Coordinates;
 public class MilkPail extends Tool{
     int price = 1000;
     public MilkPail(){
-        energyConsumption = 4;
+        energyCost = 4;
     }
     @Override
     public void use(Coordinates coordinates) {

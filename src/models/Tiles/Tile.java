@@ -33,7 +33,7 @@ public abstract class Tile {
         return color;
     }
 
-    public abstract void useTool(Tool tool);
+    public abstract boolean useTool(Tool tool);
 
     public OverlayTile getOverlayTile() {
         return overlayTile;
