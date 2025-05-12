@@ -173,5 +173,8 @@ public class Player {
     public void gift(Player player, InventoryItem item) {
     }
 
+    public GameMap getGameMap() {
+        return currentMap;
+    }
 }
 

@@ -1,5 +1,6 @@
 package models.Tiles.OverlayTiles;
 
+import models.Game.Coordinates;
 import models.tools.Tool;
 
 public abstract class OverlayTile { //displaying rocks, plants, trees, artisan devices, buildings
@@ -7,6 +8,7 @@ public abstract class OverlayTile { //displaying rocks, plants, trees, artisan d
     protected int hits;
     protected char symbol;
     protected String color;
+    protected int x, y;
     public char getSymbol() {
         return symbol;
     }
@@ -18,6 +20,10 @@ public abstract class OverlayTile { //displaying rocks, plants, trees, artisan d
         this.color = color;
         this.hits = hits;
         this.isBlocked = isBlocked;
+    }
+
+    public Coordinates getCoordinates() {
+        return new Coordinates(x, y);
     }
 
 
