@@ -18,4 +18,14 @@ public enum WeatherType {
     public Weather getWeather(){
         return weather;
     }
+
+    public Weather getWeatherByName(String weatherName){
+        return switch (weatherName){
+            case "sunny" -> SUNNY.getWeather();
+            case "rainy" -> RAINY.getWeather();
+            case "stormy" -> STORMY.getWeather();
+            case "snowy" -> SNOWY.getWeather();
+            default -> SUNNY.getWeather();
+        };
+    }
 }

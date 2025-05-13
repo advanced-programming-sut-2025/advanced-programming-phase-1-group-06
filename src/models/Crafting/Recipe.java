@@ -25,5 +25,6 @@ public class Recipe {
         // Implement logic to craft item
         return null;
     }
+
 }
 

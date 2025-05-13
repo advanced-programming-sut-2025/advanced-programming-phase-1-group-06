@@ -5,7 +5,7 @@ import models.ItemFaces.InventoryItem;
 import java.util.ArrayList;
 
 public enum ArtisanDeviceTypes {
-    BEE_HOUSE(null, ),
+    BEE_HOUSE(, ),
     LOOM(),
     CHEESE_PRESS(),
     MAYONNAISE_MACHINE(),

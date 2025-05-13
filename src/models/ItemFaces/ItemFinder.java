@@ -148,6 +148,7 @@ public enum ItemFinder {
     IRIDIUM(MineralsInfo.IRIDIUM.create()),
     COAL(MineralsInfo.COAL.create()),
 //  artisan edible shit
+    /*
     HONEY(new Item(75, 350)),
     CHEESE(new Item(100, 230)),
     MAYONNAISE(new Item(50, 190)),
@@ -175,7 +176,7 @@ public enum ItemFinder {
     OIL(new Item(100)),
     ANY_METAL_BAR(new Item(10 * OrePrice)),
 
-
+*/
     ;
 
 
@@ -190,9 +191,9 @@ public enum ItemFinder {
         this.inventoryItem = item;
     }
     ItemFinder(Item item){this.item = item;}
-    ItemFinder(){
+    ItemFinder(){}
 
+    public InventoryItem getInventoryItem() {
+        return inventoryItem;
     }
-
-
 }

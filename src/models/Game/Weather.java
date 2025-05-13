@@ -24,6 +24,7 @@ public class Weather {
         return energyConsumptionRate;
     }
 
+
     public Weather(String name, boolean isWatery, double energyConsumptionRate){
         this.name = name;
         this.isWatery = isWatery;
