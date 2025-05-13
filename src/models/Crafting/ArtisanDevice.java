@@ -3,6 +3,7 @@ package models.Crafting;
 import models.App;
 import models.Game.Recipe;
 import models.ItemFaces.InventoryItem;
+import models.ItemFaces.Item;
 import models.Player.Player;
 
 import java.util.ArrayList;
@@ -13,18 +14,21 @@ public class ArtisanDevice {
    private boolean status;
    private boolean ready;
    private ArrayList<Recipe> recipes;
-   private ArrayList<InventoryItem> craftedItems;
+   private InventoryItem craftedItem;
 
-   public ArtisanDevice(long startTime, int craftingTime, boolean status, boolean ready, ArrayList<Recipe> recipes, ArtisanGood[] craftedItems) {
+   public ArtisanDevice(long startTime, int craftingTime, boolean status, boolean ready, ArrayList<Recipe> recipes, InventoryItem craftedItem) {
       this.startTime = startTime;
       this.craftingTime = craftingTime;
       this.status = status;
       this.ready = ready;
       this.recipes = recipes;
-      this.craftedItems = craftedItems;
+      this.craftedItem = craftedItem;
    }
 
-    ArtisanDevice(ArrayList<Recipe> recipes, )
+    ArtisanDevice(ArrayList<Recipe> recipes, InventoryItem craftedItem){
+       this.recipes = recipes;
+       this.craftedItem = craftedItem;
+    }
 
     public void craft(Recipe recipe, Player player) {
         // Implement crafting logic
