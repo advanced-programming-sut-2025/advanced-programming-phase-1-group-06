@@ -3,7 +3,7 @@ package models.Player;
 import models.*;
 import models.Game.Coordinates;
 import models.Game.GameMap.GameMap;
-import models.Game.Recipe;
+import models.Crafting.Recipe;
 import models.ItemFaces.InventoryItem;
 import models.tools.Tool;
 

@@ -1,4 +1,4 @@
-package models.Game;
+package models.Crafting;
 
 import models.ItemFaces.InventoryItem;
 import models.ItemFaces.Item;
