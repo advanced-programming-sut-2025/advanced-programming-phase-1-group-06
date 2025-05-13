@@ -59,7 +59,7 @@ public enum RecipeInfo {
         craftedItem = item;
     }
 
-    RecipeInfo(ArrayList<InventoryItem> ingredients, int time, double energyCoefficient, double priceCoefficient, String description, String name){
+    RecipeInfo(ArrayList<InventoryItem> ingredients, int time, double energyCoefficient, int basePrice, double priceCoefficient, String description, String name){
         this.ingredients = ingredients;
         this.time = time;
         Item item = new Item();
@@ -68,8 +68,8 @@ public enum RecipeInfo {
             ((Edible)item).setEnergy(energy);
             item.setEnergy(energy);
         }
-        if (priceCoefficient != 0) {
-            this.price = (int) (((Sellable)ingredients.getFirst()).getPrice() * priceCoefficient);
+        if (priceCoefficient != 0 || basePrice != 0) {
+            this.price = basePrice + (int) (((Sellable)ingredients.getFirst()).getPrice() * priceCoefficient);
             ((Sellable)item).setPrice(price);
             item.setPrice(price);
         }
