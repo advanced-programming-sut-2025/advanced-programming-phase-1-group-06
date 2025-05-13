@@ -42,9 +42,17 @@ public class Inventory {
         return null;
     }
 
-    public void removeItem(InventoryItem item) {
-
-        items.remove(item);
+    public void removeItem(InventoryItem item, int amount) {
+        if (!(items.contains(item)))
+            return;
+        if (item.getAmount() < amount)
+            return;
+        if (item.getAmount() == amount){
+            items.remove(item);
+            return;
+        }
+        if (item.getAmount() > amount)
+            item.setAmount(item.getAmount() - amount);
     }
 
     public int getCapacity(){

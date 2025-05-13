@@ -1,8 +1,6 @@
 package models.Crafting;
 
 import models.ItemFaces.*;
-import models.PlantsAndForaging.AnimalProduct;
-import models.PlantsAndForaging.Info.AnimalProductInfo;
 
 import java.util.ArrayList;
 public enum RecipeInfo {

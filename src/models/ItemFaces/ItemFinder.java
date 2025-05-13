@@ -45,7 +45,7 @@ public enum ItemFinder {
     PUMPKIN(CropInfo.PUMPKIN.create()),
     YAM(CropInfo.YAM.create()),
     SWEET_GEM_BERRY(CropInfo.SWEET_GEM_BERRY.create()),
-    POWDERMELON(CropInfo.POWDERMELON.create()),
+    POWDER_MELON(CropInfo.POWDERMELON.create()),
     ANCIENT_FRUIT(CropInfo.ANCIENT_FRUIT.create()),
 
     // Spring Trees
@@ -150,12 +150,7 @@ public enum ItemFinder {
 
 
     ;
-
-
-
-
-    ;
-
+    int id;
     InventoryItem inventoryItem;
     Item item;
 

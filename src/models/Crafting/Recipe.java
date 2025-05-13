@@ -1,30 +1,38 @@
 package models.Crafting;
 
 import models.ItemFaces.InventoryItem;
-import models.ItemFaces.Item;
-
 import java.util.ArrayList;
 
+/**
+ * Last updated by: hassanp30
+ * Last updated at: 2025-05-13 12:44:07 UTC
+ */
 public class Recipe {
-    private ArrayList<InventoryItem> ingredients;
-    private Item craftedItem;
-    int time; // in hours
+    private final ArrayList<InventoryItem> ingredients;
+    private final InventoryItem result;
+    private final int craftingTime;  // in hours
+    private final String description;
 
-    public Recipe(ArrayList<InventoryItem> ingredients, Item craftedItem, int time) {
+    public Recipe(ArrayList<InventoryItem> ingredients, InventoryItem result, int craftingTime, String description) {
         this.ingredients = ingredients;
-        this.craftedItem = craftedItem;
-        this.time = time;
+        this.result = result;
+        this.craftingTime = craftingTime;
+        this.description = description;
     }
 
-    public boolean canCraft() {
-        // Implement logic to check if the recipe can be crafted
-        return true;
+    public ArrayList<InventoryItem> getIngredients() {
+        return new ArrayList<>(ingredients);
     }
 
-    public InventoryItem craft() {
-        // Implement logic to craft item
-        return null;
+    public InventoryItem getResult() {
+        return result;
     }
 
+    public int getCraftingTime() {
+        return craftingTime;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }
-
