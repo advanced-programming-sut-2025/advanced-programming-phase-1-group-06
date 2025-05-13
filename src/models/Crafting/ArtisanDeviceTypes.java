@@ -1,9 +1,6 @@
 package models.Crafting;
 
-import models.Game.Recipe;
 import models.ItemFaces.InventoryItem;
-import models.ItemFaces.Item;
-import models.ItemFaces.ItemFinder;
 
 import java.util.ArrayList;
 

@@ -1,9 +1,7 @@
 package models.Crafting;
 
 import models.App;
-import models.Game.Recipe;
 import models.ItemFaces.InventoryItem;
-import models.ItemFaces.Item;
 import models.Player.Player;
 
 import java.util.ArrayList;
