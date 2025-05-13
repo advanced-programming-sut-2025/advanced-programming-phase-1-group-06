@@ -78,8 +78,7 @@ public enum CropInfo {
             return sellPrice;
         }
 
-        public Crop create() {
-                return new Crop(this);
+        public Crop create(){
+                return new Crop(this, false);
         }
-
 }

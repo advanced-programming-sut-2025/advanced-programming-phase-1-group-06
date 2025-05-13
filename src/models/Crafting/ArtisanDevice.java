@@ -2,7 +2,7 @@ package models.Crafting;
 
 import models.Game.Recipe;
 
-public class ArtisanDevice {
+ public abstract class ArtisanDevice {
     private int craftingTime;
     private Recipe[] recipes;
     private ArtisanGood[] craftedItems;

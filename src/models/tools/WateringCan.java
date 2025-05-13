@@ -25,4 +25,7 @@ public class WateringCan extends Tool {
     public void upgrade() {
         // Implement logic to upgrade watering can
     }
+
+    public void fill() {
+    }
 }

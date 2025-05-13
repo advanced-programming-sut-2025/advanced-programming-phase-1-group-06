@@ -1,3 +1,5 @@
+import views.AppView;
+
 import java.util.Random;
 
 public class Main {

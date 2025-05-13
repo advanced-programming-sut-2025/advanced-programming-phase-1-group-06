@@ -1,14 +1,8 @@
 package models.Player;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.regex.Matcher;
 
-import models.App;
-import models.Game.Game;
-import models.Interfaces.InventoryItem;
-import models.tools.Tool;
+import models.ItemFaces.InventoryItem;
 import models.tools.ToolType;
 
 public class Inventory {
@@ -49,6 +43,7 @@ public class Inventory {
     }
 
     public void removeItem(InventoryItem item) {
+
         items.remove(item);
     }
 

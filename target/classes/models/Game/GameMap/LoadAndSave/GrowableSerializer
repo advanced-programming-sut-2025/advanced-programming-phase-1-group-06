@@ -7,19 +7,25 @@ import models.PlantsAndForaging.Plant;
 import models.PlantsAndForaging.Tree;
 
 import java.lang.reflect.Type;
+import java.util.Arrays;
 
 public class GrowableSerializer implements JsonSerializer<Growable> {
     @Override
     public JsonElement serialize(Growable growable, Type type, JsonSerializationContext context) {
         JsonObject json = new JsonObject();
-        json.addProperty("type", growable.getType());        // Saves whether it's a "PLANT" or "TREE"
-        json.addProperty("growthStage", growable.getGrowthStage());
+        json.addProperty("type", growable.getType());        // Saves whether it's a "Pant" or "Tree"
 
         // Depending on the concrete type (Plant or Tree), save the species
-        if (growable instanceof Plant) {
-            json.addProperty("species", ((Plant) growable).getPlantSpecies());
-        } else if (growable instanceof Tree) {
-            json.addProperty("species", ((Tree) growable).getTreeSpecies());
+        if (growable instanceof Plant plant) {
+            json.addProperty("seedInfo", String.valueOf(plant.getSeedInfo()));
+            json.addProperty("daysSincePlanting", plant.getDaysSincePlanting());
+            //json.addProperty("isHarvestable", plant.isHarvestable());
+            json.addProperty("isWatered", plant.isWatered());
+            json.addProperty("isFertilized", plant.isFertilized());
+            //returns enum name
+        } else if (growable instanceof Tree tree) {
+            json.addProperty("treeSeedInfo", String.valueOf(tree.getTreeSeedInfo()));
+            json.addProperty("daysSincePlanting", tree.getDaysSincePlanting());
         }
 
         return json;

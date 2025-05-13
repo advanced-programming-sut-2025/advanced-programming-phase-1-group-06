@@ -1,16 +1,19 @@
 package models.PlantsAndForaging;
 
 import models.App;
+import models.Game.Coordinates;
 import models.Game.GameMap.GameMap;
-import models.Interfaces.InventoryItem;
+import models.ItemFaces.InventoryItem;
 import models.PlantsAndForaging.Info.CropInfo;
 import models.PlantsAndForaging.Info.SeedInfo;
 import models.Player.Player;
 import models.Tiles.Dirt;
 import models.Tiles.OverlayTiles.OverlayTile;
 import models.enums.Color;
+import models.tools.Pickaxe;
 import models.tools.Scythe;
-import models.tools.*;
+import models.tools.Tool;
+import models.tools.WateringCan;
 
 import java.util.Random;
 
@@ -22,16 +25,77 @@ public class Plant extends OverlayTile implements Growable {
 //        super();
 //    }
 
+    private final SeedInfo seedInfo;
+    private final String growingStagesString;
+    private int regrowthTime;
+    private boolean oneTime;
+    private String seasons;
+    private int[] growingStages;
+    private int daysSincePlanting;
+    private boolean isHarvestable = false;
+    private boolean isWatered;
+    private boolean isFertilized;
+    private CropInfo product;
+
+    public Plant(Dirt dirt, SeedInfo seedInfo, GameMap gameMap, Coordinates coordinates) {
+        super('|', Color.GREEN_TEXT.getColorCode(), 1, false,
+                gameMap, coordinates);
+        this.seedInfo = seedInfo;
+        this.product = seedInfo.getCropInfo();
+        this.growingStagesString = seedInfo.getGrowingStages();
+        String[] stages = growingStagesString.split("-");
+        this.growingStages = new int[stages.length];
+        for (int i = 0; i < stages.length; i++) {
+            this.growingStages[i] = Integer.parseInt(stages[i]);
+        }
+
+        this.regrowthTime = seedInfo.getRegrowthTime();
+        this.oneTime = seedInfo.isOneTime();
+        this.seasons = seedInfo.getSeasons();
+        this.isHarvestable = false;
+        this.isWatered = dirt.isWatered();
+        this.isFertilized = dirt.isFertilized();
+
+
+    }
+
+    public Plant(SeedInfo seedInfo, int daysSincePlanting, boolean isWatered, boolean isFertilized,
+                 GameMap gameMap, Coordinates coordinates) {
+        super('|', Color.GREEN_TEXT.getColorCode(), 1, false, gameMap, coordinates);
+        this.seedInfo = seedInfo;
+        this.regrowthTime = seedInfo.getRegrowthTime();
+        this.oneTime = seedInfo.isOneTime();
+        this.seasons = seedInfo.getSeasons();
+        this.growingStagesString = seedInfo.getGrowingStages();
+        this.daysSincePlanting = daysSincePlanting;
+        this.isWatered = isWatered;
+        this.isFertilized = isFertilized;
+        this.product = seedInfo.getCropInfo();
+
+    }
+
     public int getRegrowthTime() {
         return regrowthTime;
+    }
+
+    public void setRegrowthTime(int regrowthTime) {
+        this.regrowthTime = regrowthTime;
     }
 
     public boolean isOneTime() {
         return oneTime;
     }
 
+    public void setOneTime(boolean oneTime) {
+        this.oneTime = oneTime;
+    }
+
     public String getSeasons() {
         return seasons;
+    }
+
+    public void setSeasons(String seasons) {
+        this.seasons = seasons;
     }
 
     public int[] getGrowingStages() {
@@ -82,84 +146,29 @@ public class Plant extends OverlayTile implements Growable {
         this.product = product;
     }
 
-    private int regrowthTime;
-    private boolean oneTime;
-    private String seasons;
-
-    public void setOneTime(boolean oneTime) {
-        this.oneTime = oneTime;
-    }
-
-    public void setSeasons(String seasons) {
-        this.seasons = seasons;
-    }
-    private SeedInfo seedInfo;
-    private String growingStagesString;
-    private int[] growingStages;
-    private int daysSincePlanting;
-    private boolean isHarvestable = false;
-    private boolean isWatered;
-    private boolean isFertilized;
-    private CropInfo product;
-
-    public Plant(Dirt dirt, SeedInfo seedInfo) {
-        super('|', Color.GREEN_TEXT.getColorCode(), 1, false);
-        this.seedInfo = seedInfo;
-        this.product = seedInfo.getCropInfo();
-        this.growingStagesString = seedInfo.getGrowingStages();
-        String[] stages = growingStagesString.split("-");
-        this.growingStages = new int[stages.length];
-        for (int i = 0; i < stages.length; i++) {
-            this.growingStages[i] = Integer.parseInt(stages[i]);
-        }
-
-        this.regrowthTime = seedInfo.getRegrowthTime();
-        this.oneTime = seedInfo.isOneTime();
-        this.seasons = seedInfo.getSeasons();
-        this.isHarvestable = false;
-        this.isWatered = dirt.isWatered();
-        this.isFertilized = dirt.isFertilized();
-
-
-    }
-    public Plant(SeedInfo seedInfo, int daysSincePlanting, boolean isWatered, boolean isFertilized) {
-        super('|', Color.GREEN_TEXT.getColorCode(), 1, false);
-        this.seedInfo = seedInfo;
-        this.regrowthTime = seedInfo.getRegrowthTime();
-        this.oneTime = seedInfo.isOneTime();
-        this.seasons = seedInfo.getSeasons();
-        this.growingStagesString = seedInfo.getGrowingStages();
-        this.daysSincePlanting = daysSincePlanting;
-        this.isWatered = isWatered;
-        this.isFertilized = isFertilized;
-        this.product = seedInfo.getCropInfo();
-
-    }
     public void goNextGrowingStage() {
         //TODO should be implemented in Growable interface
     }
-    private void destroy(GameMap gameMap) {
+
+    protected void destroy() {
         App.getGame().removeGrowable(this);
         gameMap.removeOverlayTile(this);
     }
+
     public boolean harvest(Player player) {
-
-
         if (isHarvestable) {
             if (oneTime) {
-                destroy(player.getGameMap());
-            }
-            else {
+                destroy();
+            } else {
                 goNextGrowingStage();
             }
             InventoryItem item = new Crop(this.product, isFertilized);
-            item.setAmount(new Random().nextInt( 3) + 1);
+            item.setAmount(new Random().nextInt(3) + 1);
             player.getInventory().addItem(item);
             return true;
         }
         return false;
     }
-
 
     @Override
     public String getType() {
@@ -175,8 +184,8 @@ public class Plant extends OverlayTile implements Growable {
 
     }
 
-    public void setRegrowthTime(int regrowthTime) {
-        this.regrowthTime = regrowthTime;
+    public void water() {
+        isWatered = true;
     }
 
     public SeedInfo getSeedInfo() {
@@ -188,8 +197,12 @@ public class Plant extends OverlayTile implements Growable {
         return switch (tool) {
             case Scythe scythe -> harvest(player);
             case Pickaxe pickaxe -> {
-                destroy(player.getGameMap());
-                yield false; //holy syntax
+                destroy();
+                yield true; //holy syntax
+            }
+            case WateringCan wateringCan -> {
+                water();
+                yield true;
             }
             default -> false;
         };

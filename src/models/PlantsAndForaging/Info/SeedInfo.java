@@ -1,13 +1,15 @@
 package models.PlantsAndForaging.Info;
 
+import models.PlantsAndForaging.Seed;
+
 // info for each seed
 // additional (probably temporary forage_source)
 public enum SeedInfo {
-    JAZZ_SEEDS(CropInfo.BLUE_JAZZ ,"Jazz Seeds", "1-2-2-2", 7, -1, true, "1", false),
-    CARROT_SEEDS(CropInfo.CARROT , "Carrot Seeds", "1-1-1", 3, -1, true, "1", false),
+    JAZZ_SEEDS(CropInfo.BLUE_JAZZ, "Jazz Seeds", "1-2-2-2", 7, -1, true, "1", false),
+    CARROT_SEEDS(CropInfo.CARROT, "Carrot Seeds", "1-1-1", 3, -1, true, "1", false),
     CAULIFLOWER_SEEDS(CropInfo.CAULIFLOWER, "Cauliflower Seeds", "1-2-4-4-1", 12, -1, true, "1", true),
     COFFEE_BEAN(CropInfo.COFFEE_BEAN, "Coffee Bean", "1-2-2-3-2", 10, 2, false, "1-2", false),
-    GARLIC_SEEDS(CropInfo.GARLIC ,"Garlic Seeds", "1-1-1-1", 4, -1, true, "1", false),
+    GARLIC_SEEDS(CropInfo.GARLIC, "Garlic Seeds", "1-1-1-1", 4, -1, true, "1", false),
     BEAN_STARTER(CropInfo.GREEN_BEAN, "Bean Starter", "1-1-1-3-4", 10, 3, false, "1", false),
     KALE_SEEDS(CropInfo.KALE, "Kale Seeds", "1-2-2-1", 6, -1, true, "1", false),
     PARSNIP_SEEDS(CropInfo.PARSNIP, "Parsnip Seeds", "1-1-1-1", 4, -1, true, "1", false),
@@ -48,7 +50,6 @@ public enum SeedInfo {
     FORAGE_SOURCE(null, "Foraging", "", -1, -1, false, "", false);
 
 
-
     private CropInfo cropInfo;
     private String seedName;
     private String growingStages;
@@ -77,22 +78,34 @@ public enum SeedInfo {
     public String getName() {
         return seedName;
     }
+
     public String getGrowingStages() {
         return growingStages;
     }
+
     public int getTotalHarvestTime() {
         return totalHarvestTime;
     }
+
     public int getRegrowthTime() {
         return regrowthTime;
     }
+
     public boolean isOneTime() {
         return oneTime;
     }
+
     public String getSeasons() {
         return seasons;
     }
+
     public boolean isGiantable() {
         return isGiantable;
     }
+
+    public Seed create() {
+        return new Seed(this);
+    }
 }
+
+

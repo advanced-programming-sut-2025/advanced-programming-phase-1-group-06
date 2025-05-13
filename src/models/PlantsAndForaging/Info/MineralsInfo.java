@@ -1,5 +1,7 @@
 package models.PlantsAndForaging.Info;
 
+import models.PlantsAndForaging.Mineral;
+
 public enum MineralsInfo {
 
     QUARTZ("Quartz","A clear crystal commonly found in caves and mines.", 25),
@@ -42,6 +44,10 @@ public enum MineralsInfo {
 
     public int getSellPrice() {
         return sellPrice;
+    }
+
+    public Mineral create(){
+        return new Mineral(this);
     }
 
 }

@@ -1,6 +1,6 @@
 package models.Animals;
 
-import models.Interfaces.InventoryItem;
+import models.ItemFaces.InventoryItem;
 import models.enums.AnimalProducts;
 
 public class Animal {

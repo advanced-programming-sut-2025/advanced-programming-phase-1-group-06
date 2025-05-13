@@ -1,30 +1,72 @@
 package models.Player;
 
-import models.*;
 import models.Game.Coordinates;
 import models.Game.GameMap.GameMap;
 import models.Game.Recipe;
-import models.Interfaces.InventoryItem;
+import models.ItemFaces.InventoryItem;
+import models.User;
 import models.tools.Tool;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Player {
-    private User user;
+    private final User user;
 
     private GameMap currentMap;
 
     private int x, y;
     private int money;
-    private Inventory inventory;
-    private Skill skills;
+    private final Inventory inventory;
+    private final Skill skills;
     private double energy;
-    private int mapNumber;
-    private String currentBuilding;
+    private final int mapNumber;
+    private final String currentBuilding;
+    private final double maxEnergy;
+    private boolean isPassedOut;
+    private Tool currentTool;
+    private final ArrayList<Recipe> cookableFoods;
+    private final ArrayList<Recipe> craftableItems;
+    private boolean trashcan;
+
+    public Player(User user, GameMap currentMap, int x, int y, int money, Inventory inventory, Skill skills, double energy, double maxEnergy, boolean isPassedOut, Tool currentTool, ArrayList<Recipe> cookableFoods, ArrayList<Recipe> craftableItems, boolean trashcan, int mapNumber, String currentBuilding) {
+        this.currentBuilding = currentBuilding;
+        this.user = user;
+        this.currentMap = currentMap;
+        this.x = x;
+        this.y = y;
+        this.money = money;
+        this.inventory = inventory;
+        this.skills = skills;
+        this.energy = energy;
+        this.maxEnergy = maxEnergy;
+        this.isPassedOut = isPassedOut;
+        this.currentTool = currentTool;
+        this.cookableFoods = cookableFoods;
+        this.craftableItems = craftableItems;
+        this.trashcan = trashcan;
+        this.mapNumber = mapNumber;
+    }
+
+    public Player(User user, int mapNumber) {
+        this.user = user;
+        this.mapNumber = mapNumber;
+        inventory = new Inventory();
+        cookableFoods = new ArrayList<Recipe>();
+        craftableItems = new ArrayList<>();
+        maxEnergy = 200;
+        trashcan = false;
+        money = 500;
+        isPassedOut = false;
+        skills = new Skill();
+        currentBuilding = "none";
+    }
 
     public int getMoney() {
         return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
     }
 
     public GameMap getCurrentMap() {
@@ -37,10 +79,6 @@ public class Player {
 
     public Inventory getInventory() {
         return inventory;
-    }
-
-    public void setMoney(int money) {
-        this.money = money;
     }
 
     public int getX() {
@@ -67,7 +105,7 @@ public class Player {
         this.energy = energy;
     }
 
-    public void dimnishEnergy(double energy){
+    public void dimnishEnergy(double energy) {
         this.energy -= energy;
     }
 
@@ -95,47 +133,6 @@ public class Player {
         this.trashcan = trashcan;
     }
 
-    private double maxEnergy;
-    private boolean isPassedOut;
-    private Tool currentTool;
-    private ArrayList<Recipe> cookableFoods;
-    private ArrayList<Recipe> craftableItems;
-    private boolean trashcan;
-
-    public Player(User user, GameMap currentMap, int x, int y, int money, Inventory inventory, Skill skills, double energy, double maxEnergy, boolean isPassedOut, Tool currentTool, ArrayList<Recipe> cookableFoods, ArrayList<Recipe> craftableItems, boolean trashcan, int mapNumber, String currentBuilding) {
-        this.currentBuilding =currentBuilding;
-        this.user = user;
-        this.currentMap = currentMap;
-        this.x = x;
-        this.y = y;
-        this.money = money;
-        this.inventory = inventory;
-        this.skills = skills;
-        this.energy = energy;
-        this.maxEnergy = maxEnergy;
-        this.isPassedOut = isPassedOut;
-        this.currentTool = currentTool;
-        this.cookableFoods = cookableFoods;
-        this.craftableItems = craftableItems;
-        this.trashcan = trashcan;
-        this.mapNumber = mapNumber;
-    }
-
-    public Player(User user, int mapNumber){
-        this.user = user;
-        this.mapNumber = mapNumber;
-        inventory = new Inventory();
-        cookableFoods = new ArrayList<Recipe>();
-        craftableItems = new ArrayList<>();
-        maxEnergy = 200;
-        trashcan = false;
-        money = 500;
-        isPassedOut = false;
-        skills = new Skill();
-        currentBuilding = "none";
-    }
-
-
     public boolean canWalk(Coordinates coordinates) {
         return false;
     }
@@ -146,7 +143,7 @@ public class Player {
         // you should do the menus first so we can get confirmation from player that they want to walk
     }
 
-    public String getName(){
+    public String getName() {
         return this.user.getUsername();
     }
     //backpack
@@ -157,7 +154,7 @@ public class Player {
     public void upgradeTrashcan() {
     }
 
-    public void useTrashcan(){
+    public void useTrashcan() {
     }
 
     public void passOut() {

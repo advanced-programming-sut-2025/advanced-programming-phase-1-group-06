@@ -31,6 +31,9 @@ public class DateTime {
         return ((((season * 28L) + day) * 24) + hour) * 60 + minute;
     }
 
+    public long getPreciseDay(){return getPreciseTime() / 24;}
+
+
     public void advanceHour(int hour){
         this.hour += hour;
         if (hour >= 22){

@@ -1,13 +1,13 @@
 package models.PlantsAndForaging;
 
+import models.ItemFaces.InventoryItem;
 import models.PlantsAndForaging.Info.CropInfo;
 import models.PlantsAndForaging.Info.ForagingCropInfo;
 import models.PlantsAndForaging.Info.SeedInfo;
-import models.Interfaces.Edible;
-import models.Interfaces.InventoryItem;
-import models.Interfaces.Sellable;
+import models.ItemFaces.Edible;
+import models.ItemFaces.Sellable;
 
-public class Crop implements Edible, Sellable, InventoryItem {
+public class Crop extends InventoryItem implements Edible, Sellable {
     private String name;
     private SeedInfo source;
     private boolean isEdible;
@@ -36,6 +36,7 @@ public class Crop implements Edible, Sellable, InventoryItem {
         isEdible = info.isEdible();
         energyIncrease = info.getEnergyIncrease();
         sellPrice = info.getSellPrice();
+        isFertilized = false;
         seasons = info.getSeasons();
     }
 
@@ -56,5 +57,15 @@ public class Crop implements Edible, Sellable, InventoryItem {
     @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public void sell() {
+
+    }
+
+    @Override
+    public int getPrice() {
+        return 0;
     }
 }
