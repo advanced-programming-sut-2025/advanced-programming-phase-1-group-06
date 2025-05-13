@@ -19,6 +19,21 @@ public class Item extends InventoryItem implements Edible, Sellable, Placeable{
         this.price = price;
         this.energy = energy;
     }
+// for sellable edible items
+    public Item(int energy, int price){
+        isEdible = true;
+        this.energy = energy;
+        isSellable = true;
+        this.price = price;
+    }
+
+//    for sellable only
+    public Item(int price){
+        isEdible = false;
+        this.energy = 0;
+        isSellable = true;
+        this.price = price;
+    }
 
     @Override
     public void eat() {
