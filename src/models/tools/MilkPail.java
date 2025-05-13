@@ -1,6 +1,7 @@
 package models.tools;
 
 import models.Game.Coordinates;
+import models.Player.Player;
 
 public class MilkPail extends Tool{
     int price = 1000;
@@ -8,7 +9,7 @@ public class MilkPail extends Tool{
         energyCost = 4;
     }
     @Override
-    public void use(Coordinates coordinates) {
+    public void use(Coordinates coordinates, Player player) {
 
     }
 

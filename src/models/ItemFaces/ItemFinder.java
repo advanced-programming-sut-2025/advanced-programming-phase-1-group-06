@@ -130,7 +130,7 @@ public enum ItemFinder {
     SNOW_YAM(ForagingCropInfo.SNOW_YAM.create()),
     WINTER_ROOT(ForagingCropInfo.WINTER_ROOT.create()),
 // mineral
-QUARTZ(MineralsInfo.QUARTZ.create()),
+    QUARTZ(MineralsInfo.QUARTZ.create()),
     EARTH_CRYSTAL(MineralsInfo.EARTH_CRYSTAL.create()),
     FROZEN_TEAR(MineralsInfo.FROZEN_TEAR.create()),
     FIRE_QUARTZ(MineralsInfo.FIRE_QUARTZ.create()),
@@ -147,16 +147,49 @@ QUARTZ(MineralsInfo.QUARTZ.create()),
     GOLD(MineralsInfo.GOLD.create()),
     IRIDIUM(MineralsInfo.IRIDIUM.create()),
     COAL(MineralsInfo.COAL.create()),
+//  artisan edible shit
+    HONEY(new Item(75, 350)),
+    CHEESE(new Item(100, 230)),
+    MAYONNAISE(new Item(50, 190)),
+    GOAT_CHEESE(new Item(100, 400)),
+    DUCK_MAYONNAISE(new Item(75, 37)),
+    DINOSAUR_MAYONNAISE(new Item(125, 800)),
+    BEER(new Item(50, 200)),
+    VINEGAR(new Item(13, 100)),
+    COFFEE(new Item(75, 150)),
+    JUICE(new Item(2 * BaseIngredientEnergy, 2.25 * BaseIngredientPrice)),
+    MEAD(new Item(100, 300)),
+    PALE_ALE(new Item(50, 300)),
+    WINE(new Item(1.75 * BaseFruitEnergy, 3 * BaseFruitPrice)),
+    PICKLES(new Item(2 * BaseIngredientEnergy + 50, 2 * BasePrice + 50)),
+    JELLY(new Item(2 * BaseFruitEnergy + 50, 2 * BaseFruitPrice + 50)),
+    DRIED_MUSHROOMS(new Item(50, 7.5 * MushroomBasePrice + 25)),
+    DRIED_FRUIT(new Item(75, 7.5 * FruitBasePrice + 25)),
+    RAISINS(new Item(125, 600)),
+    SMOKED_FISH(new Item(1.5 * FishEnergy, 2 * FishPrice)),
+//  artisan inedible shit
+    CLOTH(new Item(470)),
+    COAL(new Item(50)),
+    ANY_METAL_BAR(new Item(10 * OrePrice)),
+    TRUFFLE_OIL(new Item(1065)),
+    OIL(new Item(100)),
+    ANY_METAL_BAR(new Item(10 * OrePrice)),
 
 
     ;
 
-    InventoryItem item;
+
+
+
+    ;
+
+    InventoryItem inventoryItem;
+    Item item;
 
     ItemFinder(InventoryItem item){
-        this.item = item;
+        this.inventoryItem = item;
     }
-
+    ItemFinder(Item item){this.item = item;}
     ItemFinder(){
 
     }

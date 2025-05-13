@@ -163,7 +163,7 @@ public class Player {
     }
 
     public void useCurrentTool(int x, int y) {
-        currentTool.use(new Coordinates(x, y));
+        currentTool.use(new Coordinates(x, y), this);
     }
 
     public void sell(InventoryItem item) {
