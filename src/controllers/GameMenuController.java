@@ -89,12 +89,17 @@ public class GameMenuController {
         return null;
     }
 
+    public String buildArtisanDevice(Matcher matcher){
+        
+    }
+
     public String nextTurn(){
         turn ++;
         if (turn % 3 == 0){
-            return "balls";
+
+            return "everybody had their turns time has passed by an hour";
         }
-        return "balls";
+        return "next player can enter their command now";
     }
 
 }

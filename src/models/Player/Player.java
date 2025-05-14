@@ -3,7 +3,7 @@ package models.Player;
 import models.*;
 import models.Game.Coordinates;
 import models.Game.GameMap.GameMap;
-import models.Game.Recipe;
+import models.Crafting.Recipe;
 import models.ItemFaces.InventoryItem;
 import models.tools.Tool;
 
@@ -16,6 +16,7 @@ public class Player {
 
     private int x, y;
     private int money;
+    private Inventory inventory;
     private Inventory inventory;
     private Skill skills;
     private double energy;
@@ -163,7 +164,7 @@ public class Player {
     }
 
     public void useCurrentTool(int x, int y) {
-        currentTool.use(new Coordinates(x, y));
+        currentTool.use(new Coordinates(x, y), this);
     }
 
     public void sell(InventoryItem item) {
