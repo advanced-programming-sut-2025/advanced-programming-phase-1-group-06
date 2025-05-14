@@ -54,6 +54,66 @@ public class GameMenu implements AppMenu {
         else if ((matcher = Regex.GREENHOUSE_BUILD.getMatcher(input)) != null){
             controller.
         }
+        if ((matcher = Regex.ANSWER.getMatcher(input)) != null) {
+            controller.answerQuestion(matcher.group("answer"));
+        } else if ((matcher = Regex.CHEAT_ADVANCE_TIME.getMatcher(input)) != null) {
+            controller.advanceTime(Integer.parseInt(matcher.group("hours")));
+        } else if ((matcher = Regex.CHEAT_ADVANCE_DATE.getMatcher(input)) != null) {
+            controller.advanceDate(Integer.parseInt(matcher.group("days")));
+        } else if ((matcher = Regex.WEATHER_SET.getMatcher(input)) != null) {
+            controller.setWeatherType(matcher.group("type"));
+        } else if ((matcher = Regex.CHEAT_THOR.getMatcher(input)) != null) {
+            int x = Integer.parseInt(matcher.group("x"));
+            int y = Integer.parseInt(matcher.group("y"));
+            controller.callThor(x, y);
+        } else if ((matcher = Regex.GREENHOUSE_BUILD.getMatcher(input)) != null) {
+            controller.buildGreenhouse();
+        } else if ((matcher = Regex.GREENHOUSE_BUILDCHEAT.getMatcher(input)) != null) {
+            controller.buildGreenhouseCheat();
+        } else if ((matcher = Regex.WALK.getMatcher(input)) != null) {
+            int x = Integer.parseInt(matcher.group("x"));
+            int y = Integer.parseInt(matcher.group("y"));
+            controller.walkTo(x, y);
+        } else if ((matcher = Regex.PRINT_MAP.getMatcher(input)) != null) {
+            int x = Integer.parseInt(matcher.group("x"));
+            int y = Integer.parseInt(matcher.group("y"));
+            int size = Integer.parseInt(matcher.group("size"));
+            controller.printMapAt(x, y, size);
+        } else if ((matcher = Regex.HELP_READING_MAP.getMatcher(input)) != null) {
+            controller.showMapHelp();
+        } else if ((matcher = Regex.TOOLS_SHOW_CURRENT.getMatcher(input)) != null) {
+            controller.showCurrentTool();
+        } else if ((matcher = Regex.TOOLS_SHOW_AVAILABLE.getMatcher(input)) != null) {
+            controller.showAvailableTools();
+        } else if ((matcher = Regex.TOOLS_UPGRADE.getMatcher(input)) != null) {
+            controller.upgradeTool(matcher.group("tool"));
+        } else if ((matcher = Regex.GIFT.getMatcher(input)) != null) {
+            String username = matcher.group("username");
+            String item = matcher.group("item");
+            int amount = Integer.parseInt(matcher.group("amount"));
+            controller.sendGift(username, item, amount);
+        } else if ((matcher = Regex.GIFT_LIST.getMatcher(input)) != null) {
+            controller.showGiftList();
+        } else if ((matcher = Regex.GIFT_RATE.getMatcher(input)) != null) {
+            int giftNumber = Integer.parseInt(matcher.group("gift_number"));
+            int rate = Integer.parseInt(matcher.group("rate"));
+            controller.rateGift(giftNumber, rate);
+        } else if ((matcher = Regex.GIFT_HISTORY.getMatcher(input)) != null) {
+            controller.showGiftHistory(matcher.group("username"));
+        } else if ((matcher = Regex.HUG.getMatcher(input)) != null) {
+            controller.hugUser(matcher.group("username"));
+        } else if ((matcher = Regex.FLOWER.getMatcher(input)) != null) {
+            controller.sendFlower(matcher.group("username"));
+        } else if ((matcher = Regex.SHOW_ALL_PRODUCTS.getMatcher(input)) != null) {
+            controller.showAllProducts();
+        } else if ((matcher = Regex.SHOW_AVAILABLE_PRODUCTS.getMatcher(input)) != null) {
+            controller.showAvailableProducts();
+        } else if ((matcher = Regex.PURCHASE.getMatcher(input)) != null) {
+            String product = matcher.group("product");
+            int count = Integer.parseInt(matcher.group("count"));
+            controller.purchaseProduct(product, count);
+        }
+
 
 
         return;
