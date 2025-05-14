@@ -34,17 +34,18 @@ public class Inventory {
         this.level = level;
     }
 
-    public void addItem(InventoryItem item) {
+    public boolean addItem(InventoryItem item) {
         for (InventoryItem inventoryItem : items){
             if (item.getId() == inventoryItem.getId()){
                 inventoryItem.setAmount(inventoryItem.getAmount() + item.getAmount());
-                return;
+                return true;
             }
         }
-        int capacity = getCapacity();
-        if (capacity - items.size() < 1)
-            System.out.println("not enough inventory space");
+        if (getCapacity() - items.size() < 1) {
+            return false;
+        }
         items.add(item);
+        return true;
     }
 
     public boolean checkExistense(int id, int amount){
@@ -87,11 +88,12 @@ public class Inventory {
         };
     }
 
+    public boolean isFull() {
+        return items.size() >= getCapacity();
+    }
+
     public boolean hasItemAmount(String name, int amount) {
-        if (name == null || amount <= 0 || items == null) {
-            return false;
-        }
-        return false;
+        return items.stream().anyMatch(item -> item.getName().equals(name) && item.getAmount() >= amount);
     }
 
     public InventoryItem getItemByName(String name){
