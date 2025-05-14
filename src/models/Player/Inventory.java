@@ -3,6 +3,7 @@ package models.Player;
 import java.util.ArrayList;
 
 import models.ItemFaces.InventoryItem;
+import models.ItemFaces.Item;
 import models.tools.ToolType;
 
 public class Inventory {
@@ -47,15 +48,6 @@ public class Inventory {
         items.add(item);
     }
 
-    public boolean checkExistense(int id, int amount){
-        for (InventoryItem item : items){
-            if (item.getId() == id && item.getAmount() >= amount){
-                return true;
-            }
-        }
-        return false;
-    }
-
     public InventoryItem getItemById(int id){
         for (InventoryItem item : items){
             if (item.getId() == id){
@@ -65,17 +57,23 @@ public class Inventory {
         return null;
     }
 
-    public void removeItem(InventoryItem item, int amount) {
-        if (!(items.contains(item)))
+    public void removeItem(String itemName, int amount) {
+        if (!hasItemAmount(itemName, amount))
             return;
-        if (item.getAmount() < amount)
-            return;
-        if (item.getAmount() == amount){
-            items.remove(item);
-            return;
+        for (InventoryItem item : items){
+            if (itemName.equals(item.getName())){
+                if (amount < item.getAmount()){
+                    item.setAmount(item.getAmount() - amount);
+                    return;
+                }
+                if (amount >= item.getAmount()){
+                    amount -= item.getAmount();
+                    items.remove(item);
+                }
+                if (amount == 0)
+                    return;
+            }
         }
-        if (item.getAmount() > amount)
-            item.setAmount(item.getAmount() - amount);
     }
 
     public int getCapacity(){
@@ -88,11 +86,19 @@ public class Inventory {
     }
 
     public boolean hasItemAmount(String name, int amount) {
-        if (name == null || amount <= 0 || items == null) {
-            return false;
-        }
-        return false;
+        return  (getBaseItemCount(name) >= amount);
     }
+
+    public int getBaseItemCount(String itemName){
+        int counter = 0;
+        for (InventoryItem item : items){
+            if (item.getName().equals(itemName)){
+                counter += item.getAmount();
+            }
+        }
+        return counter;
+    }
+
 
     public InventoryItem getItemByName(String name){
         for (InventoryItem item : items){

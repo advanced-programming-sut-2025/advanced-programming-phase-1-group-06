@@ -5,11 +5,12 @@ import models.Crafting.ArtisanDevice;
 import models.Crafting.CraftingRecipe;
 import models.Game.Coordinates;
 import models.Game.GameMap.GameMap;
-import models.Crafting.Recipe;
+import models.Crafting.ArtisanRecipe;
 import models.ItemFaces.InventoryItem;
 import models.tools.Tool;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Player {
     private User user;
@@ -19,8 +20,7 @@ public class Player {
     private int x, y;
     private int money;
     private Inventory inventory;
-    private Inventory inventory;
-    private Skill skills;
+    private ArrayList<Skill> skills;
     private double energy;
     private int mapNumber;
     private String currentBuilding;
@@ -102,11 +102,11 @@ public class Player {
     private double maxEnergy;
     private boolean isPassedOut;
     private Tool currentTool;
-    private ArrayList<Recipe> cookableFoods;
-    private ArrayList<Recipe> craftableItems;
+    private ArrayList<ArtisanRecipe> cookableFoods;
+    private ArrayList<ArtisanRecipe> craftableItems;
     private boolean trashcan;
 
-    public Player(User user, GameMap currentMap, int x, int y, int money, Inventory inventory, Skill skills, double energy, double maxEnergy, boolean isPassedOut, Tool currentTool, ArrayList<Recipe> cookableFoods, ArrayList<Recipe> craftableItems, boolean trashcan, int mapNumber, String currentBuilding) {
+    public Player(User user, GameMap currentMap, int x, int y, int money, Inventory inventory, ArrayList<Skill> skills, double energy, double maxEnergy, boolean isPassedOut, Tool currentTool, ArrayList<ArtisanRecipe> cookableFoods, ArrayList<ArtisanRecipe> craftableItems, boolean trashcan, int mapNumber, String currentBuilding, ArrayList<ArtisanDevice> artisanDevices, ArrayList<CraftingRecipe> unlockedCraftingRecipes) {
         this.currentBuilding =currentBuilding;
         this.user = user;
         this.currentMap = currentMap;
@@ -131,18 +131,48 @@ public class Player {
         this.user = user;
         this.mapNumber = mapNumber;
         inventory = new Inventory();
-        cookableFoods = new ArrayList<Recipe>();
+        cookableFoods = new ArrayList<ArtisanRecipe>();
         craftableItems = new ArrayList<>();
         maxEnergy = 200;
         trashcan = false;
         money = 500;
         isPassedOut = false;
-        skills = new Skill();
+        skills = new ArrayList<>();
+        for (SkillType skillType : SkillType.values()){
+            skills.add(skillType.getSkill());
+        }
         currentBuilding = "none";
         artisanDevices = new ArrayList<>();
         unlockedCraftingRecipes = new ArrayList<>();
     }
 
+    public ArrayList<Skill> getSkills(){
+        return skills;
+    }
+
+    public Skill getSkillByName(String skillName){
+        for (Skill skill : skills){
+            if (skill.getName().equals(skillName)){
+                return skill;
+            }
+        }
+        return null;
+    }
+
+    public int getSkillLevel(String skillName){
+        Skill skill = getSkillByName(skillName);
+        if (skill != null){
+            return skill.getLevel();
+        }
+        return 0;
+    }
+
+    public void IncreaseSkill(String skillName){
+        Skill skill = getSkillByName(skillName);
+        if (skill != null){
+            skill.increaseXP();
+        }
+    }
 
     public boolean canWalk(Coordinates coordinates) {
         return false;
@@ -184,5 +214,10 @@ public class Player {
     public GameMap getGameMap() {
         return currentMap;
     }
+
+    public ArrayList<ArtisanDevice> getArtisanDevices() {
+        return artisanDevices;
+    }
+
 }
 

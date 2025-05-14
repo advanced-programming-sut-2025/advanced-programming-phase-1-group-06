@@ -34,7 +34,8 @@ public class Weather {
     public void setEffects() {
     }
 
-    public void lightning(Coordinates coordiante ){
+    public void lightning(Coordinates coordiante){
+//        TODO implement lightning. or don't doesn't really matter. we're screwed either way.
     }
 
     public static Weather weatherRandomizer(){

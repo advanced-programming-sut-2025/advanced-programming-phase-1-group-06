@@ -4,8 +4,6 @@ import models.ItemFaces.*;
 
 import java.util.ArrayList;
 public enum ArtisanRecipeInfo {
-//    TODO add all the red items to the Itemfinder if they were animal products or fish add them to their own class else
-//     just create the Items in here create a new constructor and put the info there. e.g., name and id for all of them,  sellable -> price, edible -> energy,...
     // Honey Products
     HONEY(null, 4 * 24, 75, 350, "It's a sweet syrup produced by bees.", "honey"),
     // Dairy Products
