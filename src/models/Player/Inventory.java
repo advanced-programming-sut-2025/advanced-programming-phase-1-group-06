@@ -47,6 +47,24 @@ public class Inventory {
         items.add(item);
     }
 
+    public boolean checkExistense(int id, int amount){
+        for (InventoryItem item : items){
+            if (item.getId() == id && item.getAmount() >= amount){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public InventoryItem getItemById(int id){
+        for (InventoryItem item : items){
+            if (item.getId() == id){
+                return item;
+            }
+        }
+        return null;
+    }
+
     public void removeItem(InventoryItem item, int amount) {
         if (!(items.contains(item)))
             return;
