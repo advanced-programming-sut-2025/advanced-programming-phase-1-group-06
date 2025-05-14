@@ -1,6 +1,8 @@
 package models.Player;
 
 import models.*;
+import models.Crafting.ArtisanDevice;
+import models.Crafting.CraftingRecipe;
 import models.Game.Coordinates;
 import models.Game.GameMap.GameMap;
 import models.Crafting.Recipe;
@@ -22,6 +24,8 @@ public class Player {
     private double energy;
     private int mapNumber;
     private String currentBuilding;
+    private ArrayList<ArtisanDevice> artisanDevices;
+    private ArrayList<CraftingRecipe> unlockedCraftingRecipes;
 
     public int getMoney() {
         return money;
@@ -119,6 +123,8 @@ public class Player {
         this.craftableItems = craftableItems;
         this.trashcan = trashcan;
         this.mapNumber = mapNumber;
+        this.artisanDevices = artisanDevices;
+        this.unlockedCraftingRecipes = unlockedCraftingRecipes;
     }
 
     public Player(User user, int mapNumber){
@@ -133,6 +139,8 @@ public class Player {
         isPassedOut = false;
         skills = new Skill();
         currentBuilding = "none";
+        artisanDevices = new ArrayList<>();
+        unlockedCraftingRecipes = new ArrayList<>();
     }
 
 
