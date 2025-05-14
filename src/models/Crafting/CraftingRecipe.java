@@ -5,6 +5,7 @@ import models.ItemFaces.Item;
 import models.ItemFaces.ItemFinder;
 import models.Player.Player;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 public class CraftingRecipe {
@@ -53,6 +54,6 @@ public class CraftingRecipe {
 
     public String getName() { return info.getName(); }
     public String getDescription() { return info.getDescription(); }
-    public Map<ItemFinder, Integer> getIngredients() { return info.getIngredients(); }
+    public ArrayList<InventoryItem> getIngredients() { return info.getIngredients(); }
     public int getSellPrice() { return info.getSellPrice(); }
 }

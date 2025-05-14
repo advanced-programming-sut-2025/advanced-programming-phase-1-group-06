@@ -258,7 +258,7 @@ public enum CraftingRecipeInfo {
 
     public String getName() { return name; }
     public String getDescription() { return description; }
-    public ArrayList<InventoryItem> getIngredients() { return new ArrayList<>(ingredients); }
+    public ArrayList<InventoryItem> getIngredients() { return ingredients; }
     public int getSellPrice() { return sellPrice; }
     public String getSkillName() { return skillName; }
     public int getRequiredLevel() { return requiredLevel; }

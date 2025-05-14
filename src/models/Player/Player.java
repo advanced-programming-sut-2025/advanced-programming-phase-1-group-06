@@ -2,7 +2,7 @@ package models.Player;
 
 import models.*;
 import models.Crafting.ArtisanDevice;
-import models.Crafting.CraftingRecipe;
+import models.Crafting.CraftingRecipeInfo;
 import models.Game.Coordinates;
 import models.Game.GameMap.GameMap;
 import models.Crafting.ArtisanRecipe;
@@ -10,7 +10,6 @@ import models.ItemFaces.InventoryItem;
 import models.tools.Tool;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Player {
     private User user;
@@ -25,7 +24,7 @@ public class Player {
     private int mapNumber;
     private String currentBuilding;
     private ArrayList<ArtisanDevice> artisanDevices;
-    private ArrayList<CraftingRecipe> unlockedCraftingRecipes;
+    private ArrayList<CraftingRecipeInfo> unlockedCraftingRecipes;
 
     public int getMoney() {
         return money;
@@ -106,7 +105,7 @@ public class Player {
     private ArrayList<ArtisanRecipe> craftableItems;
     private boolean trashcan;
 
-    public Player(User user, GameMap currentMap, int x, int y, int money, Inventory inventory, ArrayList<Skill> skills, double energy, double maxEnergy, boolean isPassedOut, Tool currentTool, ArrayList<ArtisanRecipe> cookableFoods, ArrayList<ArtisanRecipe> craftableItems, boolean trashcan, int mapNumber, String currentBuilding, ArrayList<ArtisanDevice> artisanDevices, ArrayList<CraftingRecipe> unlockedCraftingRecipes) {
+    public Player(User user, GameMap currentMap, int x, int y, int money, Inventory inventory, ArrayList<Skill> skills, double energy, double maxEnergy, boolean isPassedOut, Tool currentTool, ArrayList<ArtisanRecipe> cookableFoods, ArrayList<ArtisanRecipe> craftableItems, boolean trashcan, int mapNumber, String currentBuilding, ArrayList<ArtisanDevice> artisanDevices, ArrayList<CraftingRecipeInfo> unlockedCraftingRecipes) {
         this.currentBuilding =currentBuilding;
         this.user = user;
         this.currentMap = currentMap;
@@ -143,7 +142,7 @@ public class Player {
         }
         currentBuilding = "none";
         artisanDevices = new ArrayList<>();
-        unlockedCraftingRecipes = new ArrayList<>();
+        unlockedCraftingRecipes = new ArrayList<models.Crafting.CraftingRecipeInfo>();
     }
 
     public ArrayList<Skill> getSkills(){
