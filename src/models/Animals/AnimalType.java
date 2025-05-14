@@ -1,11 +1,14 @@
-package models.enums;
-
-import models.Animals.Animal;
-import models.enums.AnimalProducts;
+package models.Animals;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
+/**
+ * Enum representing different types of animals in the game
+ * @author hassanp30
+ * @since 2025-05-14
+ */
 public enum AnimalType {
     // Caged Animals
     CHICKEN("Chicken", 800, createChickenProducts(), new ArrayList<>(List.of("CAGE", "UPGRADED_CAGE")), 4),
@@ -21,11 +24,11 @@ public enum AnimalType {
 
     private final String name;
     private final int basePrice;
-    private final HashMap<AnimalProducts, Boolean> products;
+    private final HashMap<AnimalProductType, Boolean> products;
     private final ArrayList<String> validHouses;
     private final int housingCapacity;
 
-    AnimalType(String name, int basePrice, HashMap<AnimalProducts, Boolean> products, ArrayList<String> validHouses, int housingCapacity) {
+    AnimalType(String name, int basePrice, HashMap<AnimalProductType, Boolean> products, ArrayList<String> validHouses, int housingCapacity) {
         this.name = name;
         this.basePrice = basePrice;
         this.products = products;
@@ -34,81 +37,104 @@ public enum AnimalType {
     }
 
     // Helper methods to create product maps for each animal
-    private static HashMap<AnimalProducts, Boolean> createChickenProducts() {
-        HashMap<AnimalProducts, Boolean> products = new HashMap<>();
-        products.put(AnimalProducts.EGG, true);
-        products.put(AnimalProducts.LARGE_EGG, true);
+    private static HashMap<AnimalProductType, Boolean> createChickenProducts() {
+        HashMap<AnimalProductType, Boolean> products = new HashMap<>();
+        products.put(AnimalProductType.EGG, true);
+        products.put(AnimalProductType.LARGE_EGG, true);
         return products;
     }
 
-    private static HashMap<AnimalProducts, Boolean> createDuckProducts() {
-        HashMap<AnimalProducts, Boolean> products = new HashMap<>();
-        products.put(AnimalProducts.DUCK_EGG, true);
-        products.put(AnimalProducts.DUCK_FEATHER, true);
+    private static HashMap<AnimalProductType, Boolean> createDuckProducts() {
+        HashMap<AnimalProductType, Boolean> products = new HashMap<>();
+        products.put(AnimalProductType.DUCK_EGG, true);
+        products.put(AnimalProductType.DUCK_FEATHER, true);
         return products;
     }
 
-    private static HashMap<AnimalProducts, Boolean> createRabbitProducts() {
-        HashMap<AnimalProducts, Boolean> products = new HashMap<>();
-        products.put(AnimalProducts.WOOL, true);
-        products.put(AnimalProducts.RABBIT_FOOT, true);
+    private static HashMap<AnimalProductType, Boolean> createRabbitProducts() {
+        HashMap<AnimalProductType, Boolean> products = new HashMap<>();
+        products.put(AnimalProductType.WOOL, true);
+        products.put(AnimalProductType.RABBIT_FOOT, true);
         return products;
     }
 
-    private static HashMap<AnimalProducts, Boolean> createDinosaurProducts() {
-        HashMap<AnimalProducts, Boolean> products = new HashMap<>();
-        products.put(AnimalProducts.DINOSAUR_EGG, true);
+    private static HashMap<AnimalProductType, Boolean> createDinosaurProducts() {
+        HashMap<AnimalProductType, Boolean> products = new HashMap<>();
+        products.put(AnimalProductType.DINOSAUR_EGG, true);
         return products;
     }
 
-    private static HashMap<AnimalProducts, Boolean> createCowProducts() {
-        HashMap<AnimalProducts, Boolean> products = new HashMap<>();
-        products.put(AnimalProducts.MILK, true);
-        products.put(AnimalProducts.LARGE_MILK, true);
+    private static HashMap<AnimalProductType, Boolean> createCowProducts() {
+        HashMap<AnimalProductType, Boolean> products = new HashMap<>();
+        products.put(AnimalProductType.MILK, true);
+        products.put(AnimalProductType.LARGE_MILK, true);
         return products;
     }
 
-    private static HashMap<AnimalProducts, Boolean> createGoatProducts() {
-        HashMap<AnimalProducts, Boolean> products = new HashMap<>();
-        products.put(AnimalProducts.GOAT_MILK, true);
-        products.put(AnimalProducts.LARGE_GOAT_MILK, true);
+    private static HashMap<AnimalProductType, Boolean> createGoatProducts() {
+        HashMap<AnimalProductType, Boolean> products = new HashMap<>();
+        products.put(AnimalProductType.GOAT_MILK, true);
+        products.put(AnimalProductType.LARGE_GOAT_MILK, true);
         return products;
     }
 
-    private static HashMap<AnimalProducts, Boolean> createSheepProducts() {
-        HashMap<AnimalProducts, Boolean> products = new HashMap<>();
-        products.put(AnimalProducts.WOOL, true);
+    private static HashMap<AnimalProductType, Boolean> createSheepProducts() {
+        HashMap<AnimalProductType, Boolean> products = new HashMap<>();
+        products.put(AnimalProductType.SHEEP_WOOL, true);
         return products;
     }
 
-    private static HashMap<AnimalProducts, Boolean> createPigProducts() {
-        HashMap<AnimalProducts, Boolean> products = new HashMap<>();
-        products.put(AnimalProducts.TRUFFLE, true);
+    private static HashMap<AnimalProductType, Boolean> createPigProducts() {
+        HashMap<AnimalProductType, Boolean> products = new HashMap<>();
+        products.put(AnimalProductType.TRUFFLE, true);
         return products;
     }
 
-    // Getters
+    /**
+     * Gets the name of the animal type
+     * @return The name of the animal type
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Gets the base price of the animal
+     * @return The base price of the animal
+     */
     public int getBasePrice() {
         return basePrice;
     }
 
-    public HashMap<AnimalProducts, Boolean> getProducts() {
+    /**
+     * Gets the map of possible products for this animal type
+     * @return HashMap of AnimalProductType to Boolean indicating possible products
+     */
+    public HashMap<AnimalProductType, Boolean> getProducts() {
         return products;
     }
 
+    /**
+     * Gets the list of valid houses for this animal type
+     * @return ArrayList of valid house types
+     */
     public ArrayList<String> getValidHouses() {
         return validHouses;
     }
 
+    /**
+     * Gets the housing capacity required for this animal type
+     * @return The housing capacity
+     */
     public int getHousingCapacity() {
         return housingCapacity;
     }
 
-    // Method to create a new Animal instance
+    /**
+     * Creates a new Animal instance
+     * @param name The name of the animal
+     * @return A new Animal instance
+     */
     public Animal createAnimal(String name) {
         return new Animal(name, basePrice, products, validHouses) {};
     }

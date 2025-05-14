@@ -1,28 +1,27 @@
-package models.PlantsAndForaging;
+package models.Animals;
 
-import models.Animals.Animal;
 import models.ItemFaces.*;
 
 public class AnimalProduct extends InventoryItem implements Sellable, Edible{
 
-    Animal source;
+    AnimalType source;
     String name;
     int price;
     boolean isEdible;
     int quality;
 
 
-    AnimalProduct(Item item){
+    public AnimalProduct(Item item){
         name = item.getName();
         price = item.getPrice();
         isEdible = item.isEdible();
     }
 
-    public Animal getSource() {
+    public AnimalType getSource() {
         return source;
     }
 
-    public void setSource(Animal source) {
+    public void setSource(AnimalType source) {
         this.source = source;
     }
 
@@ -64,4 +63,11 @@ public class AnimalProduct extends InventoryItem implements Sellable, Edible{
 
     }
 
+    public AnimalProduct(AnimalType animalSource, String name, int price, boolean isEdible, int quality) {
+        this.source = source;
+        this.name = name;
+        this.price = price;
+        this.isEdible = isEdible;
+        this.quality = quality;
+    }
 }

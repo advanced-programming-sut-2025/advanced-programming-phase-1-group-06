@@ -4,12 +4,6 @@ import models.Crafting.ArtisanRecipeInfo;
 import models.PlantsAndForaging.Info.*;
 import models.tools.ToolType;
 
-/**
- * Last updated by: hassanp30
- * Last updated at: 2025-05-13 12:59:24 UTC
- *
- * MAKE SURE YOU SET THE VALUES TO 1 WHEN CREATING NEW OBJECTS
- */
 public enum ItemFinder {
     // Spring Crops (1-13)
     // Spring Crops
@@ -367,6 +361,11 @@ public enum ItemFinder {
     APPLE(new Item("apple", 50, 100)),
     BANANA(new Item("banana", 40, 150)),
     MANGO(new Item("mango", 45, 130)),
+    OAK_RESIN(new Item("oak_resin", 150)), // Not edible, harvested every 7 days
+    MAPLE_SYRUP(new Item("maple_syrup", 200)), // Not edible, harvested every 9 days
+    PINE_TAR(new Item("pine_tar", 100)), // Not edible, harvested every 5 days
+    SAP(new Item("sap", -2, 2)), // Edible (negative energy), harvested every day
+    MYSTIC_SYRUP(new Item("mystic_syrup", 500, 1000)), // Edible, harvested every 7 days
 
     // miscellaneous
     // Resources
@@ -391,10 +390,10 @@ public enum ItemFinder {
     POWDERMELON(new Item("powdermelon", 113, 450)), // New winter crop from 1.6, edible and sellable
 
     STONE(new Item("stone", 2)), // Base sell price: 2g, not edible
-    MAPLE_SEED(new Item("maple_seed", 5)), // Base sell price: 5g, not edible
+    MAPLE_SEED(new Item("maple seed", 5)), // Base sell price: 5g, not edible
     ACORN(new Item("acorn", 5)), // Base sell price: 5g, not edible
-    MAHOGANY_SEED(new Item("mahogany_seed", 15)), // Base sell price: 15g, not edible
-    PINE_CONE(new Item("pine_cone", 5)) // Base sell price: 5g, not edible
+    MAHOGANY_SEED(new Item("mahogany seed", 15)), // Base sell price: 15g, not edible
+    PINE_CONE(new Item("pine cone", 5)) // Base sell price: 5g, not edible
 
     ;
     private final InventoryItem inventoryItem;
