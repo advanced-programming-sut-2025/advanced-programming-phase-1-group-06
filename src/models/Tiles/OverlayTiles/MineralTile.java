@@ -1,6 +1,8 @@
 package models.Tiles.OverlayTiles;
 
 import models.App;
+import models.Game.Coordinates;
+import models.Game.GameMap.GameMap;
 import models.PlantsAndForaging.Info.MineralsInfo;
 import models.Player.Player;
 import models.Tiles.Info.MineralTileInfo;
@@ -20,8 +22,9 @@ public class MineralTile extends OverlayTile {
 
     private final MineralsInfo mineralsInfo;
 
-    public MineralTile(MineralTileInfo mineralTileInfo) {
-        super(mineralTileInfo.getSymbol(), mineralTileInfo.getColor(), mineralTileInfo.getHardness() * 3, true);
+    public MineralTile(MineralTileInfo mineralTileInfo, GameMap gameMap, Coordinates coordinates) {
+        super(mineralTileInfo.getSymbol(), mineralTileInfo.getColor(), mineralTileInfo.getHardness() * 3, true,
+                gameMap, coordinates);
         mineralsInfo = mineralTileInfo.getMineralsInfo();
 
 
@@ -30,18 +33,20 @@ public class MineralTile extends OverlayTile {
     
     @Override
     public boolean useTool(Tool tool, Player player) {
-        Player currentPlayer = App.getCurrentPlayer();
-        if (tool instanceof Pickaxe){
-            durability -= ((Pickaxe) tool).getDamage();
-            if (durability == 0){
+        if (tool instanceof Pickaxe pickaxe){
+            hits -= pickaxe.getDamage();
+            if (hits <= 0){
+                player.getInventory().addItem(mineralsInfo.create());
+                //COMMENT: idk how you want to change the energy but i suggest you change it
                 this.destory();
             }
             return true;
         }else {
-            currentPlayer.setEnergy(currentPlayer.getEnergy() - currentPlayer.getCurrentTool().getEnergyCost());
+            player.setEnergy(player.getEnergy() - player.getCurrentTool().getEnergyCost()); //COMMENT: here too
             System.out.println("wrong tool");
+            return false;
         }
-        return false;
+
     }
 
     public void destory(){

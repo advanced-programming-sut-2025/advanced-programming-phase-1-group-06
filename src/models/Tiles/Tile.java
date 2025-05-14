@@ -1,5 +1,6 @@
 package models.Tiles;
 
+import models.Player.Player;
 import models.Tiles.OverlayTiles.OverlayTile;
 import models.enums.Color;
 import models.tools.Tool;
@@ -33,7 +34,7 @@ public abstract class Tile {
         return color;
     }
 
-    public abstract boolean useTool(Tool tool);
+    public abstract boolean useTool(Tool tool, Player player);
 
     public OverlayTile getOverlayTile() {
         return overlayTile;

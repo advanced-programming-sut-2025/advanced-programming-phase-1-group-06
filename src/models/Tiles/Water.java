@@ -1,7 +1,10 @@
 package models.Tiles;
 
+import models.Player.Player;
 import models.enums.Color;
+import models.tools.FishingRod;
 import models.tools.Tool;
+import models.tools.WateringCan;
 
 public class Water extends Tile{
     {
@@ -11,8 +14,20 @@ public class Water extends Tile{
     }
 
     @Override
-    public boolean useTool(Tool tool) {
-        return true;
+    public boolean useTool(Tool tool, Player player) {
+        switch (tool) {
+            case FishingRod fishingRod -> {
+                //catch da fish
+                return true;
+            }
+            case WateringCan wateringCan -> {
+                wateringCan.fill();
+                return true;
+            }
+            default -> {
+                return false;
+            }
+        }
     }
 
     public String showTile() {
