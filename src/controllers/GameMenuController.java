@@ -97,16 +97,4 @@ public class GameMenuController {
         return "balls";
     }
 
-    public String setWeatherCheat(Matcher matcher){
-        String wematcher.group("")
-        game.setWeather();
-    }
-
-    public String buildGreenHouse(){
-        return "";
-    }
-
-
-
-
 }

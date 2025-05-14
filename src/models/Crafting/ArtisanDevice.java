@@ -18,6 +18,13 @@ public class ArtisanDevice {
     private ArrayList<Recipe> recipes;
     private InventoryItem craftedItem;
 
+    public ArtisanDevice(ArtisanDeviceTypes type) {
+        this.recipes = new ArrayList<>(type.recipes);
+        this.status = false;
+        this.ready = false;
+        this.startTime = 0;
+    }
+    //  save
     public ArtisanDevice(long startTime, int craftingTime, boolean status, boolean ready, ArrayList<Recipe> recipes, InventoryItem craftedItem) {
         this.startTime = startTime;
         this.craftingTime = craftingTime;
@@ -37,16 +44,11 @@ public class ArtisanDevice {
     }
 
     public void craft(Recipe recipe, Player player) {
-        if (!ready || !recipes.contains(recipe)) {
+        if (!recipes.contains(recipe)) {
             return;
         }
 
-        // Check if player has all required ingredients
-        for (InventoryItem ingredient : recipe.getIngredients()) {
-            if (!player.getInventory().getItems().) {
-                return;
-            }
-        }
+        // TODO Check if player has all required ingredients
 
         // Remove ingredients from player's inventory
         for (InventoryItem ingredient : recipe.getIngredients()) {

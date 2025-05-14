@@ -17,6 +17,7 @@ public class Player {
     private int x, y;
     private int money;
     private Inventory inventory;
+    private Inventory inventory;
     private Skill skills;
     private double energy;
     private int mapNumber;

@@ -130,4 +130,6 @@ public enum Fish {
                 isLegendary ? ", Legendary" : ""
         );
     }
+
+
 }

@@ -20,6 +20,13 @@ public class Recipe {
         this.description = description;
     }
 
+    public Recipe(RecipeInfo recipeInfo){
+        ingredients = recipeInfo.getIngredients();
+        craftingTime = recipeInfo.getTime();
+        result = recipeInfo.getResult();
+        description = recipeInfo.getDescription();
+    }
+
     public ArrayList<InventoryItem> getIngredients() {
         return new ArrayList<>(ingredients);
     }

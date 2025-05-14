@@ -29,11 +29,7 @@ public class Item extends InventoryItem implements Edible, Sellable, Placeable {
         this.energy = energy;
         this.description = description;
         this.name = name;
-    }
-    public Item (String name, String description){
-        this.name = name;
-        this.description = description;
-    }
+        }
         /*
 // for sellable edible items
     public Item(int energy, int price){
@@ -52,6 +48,10 @@ public class Item extends InventoryItem implements Edible, Sellable, Placeable {
     }*/
 
     public Item(){}
+
+    public Item(String name){
+        this.name = name;
+    }
 
     @Override
     public void eat() {

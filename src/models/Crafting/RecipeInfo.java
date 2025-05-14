@@ -4,6 +4,8 @@ import models.ItemFaces.*;
 
 import java.util.ArrayList;
 public enum RecipeInfo {
+//    TODO add all the red items to the Itemfinder if they were animal products or fish add them to their own class else
+//     just create the Items in here create a new constructor and put the info there. e.g., name and id for all of them,  sellable -> price, edible -> energy,...
     // Honey Products
     HONEY(null, 4 * 24, 75, 350, "It's a sweet syrup produced by bees.", "honey"),
     // Dairy Products
@@ -65,43 +67,221 @@ public enum RecipeInfo {
     }}, 24, 13, 100, "All purpose cooking oil.", "sunflower_oil"),
 
     // Fruit Wines (using coefficient-based pricing)
-    APPLE_WINE(new ArrayList<InventoryItem>(){{
-        add(ItemFinder.APPLE.getInventoryItem());
-    }}, 7 * 24, 1.75, 0, 3.0, "Drink in moderation.", "apple_wine"),
+    APRICOT_WINE(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.APRICOT.getInventoryItem());
+    }}, 7 * 24, 1.75, 0, 3.0, "Drink in moderation.", "apricot_wine"),
+    CHERRY_WINE(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.CHERRY.getInventoryItem());
+    }}, 7 * 24, 1.75, 0, 3.0, "Drink in moderation.", "cherry_wine"),
     STRAWBERRY_WINE(new ArrayList<InventoryItem>(){{
         add(ItemFinder.STRAWBERRY.getInventoryItem());
     }}, 7 * 24, 1.75, 0, 3.0, "Drink in moderation.", "strawberry_wine"),
+
+    // Summer Fruit Wines
+    BANANA_WINE(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.BANANA.getInventoryItem());
+    }}, 7 * 24, 1.75, 0, 3.0, "Drink in moderation.", "banana_wine"),
     BLUEBERRY_WINE(new ArrayList<InventoryItem>(){{
         add(ItemFinder.BLUEBERRY.getInventoryItem());
     }}, 7 * 24, 1.75, 0, 3.0, "Drink in moderation.", "blueberry_wine"),
+    MANGO_WINE(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.MANGO.getInventoryItem());
+    }}, 7 * 24, 1.75, 0, 3.0, "Drink in moderation.", "mango_wine"),
+    MELON_WINE(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.MELON.getInventoryItem());
+    }}, 7 * 24, 1.75, 0, 3.0, "Drink in moderation.", "melon_wine"),
+    ORANGE_WINE(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.ORANGE.getInventoryItem());
+    }}, 7 * 24, 1.75, 0, 3.0, "Drink in moderation.", "orange_wine"),
+    PEACH_WINE(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.PEACH.getInventoryItem());
+    }}, 7 * 24, 1.75, 0, 3.0, "Drink in moderation.", "peach_wine"),
 
-    // Fruit Juices (using coefficient-based pricing)
-    APPLE_JUICE(new ArrayList<InventoryItem>(){{
+    // Fall Fruit Wines
+    APPLE_WINE(new ArrayList<InventoryItem>(){{
         add(ItemFinder.APPLE.getInventoryItem());
-    }}, 4 * 24, 2.0, 0, 2.25, "A sweet, nutritious beverage.", "apple_juice"),
+    }}, 7 * 24, 1.75, 0, 3.0, "Drink in moderation.", "apple_wine"),
+    CRANBERRY_WINE(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.CRANBERRIES.getInventoryItem());
+    }}, 7 * 24, 1.75, 0, 3.0, "Drink in moderation.", "cranberry_wine"),
+    GRAPE_WINE(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.GRAPE.getInventoryItem());
+    }}, 7 * 24, 1.75, 0, 3.0, "Drink in moderation.", "grape_wine"),
+    POMEGRANATE_WINE(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.POMEGRANATE.getInventoryItem());
+    }}, 7 * 24, 1.75, 0, 3.0, "Drink in moderation.", "pomegranate_wine"),
+
+    // Special Wines
+    ANCIENT_FRUIT_WINE(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.ANCIENT_FRUIT.getInventoryItem());
+    }}, 7 * 24, 1.75, 0, 3.0, "Drink in moderation.", "ancient_fruit_wine"),
+    // Fruit Juices (using coefficient-based pricing)
+    APRICOT_JUICE(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.APRICOT.getInventoryItem());
+    }}, 4 * 24, 2.0, 0, 2.25, "A sweet, nutritious beverage.", "apricot_juice"),
+    CHERRY_JUICE(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.CHERRY.getInventoryItem());
+    }}, 4 * 24, 2.0, 0, 2.25, "A sweet, nutritious beverage.", "cherry_juice"),
     STRAWBERRY_JUICE(new ArrayList<InventoryItem>(){{
         add(ItemFinder.STRAWBERRY.getInventoryItem());
     }}, 4 * 24, 2.0, 0, 2.25, "A sweet, nutritious beverage.", "strawberry_juice"),
+
+    // Summer Fruit Juices
+    BANANA_JUICE(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.BANANA.getInventoryItem());
+    }}, 4 * 24, 2.0, 0, 2.25, "A sweet, nutritious beverage.", "banana_juice"),
     BLUEBERRY_JUICE(new ArrayList<InventoryItem>(){{
         add(ItemFinder.BLUEBERRY.getInventoryItem());
     }}, 4 * 24, 2.0, 0, 2.25, "A sweet, nutritious beverage.", "blueberry_juice"),
+    MANGO_JUICE(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.MANGO.getInventoryItem());
+    }}, 4 * 24, 2.0, 0, 2.25, "A sweet, nutritious beverage.", "mango_juice"),
+    MELON_JUICE(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.MELON.getInventoryItem());
+    }}, 4 * 24, 2.0, 0, 2.25, "A sweet, nutritious beverage.", "melon_juice"),
+    ORANGE_JUICE(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.ORANGE.getInventoryItem());
+    }}, 4 * 24, 2.0, 0, 2.25, "A sweet, nutritious beverage.", "orange_juice"),
+    PEACH_JUICE(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.PEACH.getInventoryItem());
+    }}, 4 * 24, 2.0, 0, 2.25, "A sweet, nutritious beverage.", "peach_juice"),
 
+    // Fall Fruit Juices
+    APPLE_JUICE(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.APPLE.getInventoryItem());
+    }}, 4 * 24, 2.0, 0, 2.25, "A sweet, nutritious beverage.", "apple_juice"),
+    CRANBERRY_JUICE(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.CRANBERRIES.getInventoryItem());
+    }}, 4 * 24, 2.0, 0, 2.25, "A sweet, nutritious beverage.", "cranberry_juice"),
+    GRAPE_JUICE(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.GRAPE.getInventoryItem());
+    }}, 4 * 24, 2.0, 0, 2.25, "A sweet, nutritious beverage.", "grape_juice"),
+    POMEGRANATE_JUICE(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.POMEGRANATE.getInventoryItem());
+    }}, 4 * 24, 2.0, 0, 2.25, "A sweet, nutritious beverage.", "pomegranate_juice"),
     // Preserved Foods
+    PICKLED_ARTICHOKE(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.ARTICHOKE.getInventoryItem());
+    }}, 6, 1.75, 50, 2.0, "A jar of your home-made pickles.", "pickled_artichoke"),
+    PICKLED_BEET(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.BEET.getInventoryItem());
+    }}, 6, 1.75, 50, 2.0, "A jar of your home-made pickles.", "pickled_beet"),
+    PICKLED_BOK_CHOY(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.BOK_CHOY.getInventoryItem());
+    }}, 6, 1.75, 50, 2.0, "A jar of your home-made pickles.", "pickled_bok_choy"),
+    PICKLED_BROCCOLI(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.BROCCOLI.getInventoryItem());
+    }}, 6, 1.75, 50, 2.0, "A jar of your home-made pickles.", "pickled_broccoli"),
     PICKLED_CAULIFLOWER(new ArrayList<InventoryItem>(){{
         add(ItemFinder.CAULIFLOWER.getInventoryItem());
     }}, 6, 1.75, 50, 2.0, "A jar of your home-made pickles.", "pickled_cauliflower"),
+    PICKLED_CORN(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.CORN.getInventoryItem());
+    }}, 6, 1.75, 50, 2.0, "A jar of your home-made pickles.", "pickled_corn"),
+    PICKLED_EGGPLANT(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.EGGPLANT.getInventoryItem());
+    }}, 6, 1.75, 50, 2.0, "A jar of your home-made pickles.", "pickled_eggplant"),
+    PICKLED_GARLIC(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.GARLIC.getInventoryItem());
+    }}, 6, 1.75, 50, 2.0, "A jar of your home-made pickles.", "pickled_garlic"),
+    PICKLED_GREEN_BEAN(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.GREEN_BEAN.getInventoryItem());
+    }}, 6, 1.75, 50, 2.0, "A jar of your home-made pickles.", "pickled_green_bean"),
+    PICKLED_HOT_PEPPER(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.HOT_PEPPER.getInventoryItem());
+    }}, 6, 1.75, 50, 2.0, "A jar of your home-made pickles.", "pickled_hot_pepper"),
+    PICKLED_KALE(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.KALE.getInventoryItem());
+    }}, 6, 1.75, 50, 2.0, "A jar of your home-made pickles.", "pickled_kale"),
+    PICKLED_PARSNIP(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.PARSNIP.getInventoryItem());
+    }}, 6, 1.75, 50, 2.0, "A jar of your home-made pickles.", "pickled_parsnip"),
     PICKLED_POTATO(new ArrayList<InventoryItem>(){{
         add(ItemFinder.POTATO.getInventoryItem());
     }}, 6, 1.75, 50, 2.0, "A jar of your home-made pickles.", "pickled_potato"),
+    PICKLED_PUMPKIN(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.PUMPKIN.getInventoryItem());
+    }}, 6, 1.75, 50, 2.0, "A jar of your home-made pickles.", "pickled_pumpkin"),
+    PICKLED_RADISH(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.RADISH.getInventoryItem());
+    }}, 6, 1.75, 50, 2.0, "A jar of your home-made pickles.", "pickled_radish"),
+    PICKLED_RED_CABBAGE(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.RED_CABBAGE.getInventoryItem());
+    }}, 6, 1.75, 50, 2.0, "A jar of your home-made pickles.", "pickled_red_cabbage"),
+    PICKLED_TOMATO(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.TOMATO.getInventoryItem());
+    }}, 6, 1.75, 50, 2.0, "A jar of your home-made pickles.", "pickled_tomato"),
+    PICKLED_YAM(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.YAM.getInventoryItem());
+    }}, 6, 1.75, 50, 2.0, "A jar of your home-made pickles.", "pickled_yam"),
 
     // Jellies (using coefficient-based pricing)
-    APPLE_JELLY(new ArrayList<InventoryItem>(){{
-        add(ItemFinder.APPLE.getInventoryItem());
-    }}, 3 * 24, 2.0, 50, 2.0, "Gooey.", "apple_jelly"),
+    APRICOT_JELLY(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.APRICOT.getInventoryItem());
+    }}, 3 * 24, 2.0, 50, 2.0, "Gooey.", "apricot_jelly"),
+
+    CHERRY_JELLY(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.CHERRY.getInventoryItem());
+    }}, 3 * 24, 2.0, 50, 2.0, "Gooey.", "cherry_jelly"),
+
     STRAWBERRY_JELLY(new ArrayList<InventoryItem>(){{
         add(ItemFinder.STRAWBERRY.getInventoryItem());
     }}, 3 * 24, 2.0, 50, 2.0, "Gooey.", "strawberry_jelly"),
 
+    // Summer Fruit Jellies
+    BANANA_JELLY(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.BANANA.getInventoryItem());
+    }}, 3 * 24, 2.0, 50, 2.0, "Gooey.", "banana_jelly"),
+
+    BLUEBERRY_JELLY(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.BLUEBERRY.getInventoryItem());
+    }}, 3 * 24, 2.0, 50, 2.0, "Gooey.", "blueberry_jelly"),
+
+    MANGO_JELLY(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.MANGO.getInventoryItem());
+    }}, 3 * 24, 2.0, 50, 2.0, "Gooey.", "mango_jelly"),
+
+    MELON_JELLY(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.MELON.getInventoryItem());
+    }}, 3 * 24, 2.0, 50, 2.0, "Gooey.", "melon_jelly"),
+
+    ORANGE_JELLY(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.ORANGE.getInventoryItem());
+    }}, 3 * 24, 2.0, 50, 2.0, "Gooey.", "orange_jelly"),
+
+    PEACH_JELLY(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.PEACH.getInventoryItem());
+    }}, 3 * 24, 2.0, 50, 2.0, "Gooey.", "peach_jelly"),
+
+    // Fall Fruit Jellies
+    APPLE_JELLY(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.APPLE.getInventoryItem());
+    }}, 3 * 24, 2.0, 50, 2.0, "Gooey.", "apple_jelly"),
+
+    CRANBERRY_JELLY(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.CRANBERRIES.getInventoryItem());
+    }}, 3 * 24, 2.0, 50, 2.0, "Gooey.", "cranberry_jelly"),
+
+    GRAPE_JELLY(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.GRAPE.getInventoryItem());
+    }}, 3 * 24, 2.0, 50, 2.0, "Gooey.", "grape_jelly"),
+
+    POMEGRANATE_JELLY(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.POMEGRANATE.getInventoryItem());
+    }}, 3 * 24, 2.0, 50, 2.0, "Gooey.", "pomegranate_jelly"),
+
+    // Special Fruit Jellies
+    ANCIENT_FRUIT_JELLY(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.ANCIENT_FRUIT.getInventoryItem());
+    }}, 3 * 24, 2.0, 50, 2.0, "Gooey.", "ancient_fruit_jelly"),
+
+    SWEET_GEM_BERRY_JELLY(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.SWEET_GEM_BERRY.getInventoryItem());
+    }}, 3 * 24, 2.0, 50, 2.0, "Gooey.", "sweet_gem_berry_jelly"),
+
+    POWDERMELON_JELLY(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.POWDERMELON.getInventoryItem());
+    }}, 3 * 24, 2.0, 50, 2.0, "Gooey.", "powdermelon_jelly"),
     // Dried Products
     DRIED_MOREL(new ArrayList<InventoryItem>(){{
         add(ItemFinder.MOREL.getInventoryItem());
@@ -116,7 +296,7 @@ public enum RecipeInfo {
         add(ItemFinder.GRAPE.getInventoryItem());
     }}, 24, 125, 600, "It's said to be the Junimos' favorite food.", "raisins"),
 
-    // Smoked Fish (using coefficient-based pricing)
+    // Smoked Fish
     SMOKED_FLOUNDER(new ArrayList<InventoryItem>(){{
         add(ItemFinder.FLOUNDER.getInventoryItem());
         add(ItemFinder.COAL.getInventoryItem());
@@ -137,7 +317,6 @@ public enum RecipeInfo {
         add(ItemFinder.COAL.getInventoryItem());
     }}, 1, 1.5, 0, 2.0, "A whole fish, smoked to perfection.", "smoked_ghostfish"),
 
-    // Regular Fish - Summer (تابستان)
     SMOKED_TILAPIA(new ArrayList<InventoryItem>(){{
         add(ItemFinder.TILAPIA.getInventoryItem());
         add(ItemFinder.COAL.getInventoryItem());
@@ -158,7 +337,6 @@ public enum RecipeInfo {
         add(ItemFinder.COAL.getInventoryItem());
     }}, 1, 1.5, 0, 2.0, "A whole fish, smoked to perfection.", "smoked_rainbow_trout"),
 
-    // Regular Fish - Fall (پاییز)
     SMOKED_SALMON(new ArrayList<InventoryItem>(){{
         add(ItemFinder.SALMON.getInventoryItem());
         add(ItemFinder.COAL.getInventoryItem());
@@ -179,7 +357,6 @@ public enum RecipeInfo {
         add(ItemFinder.COAL.getInventoryItem());
     }}, 1, 1.5, 0, 2.0, "A whole fish, smoked to perfection.", "smoked_blue_discus"),
 
-    // Regular Fish - Winter (زمستان)
     SMOKED_MIDNIGHT_CARP(new ArrayList<InventoryItem>(){{
         add(ItemFinder.MIDNIGHT_CARP.getInventoryItem());
         add(ItemFinder.COAL.getInventoryItem());
@@ -222,18 +399,20 @@ public enum RecipeInfo {
     }}, 1, 1.5, 0, 2.0, "A legendary fish, smoked to perfection.", "smoked_crimsonfish"),
 
     // Artisan Goods (Inedible)
-    CLOTH(0, 470),
-    COAL(0, 50),
-    COPPER_BAR(0, 10 * 15),  // 15g is base copper ore price
-    IRON_BAR(0, 10 * 75),    // 75g is base iron ore price
-    GOLD_BAR(0, 10 * 150),   // 150g is base gold ore price
-    IRIDIUM_BAR(0, 10 * 300); // 300g is base iridium ore price
+    CLOTH(0, 470, "cloth", "A bolt of fine wool cloth."),
+    COAL(0, 50, "coal", "Turns 10 pieces of wood into one piece of coal."),
+    COPPER_BAR(0, 10 * 15, "copper bar", "Turns ore and coal into metal bars."),  // 15g is base copper ore price
+    IRON_BAR(0, 10 * 75, "iron bar", "Turns ore and coal into metal bars."),    // 75g is base iron ore price
+    GOLD_BAR(0, 10 * 150, "gold bar", "Turns ore and coal into metal bars."),   // 150g is base gold ore price
+    IRIDIUM_BAR(0, 10 * 300, "iridium bar", "Turns ore and coal into metal bars."); // 300g is base iridium ore price
 
     private ArrayList<InventoryItem> ingredients;
-    private Item craftedItem;
+    private Item result;
     private int energy;
     private int time; // in hours
     private int price;
+    private String description;
+    private String resultName;
 
     // Constructor for standard items
     RecipeInfo(ArrayList<InventoryItem> ingredients, int time, int energy, int price, String description, String name){
@@ -249,14 +428,16 @@ public enum RecipeInfo {
         if (energy != 0){
             item.setEnergy(energy);
         }
-        craftedItem = item;
+        this.result = item;
+        this.resultName = name;
+        this.description = description;
     }
 
     // Constructor for coefficient-based items
     RecipeInfo(ArrayList<InventoryItem> ingredients, int time, double energyCoefficient, int basePrice, double priceCoefficient, String description, String name){
         this.ingredients = ingredients;
         this.time = time;
-        Item item = new Item();
+        Item item = new Item(name);
         if (energyCoefficient != 0) {
             this.energy = (int) (((Edible) ingredients.getFirst()).getEnergy() * energyCoefficient);
             ((Edible)item).setEnergy(energy);
@@ -267,12 +448,15 @@ public enum RecipeInfo {
             ((Sellable)item).setPrice(price);
             item.setPrice(price);
         }
-        this.craftedItem = item;
+        this.result = item;
+        this.resultName = name;
+        this.description = description;
+
     }
 
     // Constructor for inedible items (only price)
-    RecipeInfo(int energy, int price) {
-        Item item = new Item();
+    RecipeInfo(int energy, int price, String name, String description) {
+        Item item = new Item(name);
         this.energy = energy;
         this.price = price;
         if (price != 0) {
@@ -282,10 +466,36 @@ public enum RecipeInfo {
         if (energy != 0) {
             item.setEnergy(energy);
         }
-        craftedItem = item;
+        result = item;
+        this.resultName = name;
+        this.description = description;
     }
 
-    public Item getCraftedItem() {
-        return craftedItem;
+    public Item getResult() {
+        return result;
+    }
+
+    public ArrayList<InventoryItem> getIngredients() {
+        return ingredients;
+    }
+
+    public int getEnergy() {
+        return energy;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public String getDescription(){
+        return description;
+    }
+
+    public Recipe getRecipe(){
+        return new Recipe(this);
     }
 }
