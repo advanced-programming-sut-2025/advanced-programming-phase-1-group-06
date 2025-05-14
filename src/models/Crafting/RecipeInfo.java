@@ -289,12 +289,72 @@ public enum RecipeInfo {
     DRIED_CHANTERELLE(new ArrayList<InventoryItem>(){{
         add(ItemFinder.CHANTERELLE.getInventoryItem());
     }}, 24, 50, 25, 7.5, "A package of gourmet mushrooms.", "dried_chanterelle"),
+    // Spring Fruit Dried Products
+    DRIED_APRICOT(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.APRICOT.getInventoryItem());
+    }}, 24, 75, 25, 7.5, "Chewy pieces of dried fruit.", "dried_apricot"),
+
+    DRIED_CHERRY(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.CHERRY.getInventoryItem());
+    }}, 24, 75, 25, 7.5, "Chewy pieces of dried fruit.", "dried_cherry"),
+
+    DRIED_STRAWBERRY(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.STRAWBERRY.getInventoryItem());
+    }}, 24, 75, 25, 7.5, "Chewy pieces of dried fruit.", "dried_strawberry"),
+
+    // Summer Fruit Dried Products
+    DRIED_BANANA(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.BANANA.getInventoryItem());
+    }}, 24, 75, 25, 7.5, "Chewy pieces of dried fruit.", "dried_banana"),
+
+    DRIED_BLUEBERRY(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.BLUEBERRY.getInventoryItem());
+    }}, 24, 75, 25, 7.5, "Chewy pieces of dried fruit.", "dried_blueberry"),
+
+    DRIED_MANGO(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.MANGO.getInventoryItem());
+    }}, 24, 75, 25, 7.5, "Chewy pieces of dried fruit.", "dried_mango"),
+
+    DRIED_MELON(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.MELON.getInventoryItem());
+    }}, 24, 75, 25, 7.5, "Chewy pieces of dried fruit.", "dried_melon"),
+
+    DRIED_ORANGE(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.ORANGE.getInventoryItem());
+    }}, 24, 75, 25, 7.5, "Chewy pieces of dried fruit.", "dried_orange"),
+
+    DRIED_PEACH(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.PEACH.getInventoryItem());
+    }}, 24, 75, 25, 7.5, "Chewy pieces of dried fruit.", "dried_peach"),
+
+    // Fall Fruit Dried Products
     DRIED_APPLE(new ArrayList<InventoryItem>(){{
         add(ItemFinder.APPLE.getInventoryItem());
     }}, 24, 75, 25, 7.5, "Chewy pieces of dried fruit.", "dried_apple"),
     RAISINS(new ArrayList<InventoryItem>(){{
         add(ItemFinder.GRAPE.getInventoryItem());
     }}, 24, 125, 600, "It's said to be the Junimos' favorite food.", "raisins"),
+
+    DRIED_CRANBERRY(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.CRANBERRIES.getInventoryItem());
+    }}, 24, 75, 25, 7.5, "Chewy pieces of dried fruit.", "dried_cranberry"),
+
+    DRIED_POMEGRANATE(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.POMEGRANATE.getInventoryItem());
+    }}, 24, 75, 25, 7.5, "Chewy pieces of dried fruit.", "dried_pomegranate"),
+
+    // Special Fruit Dried Products
+    DRIED_ANCIENT_FRUIT(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.ANCIENT_FRUIT.getInventoryItem());
+    }}, 24, 75, 25, 7.5, "Chewy pieces of dried fruit.", "dried_ancient_fruit"),
+
+    DRIED_SWEET_GEM_BERRY(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.SWEET_GEM_BERRY.getInventoryItem());
+    }}, 24, 75, 25, 7.5, "Chewy pieces of dried fruit.", "dried_sweet_gem_berry"),
+
+    DRIED_POWDERMELON(new ArrayList<InventoryItem>(){{
+        add(ItemFinder.POWDERMELON.getInventoryItem());
+    }}, 24, 75, 25, 7.5, "Chewy pieces of dried fruit.", "dried_powdermelon"),
 
     // Smoked Fish
     SMOKED_FLOUNDER(new ArrayList<InventoryItem>(){{
