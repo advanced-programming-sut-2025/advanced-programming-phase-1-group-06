@@ -63,7 +63,7 @@ public class ArtisanDevice {
         // Start crafting process
         startTime = App.getPreciseTime();
         craftingTime = recipe.getCraftingTime();
-        status = false;
+        status = true;
         ready = false;
         craftedItem = recipe.getResult();
     }
@@ -73,7 +73,7 @@ public class ArtisanDevice {
         if (remainingTime > 0) {
             return (int) remainingTime;
         }
-        status = true;
+        status = false;
         ready = true;
         return 0;
     }
