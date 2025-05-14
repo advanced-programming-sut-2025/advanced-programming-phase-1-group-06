@@ -50,6 +50,16 @@ public class Crop extends InventoryItem implements Edible, Sellable {
     }
 
     @Override
+    public int getEnergy() {
+        return energyIncrease;
+    }
+
+    @Override
+    public void setEnergy(int energy) {
+
+    }
+
+    @Override
     public int getAmount() {
         return 0;
     }
@@ -67,5 +77,10 @@ public class Crop extends InventoryItem implements Edible, Sellable {
     @Override
     public int getPrice() {
         return 0;
+    }
+
+    @Override
+    public void setPrice(int price) {
+
     }
 }

@@ -3,6 +3,7 @@ package models.tools;
 import models.App;
 import models.Game.Coordinates;
 import models.ItemFaces.InventoryItem;
+import models.Player.Player;
 
 public abstract class Tool extends InventoryItem {
     String name;
@@ -45,8 +46,8 @@ public abstract class Tool extends InventoryItem {
         return 1;
     }
 
-    public void use(Coordinates coordinates){
-        if (App.getTile(coordinates).useTool(this)){
+    public void use(Coordinates coordinates, Player player){
+        if (App.getTile(coordinates, player).useTool(this)){
             App.getCurrentPlayer().dimnishEnergy(getEnergyCost());
         } else
             App.getCurrentPlayer().dimnishEnergy(getEnergyCost() - 1);

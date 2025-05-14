@@ -1,7 +1,5 @@
 package models.PlantsAndForaging.Info;
 
-import models.PlantsAndForaging.Item;
-
 public enum TreeProductInfo {
     // Spring Fruits
     APRICOT(59, true, 38),
@@ -33,9 +31,5 @@ public enum TreeProductInfo {
         this.sellPrice = sellPrice;
         this.isEdible = isEdible;
         this.energyIncrease = energyIncrease;
-    }
-
-    public Item create() {
-
     }
 }

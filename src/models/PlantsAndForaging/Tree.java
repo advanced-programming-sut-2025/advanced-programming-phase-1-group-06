@@ -1,29 +1,45 @@
 package models.PlantsAndForaging;
 
 
-import models.Game.Coordinates;
-import models.Game.GameMap.GameMap;
+import models.App;
 import models.PlantsAndForaging.Info.TreeProductInfo;
 import models.PlantsAndForaging.Info.TreeSeedInfo;
 import models.Player.Player;
 import models.Tiles.OverlayTiles.OverlayTile;
 import models.enums.Color;
-import models.tools.Axe;
-import models.tools.Scythe;
 import models.tools.Tool;
 
 public class Tree extends OverlayTile implements Growable {
+    { //for overlay
+        isBlocked = true;
+        hits = 15;
+        symbol = 'T';
+        color = Color.GREEN_TEXT.getColorCode();
+    }
+
     private int regrowthTime;
     private boolean oneTime;
-    private final TreeSeedInfo treeSeedInfo;
-    private final String seasons;
-    private final String growingStagesString;
-    private final int[] growingStages;
-    private final int daysSincePlanting;
-    private final TreeProductInfo product;
+    private boolean status;
+    private int growthTime;
+    private long startTime;
+    private TreeSeedInfo treeSeedInfo;
+    private String seasons;
+    private String growingStagesString;
+    private int[] growingStages;
+    private int daysSincePlanting;
+    private TreeProductInfo product;
 
-    public Tree(TreeSeedInfo treeSeedInfo, GameMap gameMap, Coordinates coordinates) {
-        super('T', Color.GREEN_TEXT.getColorCode(), 15, true, gameMap, coordinates);
+
+    public int getDaysSincePlanting() {
+        return daysSincePlanting;
+    }
+
+    public TreeSeedInfo getTreeSeedInfo() {
+        return treeSeedInfo;
+    }
+
+    public Tree(TreeSeedInfo treeSeedInfo) {
+        super('T', Color.GREEN_TEXT.getColorCode(), 15, true);
         this.treeSeedInfo = treeSeedInfo;
         this.seasons = treeSeedInfo.getSeasons();
         this.growingStagesString = treeSeedInfo.getGrowingStages();
@@ -35,8 +51,9 @@ public class Tree extends OverlayTile implements Growable {
         daysSincePlanting = 0;
         product = treeSeedInfo.getProductInfo();
     }
-    public Tree(TreeSeedInfo treeSeedInfo, int daysSincePlanting, GameMap gameMap, Coordinates coordinates) {
-        super('T', Color.GREEN_TEXT.getColorCode(), 15, true, gameMap, coordinates);
+
+    public Tree (TreeSeedInfo treeSeedInfo, int daysSincePlanting) {
+        super('T', Color.GREEN_TEXT.getColorCode(), 15, true);
         this.treeSeedInfo = treeSeedInfo;
         this.seasons = treeSeedInfo.getSeasons();
         this.growingStagesString = treeSeedInfo.getGrowingStages();
@@ -49,31 +66,17 @@ public class Tree extends OverlayTile implements Growable {
         product = treeSeedInfo.getProductInfo();
     }
 
-    public int getDaysSincePlanting() {
-        return daysSincePlanting;
-    }
-
-    public TreeSeedInfo getTreeSeedInfo() {
-        return treeSeedInfo;
-    }
-
     public void chop() {
     }
+    @Override
+    public void grow(){
+
+    }
 
     @Override
-    public void grow() {
+    public void harvest() {
 
     }
-
-    @Override
-    public boolean harvest(Player player) {
-
-    }
-
-    public void registerHit(Axe axe, Player player) {
-
-    }
-
 
     @Override
     public String getType() {
@@ -87,15 +90,17 @@ public class Tree extends OverlayTile implements Growable {
 
     @Override
     public boolean useTool(Tool tool, Player player) {
-        return switch (tool) {
-            case Scythe scythe -> harvest(player); //this one harvests only product not the wood
-            case Axe axe -> {
-                registerHit(axe, player);
-                yield true;
-            }
+//        TODO
+        return true;
+    }
 
-            default -> false;
-        };
+    @Override
+    public int handleTime(long Day){
+        long remainingTime = growthTime - (App.getPreciseDay() - startTime);
+        if (remainingTime > 0)
+            return (int) remainingTime;
+        status = true;
+        return 0;
     }
 }
 

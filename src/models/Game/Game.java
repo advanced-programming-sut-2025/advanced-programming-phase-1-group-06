@@ -2,6 +2,7 @@ package models.Game;
 
 import models.Crafting.ArtisanDevice;
 import models.Game.GameMap.GameMap;
+import models.ItemFaces.InventoryItem;
 import models.PlantsAndForaging.Growable;
 import models.Player.Player;
 import models.Tiles.OverlayTiles.OverlayTile;
@@ -19,6 +20,10 @@ public class Game {
     private DateTime dateTime;
     private Player currentPlayer;
     private int currentTurn;
+    private static ArrayList<String> vegtables = new ArrayList<>(){{
+        add("");
+        add("");
+    }};
 
 
 
@@ -49,6 +54,10 @@ public class Game {
 
     public void setWeather(Weather weather) {
         this.weather = weather;
+    }
+
+    public void setWeatherForTomorrow(Weather weather){
+        this.weather2 = weather;
     }
 
     public ArrayList<Player> getPlayers() {

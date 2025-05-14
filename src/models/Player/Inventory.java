@@ -34,17 +34,30 @@ public class Inventory {
         this.level = level;
     }
 
-    public String addItem(InventoryItem item) {
+    public void addItem(InventoryItem item) {
+        for (InventoryItem inventoryItem : items){
+            if (item.getId() == inventoryItem.getId()){
+                inventoryItem.setAmount(inventoryItem.getAmount() + item.getAmount());
+                return;
+            }
+        }
         int capacity = getCapacity();
         if (capacity - items.size() < 1)
-            return "not enough inventory space";
+            System.out.println("not enough inventory space");
         items.add(item);
-        return null;
     }
 
-    public void removeItem(InventoryItem item) {
-
-        items.remove(item);
+    public void removeItem(InventoryItem item, int amount) {
+        if (!(items.contains(item)))
+            return;
+        if (item.getAmount() < amount)
+            return;
+        if (item.getAmount() == amount){
+            items.remove(item);
+            return;
+        }
+        if (item.getAmount() > amount)
+            item.setAmount(item.getAmount() - amount);
     }
 
     public int getCapacity(){

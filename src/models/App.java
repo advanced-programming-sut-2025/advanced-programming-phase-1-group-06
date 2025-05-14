@@ -6,7 +6,6 @@ import models.Game.GameMap.GameMap;
 import models.Player.Player;
 import models.Tiles.Tile;
 import models.enums.Menu;
-import models.tools.Tool;
 
 import java.util.ArrayList;
 
@@ -26,24 +25,28 @@ public class App {
         return game.getCurrentPlayer();
     }
 
-    public static Tool currentTool(){
-        return getCurrentPlayer().getCurrentTool();
+    public static GameMap getCurrentMap(Player player){
+        return player.getCurrentMap();
     }
 
-    public static GameMap getCurrentMap(){
-        return getCurrentPlayer().getCurrentMap();
+    public static Tile getTile(Coordinates coordinates, Player player){
+        return player.getCurrentMap().getTileAt(coordinates);
     }
 
-    public static Tile getTile(Coordinates coordinates){
-        return getCurrentMap().getTileAt(coordinates);
-    }
-
-    public static Tile getTile(int x, int y){
-        return getCurrentMap().getTileAt(x, y);
+    public static Tile getTile(int x, int y, Player player){
+        return getCurrentMap(player).getTileAt(x, y);
     }
 
     public static void setUsers(ArrayList<User> users) {
         App.users = users;
+    }
+
+    public static long getPreciseTime(){
+        return game.getDateTime().getPreciseTime();
+    }
+
+    public static long getPreciseDay(){
+        return game.getDateTime().getPreciseDay();
     }
 
     public static User getLoggedInUser() {

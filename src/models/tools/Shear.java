@@ -1,6 +1,7 @@
 package models.tools;
 
 import models.Game.Coordinates;
+import models.Player.Player;
 
 public class Shear extends Tool{
 
@@ -9,7 +10,7 @@ public class Shear extends Tool{
     }
 
     @Override
-    public void use(Coordinates coordinates) {
+    public void use(Coordinates coordinates, Player player) {
 //        TODO
     }
 
