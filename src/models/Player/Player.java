@@ -10,6 +10,7 @@ import models.ItemFaces.InventoryItem;
 import models.tools.Tool;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Player {
     private User user;
@@ -213,5 +214,10 @@ public class Player {
     public GameMap getGameMap() {
         return currentMap;
     }
+
+    public ArrayList<ArtisanDevice> getArtisanDevices() {
+        return artisanDevices;
+    }
+
 }
 
