@@ -7,24 +7,24 @@ import java.util.ArrayList;
  * Last updated by: hassanp30
  * Last updated at: 2025-05-13 12:44:07 UTC
  */
-public class Recipe {
+public class ArtisanRecipe {
     private final ArrayList<InventoryItem> ingredients;
     private final InventoryItem result;
     private final int craftingTime;  // in hours
     private final String description;
 
-    public Recipe(ArrayList<InventoryItem> ingredients, InventoryItem result, int craftingTime, String description) {
+    public ArtisanRecipe(ArrayList<InventoryItem> ingredients, InventoryItem result, int craftingTime, String description) {
         this.ingredients = ingredients;
         this.result = result;
         this.craftingTime = craftingTime;
         this.description = description;
     }
 
-    public Recipe(RecipeInfo recipeInfo){
-        ingredients = recipeInfo.getIngredients();
-        craftingTime = recipeInfo.getTime();
-        result = recipeInfo.getResult();
-        description = recipeInfo.getDescription();
+    public ArtisanRecipe(ArtisanRecipeInfo artisanRecipeInfo){
+        ingredients = artisanRecipeInfo.getIngredients();
+        craftingTime = artisanRecipeInfo.getTime();
+        result = artisanRecipeInfo.getResult();
+        description = artisanRecipeInfo.getDescription();
     }
 
     public ArrayList<InventoryItem> getIngredients() {

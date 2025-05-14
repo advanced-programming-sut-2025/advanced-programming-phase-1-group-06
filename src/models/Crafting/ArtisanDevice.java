@@ -15,27 +15,27 @@ public class ArtisanDevice {
     private int craftingTime;
     private boolean status;
     private boolean ready;
-    private ArrayList<Recipe> recipes;
+    private ArrayList<ArtisanRecipe> artisanRecipes;
     private InventoryItem craftedItem;
 
     public ArtisanDevice(ArtisanDeviceTypes type) {
-        this.recipes = new ArrayList<>(type.recipes);
+        this.artisanRecipes = new ArrayList<>(type.artisanRecipes);
         this.status = false;
         this.ready = false;
         this.startTime = 0;
     }
     //  save
-    public ArtisanDevice(long startTime, int craftingTime, boolean status, boolean ready, ArrayList<Recipe> recipes, InventoryItem craftedItem) {
+    public ArtisanDevice(long startTime, int craftingTime, boolean status, boolean ready, ArrayList<ArtisanRecipe> artisanRecipes, InventoryItem craftedItem) {
         this.startTime = startTime;
         this.craftingTime = craftingTime;
         this.status = status;
         this.ready = ready;
-        this.recipes = new ArrayList<>(recipes);
+        this.artisanRecipes = new ArrayList<>(artisanRecipes);
         this.craftedItem = craftedItem;
     }
 
-    public ArtisanDevice(ArrayList<Recipe> recipes, InventoryItem craftedItem) {
-        this.recipes = new ArrayList<>(recipes);
+    public ArtisanDevice(ArrayList<ArtisanRecipe> artisanRecipes, InventoryItem craftedItem) {
+        this.artisanRecipes = new ArrayList<>(artisanRecipes);
         this.craftedItem = craftedItem;
         this.status = false;
         this.ready = true;
@@ -43,24 +43,29 @@ public class ArtisanDevice {
         this.craftingTime = 0;
     }
 
-    public void craft(Recipe recipe, Player player) {
-        if (!recipes.contains(recipe)) {
+    public void craft(ArtisanRecipe artisanRecipe, Player player) {
+        if (!artisanRecipes.contains(artisanRecipe)) {
             return;
         }
 
-        // TODO Check if player has all required ingredients
+        for (InventoryItem item : artisanRecipe.getIngredients()) {
+            if (!(player.getInventory().checkExistense(item.getId(), item.getAmount()))){
+                System.out.println("insufficient materials");
+                return;
+            }
+        }
 
         // Remove ingredients from player's inventory
-        for (InventoryItem ingredient : recipe.getIngredients()) {
-            player.getInventory().removeItem(ingredient, ingredient.getAmount());
+        for (InventoryItem ingredient : artisanRecipe.getIngredients()) {
+            player.getInventory().removeItem(player.getInventory().getItemById(ingredient.getId()), ingredient.getAmount());
         }
 
         // Start crafting process
         startTime = App.getPreciseTime();
-        craftingTime = recipe.getCraftingTime();
-        status = false;
+        craftingTime = artisanRecipe.getCraftingTime();
+        status = true;
         ready = false;
-        craftedItem = recipe.getResult();
+        craftedItem = artisanRecipe.getResult();
     }
 
     public int handleTime() {
@@ -68,7 +73,7 @@ public class ArtisanDevice {
         if (remainingTime > 0) {
             return (int) remainingTime;
         }
-        status = true;
+        status = false;
         ready = true;
         return 0;
     }
@@ -85,7 +90,7 @@ public class ArtisanDevice {
         return craftedItem;
     }
 
-    public ArrayList<Recipe> getRecipes() {
-        return new ArrayList<>(recipes);
+    public ArrayList<ArtisanRecipe> getRecipes() {
+        return new ArrayList<>(artisanRecipes);
     }
 }

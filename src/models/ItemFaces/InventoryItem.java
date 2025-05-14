@@ -18,7 +18,7 @@ public abstract class InventoryItem {
         this.id = id;
     }
     public int getId(){
-        return id;
+        return ItemFinder.getIdByItem(this);
     }
     public int getAmount(){
         return amount;
@@ -28,5 +28,15 @@ public abstract class InventoryItem {
     }
     public String getName(){
         return name;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        InventoryItem other = (InventoryItem) obj;
+        // Compare only by name, ignoring amount
+        return getName().equals(other.getName());
     }
 }

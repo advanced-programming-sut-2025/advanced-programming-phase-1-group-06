@@ -1,9 +1,11 @@
 package models.Player;
 
 import models.*;
+import models.Crafting.ArtisanDevice;
+import models.Crafting.CraftingRecipe;
 import models.Game.Coordinates;
 import models.Game.GameMap.GameMap;
-import models.Game.Recipe;
+import models.Crafting.Recipe;
 import models.ItemFaces.InventoryItem;
 import models.tools.Tool;
 
@@ -17,10 +19,13 @@ public class Player {
     private int x, y;
     private int money;
     private Inventory inventory;
+    private Inventory inventory;
     private Skill skills;
     private double energy;
     private int mapNumber;
     private String currentBuilding;
+    private ArrayList<ArtisanDevice> artisanDevices;
+    private ArrayList<CraftingRecipe> unlockedCraftingRecipes;
 
     public int getMoney() {
         return money;
@@ -118,6 +123,8 @@ public class Player {
         this.craftableItems = craftableItems;
         this.trashcan = trashcan;
         this.mapNumber = mapNumber;
+        this.artisanDevices = artisanDevices;
+        this.unlockedCraftingRecipes = unlockedCraftingRecipes;
     }
 
     public Player(User user, int mapNumber){
@@ -132,6 +139,8 @@ public class Player {
         isPassedOut = false;
         skills = new Skill();
         currentBuilding = "none";
+        artisanDevices = new ArrayList<>();
+        unlockedCraftingRecipes = new ArrayList<>();
     }
 
 
@@ -163,7 +172,7 @@ public class Player {
     }
 
     public void useCurrentTool(int x, int y) {
-        currentTool.use(new Coordinates(x, y));
+        currentTool.use(new Coordinates(x, y), this);
     }
 
     public void sell(InventoryItem item) {
