@@ -2,6 +2,8 @@ package models.ItemFaces;
 
 import models.Crafting.RecipeInfo;
 import models.PlantsAndForaging.Info.*;
+import models.tools.Tool;
+import models.tools.ToolType;
 
 /**
  * Last updated by: hassanp30
@@ -311,6 +313,14 @@ public enum ItemFinder {
     GOLD_BAR(RecipeInfo.GOLD_BAR.getResult()),
     IRIDIUM_BAR(RecipeInfo.IRIDIUM_BAR.getResult()),
 
+    // tools
+    HOE(ToolType.HOE.getTool()),
+    PICKAXE(ToolType.PICKAXE.getTool()),
+    AXE(ToolType.AXE.getTool()),
+    WATERINGCAN(ToolType.WATERING_CAN.getTool()),
+    SCYTHE(ToolType.SCYTHE.getTool()),
+    SCISSORS(ToolType.SCISSORS.getTool()),
+
     ;
     private final InventoryItem inventoryItem;
     private final Item item;
@@ -375,5 +385,37 @@ public enum ItemFinder {
     public static int getCurrentMaxId() {
         return values().length;
     }
+
+    /**
+     * Finds the ID of an InventoryItem by searching through the enum
+     * @param searchItem The InventoryItem to search for
+     * @return The ID of the item if found, -1 if not found
+     */
+    public static int getIdByItem(InventoryItem searchItem) {
+        if (searchItem == null) return -1;
+
+        for (ItemFinder item : values()) {
+            if (item.getInventoryItem() != null &&
+                    item.getInventoryItem().equals(searchItem)) {
+                return item.getId();
+            }
+            // Also check if it's an Item type
+            if (item.getItem() != null &&
+                    item.getItem().equals(searchItem)) {
+                return item.getId();
+            }
+        }
+        return -1;  // Return -1 if item not found
+    }
+
+    /**
+     * Checks if an InventoryItem exists in the enum
+     * @param searchItem The InventoryItem to search for
+     * @return true if the item exists, false otherwise
+     */
+    public static boolean containsItem(InventoryItem searchItem) {
+        return getIdByItem(searchItem) != -1;
+    }
+
 
 }

@@ -48,11 +48,16 @@ public class ArtisanDevice {
             return;
         }
 
-        // TODO Check if player has all required ingredients
+        for (InventoryItem item : recipe.getIngredients()) {
+            if (!(player.getInventory().checkExistense(item.getId(), item.getAmount()))){
+                System.out.println("insufficient materials");
+                return;
+            }
+        }
 
         // Remove ingredients from player's inventory
         for (InventoryItem ingredient : recipe.getIngredients()) {
-            player.getInventory().removeItem(ingredient, ingredient.getAmount());
+            player.getInventory().removeItem(player.getInventory().getItemById(ingredient.getId()), ingredient.getAmount());
         }
 
         // Start crafting process
