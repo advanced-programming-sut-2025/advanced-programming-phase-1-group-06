@@ -89,6 +89,95 @@ public class GameMenuController {
         return null;
     }
 
+    public void answerQuestion(String answer) {
+        // TODO: Implement answering logic
+    }
+
+    public void advanceTime(int hours) {
+        // TODO: Implement time advancing logic
+    }
+
+    public void advanceDate(int days) {
+        // TODO: Implement date advancing logic
+    }
+
+    public void setWeatherType(String type) {
+        // TODO: Implement cheat to set weather
+    }
+
+    public void callThor(int x, int y) {
+        // TODO: Implement cheat to call Thor at location
+    }
+
+    public void buildGreenhouse() {
+        // TODO: Implement normal greenhouse building logic
+    }
+
+    public void buildGreenhouseCheat() {
+        // TODO: Implement cheat greenhouse building logic
+    }
+
+    public void walkTo(int x, int y) {
+        // TODO: Implement walk logic
+    }
+
+    public void printMapAt(int x, int y, int size) {
+        // TODO: Implement logic to print part of map
+    }
+
+    public void showMapHelp() {
+        // TODO: Show map reading help/instructions
+    }
+
+    public void showCurrentTool() {
+        // TODO: Show the currently equipped tool
+    }
+
+    public void showAvailableTools() {
+        // TODO: Show all available tools
+    }
+
+    public void upgradeTool(String toolName) {
+        // TODO: Upgrade the specified tool
+    }
+
+    public void sendGift(String username, String item, int amount) {
+        // TODO: Send a gift to another user
+    }
+
+    public void showGiftList() {
+        // TODO: Show list of all giftable items
+    }
+
+    public void rateGift(int giftNumber, int rate) {
+        // TODO: Rate a gift
+    }
+
+    public void showGiftHistory(String username) {
+        // TODO: Show gift history with specific user
+    }
+
+    public void hugUser(String username) {
+        // TODO: Hug a user
+    }
+
+    public void sendFlower(String username) {
+        // TODO: Send a flower to a user
+    }
+
+    public void showAllProducts() {
+        // TODO: Show all products in game
+    }
+
+    public void showAvailableProducts() {
+        // TODO: Show products currently available for purchase
+    }
+
+    public void purchaseProduct(String product, int count) {
+        // TODO: Handle product purchase logic
+    }
+
+
     public String buildArtisanDevice(Matcher matcher){
         
     }
