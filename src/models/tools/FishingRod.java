@@ -6,6 +6,7 @@ import models.Player.Player;
 public class FishingRod extends Tool{
 
     int price;
+    boolean allFishes;
 
     FishingRod(){}
 
