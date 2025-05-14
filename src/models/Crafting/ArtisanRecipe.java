@@ -3,10 +3,7 @@ package models.Crafting;
 import models.ItemFaces.InventoryItem;
 import java.util.ArrayList;
 
-/**
- * Last updated by: hassanp30
- * Last updated at: 2025-05-13 12:44:07 UTC
- */
+
 public class ArtisanRecipe {
     private final ArrayList<InventoryItem> ingredients;
     private final InventoryItem result;

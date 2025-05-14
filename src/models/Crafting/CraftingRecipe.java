@@ -1,9 +1,11 @@
 package models.Crafting;
 
+import models.ItemFaces.InventoryItem;
 import models.ItemFaces.Item;
 import models.ItemFaces.ItemFinder;
 import models.Player.Player;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 public class CraftingRecipe {
@@ -17,13 +19,16 @@ public class CraftingRecipe {
 
     public boolean canCraft(Player player) {
         // Check if player has required skill level
-        if (!player.hasSkillLevel(info.getSkillRequired(), info.getLevelRequired())) {
+        if (player.getSkillByName(info.getSkillName()).getLevel() < info.getRequiredLevel())
             return false;
-        }
 
         // Check if player has required ingredients
-        for (Map.Entry<ItemFinder, Integer> ingredient : info.getIngredients().entrySet()) {
-            if (!player.hasItem(ingredient.getKey(), ingredient.getValue())) {
+        for (InventoryItem item : info.getIngredients()){
+            InventoryItem inventoryItem = player.getInventory().getItemByName(item.getName());
+            if (inventoryItem == null){
+                return false;
+            }
+            if (!player.getInventory().hasItemAmount(item.getName(), item.getAmount())){
                 return false;
             }
         }
@@ -36,17 +41,19 @@ public class CraftingRecipe {
             return null;
         }
 
-        // Remove ingredients from player's inventory
-        for (Map.Entry<ItemFinder, Integer> ingredient : info.getIngredients().entrySet()) {
-//         TODO   player.getInventory().removeItem(ingredient.getKey(), ingredient.getValue());
+        //Remove ingredients from player's inventory
+        for (InventoryItem item : info.getIngredients()){
+            player.getInventory().removeItem(item.getName(), item.getAmount());
         }
 
         // Give the crafted item to the player
+        info.giveResultToPlayer(player);
+
         return result;
     }
 
     public String getName() { return info.getName(); }
     public String getDescription() { return info.getDescription(); }
-    public Map<ItemFinder, Integer> getIngredients() { return info.getIngredients(); }
+    public ArrayList<InventoryItem> getIngredients() { return info.getIngredients(); }
     public int getSellPrice() { return info.getSellPrice(); }
 }

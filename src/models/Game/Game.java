@@ -74,8 +74,8 @@ public class Game {
         return "";
     }
 
-    public void advanceTime(int amount){
-        for ()
+    public void advanceTime(long time){
+//        TODO give the current precise time to growable and ArtisanDevice to handle its time.
     }
 
 
