@@ -1,9 +1,11 @@
 package models.Player;
 
 import models.*;
+import models.Crafting.ArtisanDevice;
+import models.Crafting.CraftingRecipe;
 import models.Game.Coordinates;
 import models.Game.GameMap.GameMap;
-import models.Crafting.Recipe;
+import models.Crafting.ArtisanRecipe;
 import models.ItemFaces.InventoryItem;
 import models.tools.Tool;
 
@@ -22,6 +24,8 @@ public class Player {
     private double energy;
     private int mapNumber;
     private String currentBuilding;
+    private ArrayList<ArtisanDevice> artisanDevices;
+    private ArrayList<CraftingRecipe> unlockedCraftingRecipes;
 
     public int getMoney() {
         return money;
@@ -98,11 +102,11 @@ public class Player {
     private double maxEnergy;
     private boolean isPassedOut;
     private Tool currentTool;
-    private ArrayList<Recipe> cookableFoods;
-    private ArrayList<Recipe> craftableItems;
+    private ArrayList<ArtisanRecipe> cookableFoods;
+    private ArrayList<ArtisanRecipe> craftableItems;
     private boolean trashcan;
 
-    public Player(User user, GameMap currentMap, int x, int y, int money, Inventory inventory, Skill skills, double energy, double maxEnergy, boolean isPassedOut, Tool currentTool, ArrayList<Recipe> cookableFoods, ArrayList<Recipe> craftableItems, boolean trashcan, int mapNumber, String currentBuilding) {
+    public Player(User user, GameMap currentMap, int x, int y, int money, Inventory inventory, Skill skills, double energy, double maxEnergy, boolean isPassedOut, Tool currentTool, ArrayList<ArtisanRecipe> cookableFoods, ArrayList<ArtisanRecipe> craftableItems, boolean trashcan, int mapNumber, String currentBuilding, ArrayList<ArtisanDevice> artisanDevices, ArrayList<CraftingRecipe> unlockedCraftingRecipes) {
         this.currentBuilding =currentBuilding;
         this.user = user;
         this.currentMap = currentMap;
@@ -119,13 +123,15 @@ public class Player {
         this.craftableItems = craftableItems;
         this.trashcan = trashcan;
         this.mapNumber = mapNumber;
+        this.artisanDevices = artisanDevices;
+        this.unlockedCraftingRecipes = unlockedCraftingRecipes;
     }
 
     public Player(User user, int mapNumber){
         this.user = user;
         this.mapNumber = mapNumber;
         inventory = new Inventory();
-        cookableFoods = new ArrayList<Recipe>();
+        cookableFoods = new ArrayList<ArtisanRecipe>();
         craftableItems = new ArrayList<>();
         maxEnergy = 200;
         trashcan = false;
@@ -133,6 +139,8 @@ public class Player {
         isPassedOut = false;
         skills = new Skill();
         currentBuilding = "none";
+        artisanDevices = new ArrayList<>();
+        unlockedCraftingRecipes = new ArrayList<>();
     }
 
 

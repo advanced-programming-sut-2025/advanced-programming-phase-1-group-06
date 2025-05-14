@@ -4,11 +4,11 @@ import models.Game.Coordinates;
 
 public class Item extends InventoryItem implements Edible, Sellable, Placeable {
 
-    private boolean isEdible;
-    private boolean isSellable;
-    private boolean isPlaceable;
-    private int price;
-    private int energy;
+    private boolean isEdible = false;
+    private boolean isSellable = false;
+    private boolean isPlaceable = false ;
+    private int price = 0;
+    private int energy = 0;
     private String description;
 
 
@@ -30,22 +30,30 @@ public class Item extends InventoryItem implements Edible, Sellable, Placeable {
         this.description = description;
         this.name = name;
         }
-        /*
 // for sellable edible items
-    public Item(int energy, int price){
+    public Item(String name, int energy, int price){
+        this.name = name;
         isEdible = true;
         this.energy = energy;
         isSellable = true;
         this.price = price;
+        isPlaceable = false;
     }
 
 //    for sellable only
-    public Item(int price){
+    public Item(String name, int price){
+        this.name = name;
         isEdible = false;
         this.energy = 0;
         isSellable = true;
         this.price = price;
-    }*/
+    }
+
+    public Item(String name, int price, boolean isPlaceable){
+        this.name = name;
+        this.price = price;
+        this.isPlaceable = isPlaceable;
+    }
 
     public Item(){}
 

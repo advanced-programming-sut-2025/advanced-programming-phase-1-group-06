@@ -3,7 +3,7 @@ package models.Crafting;
 import models.ItemFaces.*;
 
 import java.util.ArrayList;
-public enum RecipeInfo {
+public enum ArtisanRecipeInfo {
 //    TODO add all the red items to the Itemfinder if they were animal products or fish add them to their own class else
 //     just create the Items in here create a new constructor and put the info there. e.g., name and id for all of them,  sellable -> price, edible -> energy,...
     // Honey Products
@@ -475,7 +475,7 @@ public enum RecipeInfo {
     private String resultName;
 
     // Constructor for standard items
-    RecipeInfo(ArrayList<InventoryItem> ingredients, int time, int energy, int price, String description, String name){
+    ArtisanRecipeInfo(ArrayList<InventoryItem> ingredients, int time, int energy, int price, String description, String name){
         Item item = new Item();
         this.ingredients = ingredients;
         this.time = time;
@@ -494,7 +494,7 @@ public enum RecipeInfo {
     }
 
     // Constructor for coefficient-based items
-    RecipeInfo(ArrayList<InventoryItem> ingredients, int time, double energyCoefficient, int basePrice, double priceCoefficient, String description, String name){
+    ArtisanRecipeInfo(ArrayList<InventoryItem> ingredients, int time, double energyCoefficient, int basePrice, double priceCoefficient, String description, String name){
         this.ingredients = ingredients;
         this.time = time;
         Item item = new Item(name);
@@ -515,7 +515,7 @@ public enum RecipeInfo {
     }
 
     // Constructor for inedible items (only price)
-    RecipeInfo(int energy, int price, String name, String description) {
+    ArtisanRecipeInfo(int energy, int price, String name, String description) {
         Item item = new Item(name);
         this.energy = energy;
         this.price = price;
@@ -555,7 +555,7 @@ public enum RecipeInfo {
         return description;
     }
 
-    public Recipe getRecipe(){
-        return new Recipe(this);
+    public ArtisanRecipe getRecipe(){
+        return new ArtisanRecipe(this);
     }
 }

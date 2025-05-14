@@ -20,12 +20,6 @@ public class Game {
     private DateTime dateTime;
     private Player currentPlayer;
     private int currentTurn;
-    private static ArrayList<String> vegtables = new ArrayList<>(){{
-        add("");
-        add("");
-    }};
-
-
 
     public Game(ArrayList<Player> players){
         this.players = players;
@@ -79,6 +73,11 @@ public class Game {
     public String showMap() {
         return "";
     }
+
+    public void advanceTime(int amount){
+        for ()
+    }
+
 
     public void advanceDay() {
     }
