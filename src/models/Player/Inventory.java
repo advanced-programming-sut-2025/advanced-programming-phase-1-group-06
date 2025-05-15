@@ -80,10 +80,10 @@ public class Inventory {
                 }
                 if (amount == 0)
                     return;
+                if (item.getAmount() > amount)
+                    item.setAmount(item.getAmount() - amount);
             }
         }
-        if (item.getAmount() > amount)
-            item.setAmount(item.getAmount() - amount);
     }
 
     public int getCapacity(){

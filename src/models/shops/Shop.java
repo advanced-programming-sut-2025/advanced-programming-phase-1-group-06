@@ -38,6 +38,7 @@ public abstract class Shop extends Building {
     enum Command {
         PURCHASE("purchase\\s+<?name\\S+>(\\s+-n\\s+<?count\\d+>)?"),
         UPGRADE_TOOL("upgrade\\s+(?<name>\\S+)"),
+        ;
         private final String pattern;
         Command(String pattern) {
             this.pattern = pattern;

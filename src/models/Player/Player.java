@@ -98,7 +98,7 @@ public class Player {
         this.trashcan = trashcan;
     }
 
-    public Skill getSkills() {
+    public ArrayList<Skill> getSkills() {
         return skills;
     }
 
@@ -147,10 +147,6 @@ public class Player {
         currentBuilding = "none";
         artisanDevices = new ArrayList<>();
         unlockedCraftingRecipes = new ArrayList<models.Crafting.CraftingRecipeInfo>();
-    }
-
-    public ArrayList<Skill> getSkills(){
-        return skills;
     }
 
     public Skill getSkillByName(String skillName){
@@ -202,10 +198,6 @@ public class Player {
     }
 
     public void passOut() {
-    }
-
-    public void useCurrentTool(int x, int y) {
-        currentTool.use(new Coordinates(x, y), this);
     }
 
     public void sell(InventoryItem item) {

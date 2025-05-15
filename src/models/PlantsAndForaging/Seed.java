@@ -67,6 +67,11 @@ public class Seed extends InventoryItem implements Sellable {
     }
 
     @Override
+    public void setPrice(int price) {
+
+    }
+
+    @Override
     public String getName() {
         return "";
     }

@@ -7,7 +7,6 @@ import models.Game.GameMap.GameMap;
 import models.ItemFaces.InventoryItem;
 import models.PlantsAndForaging.Info.TreeProductInfo;
 import models.PlantsAndForaging.Info.TreeSeedInfo;
-import models.PlantsAndForaging.Item;
 import models.Player.Player;
 import models.Tiles.OverlayTiles.OverlayTile;
 import models.enums.Color;
@@ -86,6 +85,7 @@ public class Tree extends OverlayTile implements Growable {
         }
     }
 
+
     @Override
     public boolean harvest(Player player) {
         if (isHarvestable) {
@@ -103,29 +103,41 @@ public class Tree extends OverlayTile implements Growable {
         hits -= axe.getDamage();
         if (hits <= 0) {
 
+        }
+    }
+
+        @Override
+        public String getType () {
+            return "";
+        }
+
+    @Override
+    public boolean getStatus() {
+        return false;
     }
 
     @Override
-    public String getType() {
-        return "";
+        public int currentGrowthDay () {
+            return 0;
+        }
+
+    @Override
+    public void handleTime(long currentDay) {
+
     }
 
     @Override
-    public int currentGrowthDay() {
-        return 0;
+        public boolean useTool (Tool tool, Player player){
+            return switch (tool) {
+                case Scythe scythe -> harvest(player); //this one harvests only product not the wood
+                case Axe axe -> {
+                    registerHit(axe, player);
+                    yield true;
+                }
+
+                default -> false;
+            };
+        }
     }
 
-    @Override
-    public boolean useTool(Tool tool, Player player) {
-        return switch (tool) {
-            case Scythe scythe -> harvest(player); //this one harvests only product not the wood
-            case Axe axe -> {
-                registerHit(axe, player);
-                yield true;
-            }
-
-            default -> false;
-        };
-    }
-}
 

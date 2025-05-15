@@ -1,9 +1,11 @@
 package models.PlantsAndForaging;
 
+import models.Player.Player;
+
 public interface Growable {
 
-    void grow();
-    void harvest();
+    void grow(long currentDay);
+    boolean harvest(Player player);
     String getType();
     boolean getStatus();
     int currentGrowthDay();

@@ -76,7 +76,7 @@ public class Game {
     public void adavanceDay(){
         long currentDay = dateTime.getPreciseDay();
         for (Growable growable : growables){
-            growable.grow();
+            growable.grow(currentDay);
         }
         for (ArtisanDevice artisanDevice : artisanDevices){
             if (artisanDevice.getStatus()){

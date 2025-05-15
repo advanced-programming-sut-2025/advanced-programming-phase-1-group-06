@@ -10,13 +10,18 @@ public class FishingRod extends Tool{
 
     FishingRod(){}
 
-    public void fish() {
-        // Implement fishing logic
+    @Override
+    public int getSuccessfulEnergyCost() {
+        return 0;
     }
 
     @Override
-    public void use(Coordinates coordinates, Player player) {
-        // Implement logic to use fishing rod on coordinate
+    public int getUnsuccessfulEnergyCost() {
+        return 0;
+    }
+
+    public void fish() {
+        // Implement fishing logic
     }
 
     @Override
