@@ -2,6 +2,8 @@ package models.PlantsAndForaging.Info;
 
 import models.PlantsAndForaging.TreeSeed;
 
+import java.util.Random;
+
 public enum TreeSeedInfo {
     // Spring Trees
     APRICOT_SAPLING(TreeProductInfo.APRICOT, "Apricot Sapling", "7-7-7-7", 28, "1"),
@@ -31,6 +33,15 @@ public enum TreeSeedInfo {
     MUSHROOM_TREE_SEEDS(TreeProductInfo.COMMON_MUSHROOM, "Mushroom Tree Seeds", "7-7-7-7", 28, "0"),
     MYSTIC_TREE_SEEDS(null, "Mystic Tree Seeds", "7-7-7-7", 28, "1-2-3-4");
     private TreeProductInfo productInfo;
+
+    public static TreeSeedInfo getRandomly() {
+        return switch (new Random().nextInt(4)) {
+            case 0 -> ACORNS;
+            case 1 -> MAPLE_SEEDS;
+            case 2 -> MAHOGANY_SEEDS;
+            default -> PINE_CONES;
+        };
+    }
 
     public String getSeedName() {
         return seedName;

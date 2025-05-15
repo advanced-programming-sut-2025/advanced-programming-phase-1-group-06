@@ -71,7 +71,7 @@ public class Blacksmith extends Shop {
             }
             player.setMoney(player.getMoney() - upgradeCost);
             player.getInventory().removeItem(tool, 1);
-            player.getInventory().removeItem();
+            player.getInventory().removeItem("Gold Bar"); ???
             tool.setLevel(tool.getLevel() + 1);
 
         }

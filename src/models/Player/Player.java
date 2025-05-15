@@ -99,6 +99,10 @@ public class Player {
         this.trashcan = trashcan;
     }
 
+    public Skill getSkills() {
+        return skills;
+    }
+
     private double maxEnergy;
     private boolean isPassedOut;
     private Tool currentTool;
