@@ -27,16 +27,17 @@ public class Dirt extends Tile{
         this.isWatered = isWatered;
         this.isFertilized = isFertilized;
         this.isHoed = isHoed;
+        color = (isHoed) ? Color.RED_BG.getColorCode() : Color.YELLOW_BG.getColorCode();
         this.growable = growable;
     }
 
     private void setHoedDirt() {
-//        TODO
+        color = Color.RED_BG.getColorCode();
         isHoed = true;
     }
 
     private void unsetHoedDirt() {
-//        TODO
+        color = Color.YELLOW_BG.getColorCode();
         isHoed = false;
     }
 

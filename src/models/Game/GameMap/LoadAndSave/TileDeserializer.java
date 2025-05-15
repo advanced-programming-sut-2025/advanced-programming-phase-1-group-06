@@ -9,6 +9,7 @@ import models.Tiles.OverlayTiles.OverlayTile;
 import java.lang.reflect.Type;
 
 public class TileDeserializer implements JsonDeserializer<Tile> {
+    private static int x = 0;
     @Override
     public Tile deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
             throws JsonParseException {
@@ -18,15 +19,14 @@ public class TileDeserializer implements JsonDeserializer<Tile> {
         Tile tile;
         switch (tileType) {
             case "Dirt":
-                tile = new Dirt();
-                ((Dirt) tile).setHoed(jsonObject.get("isHoed").getAsBoolean());
-                ((Dirt) tile).setWatered(jsonObject.get("isWatered").getAsBoolean());
-                ((Dirt) tile).setFertilized(jsonObject.get("isFertilized").getAsBoolean());
-//                if (jsonObject.has("growable")) {
+                tile = new Dirt(jsonObject.get("isWatered").getAsBoolean(), jsonObject.get("isFertilized").getAsBoolean()
+                        , jsonObject.get("isHoed").getAsBoolean(), null);
+                jsonObject.get("isBlocked").getAsBoolean();
+//                                if (jsonObject.has("growable")) {
 //                    Growable growable = context.deserialize(jsonObject.get("growable"), Growable.class);
 //                    ((Dirt) tile).setGrowable(growable);
 //                }
-//                break;
+                break;
             case "Flooring":
                 tile = new Flooring(FlooringInfo.valueOf(jsonObject.get("flooringInfo").getAsString()));
                 break;
