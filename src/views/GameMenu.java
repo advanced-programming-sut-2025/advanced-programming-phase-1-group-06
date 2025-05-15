@@ -21,6 +21,7 @@ public class GameMenu implements AppMenu {
             game.nextTurn();
             controller.nextTurn();
         } else if ((matcher = Regex.TIME.getMatcher(input)) != null){
+
             System.out.println(game.getDateTime().showHour());
         } else if ((matcher = Regex.DATE.getMatcher(input)) != null){
             System.out.println(game.getDateTime().showDate());
@@ -41,20 +42,18 @@ public class GameMenu implements AppMenu {
         } else if ((matcher = Regex.ENERGY_UNLIMITED.getMatcher(input)) != null){
             currentPlayer.setEnergy(Integer.MAX_VALUE);
         } else if ((matcher = Regex.INVENTORY_SHOW.getMatcher(input)) != null){
-//            Roham do it later
+            // TODO
         } else if ((matcher = Regex.INVENTORY_TRASH.getMatcher(input)) != null){
-//            Roham
+            // TODO
         } else if ((matcher = Regex.TOOLS_EQUIP.getMatcher(input)) != null){
-            controller.equipTool(matcher);
+            String toolName = matcher.group("toolName");
+            controller.equipTool(toolName);
         } else if ((matcher = Regex.TOOLS_USE.getMatcher(input)) != null){
-            controller.useTool(matcher);
-        }else if ((matcher = Regex.WEATHER_SET.getMatcher(input)) != null){
-            controller.setWeatherCheat(matcher);
-        }
-        else if ((matcher = Regex.GREENHOUSE_BUILD.getMatcher(input)) != null){
-            controller.
-        }
-        if ((matcher = Regex.ANSWER.getMatcher(input)) != null) {
+            String direction = matcher.group("direction");
+            controller.useTool(direction);
+        } else if ((matcher = Regex.GREENHOUSE_BUILD.getMatcher(input)) != null){
+            controller.buildGreenhouse();
+        } else if ((matcher = Regex.ANSWER.getMatcher(input)) != null) {
             controller.answerQuestion(matcher.group("answer"));
         } else if ((matcher = Regex.CHEAT_ADVANCE_TIME.getMatcher(input)) != null) {
             controller.advanceTime(Integer.parseInt(matcher.group("hours")));

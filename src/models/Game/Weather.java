@@ -2,6 +2,7 @@ package models.Game;
 
 
 import models.App;
+import models.ItemFaces.InventoryItem;
 import models.enums.WeatherType;
 
 import java.util.Random;
@@ -83,6 +84,16 @@ public class Weather {
         else if (randomNumber < stormy)
             return WeatherType.STORMY.getWeather();
         return WeatherType.SUNNY.getWeather();
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        Weather other = (Weather) obj;
+        // Compare only by name, ignoring amount
+        return getName().equals(other.getName());
     }
 
 

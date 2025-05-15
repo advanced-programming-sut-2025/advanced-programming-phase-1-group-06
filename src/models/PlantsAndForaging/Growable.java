@@ -5,6 +5,7 @@ public interface Growable {
     void grow();
     void harvest();
     String getType();
+    boolean getStatus();
     int currentGrowthDay();
-    int handleTime(long currentDay);
+    void handleTime(long currentDay);
 }

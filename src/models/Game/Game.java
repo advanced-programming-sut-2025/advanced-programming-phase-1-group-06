@@ -2,10 +2,8 @@ package models.Game;
 
 import models.Crafting.ArtisanDevice;
 import models.Game.GameMap.GameMap;
-import models.ItemFaces.InventoryItem;
 import models.PlantsAndForaging.Growable;
 import models.Player.Player;
-import models.Tiles.OverlayTiles.OverlayTile;
 import models.enums.WeatherType;
 
 import java.util.ArrayList;
@@ -74,12 +72,25 @@ public class Game {
         return "";
     }
 
-    public void advanceTime(long time){
-//        TODO give the current precise time to growable and ArtisanDevice to handle its time.
+
+    public void adavanceDay(){
+        long currentDay = dateTime.getPreciseDay();
+        for (Growable growable : growables){
+            growable.grow();
+        }
+        for (ArtisanDevice artisanDevice : artisanDevices){
+            if (artisanDevice.getStatus()){
+                artisanDevice.handleTime();
+            }
+        }
     }
 
-
-    public void advanceDay() {
+    public void advanceHour(){
+        for (ArtisanDevice artisanDevice : artisanDevices){
+            if (artisanDevice.getStatus()){
+                artisanDevice.handleTime();
+            }
+        }
     }
 
     public void generateForaging() {

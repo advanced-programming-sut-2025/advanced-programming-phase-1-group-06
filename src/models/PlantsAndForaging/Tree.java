@@ -10,18 +10,12 @@ import models.enums.Color;
 import models.tools.Tool;
 
 public class Tree extends OverlayTile implements Growable {
-    { //for overlay
-        isBlocked = true;
-        hits = 15;
-        symbol = 'T';
-        color = Color.GREEN_TEXT.getColorCode();
-    }
-
     private int regrowthTime;
     private boolean oneTime;
     private boolean status;
-    private int growthTime;
-    private long startTime;
+    private boolean ready;
+    private int growthTime; // by day
+    private long startTime; //precise day
     private TreeSeedInfo treeSeedInfo;
     private String seasons;
     private String growingStagesString;
@@ -95,12 +89,20 @@ public class Tree extends OverlayTile implements Growable {
     }
 
     @Override
-    public int handleTime(long Day){
-        long remainingTime = growthTime - (App.getPreciseDay() - startTime);
+    public void handleTime(long currentday){
+        long remainingTime = growthTime - (currentday - startTime);
         if (remainingTime > 0)
-            return (int) remainingTime;
-        status = true;
-        return 0;
+            return;
+        status = false;
+        ready = true;
+    }
+    @Override
+    public boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }
 

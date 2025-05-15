@@ -1,13 +1,13 @@
 package models.Game;
 
 
+import models.App;
 
 public class DateTime {
     private static final int TIME_START_HOUR = 9;
     private static final int TIME_END_HOUR = 22;
 
     private int minute;
-
     private int hour;
     private int day;
     private int season; // 1: Spring 2: Summer 3: Fall 4: Winter
@@ -34,21 +34,31 @@ public class DateTime {
     public long getPreciseDay(){return getPreciseTime() / 24;}
 
 
-    public void advanceHour(int hour){
-        this.hour += hour;
-        if (hour >= 22){
-            advanceDay();
+    public void advanceHour(int amount){
+        this.hour += amount;
+        if (hour > 24){
+            advanceDay(hour / 24);
+            hour -= ((int)(hour / 24)) * 24;
         }
+        if (hour >= 22){
+            advanceDay(1);
+            hour = 9;
+        }
+        if (hour < 9){
+            hour = 9;
+        }
+        App.getGame().advanceHour();
     }
 
-    public void advanceDay() {
-        day++;
+    public void advanceDay(int amount) {
+        day += amount;
         if (day > 28) {
-            day = 1;
-            season++;
+            season += (day / 28) % 4;
+            day = day % 28;
         }
         hour = TIME_START_HOUR;
         minute = 0;
+        App.getGame().adavanceDay();
     }
 
     public int showHour(){

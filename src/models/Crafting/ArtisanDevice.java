@@ -68,14 +68,13 @@ public class ArtisanDevice {
         craftedItem = artisanRecipe.getResult();
     }
 
-    public int handleTime() {
+    public void handleTime() {
         long remainingTime = craftingTime - (App.getPreciseTime() - startTime);
         if (remainingTime > 0) {
-            return (int) remainingTime;
+            return;
         }
         status = false;
         ready = true;
-        return 0;
     }
 
     public boolean isReady() {

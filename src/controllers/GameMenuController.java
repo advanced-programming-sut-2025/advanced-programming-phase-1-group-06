@@ -27,9 +27,8 @@ public class GameMenuController {
     public void saveGame() {
     }
 
-    public String equipTool(Matcher matcher) {
-        String name = matcher.group("toolName");
-        InventoryItem item = player.getInventory().getItemByName(name);
+    public String equipTool(String toolName) {
+        InventoryItem item = player.getInventory().getItemByName(toolName);
         if (item == null){
             return "you don't have this tool in your inventory.";
         }
@@ -40,8 +39,7 @@ public class GameMenuController {
         return "tool set to equipped";
     }
 
-    public String useTool(Matcher matcher){
-        String direction = matcher.group("direction");
+    public String useTool(String direction){
         int x, y;
         switch (direction) {
             case "north":
@@ -102,7 +100,8 @@ public class GameMenuController {
     }
 
     public void setWeatherType(String type) {
-        // TODO: Implement cheat to set weather
+        Weather weather = WeatherType.getWeatherByName(type);
+        game.setWeatherForTomorrow(weather);
     }
 
     public void callThor(int x, int y) {
@@ -179,7 +178,7 @@ public class GameMenuController {
 
 
     public String buildArtisanDevice(Matcher matcher){
-        
+        // TODO: craft ArtisanDevice
     }
 
     public String nextTurn(){

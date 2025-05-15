@@ -22,6 +22,7 @@ public class Plant extends OverlayTile implements Growable {
     private boolean oneTime;
     private String seasons;
     private boolean status;
+    private boolean ready;
     private long startDay;
     private int growthTime; // in days
 
@@ -204,11 +205,15 @@ public class Plant extends OverlayTile implements Growable {
         };
     }
 
-    public int handleTime(long currentDay){
+    public void handleTime(long currentDay){
         long remainingDay = growthTime - (startDay - currentDay);
         if (remainingDay > 0)
-            return (int) remainingDay;
-        status = true;
-        return 0;
+            return;
+        status = false;
+        ready = true;
+    }
+    @Override
+    public boolean getStatus() {
+        return status;
     }
 }

@@ -9,6 +9,7 @@ public enum WeatherType {
     SNOWY(new Weather("snowy", false, 2)),
     ;
 
+
     Weather weather;
 
     WeatherType(Weather weather){
@@ -19,7 +20,7 @@ public enum WeatherType {
         return weather;
     }
 
-    public Weather getWeatherByName(String weatherName){
+    public static Weather getWeatherByName(String weatherName){
         return switch (weatherName){
             case "sunny" -> SUNNY.getWeather();
             case "rainy" -> RAINY.getWeather();
