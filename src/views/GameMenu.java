@@ -53,8 +53,6 @@ public class GameMenu implements AppMenu {
             controller.useTool(direction);
         } else if ((matcher = Regex.GREENHOUSE_BUILD.getMatcher(input)) != null){
             controller.buildGreenhouse();
-        } else if ((matcher = Regex.ANSWER.getMatcher(input)) != null) {
-            controller.answerQuestion(matcher.group("answer"));
         } else if ((matcher = Regex.CHEAT_ADVANCE_TIME.getMatcher(input)) != null) {
             controller.advanceTime(Integer.parseInt(matcher.group("hours")));
         } else if ((matcher = Regex.CHEAT_ADVANCE_DATE.getMatcher(input)) != null) {
