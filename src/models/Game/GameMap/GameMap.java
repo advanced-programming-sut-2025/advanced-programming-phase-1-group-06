@@ -12,6 +12,33 @@ import java.util.Arrays;
 public class GameMap {
     Tile[][] tiles;
     int length, width;
+    int rockCount;
+    int oreCount;
+    int weedCount;
+
+
+    public int getRockCount() {
+        return rockCount;
+    }
+
+    public int getOreCount() {
+        return oreCount;
+    }
+
+    public int getWeedCount() {
+        return weedCount;
+    }
+
+    public int getTreeCount() {
+        return treeCount;
+    }
+
+    public int getStickCount() {
+        return stickCount;
+    }
+
+    int treeCount;
+    int stickCount;
 
     public GameMap(Tile[][] tiles, int length, int width) {
         this.tiles = tiles;

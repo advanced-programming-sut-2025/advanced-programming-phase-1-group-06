@@ -8,6 +8,17 @@ public class MilkPail extends Tool{
     public MilkPail(){
         energyCost = 4;
     }
+
+    @Override
+    public int getSuccessfulEnergyCost() {
+        return 4;
+    }
+
+    @Override
+    public int getUnsuccessfulEnergyCost() {
+        return 4;
+    }
+
     @Override
     public void use(Coordinates coordinates, Player player) {
 

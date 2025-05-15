@@ -21,6 +21,16 @@ public class Pickaxe extends Tool {
         super(name, level, energyConsumption);
     }
 
+    @Override
+    public int getSuccessfulEnergyCost() {
+        return 5 - level;
+    }
+
+    @Override
+    public int getUnsuccessfulEnergyCost() {
+        return getSuccessfulEnergyCost() - 1;
+    }
+
     public void mine() {
         // Implement mining logic
     }

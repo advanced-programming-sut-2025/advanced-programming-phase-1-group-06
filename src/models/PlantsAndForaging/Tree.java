@@ -2,33 +2,35 @@ package models.PlantsAndForaging;
 
 
 import models.App;
+import models.Game.Coordinates;
+import models.Game.GameMap.GameMap;
+import models.ItemFaces.InventoryItem;
 import models.PlantsAndForaging.Info.TreeProductInfo;
 import models.PlantsAndForaging.Info.TreeSeedInfo;
+import models.PlantsAndForaging.Item;
 import models.Player.Player;
 import models.Tiles.OverlayTiles.OverlayTile;
 import models.enums.Color;
+import models.tools.Axe;
+import models.tools.Scythe;
 import models.tools.Tool;
 
+import java.util.Arrays;
+
 public class Tree extends OverlayTile implements Growable {
-    { //for overlay
-        isBlocked = true;
-        hits = 15;
-        symbol = 'T';
-        color = Color.GREEN_TEXT.getColorCode();
-    }
+
 
     private int regrowthTime;
     private boolean oneTime;
-    private boolean status;
-    private int growthTime;
-    private long startTime;
-    private TreeSeedInfo treeSeedInfo;
-    private String seasons;
-    private String growingStagesString;
-    private int[] growingStages;
-    private int daysSincePlanting;
-    private TreeProductInfo product;
-
+    private final TreeSeedInfo treeSeedInfo;
+    private final String seasons;
+    private final String growingStagesString;
+    private long lastChangeInGrowthDay;
+    private boolean isMatured;
+    private boolean isHarvestable;
+    private final int[] growingStages;
+    private final int daysSincePlanting;
+    private final TreeProductInfo product;
 
     public int getDaysSincePlanting() {
         return daysSincePlanting;
@@ -38,8 +40,8 @@ public class Tree extends OverlayTile implements Growable {
         return treeSeedInfo;
     }
 
-    public Tree(TreeSeedInfo treeSeedInfo) {
-        super('T', Color.GREEN_TEXT.getColorCode(), 15, true);
+    public Tree(TreeSeedInfo treeSeedInfo, GameMap gameMap, Coordinates c) {
+        super('T', Color.GREEN_TEXT.getColorCode(), 15, true, gameMap, c);
         this.treeSeedInfo = treeSeedInfo;
         this.seasons = treeSeedInfo.getSeasons();
         this.growingStagesString = treeSeedInfo.getGrowingStages();
@@ -51,9 +53,8 @@ public class Tree extends OverlayTile implements Growable {
         daysSincePlanting = 0;
         product = treeSeedInfo.getProductInfo();
     }
-
-    public Tree (TreeSeedInfo treeSeedInfo, int daysSincePlanting) {
-        super('T', Color.GREEN_TEXT.getColorCode(), 15, true);
+    public Tree(TreeSeedInfo treeSeedInfo, int daysSincePlanting, GameMap gameMap, Coordinates coordinates) {
+        super('T', Color.GREEN_TEXT.getColorCode(), 15, true, gameMap, coordinates);
         this.treeSeedInfo = treeSeedInfo;
         this.seasons = treeSeedInfo.getSeasons();
         this.growingStagesString = treeSeedInfo.getGrowingStages();
@@ -68,13 +69,39 @@ public class Tree extends OverlayTile implements Growable {
 
     public void chop() {
     }
-    @Override
-    public void grow(){
 
+    @Override
+    public void grow(long currentDay) {
+        if (isHarvestable) return;
+        if (isMatured) {
+            if (currentDay - lastChangeInGrowthDay >= 1) {
+                isHarvestable = true;
+            }
+        }
+        else {
+            if (currentDay - lastChangeInGrowthDay >= Arrays.stream(growingStages).sum()) {
+                isMatured = true;
+                isHarvestable = true;
+            }
+        }
     }
 
     @Override
-    public void harvest() {
+    public boolean harvest(Player player) {
+        if (isHarvestable) {
+            InventoryItem item;
+            if (product != null) item = product.create();
+            else item = treeSeedInfo.create();
+            player.getInventory().addItem(item);
+            isHarvestable = false;
+            return true;
+        }
+        else return false;
+    }
+
+    public void registerHit(Axe axe, Player player) {
+        hits -= axe.getDamage();
+        if (hits <= 0) {
 
     }
 
@@ -90,17 +117,15 @@ public class Tree extends OverlayTile implements Growable {
 
     @Override
     public boolean useTool(Tool tool, Player player) {
-//        TODO
-        return true;
-    }
+        return switch (tool) {
+            case Scythe scythe -> harvest(player); //this one harvests only product not the wood
+            case Axe axe -> {
+                registerHit(axe, player);
+                yield true;
+            }
 
-    @Override
-    public int handleTime(long Day){
-        long remainingTime = growthTime - (App.getPreciseDay() - startTime);
-        if (remainingTime > 0)
-            return (int) remainingTime;
-        status = true;
-        return 0;
+            default -> false;
+        };
     }
 }
 

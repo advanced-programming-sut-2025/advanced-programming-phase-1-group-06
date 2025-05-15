@@ -8,6 +8,16 @@ public class Hoe extends Tool {
         super(name, level, energyConsumption);
     }
 
+    @Override
+    public int getSuccessfulEnergyCost() {
+        return 5 - level;
+    }
+
+    @Override
+    public int getUnsuccessfulEnergyCost() {
+        return getSuccessfulEnergyCost();
+    }
+
     public void dig() {
         // Implement digging logic
     }
