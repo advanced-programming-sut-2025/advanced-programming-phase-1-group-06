@@ -1,11 +1,11 @@
 package models.Player;
 
 import models.*;
-import models.Crafting.ArtisanDevice;
-import models.Crafting.CraftingRecipeInfo;
+import models.CraftingAndCooking.ArtisanDevice;
+import models.CraftingAndCooking.CraftingRecipeInfo;
 import models.Game.Coordinates;
 import models.Game.GameMap.GameMap;
-import models.Crafting.ArtisanRecipe;
+import models.CraftingAndCooking.ArtisanRecipe;
 import models.ItemFaces.InventoryItem;
 import models.tools.Tool;
 
@@ -26,6 +26,12 @@ public class Player {
     private String currentBuilding;
     private ArrayList<ArtisanDevice> artisanDevices;
     private ArrayList<CraftingRecipeInfo> unlockedCraftingRecipes;
+    private boolean isPassedOut;
+    private Tool currentTool;
+    private ArrayList<ArtisanRecipe> cookableFoods;
+    private ArrayList<ArtisanRecipe> craftableItems;
+    private boolean trashcan;
+
 
     public int getMoney() {
         return money;
@@ -106,13 +112,6 @@ public class Player {
         return skills;
     }
 
-    private double maxEnergy;
-    private boolean isPassedOut;
-    private Tool currentTool;
-    private ArrayList<ArtisanRecipe> cookableFoods;
-    private ArrayList<ArtisanRecipe> craftableItems;
-    private boolean trashcan;
-
     public Player(User user, GameMap currentMap, int x, int y, int money, Inventory inventory, ArrayList<Skill> skills, double energy, double maxEnergy, boolean isPassedOut, Tool currentTool, ArrayList<ArtisanRecipe> cookableFoods, ArrayList<ArtisanRecipe> craftableItems, boolean trashcan, int mapNumber, String currentBuilding, ArrayList<ArtisanDevice> artisanDevices, ArrayList<CraftingRecipeInfo> unlockedCraftingRecipes) {
         this.currentBuilding =currentBuilding;
         this.user = user;
@@ -150,7 +149,7 @@ public class Player {
         }
         currentBuilding = "none";
         artisanDevices = new ArrayList<>();
-        unlockedCraftingRecipes = new ArrayList<models.Crafting.CraftingRecipeInfo>();
+        unlockedCraftingRecipes = new ArrayList<models.CraftingAndCooking.CraftingRecipeInfo>();
     }
 
     public Skill getSkillByName(String skillName){

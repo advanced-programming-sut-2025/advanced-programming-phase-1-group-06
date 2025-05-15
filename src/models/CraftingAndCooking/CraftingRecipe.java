@@ -1,12 +1,10 @@
-package models.Crafting;
+package models.CraftingAndCooking;
 
 import models.ItemFaces.InventoryItem;
 import models.ItemFaces.Item;
-import models.ItemFaces.ItemFinder;
 import models.Player.Player;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 public class CraftingRecipe {
     private final CraftingRecipeInfo info;

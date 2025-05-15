@@ -1,6 +1,6 @@
 package models.Game;
 
-import models.Crafting.ArtisanDevice;
+import models.CraftingAndCooking.ArtisanDevice;
 import models.Game.GameMap.GameMap;
 import models.PlantsAndForaging.Growable;
 import models.Player.Player;

@@ -1,4 +1,4 @@
-package models.Crafting;
+package models.CraftingAndCooking;
 
 import models.ItemFaces.*;
 
