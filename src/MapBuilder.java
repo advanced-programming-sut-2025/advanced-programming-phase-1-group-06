@@ -53,17 +53,6 @@ public class MapBuilder {
                                     "tileType": "Water"
                                     },""");
                         break;
-                    case 'H':
-                        map.append("""
-                                {
-                                    "tileType": "Flooring",
-                                    "flooringInfo": "Stone",
-                                    "overlayTile": {
-                                        "overlayType": "BuildingTile",
-                                        "buildingTileInfo": "HOUSE"
-                                    }
-                                },""");
-
                 }
             }
             map.append("\n],\n");

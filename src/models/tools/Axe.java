@@ -8,8 +8,22 @@ public class Axe extends Tool {
         super(name, level, energyConsumption);
     }
 
+    @Override
+    public int getSuccessfulEnergyCost() {
+        return 5 - level;
+    }
+
+    @Override
+    public int getUnsuccessfulEnergyCost() {
+        return getSuccessfulEnergyCost() - 1;
+    }
+
     public void chop() {
         // Implement chopping logic
+    }
+
+    public int getDamage() {
+        return level * 2;
     }
 
     @Override

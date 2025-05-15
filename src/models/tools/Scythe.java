@@ -9,6 +9,16 @@ public class Scythe extends Tool {
         super(name, level, energyConsumption);
     }
 
+    @Override
+    public int getSuccessfulEnergyCost() {
+        return 2;
+    }
+
+    @Override
+    public int getUnsuccessfulEnergyCost() {
+        return 2;
+    }
+
     public void cut() {
         // Implement cutting logic
     }

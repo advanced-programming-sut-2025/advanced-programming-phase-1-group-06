@@ -49,10 +49,10 @@ public class GameMenu implements AppMenu {
         } else if ((matcher = Regex.TOOLS_USE.getMatcher(input)) != null){
             controller.useTool(matcher);
         }else if ((matcher = Regex.WEATHER_SET.getMatcher(input)) != null){
-            controller.setWeatherCheat(matcher);
+//            controller.setWeatherCheat(matcher);
         }
         else if ((matcher = Regex.GREENHOUSE_BUILD.getMatcher(input)) != null){
-            controller.
+            return;
         }
         if ((matcher = Regex.ANSWER.getMatcher(input)) != null) {
             controller.answerQuestion(matcher.group("answer"));

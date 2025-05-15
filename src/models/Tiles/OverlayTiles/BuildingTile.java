@@ -16,7 +16,7 @@ public class BuildingTile extends OverlayTile {
     BuildingTileInfo buildingTileInfo;
 
     public BuildingTile(BuildingTileInfo buildingTileInfo, GameMap gameMap, Coordinates coordinates) {
-        super(buildingTileInfo.getSymbol(), buildingTileInfo.getColor(), Integer.MAX_VALUE, true,
+        super(buildingTileInfo.getSymbol(), buildingTileInfo.getColor(), 0, true,
                 gameMap, coordinates);
         this.buildingTileInfo = buildingTileInfo;
     }

@@ -36,7 +36,8 @@ public abstract class Tool extends InventoryItem {
         this.energyCost = energyCost;
         isEquipped = false;
     }
-
+    public abstract int getSuccessfulEnergyCost();
+    public abstract int getUnsuccessfulEnergyCost();
     public String getName(){
         return name;
     }
@@ -45,7 +46,7 @@ public abstract class Tool extends InventoryItem {
     public int getAmount(){
         return 1;
     }
-
+    public abstract boolean useTool(Tool tool, Player player);
     public void use(Coordinates coordinates, Player player){
         if (App.getTile(coordinates, player).useTool(this)){
             App.getCurrentPlayer().dimnishEnergy(getEnergyCost());
