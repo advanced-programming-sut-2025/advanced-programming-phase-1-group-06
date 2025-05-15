@@ -1,4 +1,4 @@
-package models.Crafting;
+package models.CraftingAndCooking;
 
 import models.App;
 import models.ItemFaces.InventoryItem;

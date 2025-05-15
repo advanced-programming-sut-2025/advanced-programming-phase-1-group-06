@@ -232,6 +232,56 @@ public class GameMenuController {
             // TODO: Move the specified animal to (
         }
 
+        public void feedAnimalHay(String animalName) {
+            // TODO: Feed hay to the specified animal
+        }
+
+        public void initiateTrade(String username, String type, String item, int amount, Integer price,
+                                  String targetItem, Integer targetAmount) {
+            // TODO: Initiate a trade with another user
+        }
+
+        public void showTradeList() {
+            // TODO: Show the list of current trades
+        }
+
+        public void respondToTrade(String response, int id) {
+            // TODO: Respond to a trade with acceptance or rejection
+        }
+
+        public void showTradeHistory() {
+            // TODO: Show the player's trade history
+        }
+
+        public void listFriendshipNPCs() {
+            // TODO: List all NPCs and their friendship levels
+        }
+
+        public void listQuests() {
+            // TODO: List all available or active quests
+        }
+
+        public void finishQuest(int index) {
+            // TODO: Mark the quest at the specified index as finished
+        }
+
+        public void runTest() {
+            // TODO: Run internal test logic
+        }
+
+        public void runCheatCode() {
+            // TODO: Execute cheat code logic
+        }
+
+        public void useArtisan(String artisanName, String itemName) {
+            // TODO: Use an artisan machine with the specified item
+        }
+
+        public void getArtisanProduct(String artisanName) {
+            // TODO: Retrieve the finished product from an artisan machine
+        }
+
+
 
             public String nextTurn () {
                 turn++;

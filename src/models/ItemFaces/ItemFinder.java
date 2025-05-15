@@ -1,6 +1,6 @@
 package models.ItemFaces;
 
-import models.Crafting.ArtisanRecipeInfo;
+import models.CraftingAndCooking.ArtisanRecipeInfo;
 import models.PlantsAndForaging.Info.*;
 import models.tools.ToolType;
 
