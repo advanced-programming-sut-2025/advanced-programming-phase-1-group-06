@@ -433,8 +433,13 @@ public enum ItemFinder {
         return inventoryItem;
     }
 
-    public Item getItem() {
+    public Item getItem(int amount) {
+        item.setAmount(amount);
         return item;
+    }
+
+    public Item getItem() {
+        return getItem(1);
     }
 
     public static ItemFinder getById(int id) {
