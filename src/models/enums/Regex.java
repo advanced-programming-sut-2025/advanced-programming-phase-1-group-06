@@ -77,6 +77,28 @@ public enum Regex {
     SHOW_ALL_PRODUCTS("^\\s*show\\s+all\\s+products\\s*$"),
     SHOW_AVAILABLE_PRODUCTS("^\\s*show\\s+all\\s+available\\s+products\\s*$"),
     PURCHASE("^\\s*purchase\\s+(?<product>\\S+)\\s+-n\\s+(?<count>\\d+)\\s*$"),
+    TERMINATE("^\\s*terminate\\s*$"),
+    PLANT("^\\s*plant\\s+-s\\s+(?<seed>\\S+)\\s+-d\\s+(?<direction>\\S+)\\s*$"),
+    SHOW_PLANT("^\\s*showplant\\s+-l\\s+(?<x>\\d+)\\s*,\\s*(?<y>\\d+)\\s*$"),
+    CRAFTING_SHOW_RECIPES("^\\s*crafting\\s+show\\s+recipes\\s*$"),
+    CRAFTING_CRAFT("^\\s*crafting\\s+craft\\s+(?<item_name>\\S+)\\s*$"),
+    BUY_ANIMAL("^\\s*buy\\s+animal\\s+-a\\s+(?<animal>\\S+)\\s+-n\\s+(?<name>\\S+)\\s*$"),
+    PET("^\\s*pet\\s+-n\\s+(?<name>\\S+)\\s*$"),
+    CHEAT_SET_FRIENDSHIP("^\\s*cheat\\s+set\\s+friendship\\s+-n\\s+(?<animal_name>\\S+)\\s+-c\\s+(?<amount>\\d+)\\s*$"),
+    ANIMALS("^\\s*animals\\s*$"),
+    SHEPHERD_ANIMALS("^\\s*shepherd\\s+animals\\s+-n\\s+(?<animal_name>\\S+)\\s+-l\\s+(?<x>\\d+)\\s*,\\s*(?<y>\\d+)\\s*$"),
+    FEED_HAY("^\\s*feed\\s+hay\\s+-n\\s+(?<animal_name>\\S+)\\s*$"),
+    TRADE("^\\s*trade\\s+-u\\s+(?<username>\\S+)\\s+-t\\s+(?<type>\\S+)\\s+-i\\s+(?<item>\\S+)\\s+-a\\s+(?<amount>\\d+)(\\s+-p\\s+(?<price>\\d+))?(\\s+-ti\\s+(?<target_item>\\S+)\\s+-ta\\s+(?<target_amount>\\d+))?\\s*$"),
+    TRADE_LIST("^\\s*trade\\s+list\\s*$"),
+    TRADE_RESPONSE("^\\s*trade\\s+response\\s+(--accept|--reject)\\s+-i\\s+(?<id>\\d+)\\s*$"),
+    TRADE_HISTORY("^\\s*trade\\s+history\\s*$"),
+    FRIENDSHIP_NPC_LIST("^\\s*friendship\\s+NPC\\s+list\\s*$"),
+    QUESTS_LIST("^\\s*quests\\s+list\\s*$"),
+    QUESTS_FINISH("^\\s*quests\\s+finish\\s+-i\\s+(?<index>\\d+)\\s*$"),
+    TEST("^\\s*test\\s*$"),
+    CHEAT_CODE("^\\s*cheat\\s+code\\s*$"),
+    ARTISAN_USE("^\\s*artisan\\s+use\\s+(?<artisan_name>\\S+)\\s+(?<item1_name>\\S+)\\s*$"),
+    ARTISAN_GET("^\\s*artisan\\s+get\\s+(?<artisan_name>\\S+)\\s*$");
 
 
     ;

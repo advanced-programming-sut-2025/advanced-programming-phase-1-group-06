@@ -192,12 +192,53 @@ public class GameMenuController {
         return "";
     }
 
-    public String nextTurn(){
-        turn ++;
-        if (turn % 3 == 0){
-            return "everybody had their turns time has passed by an hour";
+        public void terminateGame() {
+            // TODO: Terminate the game
         }
-        return "next player can enter their command now";
-    }
 
-}
+        public void plantSeed(String seed, String direction) {
+            // TODO: Plant the given seed in the specified direction
+        }
+
+        public void showPlantAt(int x, int y) {
+            // TODO: Show plant at coordinates (x, y)
+        }
+
+        public void showCraftingRecipes() {
+            // TODO: Display all available crafting recipes
+        }
+
+        public void craftItem(String itemName) {
+            // TODO: Craft the specified item
+        }
+
+        public void buyAnimal(String animal, String name) {
+            // TODO: Buy the specified animal with a given name
+        }
+
+        public void petAnimal(String name) {
+            // TODO: Pet the specified animal
+        }
+
+        public void setFriendshipLevel(String animalName, int amount) {
+            // TODO: Set the friendship level of the specified animal (cheat)
+        }
+
+        public void showAnimals() {
+            // TODO: Display all owned animals
+        }
+
+        public void shepherdAnimal(String animalName, int x, int y) {
+            // TODO: Move the specified animal to (
+        }
+
+
+            public String nextTurn () {
+                turn++;
+                if (turn % 3 == 0) {
+                    return "everybody had their turns time has passed by an hour";
+                }
+                return "next player can enter their command now";
+            }
+
+        }
