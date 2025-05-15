@@ -13,7 +13,7 @@ public class Main {
 //    }
 public static void main(String[] args) throws IOException {
         GameMap m = new MapReader().loadMap("/home/roham/Desktop/Project fr/src/models/Game/GameMap/Maps/map.json");
-        GameMap gameMap = new MapInitializer(m).generateObstacles().getGameMap();
-        gameMap.print(new Coordinates(0, 0), 20);
+        new MapInitializer(m).generateObstacles().getGameMap().print(new Coordinates(0, 0), 80);
+         AppView.run();
     }
 }
