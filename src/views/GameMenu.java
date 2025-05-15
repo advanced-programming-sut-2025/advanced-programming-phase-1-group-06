@@ -112,7 +112,6 @@ public class GameMenu implements AppMenu {
             int count = Integer.parseInt(matcher.group("count"));
             controller.purchaseProduct(product, count);
         }
-
         if ((matcher = Regex.TERMINATE.getMatcher(input)) != null) {
             controller.terminateGame();
         } else if ((matcher = Regex.PLANT.getMatcher(input)) != null) {
@@ -186,9 +185,6 @@ public class GameMenu implements AppMenu {
             controller.getArtisanProduct(artisanName);
         }
 
-
-
-        return;
     }
 
 }
