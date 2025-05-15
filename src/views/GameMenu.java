@@ -123,7 +123,7 @@ public class GameMenu implements AppMenu {
         } else if ((matcher = Regex.CRAFTING_SHOW_RECIPES.getMatcher(input)) != null) {
             controller.showCraftingRecipes();
         } else if ((matcher = Regex.CRAFTING_CRAFT.getMatcher(input)) != null) {
-            String itemName = matcher.group("item_name");
+            String itemName = matcher.group("itemName");
             controller.craftItem(itemName);
         } else if ((matcher = Regex.BUY_ANIMAL.getMatcher(input)) != null) {
             String animal = matcher.group("animal");
@@ -133,18 +133,18 @@ public class GameMenu implements AppMenu {
             String name = matcher.group("name");
             controller.petAnimal(name);
         } else if ((matcher = Regex.CHEAT_SET_FRIENDSHIP.getMatcher(input)) != null) {
-            String animalName = matcher.group("animal_name");
+            String animalName = matcher.group("animalName");
             int amount = Integer.parseInt(matcher.group("amount"));
             controller.setFriendshipLevel(animalName, amount);
         } else if ((matcher = Regex.ANIMALS.getMatcher(input)) != null) {
             controller.showAnimals();
         } else if ((matcher = Regex.SHEPHERD_ANIMALS.getMatcher(input)) != null) {
-            String animalName = matcher.group("animal_name");
+            String animalName = matcher.group("animalName");
             int x = Integer.parseInt(matcher.group("x"));
             int y = Integer.parseInt(matcher.group("y"));
             controller.shepherdAnimal(animalName, x, y);
         } else if ((matcher = Regex.FEED_HAY.getMatcher(input)) != null) {
-            String animalName = matcher.group("animal_name");
+            String animalName = matcher.group("animalName");
             controller.feedAnimalHay(animalName);
         } else if ((matcher = Regex.TRADE.getMatcher(input)) != null) {
             String username = matcher.group("username");
@@ -152,8 +152,8 @@ public class GameMenu implements AppMenu {
             String item = matcher.group("item");
             int amount = Integer.parseInt(matcher.group("amount"));
             Integer price = matcher.group("price") != null ? Integer.parseInt(matcher.group("price")) : null;
-            String targetItem = matcher.group("target_item");
-            Integer targetAmount = matcher.group("target_amount") != null ? Integer.parseInt(matcher.group("target_amount")) : null;
+            String targetItem = matcher.group("targetItem");
+            Integer targetAmount = matcher.group("targetAmount") != null ? Integer.parseInt(matcher.group("targetAmount")) : null;
             controller.initiateTrade(username, type, item, amount, price, targetItem, targetAmount);
         } else if ((matcher = Regex.TRADE_LIST.getMatcher(input)) != null) {
             controller.showTradeList();
@@ -175,11 +175,11 @@ public class GameMenu implements AppMenu {
         } else if ((matcher = Regex.CHEAT_CODE.getMatcher(input)) != null) {
             controller.runCheatCode();
         } else if ((matcher = Regex.ARTISAN_USE.getMatcher(input)) != null) {
-            String artisanName = matcher.group("artisan_name");
-            String itemName = matcher.group("item1_name");
+            String artisanName = matcher.group("artisanName");
+            String itemName = matcher.group("item1Name");
             controller.useArtisan(artisanName, itemName);
         } else if ((matcher = Regex.ARTISAN_GET.getMatcher(input)) != null) {
-            String artisanName = matcher.group("artisan_name");
+            String artisanName = matcher.group("artisanName");
             controller.getArtisanProduct(artisanName);
         }
 

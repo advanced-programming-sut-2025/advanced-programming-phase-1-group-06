@@ -7,6 +7,7 @@ import models.Game.Coordinates;
 import models.Game.GameMap.GameMap;
 import models.CraftingAndCooking.ArtisanRecipe;
 import models.ItemFaces.InventoryItem;
+import models.ItemFaces.Item;
 import models.tools.Tool;
 
 import java.util.ArrayList;
@@ -204,6 +205,12 @@ public class Player {
     }
 
     public void upgradeTrashcan() {
+    }
+
+    public boolean isThereAnySpace(Item item){
+        if (inventory.getCapacity() - inventory.getItems().size() > 0)
+            return true;
+        return inventory.hasItemAmount(item.getName(), 1);
     }
 
     public void useTrashcan(){
