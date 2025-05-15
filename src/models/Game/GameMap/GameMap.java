@@ -10,6 +10,7 @@ import models.Tiles.Tile;
 import java.util.Arrays;
 
 public class GameMap {
+    int id;
     Tile[][] tiles;
     int length, width;
     int rockCount;

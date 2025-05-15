@@ -22,11 +22,11 @@ public class TileDeserializer implements JsonDeserializer<Tile> {
                 ((Dirt) tile).setHoed(jsonObject.get("isHoed").getAsBoolean());
                 ((Dirt) tile).setWatered(jsonObject.get("isWatered").getAsBoolean());
                 ((Dirt) tile).setFertilized(jsonObject.get("isFertilized").getAsBoolean());
-                if (jsonObject.has("growable")) {
-                    Growable growable = context.deserialize(jsonObject.get("growable"), Growable.class);
-                    ((Dirt) tile).setGrowable(growable);
-                }
-                break;
+//                if (jsonObject.has("growable")) {
+//                    Growable growable = context.deserialize(jsonObject.get("growable"), Growable.class);
+//                    ((Dirt) tile).setGrowable(growable);
+//                }
+//                break;
             case "Flooring":
                 tile = new Flooring(FlooringInfo.valueOf(jsonObject.get("flooringInfo").getAsString()));
                 break;
@@ -40,11 +40,11 @@ public class TileDeserializer implements JsonDeserializer<Tile> {
 
 
 
-        // Set OverlayTile if it exists
-        if (jsonObject.has("overlayTile")) {
-            OverlayTile overlayTile = context.deserialize(jsonObject.get("overlayTile"), OverlayTile.class);
-            tile.setOverlayTile(overlayTile);
-        }
+//        // Set OverlayTile if it exists
+//        if (jsonObject.has("overlayTile")) {
+//            OverlayTile overlayTile = context.deserialize(jsonObject.get("overlayTile"), OverlayTile.class);
+//            tile.setOverlayTile(overlayTile);
+//        }
 
         return tile;
     }

@@ -5,8 +5,8 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import models.Game.GameMap.LoadAndSave.GrowableDeserializer;
-import models.Game.GameMap.LoadAndSave.OverlayTileDeserializer;
+//import models.Game.GameMap.LoadAndSave.GrowableDeserializer;
+//import models.Game.GameMap.LoadAndSave.OverlayTileDeserializer;
 import models.Game.GameMap.LoadAndSave.TileDeserializer;
 import models.PlantsAndForaging.Growable;
 import models.Tiles.OverlayTiles.OverlayTile;
@@ -39,9 +39,9 @@ public class MapReader {
     public GameMap loadMap(String fileName) throws IOException {
         String json = Files.readString(Paths.get(fileName));
         Gson gson = new GsonBuilder()
-                .registerTypeAdapter(Tile.class, new TileDeserializer())
-                .registerTypeAdapter(OverlayTile.class, new OverlayTileDeserializer())
-                .registerTypeAdapter(Growable.class, new GrowableDeserializer()).create();
+                .registerTypeAdapter(Tile.class, new TileDeserializer()).create();
+//                .registerTypeAdapter(OverlayTile.class, new OverlayTileDeserializer())
+//                .registerTypeAdapter(Growable.class, new GrowableDeserializer()).create();
 
         JsonObject mapJson = JsonParser.parseString(json).getAsJsonObject();
         length = mapJson.get("length").getAsInt();

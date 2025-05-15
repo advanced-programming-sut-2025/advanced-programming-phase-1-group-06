@@ -87,7 +87,7 @@ public class Inventory {
             }
         }
     }
-    public void removeItem(Item item, int amount) {
+    public void removeItem(InventoryItem item, int amount) {
         if (!hasItemAmount(item.getName(), amount))
             return;
         for (InventoryItem inventoryItem : items){
