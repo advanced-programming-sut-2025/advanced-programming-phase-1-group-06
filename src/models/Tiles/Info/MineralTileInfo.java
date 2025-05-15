@@ -15,7 +15,12 @@ public enum MineralTileInfo {
     IRIDIUM(Color.MAGENTA_TEXT.getColorCode(), '0', 4, MineralsInfo.IRIDIUM, 10);
 
     public static MineralTileInfo getRandomly() {
-        return null;
+        double r = new Random().nextInt(100);
+        if (r < IRIDIUM.chance) return IRIDIUM;
+        else if (r < GOLD.chance) return GOLD;
+        else if (r < IRON.chance) return IRON;
+        else if (r < COPPER.chance) return COPPER;
+        else return ROCK;
     }
 
     public String getColor() {

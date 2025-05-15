@@ -64,10 +64,15 @@ public class GameMap {
 
     public Tile getTileAt(int x, int y) {
         // Bounds checking
-        if (x < 0 || x >= width || y < 0 || y >= length) {
+        if (x < 0 || x >= length || y < 0 || y >= width) {
             return null;
         }
-        return tiles[y][x];
+        try {
+            return tiles[y][x];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("x: " + x + " y: " + y + "out of bounds");
+        }
+        return null;
     }
 
     // Overload for Coordinates object
