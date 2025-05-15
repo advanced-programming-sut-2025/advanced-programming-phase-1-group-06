@@ -21,6 +21,7 @@ public class Player {
     private Inventory inventory;
     private ArrayList<Skill> skills;
     private double energy;
+    private double maxEnergy;
     private int mapNumber;
     private String currentBuilding;
     private ArrayList<ArtisanDevice> artisanDevices;
@@ -72,6 +73,9 @@ public class Player {
 
     public void dimnishEnergy(double energy){
         this.energy -= energy;
+        if (energy <= 0){
+            isPassedOut = true;
+        }
     }
 
     public boolean isPassedOut() {
@@ -187,6 +191,15 @@ public class Player {
         return this.user.getUsername();
     }
     //backpack
+
+
+    public double getMaxEnergy() {
+        return maxEnergy;
+    }
+
+    public void setMaxEnergy(double maxEnergy) {
+        this.maxEnergy = maxEnergy;
+    }
 
     public void upgradeInventory() {
     }
