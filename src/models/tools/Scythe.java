@@ -24,11 +24,6 @@ public class Scythe extends Tool {
     }
 
     @Override
-    public void use(Coordinates coordinate, Player player) {
-        // TODO
-    }
-
-    @Override
     public void upgrade() {
         // Implement logic to upgrade scythe
     }

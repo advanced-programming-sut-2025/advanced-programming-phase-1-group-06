@@ -68,7 +68,7 @@ public class Dirt extends Tile{
         this.isFertilized = isFertilized;
     }
 
-    private void setGrowable(Growable growable) {
+    public void setGrowable(Growable growable) {
         this.growable = growable;
     }
 

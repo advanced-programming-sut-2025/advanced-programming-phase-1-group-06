@@ -3,6 +3,7 @@ package models.Player;
 import java.util.ArrayList;
 
 import models.ItemFaces.InventoryItem;
+import models.ItemFaces.Item;
 import models.tools.ToolType;
 
 public class Inventory {
@@ -45,6 +46,7 @@ public class Inventory {
             return false;
         }
         items.add(item);
+        return true;
     }
 
     public boolean checkExistense(int id, int amount){
@@ -82,6 +84,24 @@ public class Inventory {
                     return;
                 if (item.getAmount() > amount)
                     item.setAmount(item.getAmount() - amount);
+            }
+        }
+    }
+    public void removeItem(Item item, int amount) {
+        if (!hasItemAmount(item.getName(), amount))
+            return;
+        for (InventoryItem inventoryItem : items){
+            if (item.getName().equals(inventoryItem.getName())){
+                if (amount < inventoryItem.getAmount()){
+                    inventoryItem.setAmount(inventoryItem.getAmount() - amount);
+                    return;
+                }
+                if (amount >= inventoryItem.getAmount()){
+                    amount -= inventoryItem.getAmount();
+                    items.remove(inventoryItem);
+                }
+                if (amount == 0)
+                    return;
             }
         }
     }

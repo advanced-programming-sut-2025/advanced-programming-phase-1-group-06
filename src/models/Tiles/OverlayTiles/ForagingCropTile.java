@@ -21,7 +21,7 @@ public class ForagingCropTile extends OverlayTile{
     public boolean useTool(Tool tool, Player player) {
         if (Objects.requireNonNull(tool) instanceof Scythe) {
             player.getInventory().addItem(info.create());
-            player.getSkills().increaseForaging(10);
+            player.increaseSkill("foraging");
             this.destroy();
             return true;
         }

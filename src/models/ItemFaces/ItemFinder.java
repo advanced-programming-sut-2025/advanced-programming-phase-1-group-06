@@ -399,7 +399,7 @@ public enum ItemFinder {
     private final InventoryItem inventoryItem;
     private final Item item;
     private final int id;
-    private final int baseID;
+//    private final int baseID;
 
     // Initialize IDs after enum construction
     private static final int[] ids;

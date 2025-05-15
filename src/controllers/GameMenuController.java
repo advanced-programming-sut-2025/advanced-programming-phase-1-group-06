@@ -179,12 +179,12 @@ public class GameMenuController {
 
     public String buildArtisanDevice(Matcher matcher){
         // TODO: craft ArtisanDevice
+        return "";
     }
 
     public String nextTurn(){
         turn ++;
         if (turn % 3 == 0){
-
             return "everybody had their turns time has passed by an hour";
         }
         return "next player can enter their command now";

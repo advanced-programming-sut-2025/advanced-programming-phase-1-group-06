@@ -20,11 +20,6 @@ public class Shear extends Tool{
     }
 
     @Override
-    public void use(Coordinates coordinates, Player player) {
-//        TODO
-    }
-
-    @Override
     public void upgrade() {
 
     }

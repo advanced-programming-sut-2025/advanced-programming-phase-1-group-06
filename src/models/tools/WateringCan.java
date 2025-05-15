@@ -13,13 +13,18 @@ public class WateringCan extends Tool {
         capacity = 40;
     }
 
-    public void water() {
-        // Implement watering logic
+    @Override
+    public int getSuccessfulEnergyCost() {
+        return 0;
     }
 
     @Override
-    public void use(Coordinates coordinate, Player player) {
-        // Implement logic to use watering can on coordinate
+    public int getUnsuccessfulEnergyCost() {
+        return 0;
+    }
+
+    public void water() {
+        // Implement watering logic
     }
 
     @Override

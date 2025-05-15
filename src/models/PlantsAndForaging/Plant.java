@@ -163,7 +163,7 @@ public class Plant extends OverlayTile implements Growable {
             if (oneTime) {
                 destroy();
             } else {
-                lastChangeInGrowthDay = App.getGame().getCurrentDay();
+                lastChangeInGrowthDay = App.getPreciseDay();
             }
             InventoryItem item = new Crop(this.product, isFertilized);
             item.setAmount(new Random().nextInt(3) + 1);

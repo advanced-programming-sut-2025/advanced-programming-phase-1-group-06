@@ -37,7 +37,7 @@ public class MineralTile extends OverlayTile {
             hits -= pickaxe.getDamage();
             if (hits <= 0) {
                 player.getInventory().addItem(mineralsInfo.create());
-                player.getSkills().increaseMining(10);
+                player.increaseSkill("mining");
                 this.destroy();
             }
             return true;

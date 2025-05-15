@@ -166,7 +166,7 @@ public class Player {
         return 0;
     }
 
-    public void IncreaseSkill(String skillName){
+    public void increaseSkill(String skillName){
         Skill skill = getSkillByName(skillName);
         if (skill != null){
             skill.increaseXP();

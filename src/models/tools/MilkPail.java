@@ -20,11 +20,6 @@ public class MilkPail extends Tool{
     }
 
     @Override
-    public void use(Coordinates coordinates, Player player) {
-
-    }
-
-    @Override
     public void upgrade() {
         return;
     }

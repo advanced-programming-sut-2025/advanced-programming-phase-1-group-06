@@ -9,6 +9,14 @@ import models.PlantsAndForaging.Info.TreeSeedInfo;
 import models.Tiles.Dirt;
 
 public class TreeSeed extends InventoryItem implements Sellable {
+
+    private TreeProductInfo productInfo;
+    private String growingStages;
+    private int totalHarvestTime;
+    private String seasons;
+    private TreeSeedInfo treeSeedInfo;
+    private int price;
+
     @Override
     public void sell() {
 
@@ -16,30 +24,17 @@ public class TreeSeed extends InventoryItem implements Sellable {
 
     @Override
     public int getPrice() {
-        return 0;
+        return price;
     }
 
     @Override
-    public String getName() {
-        return "";
+    public void setPrice(int price) {
+        this.price = price;
     }
-
-    @Override
-    public int getAmount() {
-        return 0;
-    }
-
-    private TreeProductInfo productInfo;
-    private String seedName;
-    private String growingStages;
-    private int totalHarvestTime;
-    private String seasons;
-    private TreeSeedInfo treeSeedInfo;
-
 
     public TreeSeed (TreeSeedInfo treeSeedInfo){
         this.treeSeedInfo = treeSeedInfo;
-        seedName = treeSeedInfo.getSeedName();
+        name = treeSeedInfo.getSeedName();
         growingStages = treeSeedInfo.getGrowingStages();
         totalHarvestTime = treeSeedInfo.getTotalHarvestTime();
         productInfo = treeSeedInfo.getProductInfo();

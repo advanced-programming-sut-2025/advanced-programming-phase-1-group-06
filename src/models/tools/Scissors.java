@@ -10,13 +10,18 @@ public class Scissors extends Tool {
         super(name, level, energyConsumption);
     }
 
-    public void cut() {
-        // Implement cutting logic
+    @Override
+    public int getSuccessfulEnergyCost() {
+        return 0;
     }
 
     @Override
-    public void use(Coordinates coordinate, Player player) {
-        // Implement logic to use scissors on coordinate
+    public int getUnsuccessfulEnergyCost() {
+        return 0;
+    }
+
+    public void cut() {
+        // Implement cutting logic
     }
 
     @Override

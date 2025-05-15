@@ -21,6 +21,11 @@ public class Mineral extends InventoryItem implements Sellable {
     }
 
     @Override
+    public void setPrice(int price) {
+        sellPrice = price;
+    }
+
+    @Override
     public String getName() {
         return "";
     }

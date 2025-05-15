@@ -1,10 +1,10 @@
 package models.ItemFaces;
 
 public abstract class InventoryItem {
-    String name;
-    int amount;
-    int id;
-    int baseId;
+    protected String name;
+    protected int amount;
+    protected int id;
+    protected int baseId;
 
     public int getBaseId() {
         return baseId;
