@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 public class Game {
     private ArrayList<Player> players;
+    private ArrayList<Player> activePlayers;
     private Weather weather;
     private Weather weather2;
     private ArrayList<GameMap> gameMaps;
@@ -21,6 +22,7 @@ public class Game {
 
     public Game(ArrayList<Player> players){
         this.players = players;
+        this.activePlayers = new ArrayList<>(players);
         weather = WeatherType.SUNNY.getWeather();
         gameMaps = new ArrayList<>();
         growables = new ArrayList<>();
@@ -61,7 +63,13 @@ public class Game {
     }
 
     public void nextTurn() {
-        currentPlayer = players.get((players.indexOf(currentPlayer) + 1) % players.size());
+        if (activePlayers.isEmpty()){
+            dateTime.advanceDay(1);
+        }
+        currentPlayer = activePlayers.get((activePlayers.indexOf(currentPlayer) + 1) % activePlayers.size());
+        if (currentPlayer.isPassedOut()){
+            nextTurn();
+        }
     }
 
     public Player getCurrentPlayer() {
@@ -73,6 +81,7 @@ public class Game {
     }
 
 
+
     public void adavanceDay(){
         long currentDay = dateTime.getPreciseDay();
         for (Growable growable : growables){
@@ -82,6 +91,9 @@ public class Game {
             if (artisanDevice.getStatus()){
                 artisanDevice.handleTime();
             }
+        }
+        for (Player player : players){
+            player.setEnergy(player.getMaxEnergy());
         }
     }
 

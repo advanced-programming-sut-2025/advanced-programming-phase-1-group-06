@@ -39,7 +39,7 @@ public class GameMenuController {
         return "tool set to equipped";
     }
 
-    public String useTool(String direction){
+    public void useTool(String direction){
         int x, y;
         switch (direction) {
             case "north":
@@ -75,16 +75,20 @@ public class GameMenuController {
                 x = -1;
                 break;
             default:
-                return "invalid direction";
+                System.out.println("invalid direction");
+                return;
         }
         Tool tool = player.getCurrentTool();
         if (tool == null){
-            return "you're not holding a tool right now";
+            System.out.println("you're not holding a tool right now");
+            return;
         }
-
-//            TODO
-//        return (player.getCurrentTool().use(new Coordinates(player.getX() + x, player.getY() + y)));
-        return null;
+        if (player.getGameMap().getTileAt(player.getX() + x, player.getY() + y).useTool(tool, player)) {
+            player.dimnishEnergy(tool.getSuccessfulEnergyCost());
+        }
+        else {
+            player.dimnishEnergy(tool.getUnsuccessfulEnergyCost());
+        }
     }
 
     public void answerQuestion(String answer) {
@@ -93,15 +97,20 @@ public class GameMenuController {
 
     public void advanceTime(int hours) {
         // TODO: Implement time advancing logic
+        game.getDateTime().advanceHour(hours);
+        System.out.println("time advanced by " + hours + " hours.");
     }
 
     public void advanceDate(int days) {
         // TODO: Implement date advancing logic
+        game.getDateTime().advanceDay(days);
+        System.out.println("game time advanced by" + days + "d ays");
     }
 
     public void setWeatherType(String type) {
         Weather weather = WeatherType.getWeatherByName(type);
         game.setWeatherForTomorrow(weather);
+        System.out.println("game weather set to" + type + ".");
     }
 
     public void callThor(int x, int y) {
@@ -128,7 +137,8 @@ public class GameMenuController {
         // TODO: Show map reading help/instructions
     }
 
-    public void showCurrentTool() {
+    public void showCurrentTool(Player player) {
+        System.out.println(player.getCurrentTool().getName());
         // TODO: Show the currently equipped tool
     }
 

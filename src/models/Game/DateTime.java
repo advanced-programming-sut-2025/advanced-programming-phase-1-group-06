@@ -51,6 +51,7 @@ public class DateTime {
     }
 
     public void advanceDay(int amount) {
+        // TODO add foraging everyday
         day += amount;
         if (day > 28) {
             season += (day / 28) % 4;
