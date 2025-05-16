@@ -1,0 +1,27 @@
+TODO roham: stay logged in
+TODO roham: energy consumption in different weather types.
+TODO roham: go home at the end of the day
+TODO roham: big boy map
+TODO hassan: skill
+TODO hassan: show all tools in inventory
+TODO roham: planting
+TODO roham: axe on tree (syrup)
+TODO sara: fishing rod & fishing
+TODO roham: backpack upgrade
+TODO roham: fix foraging spawn and item retrieval
+TODO roham: crows fucking shit up & scarecrow
+TODO roham: fertilizing
+TODO hassan: crafting recipes shown
+TODO roham: unlocking recipes
+TODO hassan: cheat give item
+TODO hassan: cooking
+TODO hassan: fridge
+TODO roham: cooking recipes
+TODO hassan: buff
+TODO roham: animal building stuff
+TODO hassan: crafting and artisan commands and shit edit that bih.
+TODO hassan: money cheat
+TODO roham: shipping bin.
+TODO sara: friendship shit ALL OF IT.
+
+TODO : milking pail

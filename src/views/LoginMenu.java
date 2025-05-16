@@ -24,9 +24,10 @@ public class LoginMenu implements AppMenu {
             App.setCurrentMenu(Menu.REGISTER);
             System.out.println("you are now in register menu");
         }
-        if (!output.isEmpty())
-            System.out.println(output);
         else
             System.out.println("wtf");
+
+        if (!output.isEmpty())
+            System.out.println(output);
     }
 }
