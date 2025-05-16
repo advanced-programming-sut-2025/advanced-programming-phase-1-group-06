@@ -16,4 +16,11 @@ public static void main(String[] args) throws IOException {
         new MapInitializer(m).generateObstacles().getGameMap().print(new Coordinates(0, 0), 80);
          AppView.run();
     }
+
+//    //testing colors
+//    public static void main(String[] args) {
+//        System.out.println("\033[0;103m" + "stupid nigga");
+//        System.out.println("\033[43m" + "smart nigga");
+//        System.out.println("\033[1;36m" + "snitch nigga");
+//    }
 }

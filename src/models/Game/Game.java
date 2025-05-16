@@ -113,5 +113,21 @@ public class Game {
     public void removeGrowable(Growable growable) {
         growables.remove(growable);
     }
+
+    public void addMap(GameMap gameMap) {
+        gameMaps.add(gameMap);
+    }
+
+    public GameMap getMap(int mapID) {
+        try {
+            return gameMaps.get(mapID);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("index out of bounds 💔💔💔💔 sybau");
+        }
+        return null;
+    }
+    public int getMapID(GameMap gameMap) {
+        return gameMaps.indexOf(gameMap);
+    }
 }
 

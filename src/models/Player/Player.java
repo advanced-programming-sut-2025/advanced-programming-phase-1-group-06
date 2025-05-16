@@ -6,6 +6,7 @@ import models.CraftingAndCooking.CraftingRecipeInfo;
 import models.Game.Coordinates;
 import models.Game.GameMap.GameMap;
 import models.CraftingAndCooking.ArtisanRecipe;
+import models.Game.GameMap.MapReader;
 import models.ItemFaces.InventoryItem;
 import models.tools.Tool;
 
@@ -22,7 +23,7 @@ public class Player {
     private ArrayList<Skill> skills;
     private double energy;
     private double maxEnergy;
-    private int mapNumber;
+    private int mapID;
     private String currentBuilding;
     private ArrayList<ArtisanDevice> artisanDevices;
     private ArrayList<CraftingRecipeInfo> unlockedCraftingRecipes;
@@ -128,14 +129,15 @@ public class Player {
         this.cookableFoods = cookableFoods;
         this.craftableItems = craftableItems;
         this.trashcan = trashcan;
-        this.mapNumber = mapNumber;
+        this.mapID = mapNumber;
         this.artisanDevices = artisanDevices;
         this.unlockedCraftingRecipes = unlockedCraftingRecipes;
     }
 
-    public Player(User user, int mapNumber){
+    public Player(User user, int mapID){
         this.user = user;
-        this.mapNumber = mapNumber;
+        this.mapID = mapID;
+        currentMap = App.getGame().getMap(mapID);
         inventory = new Inventory();
         cookableFoods = new ArrayList<ArtisanRecipe>();
         craftableItems = new ArrayList<>();

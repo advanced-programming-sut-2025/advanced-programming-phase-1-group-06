@@ -2,12 +2,16 @@ package controllers;
 
 import models.App;
 import models.Game.Game;
+import models.Game.GameMap.GameMap;
+import models.Game.GameMap.MapInitializer;
+import models.Game.GameMap.MapReader;
 import models.Player.Player;
 import models.User;
 import models.enums.Menu;
 import models.enums.Regex;
 import views.LoginMenu;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.locks.ReentrantLock;
@@ -44,7 +48,16 @@ public class MainMenuController {
                     System.out.println("number out of range please choose a number from 1 to 3.");
                     continue;
                 }
-                Player player = new Player(users.get(userCount), mapNumber);
+                GameMap gameMap;
+                try {
+                    gameMap = new MapReader().loadMap("./Maps/map".concat(String.valueOf(mapNumber)).concat(".json"));
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                gameMap = new MapInitializer(gameMap).generateObstacles().getGameMap();
+                App.getGame().addMap(gameMap);
+                Player player = new Player(users.get(userCount), App.getGame().getMapID(gameMap));
+                players.add(player);
                 userCount ++;
             }else
                 System.out.println("please answer in the format bellow.\n\"game map <map_number>\"");
