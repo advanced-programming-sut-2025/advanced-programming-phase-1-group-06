@@ -79,7 +79,7 @@ public class GameMenu implements AppMenu {
         } else if ((matcher = Regex.HELP_READING_MAP.getMatcher(input)) != null) {
             controller.showMapHelp();
         } else if ((matcher = Regex.TOOLS_SHOW_CURRENT.getMatcher(input)) != null) {
-            controller.showCurrentTool(currentPlayer);
+            System.out.println(currentPlayer.getCurrentTool().toString());
         } else if ((matcher = Regex.TOOLS_SHOW_AVAILABLE.getMatcher(input)) != null) {
             controller.showAvailableTools();
         } else if ((matcher = Regex.TOOLS_UPGRADE.getMatcher(input)) != null) {

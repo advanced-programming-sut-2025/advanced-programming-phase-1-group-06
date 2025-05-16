@@ -21,6 +21,10 @@ public class Shear extends Tool{
 
     @Override
     public void upgrade() {
+    }
 
+    @Override
+    public String toString(){
+        return name;
     }
 }

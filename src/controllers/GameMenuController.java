@@ -137,11 +137,6 @@ public class GameMenuController {
         // TODO: Show map reading help/instructions
     }
 
-    public void showCurrentTool(Player player) {
-        System.out.println(player.getCurrentTool().getName());
-        // TODO: Show the currently equipped tool
-    }
-
     public void showAvailableTools() {
         // TODO: Show all available tools
     }
