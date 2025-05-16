@@ -46,5 +46,18 @@ public abstract class Tool extends InventoryItem {
     public int getAmount(){
         return 1;
     }
+
+    @Override
+    public String toString(){
+        String levelName = switch (level){
+            case 0 -> "default";
+            case 1 -> "copper";
+            case 2 -> "iron";
+            case 3 -> "gold";
+            case 4 -> "iridium";
+            default -> "default";
+        };
+        return (levelName + " " + name);
+    }
 }
 

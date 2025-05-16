@@ -28,4 +28,9 @@ public class Scissors extends Tool {
     public void upgrade() {
         // Implement logic to upgrade scissors
     }
+
+    @Override
+    public String toString (){
+        return name;
+    }
 }

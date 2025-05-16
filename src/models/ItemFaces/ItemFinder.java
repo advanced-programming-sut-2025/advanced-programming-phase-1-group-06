@@ -2,6 +2,7 @@ package models.ItemFaces;
 
 import models.CraftingAndCooking.ArtisanRecipeInfo;
 import models.PlantsAndForaging.Info.*;
+import models.tools.FishingRodType;
 import models.tools.ToolType;
 
 public enum ItemFinder {
@@ -313,6 +314,11 @@ public enum ItemFinder {
     WATERINGCAN(ToolType.WATERING_CAN.getTool()),
     SCYTHE(ToolType.SCYTHE.getTool()),
     SCISSORS(ToolType.SCISSORS.getTool()),
+    TRAINING_FISHING_ROD(FishingRodType.TRAINING.create()),
+    BAMBOO_FISHING_ROD(FishingRodType.BAMBOO.create()),
+    FIBERGLASS_FISHING_ROD(FishingRodType.FIBERGLASS.create()),
+    IRIDIUM_FISHING_ROD(FishingRodType.IRIDIUM.create()),
+
 
     // animal products
     MILK(new Item("milk", 38, 125)), // +38 Energy, 125g base price
@@ -466,11 +472,24 @@ public enum ItemFinder {
         return values().length;
     }
 
-    /**
-     * Finds the ID of an InventoryItem by searching through the enum
-     * @param searchItem The InventoryItem to search for
-     * @return The ID of the item if found, -1 if not found
-     */
+    public static InventoryItem getItemByName(String searchName) {
+        if (searchName == null) return null;
+
+        for (ItemFinder item : values()) {
+            // Check InventoryItem first
+            if (item.getInventoryItem() != null &&
+                    item.getInventoryItem().getName().equals(searchName)) {
+                return item.getInventoryItem();
+            }
+            // Also check Item type since some entries are Items
+            if (item.getItem() != null &&
+                    item.getItem().getName().equals(searchName)) {
+                return item.getItem();
+            }
+        }
+        return null;  // Return null if item not found
+    }
+
     public static int getIdByItem(InventoryItem searchItem) {
         if (searchItem == null) return -1;
 
@@ -488,11 +507,6 @@ public enum ItemFinder {
         return -1;  // Return -1 if item not found
     }
 
-    /**
-     * Checks if an InventoryItem exists in the enum
-     * @param searchItem The InventoryItem to search for
-     * @return true if the item exists, false otherwise
-     */
     public static boolean containsItem(InventoryItem searchItem) {
         return getIdByItem(searchItem) != -1;
     }

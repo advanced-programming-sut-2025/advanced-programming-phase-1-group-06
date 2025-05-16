@@ -556,4 +556,13 @@ public enum ArtisanRecipeInfo {
     public ArtisanRecipe getRecipe(){
         return new ArtisanRecipe(this);
     }
+
+    public static ArtisanRecipe getArtisanRecipeByName(String name){
+        for (ArtisanRecipeInfo recipe : values()){
+            if (recipe.resultName.equals(name)){
+                return new ArtisanRecipe(recipe);
+            }
+        }
+        return null;
+    }
 }

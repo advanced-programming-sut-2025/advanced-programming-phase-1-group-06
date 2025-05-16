@@ -106,7 +106,7 @@ public enum CraftingRecipeInfo {
             "",
             0,
             4,
-            ArtisanDeviceTypes.DEHYADRATOR
+            ArtisanDeviceTypes.DEHYDRATOR
     ),
     FISH_SMOKER(
             "Fish Smoker",
@@ -284,5 +284,14 @@ public enum CraftingRecipeInfo {
         Item item = new Item(false, true, true, sellPrice, 0, description, name);
         item.setAmount(1);
         return item;
+    }
+
+    public static CraftingRecipe getCraftingRecipeByName(String name){
+        for (CraftingRecipeInfo recipeInfo : values()){
+            if (recipeInfo.name.equals(name) && recipeInfo.isArtisanDevice()){
+                return new CraftingRecipe(recipeInfo);
+            }
+        }
+        return null;
     }
 }

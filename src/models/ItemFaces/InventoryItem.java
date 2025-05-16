@@ -39,4 +39,9 @@ public abstract class InventoryItem {
         // Compare only by name, ignoring amount
         return getName().equals(other.getName());
     }
+
+    @Override
+    public String toString(){
+        return amount + " " + name;
+    }
 }
