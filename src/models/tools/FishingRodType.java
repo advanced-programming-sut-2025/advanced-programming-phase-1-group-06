@@ -18,4 +18,8 @@ public enum FishingRodType {
         this.energyConsumption = energyConsumption;
         this.price = price;
     }
+
+    public Tool create(){
+        return new FishingRod(this);
+    }
 }

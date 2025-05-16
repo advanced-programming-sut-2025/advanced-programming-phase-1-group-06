@@ -6,11 +6,8 @@ import models.Player.Player;
 
 import java.util.ArrayList;
 
-/**
- * Last updated by: hassanp30
- * Last updated at: 2025-05-13 12:44:07 UTC
- */
 public class ArtisanDevice {
+    private final String name;
     private long startTime;
     private int craftingTime;
     private boolean status;
@@ -19,13 +16,17 @@ public class ArtisanDevice {
     private InventoryItem craftedItem;
 
     public ArtisanDevice(ArtisanDeviceTypes type) {
+        this.name = type.getName();
         this.artisanRecipes = new ArrayList<>(type.artisanRecipes);
         this.status = false;
         this.ready = false;
         this.startTime = 0;
     }
-    //  save
-    public ArtisanDevice(long startTime, int craftingTime, boolean status, boolean ready, ArrayList<ArtisanRecipe> artisanRecipes, InventoryItem craftedItem) {
+
+    // Updated save constructor
+    public ArtisanDevice(String name, long startTime, int craftingTime, boolean status, boolean ready,
+                         ArrayList<ArtisanRecipe> artisanRecipes, InventoryItem craftedItem) {
+        this.name = name;
         this.startTime = startTime;
         this.craftingTime = craftingTime;
         this.status = status;
@@ -34,13 +35,19 @@ public class ArtisanDevice {
         this.craftedItem = craftedItem;
     }
 
-    public ArtisanDevice(ArrayList<ArtisanRecipe> artisanRecipes, InventoryItem craftedItem) {
+    public ArtisanDevice(String name, ArrayList<ArtisanRecipe> artisanRecipes, InventoryItem craftedItem) {
+        this.name = name;
         this.artisanRecipes = new ArrayList<>(artisanRecipes);
         this.craftedItem = craftedItem;
         this.status = false;
         this.ready = true;
         this.startTime = 0;
         this.craftingTime = 0;
+    }
+
+    // Add getter for name
+    public String getName() {
+        return name;
     }
 
     public void craft(ArtisanRecipe artisanRecipe, Player player) {
@@ -81,6 +88,10 @@ public class ArtisanDevice {
         return ready;
     }
 
+    public void setReady(boolean ready){
+        this.ready = ready;
+    }
+
     public boolean getStatus() {
         return status;
     }
@@ -92,4 +103,6 @@ public class ArtisanDevice {
     public ArrayList<ArtisanRecipe> getRecipes() {
         return new ArrayList<>(artisanRecipes);
     }
+
+
 }

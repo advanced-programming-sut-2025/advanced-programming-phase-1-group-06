@@ -39,4 +39,5 @@ public class ArtisanRecipe {
     public String getDescription() {
         return description;
     }
+
 }

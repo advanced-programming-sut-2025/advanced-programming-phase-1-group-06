@@ -1,6 +1,7 @@
 package models.ItemFaces;
 
 import models.Game.Coordinates;
+import models.tools.Tool;
 
 public class Item extends InventoryItem implements Edible, Sellable, Placeable {
 

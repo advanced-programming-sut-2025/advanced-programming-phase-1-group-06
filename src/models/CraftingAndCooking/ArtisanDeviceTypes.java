@@ -2,26 +2,30 @@ package models.CraftingAndCooking;
 
 import java.util.ArrayList;
 
+/**
+ * Last updated by: hassanp30
+ * Last updated at: 2025-05-16 11:47:50 UTC
+ */
 public enum ArtisanDeviceTypes {
-    BEE_HOUSE(new ArrayList<ArtisanRecipe>() {{
+    BEE_HOUSE("Bee House", new ArrayList<ArtisanRecipe>() {{
         add(ArtisanRecipeInfo.HONEY.getRecipe());
     }}),
 
-    CHEESE_PRESS(new ArrayList<ArtisanRecipe>() {{
+    CHEESE_PRESS("Cheese Press", new ArrayList<ArtisanRecipe>() {{
         add(ArtisanRecipeInfo.CHEESE.getRecipe());
         add(ArtisanRecipeInfo.LARGE_MILK_CHEESE.getRecipe());
         add(ArtisanRecipeInfo.GOAT_CHEESE.getRecipe());
         add(ArtisanRecipeInfo.LARGE_GOAT_CHEESE.getRecipe());
     }}),
 
-    MAYONNAISE_MACHINE(new ArrayList<ArtisanRecipe>() {{
+    MAYONNAISE_MACHINE("Mayonnaise Machine", new ArrayList<ArtisanRecipe>() {{
         add(ArtisanRecipeInfo.MAYONNAISE.getRecipe());
         add(ArtisanRecipeInfo.LARGE_MAYONNAISE.getRecipe());
         add(ArtisanRecipeInfo.DUCK_MAYONNAISE.getRecipe());
         add(ArtisanRecipeInfo.DINOSAUR_MAYONNAISE.getRecipe());
     }}),
 
-    KEG(new ArrayList<ArtisanRecipe>() {{
+    KEG("Keg", new ArrayList<ArtisanRecipe>() {{
         // Alcoholic Beverages
         add(ArtisanRecipeInfo.BEER.getRecipe());
         add(ArtisanRecipeInfo.PALE_ALE.getRecipe());
@@ -72,7 +76,7 @@ public enum ArtisanDeviceTypes {
         add(ArtisanRecipeInfo.POMEGRANATE_JUICE.getRecipe());
     }}),
 
-    PRESERVE_JAR(new ArrayList<ArtisanRecipe>() {{
+    PRESERVE_JAR("Preserve Jar", new ArrayList<ArtisanRecipe>() {{
         // Spring Fruit Jellies
         add(ArtisanRecipeInfo.APRICOT_JELLY.getRecipe());
         add(ArtisanRecipeInfo.CHERRY_JELLY.getRecipe());
@@ -118,17 +122,17 @@ public enum ArtisanDeviceTypes {
         add(ArtisanRecipeInfo.PICKLED_YAM.getRecipe());
     }}),
 
-    LOOM(new ArrayList<ArtisanRecipe>() {{
+    LOOM("Loom", new ArrayList<ArtisanRecipe>() {{
         add(ArtisanRecipeInfo.CLOTH.getRecipe());
     }}),
 
-    OIL_MAKER(new ArrayList<ArtisanRecipe>() {{
+    OIL_MAKER("Oil Maker", new ArrayList<ArtisanRecipe>() {{
         add(ArtisanRecipeInfo.TRUFFLE_OIL.getRecipe());
         add(ArtisanRecipeInfo.CORN_OIL.getRecipe());
         add(ArtisanRecipeInfo.SUNFLOWER_OIL.getRecipe());
     }}),
 
-    DEHYADRATOR(new ArrayList<ArtisanRecipe>() {{
+    DEHYDRATOR("Dehydrator", new ArrayList<ArtisanRecipe>() {{
         // Spring Fruits
         add(ArtisanRecipeInfo.DRIED_APRICOT.getRecipe());
         add(ArtisanRecipeInfo.DRIED_CHERRY.getRecipe());
@@ -149,7 +153,7 @@ public enum ArtisanDeviceTypes {
         add(ArtisanRecipeInfo.DRIED_POMEGRANATE.getRecipe());
     }}),
 
-    FISH_SMOKER(new ArrayList<ArtisanRecipe>() {{
+    FISH_SMOKER("Fish Smoker", new ArrayList<ArtisanRecipe>() {{
         // Spring Fish
         add(ArtisanRecipeInfo.SMOKED_FLOUNDER.getRecipe());
         add(ArtisanRecipeInfo.SMOKED_LIONFISH.getRecipe());
@@ -181,21 +185,27 @@ public enum ArtisanDeviceTypes {
         add(ArtisanRecipeInfo.SMOKED_CRIMSONFISH.getRecipe());
     }}),
 
-    CHARCOAL_KILN(new ArrayList<ArtisanRecipe>() {{
+    CHARCOAL_KILN("Charcoal Kiln", new ArrayList<ArtisanRecipe>() {{
         add(ArtisanRecipeInfo.COAL.getRecipe());
     }}),
 
-    FURNACE(new ArrayList<ArtisanRecipe>() {{
+    FURNACE("Furnace", new ArrayList<ArtisanRecipe>() {{
         add(ArtisanRecipeInfo.COPPER_BAR.getRecipe());
         add(ArtisanRecipeInfo.IRON_BAR.getRecipe());
         add(ArtisanRecipeInfo.GOLD_BAR.getRecipe());
         add(ArtisanRecipeInfo.IRIDIUM_BAR.getRecipe());
     }});
 
+    final String name;
     final ArrayList<ArtisanRecipe> artisanRecipes;
 
-    ArtisanDeviceTypes(ArrayList<ArtisanRecipe> artisanRecipes) {
+    ArtisanDeviceTypes(String name, ArrayList<ArtisanRecipe> artisanRecipes) {
+        this.name = name;
         this.artisanRecipes = artisanRecipes;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public ArrayList<ArtisanRecipe> getRecipes() {
@@ -204,5 +214,14 @@ public enum ArtisanDeviceTypes {
 
     public ArtisanDevice getArtisanDevice() {
         return new ArtisanDevice(this);
+    }
+
+    public static ArtisanDevice getArtisanDeviceByName(String name){
+        for (ArtisanDeviceTypes artisanDeviceType : values()){
+            if (artisanDeviceType.name.equals(name)){
+                return new ArtisanDevice(artisanDeviceType);
+            }
+        }
+        return null;
     }
 }

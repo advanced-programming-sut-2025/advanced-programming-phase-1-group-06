@@ -1,11 +1,9 @@
 package models.Player;
 
 import models.*;
-import models.CraftingAndCooking.ArtisanDevice;
-import models.CraftingAndCooking.CraftingRecipeInfo;
+import models.CraftingAndCooking.*;
 import models.Game.Coordinates;
 import models.Game.GameMap.GameMap;
-import models.CraftingAndCooking.ArtisanRecipe;
 import models.Game.GameMap.MapReader;
 import models.ItemFaces.InventoryItem;
 import models.ItemFaces.Item;
@@ -183,6 +181,20 @@ public class Player {
         return false;
     }
 
+    public boolean removeItem(String name, int amount){
+        if (!inventory.hasItemAmount(name, amount))
+            return false;
+        inventory.removeItem(name, amount);
+        return true;
+    }
+
+    public boolean removeItem(String name){
+        if (!inventory.hasItem(name))
+            return false;
+        inventory.removeItem(name);
+        return true;
+    }
+
     public void walk(int x, int y) {
         ArrayList<Coordinates> coordinates = AStar.findPath(currentMap, this.x, this.y, x, y);
         ArrayList<Integer> energyCosts = AStar.calculateEachMoveCost(coordinates); //energy costs should be divided by 200
@@ -235,5 +247,63 @@ public class Player {
         return artisanDevices;
     }
 
+    public ArrayList<ArtisanRecipe> getCraftableItems() {
+        return craftableItems;
+    }
+
+    public void setCraftableItems(ArrayList<ArtisanRecipe> craftableItems) {
+        this.craftableItems = craftableItems;
+    }
+
+    public ArrayList<ArtisanRecipe> getCookableFoods() {
+        return cookableFoods;
+    }
+
+    public void setCookableFoods(ArrayList<ArtisanRecipe> cookableFoods) {
+        this.cookableFoods = cookableFoods;
+    }
+
+    public ArrayList<CraftingRecipeInfo> getUnlockedCraftingRecipes() {
+        return unlockedCraftingRecipes;
+    }
+
+    public void setUnlockedCraftingRecipes(ArrayList<CraftingRecipeInfo> unlockedCraftingRecipes) {
+        this.unlockedCraftingRecipes = unlockedCraftingRecipes;
+    }
+
+    public String showCraftingRecipes(){
+        StringBuilder output = new StringBuilder();
+        for (CraftingRecipeInfo recipe : unlockedCraftingRecipes){
+            output.append(recipe.createResult().getName()).append("\n");
+        }
+        return output.toString();
+    }
+
+    public boolean hasArtisanDevcie(String name){
+        for (ArtisanDevice artisanDevice : artisanDevices){
+            if (artisanDevice.getName().equals(name)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void getArtisanProduct(String name){
+        for (ArtisanDevice artisanDevice : artisanDevices){
+            if (artisanDevice.getName().equals(name)){
+                if (artisanDevice.isReady()){
+                    if (inventory.addItem(artisanDevice.getCraftedItem())){
+                        System.out.println("item added to inventory");
+                        artisanDevice.setReady(false);
+                        return;
+                    }
+                }else {
+                    System.out.println("the item isn't ready yet");
+                }
+            }else {
+                System.out.println("you don't have this device");
+            }
+        }
+    }
 }
 

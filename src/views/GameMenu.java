@@ -42,9 +42,18 @@ public class GameMenu implements AppMenu {
         } else if ((matcher = Regex.ENERGY_UNLIMITED.getMatcher(input)) != null){
             currentPlayer.setEnergy(Integer.MAX_VALUE);
         } else if ((matcher = Regex.INVENTORY_SHOW.getMatcher(input)) != null){
-            // TODO
+            currentPlayer.getInventory().toString();
         } else if ((matcher = Regex.INVENTORY_TRASH.getMatcher(input)) != null){
-            // TODO
+            String itemName = matcher.group("item");
+            int amount = 0;
+            try {
+                 amount = Integer.parseInt(matcher.group("count"));
+            } catch (Exception e) {
+                amount = 0;
+            }
+            finally {
+                controller.inventoryTrash(currentPlayer, itemName, amount);
+            }
         } else if ((matcher = Regex.TOOLS_EQUIP.getMatcher(input)) != null){
             String toolName = matcher.group("toolName");
             controller.equipTool(toolName);
@@ -81,7 +90,7 @@ public class GameMenu implements AppMenu {
         } else if ((matcher = Regex.TOOLS_SHOW_CURRENT.getMatcher(input)) != null) {
             System.out.println(currentPlayer.getCurrentTool().toString());
         } else if ((matcher = Regex.TOOLS_SHOW_AVAILABLE.getMatcher(input)) != null) {
-            controller.showAvailableTools();
+            controller.showAvailableTools(currentPlayer);
         } else if ((matcher = Regex.TOOLS_UPGRADE.getMatcher(input)) != null) {
             controller.upgradeTool(matcher.group("tool"));
         } else if ((matcher = Regex.GIFT.getMatcher(input)) != null) {
@@ -121,7 +130,7 @@ public class GameMenu implements AppMenu {
             int y = Integer.parseInt(matcher.group("y"));
             controller.showPlantAt(x, y);
         } else if ((matcher = Regex.CRAFTING_SHOW_RECIPES.getMatcher(input)) != null) {
-            controller.showCraftingRecipes();
+            controller.showCraftingRecipes(currentPlayer);
         } else if ((matcher = Regex.CRAFTING_CRAFT.getMatcher(input)) != null) {
             String itemName = matcher.group("itemName");
             controller.craftItem(itemName);
@@ -177,7 +186,7 @@ public class GameMenu implements AppMenu {
         } else if ((matcher = Regex.ARTISAN_USE.getMatcher(input)) != null) {
             String artisanName = matcher.group("artisanName");
             String itemName = matcher.group("item1Name");
-            controller.useArtisan(artisanName, itemName);
+            controller.useArtisan(currentPlayer, artisanName, itemName);
         } else if ((matcher = Regex.ARTISAN_GET.getMatcher(input)) != null) {
             String artisanName = matcher.group("artisanName");
             controller.getArtisanProduct(artisanName);

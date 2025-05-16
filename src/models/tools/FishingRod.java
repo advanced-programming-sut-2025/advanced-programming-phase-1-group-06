@@ -9,7 +9,7 @@ public class FishingRod extends Tool {
     private int energyConsumption;
     private int price;
 
-    FishingRod(FishingRodType type) {
+    public FishingRod(FishingRodType type) {
         this.type = type;
         int price = type.price;
         this.allFishes = type.allFish;

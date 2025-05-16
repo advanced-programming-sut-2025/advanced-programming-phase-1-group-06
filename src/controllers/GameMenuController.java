@@ -1,14 +1,14 @@
 package controllers;
 
 import models.App;
+import models.CraftingAndCooking.*;
 import models.Game.Game;
 import models.Game.Weather;
 import models.ItemFaces.InventoryItem;
+import models.ItemFaces.ItemFinder;
 import models.Player.Player;
 import models.enums.WeatherType;
 import models.tools.Tool;
-
-import java.util.regex.Matcher;
 
 public class GameMenuController {
     Game game = App.getGame();
@@ -137,10 +137,15 @@ public class GameMenuController {
         // TODO: Show map reading help/instructions
     }
 
-    public void showAvailableTools() {
-        // TODO: Show all available tools
+    public void showAvailableTools(Player player) {
+        player.getInventory().showTools();
     }
-
+    public void inventoryTrash(Player player, String itemName, int count){
+        if (count == 0){
+            player.removeItem(itemName);
+        }
+        player.removeItem(itemName, count);
+    }
     public void upgradeTool(String toolName) {
         // TODO: Upgrade the specified tool
     }
@@ -182,29 +187,45 @@ public class GameMenuController {
     }
 
 
-    public String buildArtisanDevice(Matcher matcher){
-        // TODO: craft ArtisanDevice
-        return "";
+    public void buildArtisanDevice(Player player, String name){
+        CraftingRecipe recipe = CraftingRecipeInfo.getCraftingRecipeByName(name);
+        if (recipe == null){
+            System.out.println("invalid recipe");
+            return;
+        }
+        if (!recipe.isArtisan()){
+            System.out.println("this is not an artisan device.");
+        } else if (recipe.craft(player) != null)
+            System.out.println("item crafted successfully");
     }
 
-        public void terminateGame() {
-            // TODO: Terminate the game
-        }
+    public void terminateGame() {
+        // TODO: Terminate the game
+    }
 
-        public void plantSeed(String seed, String direction) {
+    public void plantSeed(String seed, String direction) {
             // TODO: Plant the given seed in the specified direction
-        }
+    }
 
-        public void showPlantAt(int x, int y) {
+    public void showPlantAt(int x, int y) {
             // TODO: Show plant at coordinates (x, y)
-        }
+    }
 
-        public void showCraftingRecipes() {
-            // TODO: Display all available crafting recipes
-        }
+    public void showCraftingRecipes(Player player) {
+            System.out.println(player.showCraftingRecipes());
+    }
 
-        public void craftItem(String itemName) {
-            // TODO: Craft the specified item
+        public void craftItem(String name) {
+            CraftingRecipe recipe = CraftingRecipeInfo.getCraftingRecipeByName(name);
+            if (recipe == null){
+                System.out.println("invalid recipe");
+                return;
+            }
+            if (recipe.isArtisan()){
+                System.out.println("this is an artisan device.");
+            } else if (recipe.craft(player) != null)
+                System.out.println("item crafted successfully");
+
         }
 
         public void buyAnimal(String animal, String name) {
@@ -268,22 +289,43 @@ public class GameMenuController {
             // TODO: Execute cheat code logic
         }
 
-        public void useArtisan(String artisanName, String itemName) {
-            // TODO: Use an artisan machine with the specified item
+        public void useArtisan(Player player, String artisanName, String itemName) {
+            ArtisanRecipe recipe = ArtisanRecipeInfo.getArtisanRecipeByName(itemName);
+            if (recipe == null){
+                System.out.println("recipe not found");
+                return;
+            }
+            ArtisanDevice artisanDevice = ArtisanDeviceTypes.getArtisanDeviceByName(artisanName);
+            if (artisanDevice == null){
+                System.out.println("artisan device not found");
+            }
+            if (!player.hasArtisanDevcie(artisanName)){
+                System.out.println("player hasn't unlocked this artisan device yet.");
+                return;
+            }
+            artisanDevice.craft(recipe, player);
         }
 
         public void getArtisanProduct(String artisanName) {
             // TODO: Retrieve the finished product from an artisan machine
         }
 
-
-
-            public String nextTurn () {
-                turn++;
-                if (turn % 3 == 0) {
-                    return "everybody had their turns time has passed by an hour";
-                }
-                return "next player can enter their command now";
+        public void nextTurn () {
+            turn++;
+            game.nextTurn();
+            if (turn % 3 == 0) {
+                System.out.println("everybody had their turns time has passed by an hour");
             }
-
+            System.out.println("next player can enter their command now");
         }
+    public void giveItemCheat(String name, Player player){
+        InventoryItem item = ItemFinder.getItemByName(name);
+        if (item == null){
+            System.out.println("item not found");
+            return;
+        }
+        player.getInventory().addItem(item);
+    }
+
+
+}

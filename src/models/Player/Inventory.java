@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import models.ItemFaces.InventoryItem;
 import models.ItemFaces.Item;
+import models.tools.Tool;
 import models.tools.ToolType;
 
 public class Inventory {
@@ -39,13 +40,16 @@ public class Inventory {
         for (InventoryItem inventoryItem : items){
             if (item.getId() == inventoryItem.getId()){
                 inventoryItem.setAmount(inventoryItem.getAmount() + item.getAmount());
+                System.out.println("item amount increased");
                 return true;
             }
         }
         if (getCapacity() - items.size() < 1) {
+            System.out.println("not enough space in inventory");
             return false;
         }
         items.add(item);
+        System.out.println("item added to inventory");
         return true;
     }
 
@@ -65,6 +69,10 @@ public class Inventory {
             }
         }
         return null;
+    }
+
+    public void removeItem(String name){
+        items.removeIf(item -> item.getName().equals(name));
     }
 
     public void removeItem(String itemName, int amount) {
@@ -119,9 +127,21 @@ public class Inventory {
         return items.size() >= getCapacity();
     }
 
-    public boolean hasItemAmount(String name, int amount) {
-        return items.stream().anyMatch(item -> item.getName().equals(name) && item.getAmount() >= amount);
+
+    public boolean hasItemAmount(String name, int amount){
+        int hasAmuont = 0;
+        for (InventoryItem item : items){
+            if (item.getName().equals(name)){
+                hasAmuont += item.getAmount();
+            }
+        }
+        return (hasAmuont >= amount);
     }
+
+    public boolean hasItem(String name){
+        return items.stream().anyMatch(item -> item.getName().equals(name));
+    }
+
     public int getBaseItemCount(String itemName){
         int counter = 0;
         for (InventoryItem item : items){
@@ -138,5 +158,24 @@ public class Inventory {
             }
         }
         return null;
+    }
+
+    @Override
+    public String toString(){
+        StringBuilder output = new StringBuilder();
+        for (InventoryItem item : items){
+            output.append(items.indexOf(item)).append(". ").append(item.getAmount()).append(" ").append(item.getName()).append("\n");
+        }
+        return output.toString();
+    }
+
+    public String showTools(){
+        StringBuilder output = new StringBuilder();
+        for (InventoryItem item : items){
+            if (item instanceof Tool){
+                output.append(item.toString()).append("\n");
+            }
+        }
+        return output.toString();
     }
 }
