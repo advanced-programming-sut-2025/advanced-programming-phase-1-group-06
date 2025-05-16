@@ -9,13 +9,14 @@ import java.util.ArrayList;
 public class Building {
     protected OverlayTile tile;
     protected String name;
-    protected Coordinates balaChap;
-    protected Coordinates doorCoordinates;
-    protected GameMap insideBuilding;
+    protected Coordinates mainTile;
 
-    public Building(Coordinates balaChap, Coordinates doorCoordinates) {
-        this.balaChap = balaChap;
-        this.doorCoordinates = doorCoordinates;
-
+    public Building() {
     }
+
+    public String getName() {
+        return name;
+    }
+
+
 }

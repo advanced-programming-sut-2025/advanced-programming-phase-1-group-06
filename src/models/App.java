@@ -1,12 +1,18 @@
 package models;
 
+import com.google.gson.*;
 import models.Game.Coordinates;
 import models.Game.Game;
 import models.Game.GameMap.GameMap;
 import models.Player.Player;
 import models.Tiles.Tile;
 import models.enums.Menu;
+import models.saving.UserArrayManager;
+import models.saving.UserSerializer;
 
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class App {
@@ -61,9 +67,9 @@ public class App {
 
 
 
-    public static User getUserByUsername(String username){
-        for (User user : users){
-            if (user.getUsername().equals(username)){
+    public static User getUserByUsername(String username) {
+        for (User user : UserArrayManager.readAllUsers()) {
+            if (user.getUsername().equals(username)) {
                 return user;
             }
         }
@@ -71,11 +77,11 @@ public class App {
     }
 
     public static ArrayList<User> getUsers() {
-        return users;
+        return UserArrayManager.readAllUsers();
     }
 
     public static void addUser(User user) {
-        users.add(user);
+        UserArrayManager.appendUser(user);
     }
 
     public static Menu getCurrentMenu(){

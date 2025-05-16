@@ -10,7 +10,7 @@ import models.Tiles.Tile;
 import java.util.Arrays;
 
 public class GameMap {
-    int id;
+
     Tile[][] tiles;
     int length, width;
     int rockCount;
@@ -55,7 +55,11 @@ public class GameMap {
         StringBuilder mapString = new StringBuilder();
         for (int y = minY; y < maxY; y++) {
             for (int x = minX; x < maxX; x++) {
-                System.out.print(tiles[y][x].showTile());
+                try {
+                    System.out.print(tiles[y][x].showTile());
+                } catch (NullPointerException e) {
+                    System.out.println("x: " + x + ", y: " + y);
+                }
             }
             System.out.println();
         }

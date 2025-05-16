@@ -1,0 +1,32 @@
+[
+  {
+    "username": "hassan",
+    "password": "aA#12345",
+    "email": "hassan@gmail.com",
+    "nickname": "hassan",
+    "gender": 1,
+    "points": 0,
+    "questionNumber": 4,
+    "answer": "nirvana"
+  },
+  {
+    "username": "roham",
+    "password": "aA#12345",
+    "email": "roham@gmail.com",
+    "nickname": "roham",
+    "gender": 1,
+    "points": 0,
+    "questionNumber": 5,
+    "answer": "shotor"
+  },
+  {
+    "username": "sara",
+    "password": "aA#12345",
+    "email": "sara@gmail.com",
+    "nickname": "sara",
+    "gender": 2,
+    "points": 0,
+    "questionNumber": 5,
+    "answer": "eagle"
+  }
+]

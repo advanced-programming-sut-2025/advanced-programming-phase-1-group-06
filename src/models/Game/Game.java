@@ -4,6 +4,11 @@ import models.CraftingAndCooking.ArtisanDevice;
 import models.Game.GameMap.GameMap;
 import models.PlantsAndForaging.Growable;
 import models.Player.Player;
+import models.Tiles.Flooring;
+import models.Tiles.Info.BuildingTileInfo;
+import models.Tiles.Info.FlooringInfo;
+import models.Tiles.OverlayTiles.BuildingTile;
+import models.Tiles.Tile;
 import models.enums.WeatherType;
 
 import java.util.ArrayList;
@@ -14,20 +19,45 @@ public class Game {
     private Weather weather;
     private Weather weather2;
     private ArrayList<GameMap> gameMaps;
+    private GameMap bigMap;
     private ArrayList<Growable> growables;
     private ArrayList<ArtisanDevice> artisanDevices;
     private DateTime dateTime;
     private Player currentPlayer;
     private int currentTurn;
 
-    public Game(ArrayList<Player> players){
+    public Game(ArrayList<Player> players, ArrayList<GameMap>  gameMaps) {
         this.players = players;
-        this.activePlayers = new ArrayList<>(players);
+//        this.activePlayers = new ArrayList<>(players);
         weather = WeatherType.SUNNY.getWeather();
-        gameMaps = new ArrayList<>();
+        this.gameMaps = gameMaps;
+        bigMap = makeBigMap(gameMaps);
         growables = new ArrayList<>();
         dateTime = new DateTime();
-        weather2 = Weather.weatherRandomizer();
+//        weather2 = Weather.weatherRandomizer();
+    }
+
+    private GameMap makeBigMap(ArrayList<GameMap> gameMaps) {
+        Tile[][] tiles = new Tile[90][90];
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                for (int y = 0; y < 44; y++) {
+                    for (int x = 0; x < 44; x++) {
+                        tiles[y + 46 * i][x + 46 * j] = gameMaps.get(2 * i + j).getTileAt(x, y);
+                    }
+                }
+            }
+        }
+        for (int i = 0; i < 90; i++) {
+            tiles[i][44] = new Flooring(FlooringInfo.GRASS);
+            tiles[i][45] = new Flooring(FlooringInfo.GRASS);
+            tiles[44][i] = new Flooring(FlooringInfo.GRASS);
+            tiles[45][i] = new Flooring(FlooringInfo.GRASS);
+        }
+        return new GameMap(tiles, 90, 90);
+    }
+    public GameMap getBigMap() {
+        return bigMap;
     }
 
     public void setCurrentPlayer(Player currentPlayer) {

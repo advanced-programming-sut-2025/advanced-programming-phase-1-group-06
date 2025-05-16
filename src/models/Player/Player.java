@@ -184,7 +184,12 @@ public class Player {
     }
 
     public void walk(int x, int y) {
-        ArrayList<Coordinates> coordinates = AStar.findPath(currentMap, this.x, this.y, x, y);
+        int i = App.getGame().getPlayers().indexOf(this);
+        if ((i == 0 && (x >= 46 ^ y >= 46) || (i == 1 && (x < 44)) || (i == 2 && y < 44))){
+            System.out.println("cant walk into other farms");
+            return;
+        }
+        ArrayList<Coordinates> coordinates = AStar.findPath(App.getGame().getBigMap(), this.x, this.y, x, y);
         ArrayList<Integer> energyCosts = AStar.calculateEachMoveCost(coordinates); //energy costs should be divided by 200
         // you should do the menus first so we can get confirmation from player that they want to walk
     }

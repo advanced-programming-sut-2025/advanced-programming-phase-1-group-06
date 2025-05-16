@@ -1,10 +1,12 @@
 TODO roham: stay logged in
+done
 TODO roham: energy consumption in different weather types.
 TODO roham: go home at the end of the day
 TODO roham: big boy map
 TODO hassan: skill
 TODO hassan: show all tools in inventory
 TODO roham: planting
+done (?)
 TODO roham: axe on tree (syrup)
 TODO sara: fishing rod & fishing
 TODO roham: backpack upgrade

@@ -11,8 +11,8 @@ public class MapBuilder {
         StringBuilder map = new StringBuilder();
         map.append("""
                 {
-                    "length": 80,
-                    "width": 45,
+                    "length": 44,
+                    "width": 44,
                     "tiles": [""");
         int x = 45;
         while (x-- > 0) {
@@ -57,7 +57,7 @@ public class MapBuilder {
             }
             map.append("\n],\n");
         }
-        FileWriter fileWriter = new FileWriter("/home/roham/Desktop/map.json");
+        FileWriter fileWriter = new FileWriter("C:\\Users\\user\\Desktop\\Proj\\src\\models\\Game\\GameMap\\Maps\\map0.json");
         fileWriter.write(map.toString());
         fileWriter.close();
     }

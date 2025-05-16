@@ -1,10 +1,13 @@
 import models.Game.Coordinates;
+import models.Game.Game;
 import models.Game.GameMap.GameMap;
 import models.Game.GameMap.MapInitializer;
+import models.Game.GameMap.MapModifier;
 import models.Game.GameMap.MapReader;
 import views.AppView;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Main {
@@ -12,9 +15,22 @@ public class Main {
 //        AppView.run();
 //    }
 public static void main(String[] args) throws IOException {
-        GameMap m = new MapReader().loadMap("/home/hassan/Desktop/AP/advanced-programming-phase-1-group-06/src/models/Game/GameMap/Maps/map.json");
-        new MapInitializer(m).generateObstacles().getGameMap().print(new Coordinates(0, 0), 80);
-         AppView.run();
+    Game game = new Game(null, new ArrayList<GameMap>(){{
+        add( new MapInitializer(new MapReader().
+                loadMap("C:\\Users\\user\\Desktop\\Proj\\src\\models\\Game\\GameMap\\Maps\\map1.json")
+                ).generateObstacles().getGameMap());
+        add( new MapInitializer(new MapReader().
+                loadMap("C:\\Users\\user\\Desktop\\Proj\\src\\models\\Game\\GameMap\\Maps\\map1.json")
+                ).generateObstacles().getGameMap());
+        add( new MapInitializer(new MapReader().
+                loadMap("C:\\Users\\user\\Desktop\\Proj\\src\\models\\Game\\GameMap\\Maps\\map1.json")
+                ).generateObstacles().getGameMap());
+        add(new MapModifier(new MapReader().
+                loadMap("C:\\Users\\user\\Desktop\\Proj\\src\\models\\Game\\GameMap\\Maps\\map0.json")
+                ).makeStores());
+    }});
+    game.getBigMap().print(new Coordinates(10, 10), 40);
+//         AppView.run();
     }
 }
 

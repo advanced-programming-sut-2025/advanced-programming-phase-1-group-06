@@ -37,7 +37,7 @@ public class MapReader {
 //    }
 
     public GameMap loadMap(String fileName) throws IOException {
-        String json = Files.readString(Paths.get(fileName));
+        String json = Files.readString(Paths.get(fileName)); //does this work?
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(Tile.class, new TileDeserializer()).create();
 //                .registerTypeAdapter(OverlayTile.class, new OverlayTileDeserializer())

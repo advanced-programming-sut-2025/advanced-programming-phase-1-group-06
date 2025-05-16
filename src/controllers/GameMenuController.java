@@ -1,9 +1,12 @@
 package controllers;
 
 import models.App;
+import models.Game.Coordinates;
 import models.Game.Game;
 import models.Game.Weather;
 import models.ItemFaces.InventoryItem;
+import models.PlantsAndForaging.Plant;
+import models.PlantsAndForaging.Seed;
 import models.Player.Player;
 import models.enums.WeatherType;
 import models.tools.Tool;
@@ -14,7 +17,35 @@ public class GameMenuController {
     Game game = App.getGame();
     Player player = game.getCurrentPlayer();
     private static int turn = 0;
+    enum Direction {
+        NORTH_EAST(1, 1),
+        NORTH_WEST(1, -1),
+        SOUTH_EAST(-1, 1),
+        SOUTH_WEST(-1, -1),
+        NORTH(1, 0),
+        EAST(0, 1),
+        WEST(0, -1),
+        SOUTH(-1, 0);
+        int y;
 
+        public int getY() {
+            return y;
+        }
+
+        public int getX() {
+            return x;
+        }
+
+        int x;
+        Direction(int y, int x) {
+            this.y = y;
+            this.x = x;
+        }
+        public Coordinates getCoordinates() {
+            return new Coordinates(x, y);
+        }
+
+    }
     public void loadGame() {
     }
 
@@ -41,42 +72,13 @@ public class GameMenuController {
 
     public void useTool(String direction){
         int x, y;
-        switch (direction) {
-            case "north":
-                y = -1;
-                x = 0;
-                break;
-            case "south":
-                y = 1;
-                x = 0;
-                break;
-            case "east":
-                y = 0;
-                x = 1;
-                break;
-            case "west":
-                y = 0;
-                x = -1;
-                break;
-            case "north-east":
-                y = -1;
-                x = 1;
-                break;
-            case "north-west":
-                y = -1;
-                x = -1;
-                break;
-            case "south-east":
-                y = 1;
-                x = 1;
-                break;
-            case "south-west":
-                y = 1;
-                x = -1;
-                break;
-            default:
-                System.out.println("invalid direction");
-                return;
+        try {
+            Direction dir = Direction.valueOf(direction.toUpperCase().replaceAll("[-\\s]+", "_"));
+            x = dir.getX();
+            y = dir.getY();
+        } catch (IllegalArgumentException e) {
+            System.out.println("Invalid direction");
+            return; //lame ass nigga couldn't even make an enum 💀💀💀💀
         }
         Tool tool = player.getCurrentTool();
         if (tool == null){
@@ -197,11 +199,34 @@ public class GameMenuController {
         }
 
         public void plantSeed(String seed, String direction) {
-            // TODO: Plant the given seed in the specified direction
+            if (App.getCurrentPlayer().getInventory().getItemByName(seed) instanceof Seed s) {
+                App.getCurrentPlayer().getInventory().removeItem(seed, 1);
+                try {
+                    Direction dir = Direction.valueOf(direction.toUpperCase().replaceAll("[-\\s]+", "_"));
+                    s.plant(App.getGame().getBigMap(),
+                        new Coordinates(dir.getX() + App.getCurrentPlayer().getX(), dir.getY() + App.getCurrentPlayer().getY()),
+                        App.getCurrentPlayer());
+                System.out.println("seed planted successfully.");
+                } catch (IllegalArgumentException e) {
+                    System.out.println("invalid direction");
+                    return;
+                }
+            }
+            else {
+                System.out.println("you dont have the seed");
+            }
         }
 
         public void showPlantAt(int x, int y) {
-            // TODO: Show plant at coordinates (x, y)
+            if (x < 0 || x > App.getGame().getBigMap().getLength() || y < 0 || y > App.getGame().getBigMap().getWidth()) {
+                System.out.println("invalid coordinates");
+            }
+            else if (App.getGame().getBigMap().getTileAt(x, y).getOverlayTile() instanceof Plant plant) {
+                System.out.println(plant); //TODO modify toString for plant
+            }
+            else {
+                System.out.println("no plant in the location");
+            }
         }
 
         public void showCraftingRecipes() {

@@ -1,5 +1,8 @@
 package controllers;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 import models.App;
 import models.Game.Game;
 import models.Game.GameMap.GameMap;
@@ -11,7 +14,11 @@ import models.enums.Menu;
 import models.enums.Regex;
 import views.LoginMenu;
 
+import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.locks.ReentrantLock;
@@ -24,6 +31,19 @@ public class MainMenuController {
             App.setLoggedInUser(null);
         App.setCurrentMenu(menu);
         System.out.println("you are now in " + App.getCurrentMenu().getName() + " menu.");
+    }
+
+    public MainMenuController() {
+        try {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            String json = Files.readString(Path.of("C:\\Users\\user\\Desktop\\Proj\\src\\models\\data\\lastGameData.json"));
+            JsonObject jsonObject = gson.fromJson(json, JsonObject.class);
+            if (jsonObject.get("stayLoggedIn").getAsBoolean()) {
+                App.setLoggedInUser(App.getUserByUsername(jsonObject.get("userName").getAsString()));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public String newGame(Matcher matcher, Scanner scanner){
@@ -39,6 +59,7 @@ public class MainMenuController {
         int mapNumber;
         String input;
         int userCount = 0;
+        ArrayList<GameMap> gameMaps = new ArrayList<>();
         while (userCount != 3){
             System.out.println("pick your map. choose a number between 1 to 3");
             input = scanner.nextLine();
@@ -54,8 +75,8 @@ public class MainMenuController {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                gameMap = new MapInitializer(gameMap).generateObstacles().getGameMap();
-                App.getGame().addMap(gameMap);
+                gameMaps.add(new MapInitializer(gameMap).generateObstacles().getGameMap());
+                //App.getGame().addMap(gameMap); i dont think it will be of any use
                 Player player = new Player(users.get(userCount), App.getGame().getMapID(gameMap));
                 players.add(player);
                 userCount ++;
@@ -63,7 +84,7 @@ public class MainMenuController {
                 System.out.println("please answer in the format bellow.\n\"game map <mapNumber>\"");
 
         }
-        App.setGame(new Game(players));
+        App.setGame(new Game(players, gameMaps));
         return "game created successfully";
     }
 }

@@ -12,7 +12,7 @@ public class Coop extends Building {
     private Animal[] animals;
 
     public Coop(Coordinates balaChap, Coordinates doorCoordinates) {
-        super(balaChap, doorCoordinates);
+
         name = "Coop";
 
     }

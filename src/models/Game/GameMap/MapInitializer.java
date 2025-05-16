@@ -11,23 +11,24 @@ import models.Tiles.Info.BuildingTileInfo;
 import models.Tiles.Info.MineralTileInfo;
 import models.Tiles.OverlayTiles.*;
 import models.Tiles.Tile;
+import models.buildings.House;
 
 
 public class MapInitializer {
-    private static final int MAP_WIDTH = 80;  // Adjust based on your map size
-    private static final int MAP_HEIGHT = 44;
+    private static final int MAP_WIDTH = 43;  // Adjust based on your map size
+    private static final int MAP_HEIGHT = 43;
     private static final double TREE_CHANCE = 0.15;  // Chance of tree spawning
     private static final double ORE_CHANCE = 0.3;    // Chance of ore spawning
     private static final int MIN_WEED_CLUSTERS = 3;  // Minimum number of weed clusters
-    private static final int MAX_WEED_CLUSTERS = 5;  // Maximum number of weed clusters
+    private static final int MAX_WEED_CLUSTERS = 8;  // Maximum number of weed clusters
     private static final int MIN_WEEDS_PER_CLUSTER = 5;  // Minimum weeds per cluster
     private static final int MAX_WEEDS_PER_CLUSTER = 12;  // Maximum weeds per cluster
     private static final int QUARRY_MIN_X = 0;
     private static final int QUARRY_MAX_X = 15;
     private static final int QUARRY_MIN_Y = 0;
     private static final int QUARRY_MAX_Y = 7;
-    private static final int HOUSE_MIN_X = 65;
-    private static final int HOUSE_MAX_X = 69;
+    private static final int HOUSE_MIN_X = 36;
+    private static final int HOUSE_MAX_X = 40;
     private static final int HOUSE_MIN_Y = 4;
     private static final int HOUSE_MAX_Y = 8;
 
@@ -50,16 +51,16 @@ public class MapInitializer {
 
 
     public MapInitializer generateObstacles() {
-    for (int y = 0; y < gameMap.getWidth(); y++) {
-        for ( int x = 0; x < gameMap.getLength(); x++){
+        for (int y = 0; y < gameMap.getWidth(); y++) {
+            for ( int x = 0; x < gameMap.getLength(); x++){
 
-                Tile tile = gameMap.getTileAt(x, y);
-                if (tile == null) {
-                System.out.println("Null tile at x=" + x + ", y=" + y);
-                continue;
+                    Tile tile = gameMap.getTileAt(x, y);
+                    if (tile == null) {
+                    System.out.println("Null tile at x=" + x + ", y=" + y);
+                    continue;
+                }
             }
         }
-    }
         generateHouse();
         generateMiningArea();
         generateWeedClusters();
@@ -69,13 +70,16 @@ public class MapInitializer {
     }
 
     private void generateHouse() {
-        for (int y = HOUSE_MIN_Y ; y < HOUSE_MAX_Y ; y++) {
-            for (int x = HOUSE_MIN_X; x < HOUSE_MAX_X; x++) {
-                System.out.println("x: " + x + " y: " + y);
-                gameMap.getTileAt(x, y).setOverlayTile(new BuildingTile(BuildingTileInfo.HOUSE, gameMap, new Coordinates(x, y)));
-            //TODO change the shape of the buildings and their initalization method (choose a corner)
-            }
-        }
+//        for (int y = HOUSE_MIN_Y ; y < HOUSE_MAX_Y ; y++) {
+//            for (int x = HOUSE_MIN_X; x < HOUSE_MAX_X; x++) {
+//                System.out.println("x: " + x + " y: " + y);
+//                gameMap.getTileAt(x, y).setOverlayTile(new BuildingTile(BuildingTileInfo.HOUSE, gameMap,
+//                        new Coordinates(x, y)), new House(new Coordinates()));
+//            //TODO change the shape of the buildings and their initalization method (choose a corner)
+//            }
+//        }
+        new MapModifier(gameMap).makeBuilding(new Coordinates(HOUSE_MIN_X, HOUSE_MIN_Y), HOUSE_MAX_X - HOUSE_MIN_X,
+                HOUSE_MAX_Y - HOUSE_MIN_Y, new House());
     }
 
     private void generateRocksAndStick() {
@@ -127,7 +131,7 @@ public class MapInitializer {
             int x = center.x() + (int)(radius * Math.cos(angle));
             int y = center.y() + (int)(radius * Math.sin(angle));
 
-            if (isValidPosition(x, y)) {
+            if (isValidPosition(x, y) && gameMap.getTileAt(x, y) instanceof Dirt) {
                 gameMap.getTileAt(x, y).setOverlayTile(new GrassTile(gameMap, new Coordinates(x, y)));
             }
         }
@@ -137,7 +141,7 @@ public class MapInitializer {
         // Generate trees with minimum spacing
         for (int y = 0; y < MAP_HEIGHT; y += 1) {
             for (int x = 0; x < MAP_WIDTH; x += 1) {
-                if (random.nextDouble() < 0.10 && // 10% chance for tree placement
+                if (random.nextDouble() < 0.10 && gameMap.getTileAt(x, y) instanceof Dirt &&// 10% chance for tree placement
                     isValidTreePosition(x, y)) {
                     gameMap.getTileAt(x, y).setOverlayTile(new Tree(TreeSeedInfo.getRandomly(), gameMap, new Coordinates(x, y)));
                 }
