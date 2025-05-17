@@ -6,7 +6,9 @@ import models.Game.Coordinates;
 import models.Game.Game;
 import models.Game.Weather;
 import models.ItemFaces.InventoryItem;
+import models.ItemFaces.Item;
 import models.ItemFaces.ItemFinder;
+import models.Player.Inventory;
 import models.Player.Player;
 import models.enums.WeatherType;
 import models.tools.Tool;
@@ -84,7 +86,7 @@ public class GameMenuController {
             System.out.println("you're not holding a tool right now");
             return;
         }
-        if (player.getGameMap().getTileAt(player.getX() + x, player.getY() + y).useTool(tool, player)) {
+        if (App.getGame().getBigMap().getTileAt(player.getX() + x, player.getY() + y).useTool(tool, player)) {
             player.diminishEnergy(tool.getSuccessfulEnergyCost());
         } else {
             player.diminishEnergy(tool.getUnsuccessfulEnergyCost());
@@ -320,17 +322,22 @@ public class GameMenuController {
     public void giveItemCheat(Player player, String name, int amount) {
         InventoryItem item = null;
         System.out.println(name);
-        try {
-            item = ItemFinder.valueOf(name.toUpperCase().replaceAll("[-\\s]+", "_")).getItem(amount);
-        } catch (IllegalArgumentException e) {
-            System.out.println("item doesn't exist");
-        } catch (ExceptionInInitializerError e) {
-            System.out.println(name.toUpperCase().replaceAll("[-\\s]+", "_"));
-        }
-        if (item == null) {
+        item = ItemFinder.getItemByName(name);
+        if (item == null){
             System.out.println("item not found");
-            return;
         }
+        item.setAmount(amount);
+//        try {
+//            item = ItemFinder.valueOf(name.toUpperCase().replaceAll("[-\\s]+", "_")).getItem(amount);
+//        } catch (IllegalArgumentException e) {
+//            System.out.println("item doesn't exist");
+//        } catch (ExceptionInInitializerError e) {
+//            System.out.println(name.toUpperCase().replaceAll("[-\\s]+", "_"));
+//        }
+//        if (item == null) {
+//            System.out.println("item not found");
+//            return;
+//        }
         player.getInventory().addItem(item);
     }
 
