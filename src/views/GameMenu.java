@@ -54,7 +54,7 @@ public class GameMenu implements AppMenu {
             }
         } else if ((matcher = Regex.TOOLS_EQUIP.getMatcher(input)) != null){
             String toolName = matcher.group("toolName");
-            controller.equipTool(toolName);
+            System.out.println(controller.equipTool(toolName));
         } else if ((matcher = Regex.TOOLS_USE.getMatcher(input)) != null){
             String direction = matcher.group("direction");
             controller.useTool(direction);
@@ -86,9 +86,12 @@ public class GameMenu implements AppMenu {
         } else if ((matcher = Regex.HELP_READING_MAP.getMatcher(input)) != null) {
             controller.showMapHelp();
         } else if ((matcher = Regex.TOOLS_SHOW_CURRENT.getMatcher(input)) != null) {
-            System.out.println(currentPlayer.getCurrentTool().toString());
+            if (currentPlayer.getCurrentTool() != null) {
+                System.out.println(currentPlayer.getCurrentTool().toString());
+            } else
+                System.out.println("you don't have any tools equipped right now");
         } else if ((matcher = Regex.TOOLS_SHOW_AVAILABLE.getMatcher(input)) != null) {
-            controller.showAvailableTools(currentPlayer);
+            System.out.println(controller.showAvailableTools(currentPlayer));
         } else if ((matcher = Regex.TOOLS_UPGRADE.getMatcher(input)) != null) {
             controller.upgradeTool(matcher.group("tool"));
         } else if ((matcher = Regex.GIFT.getMatcher(input)) != null) {

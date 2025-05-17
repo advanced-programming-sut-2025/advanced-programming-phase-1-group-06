@@ -131,8 +131,8 @@ public class GameMenuController {
         // TODO: Show map reading help/instructions
     }
 
-    public void showAvailableTools(Player player) {
-        player.getInventory().showTools();
+    public String showAvailableTools(Player player) {
+        return player.getInventory().showTools();
     }
 
     public void inventoryTrash(Player player, String itemName, int count) {
@@ -317,12 +317,19 @@ public class GameMenuController {
     }
 
     public void giveItemCheat(Player player, String name, int amount) {
-        InventoryItem item = ItemFinder.getItemByName(name);
+        InventoryItem item = null;
+        System.out.println(name);
+        try {
+            item = ItemFinder.valueOf(name.toUpperCase().replaceAll("[-\\s]+", "_")).getItem(amount);
+        } catch (IllegalArgumentException e) {
+            System.out.println("item doesn't exist");
+        } catch (ExceptionInInitializerError e) {
+            System.out.println(name.toUpperCase().replaceAll("[-\\s]+", "_"));
+        }
         if (item == null) {
             System.out.println("item not found");
             return;
         }
-        item.setAmount(amount);
         player.getInventory().addItem(item);
     }
 

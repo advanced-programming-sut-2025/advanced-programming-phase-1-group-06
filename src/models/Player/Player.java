@@ -6,6 +6,7 @@ import models.Game.Coordinates;
 import models.Game.GameMap.GameMap;
 import models.ItemFaces.InventoryItem;
 import models.ItemFaces.Item;
+import models.tools.Hoe;
 import models.tools.Tool;
 
 import java.util.ArrayList;

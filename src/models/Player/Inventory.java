@@ -173,6 +173,7 @@ public class Inventory {
         StringBuilder output = new StringBuilder();
         for (InventoryItem item : items){
             if (item instanceof Tool){
+                item = (Tool) item;
                 output.append(item.toString()).append("\n");
             }
         }
