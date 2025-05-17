@@ -139,6 +139,7 @@ public class Player {
         cookableFoods = new ArrayList<ArtisanRecipe>();
         craftableItems = new ArrayList<>();
         maxEnergy = 200;
+        energy = maxEnergy;
         trashcan = false;
         money = 500;
         isPassedOut = false;
