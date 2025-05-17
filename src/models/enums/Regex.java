@@ -98,9 +98,9 @@ public enum Regex {
     TEST("^\\s*test\\s*$"),
     CHEAT_CODE("^\\s*cheat\\s+code\\s*$"),
     ARTISAN_USE("^\\s*artisan\\s+use\\s+(?<artisanName>\\S+)\\s+(?<item1Name>\\S+)\\s*$"),
-    ARTISAN_GET("^\\s*artisan\\s+get\\s+(?<artisanName>\\S+)\\s*$");
-
-
+    ARTISAN_GET("^\\s*artisan\\s+get\\s+(?<artisanName>\\S+)\\s*$"),
+    ADD_MONEY_CHEAT("^\\s*cheat\\s+add\\s+(?<amount>\\d+)\\s+dollars\\s*"),
+    GIVE_ITEM_CHEAT("^\\s*cheat\\s+add\\s+item\\+-n(?<itemName>.+)\\+-c\\+(?<count>\\d+)\\s*"),
     ;
 
     private final Pattern pattern;
