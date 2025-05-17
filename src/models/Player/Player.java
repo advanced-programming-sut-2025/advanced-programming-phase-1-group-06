@@ -239,10 +239,10 @@ public class Player {
         ArrayList<Double> energyCosts = AStar.calculateEachMoveCost(coordinates);
         double sum = energyCosts.stream().mapToDouble(energyCost -> energyCost).sum();
 
-        if (sum * App.getGame().getWeather().getEnergyConsumptionRate() > energy) {
-            System.out.println("not enough energy to do that");
-            return false;
-        }
+//        if (sum * App.getGame().getWeather().getEnergyConsumptionRate() > energy) {
+//            System.out.println("not enough energy to do that");
+//            return false;
+//        }
 //        System.out.println(coordinates);
         walk(coordinates, energyCosts);
         return true;
