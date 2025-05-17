@@ -29,6 +29,7 @@ public class GameMenuController {
         WEST(0, -1),
         SOUTH(-1, 0);
         int y;
+        int x;
 
         public int getY() {
             return y;
@@ -37,8 +38,6 @@ public class GameMenuController {
         public int getX() {
             return x;
         }
-
-        int x;
         Direction(int y, int x) {
             this.y = y;
             this.x = x;
@@ -128,7 +127,7 @@ public class GameMenuController {
     }
 
     public void walkTo(int x, int y) {
-        // TODO: Implement walk logic
+        App.getCurrentPlayer().walk(x, y);
     }
 
     public void printMapAt(int x, int y, int size) {
@@ -356,4 +355,4 @@ public class GameMenuController {
     }
 
 
-        }
+}

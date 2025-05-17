@@ -29,7 +29,7 @@ public static void main(String[] args) throws IOException {
                 loadMap("C:\\Users\\user\\Desktop\\Proj\\src\\models\\Game\\GameMap\\Maps\\map0.json")
                 ).makeStores());
     }});
-    game.getBigMap().print(new Coordinates(10, 10), 40);
+    game.getBigMap().print(new Coordinates(0, 0), 100);
 //         AppView.run();
     }
 }

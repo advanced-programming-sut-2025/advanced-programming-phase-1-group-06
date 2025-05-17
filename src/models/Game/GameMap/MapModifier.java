@@ -35,7 +35,7 @@ public class MapModifier {
                 gameMap, new Coordinates(topx + length/2, topy + width), building));
 
         for (int y = topy + 1; y < topy + width; y++) {
-            for (int x = topx; x < topx + width + 1; x++) {
+            for (int x = topx + 1; x < topx + length ; x++) {
                 //TODO BuildingTileInfo for house and other buildings
                 gameMap.getTileAt(x, y).setOverlayTile(new BuildingTile(BuildingTileInfo.House, gameMap,
                         new Coordinates(x, y), building));

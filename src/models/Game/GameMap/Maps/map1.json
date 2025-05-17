@@ -11988,5 +11988,313 @@
 ],
 
 	[
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  }
 
 ]]}
