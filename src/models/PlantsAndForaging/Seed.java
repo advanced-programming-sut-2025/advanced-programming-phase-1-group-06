@@ -31,6 +31,17 @@ public class Seed extends InventoryItem implements Sellable {
         this.seasons = seedInfo.getSeasons();
         this.isGiantable = seedInfo.isGiantable();
     }
+
+    public Seed(String seedName, String growingStages, int totalHarvestTime, int regrowthTime, boolean oneTime, String seasons, boolean isGiantable) {
+        this.seedName = seedName;
+        this.growingStages = growingStages;
+        this.totalHarvestTime = totalHarvestTime;
+        this.regrowthTime = regrowthTime;
+        this.oneTime = oneTime;
+        this.seasons = seasons;
+        this.isGiantable = isGiantable;
+    }
+
     public Seed(ForagingSeedInfo foragingSeedInfo){ //these get planted randomly by the game during day updates
         seed = foragingSeedInfo.getSeed();
         this.seasons = foragingSeedInfo.getSeason();
@@ -80,6 +91,7 @@ public class Seed extends InventoryItem implements Sellable {
     public int getAmount() {
         return 0;
     }
+
 
 //    public GiantPlant getGiantPlant() {
 //    }
