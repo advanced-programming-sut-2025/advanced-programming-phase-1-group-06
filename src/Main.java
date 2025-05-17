@@ -11,12 +11,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Main {
-//    public static void main(String[] args) {
-//        AppView.run();
-//    }
-public static void main(String[] args) throws IOException {
-
-         AppView.run();
+    public static void main(String[] args) throws IOException {
+        AppView.run();
     }
 }
 
@@ -29,11 +25,12 @@ pick question -q 5 -a shotor -c shotor
 go to register menu
 register -u sara -p aA#12345 aA#12345 -n sara -e sara@gmail.com -g female
 pick question -q 5 -a eagle -c eagle
+go to login menu
 login -u hassan -p aA#12345
 game new -u hassan sara roham
 game map 1
-game map 2
-game map 3
+game map 1
+game map 1
 forget password -u hassan
 nirvana
 */

@@ -104,7 +104,7 @@ public class DateTime {
     }
 
     public String showDateTime(){
-        return "date: " + showDate() + "time: " + showHour();
+        return "date: " + showDate() + " time: " + showHour();
     }
 
 }

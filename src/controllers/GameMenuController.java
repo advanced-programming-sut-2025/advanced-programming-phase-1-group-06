@@ -98,7 +98,7 @@ public class GameMenuController {
 
     public void advanceDate(int days) {
         game.getDateTime().advanceDay(days);
-        System.out.println("game time advanced by" + days + "d ays");
+        System.out.println("game time advanced by " + days + " days");
     }
 
     public void setWeatherType(String type) {

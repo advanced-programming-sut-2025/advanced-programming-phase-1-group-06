@@ -86,7 +86,7 @@ public class MainMenuController {
 
         }
         try {
-            gameMaps.add(new MapModifier(new MapReader().loadMap(Path.of("src/Models/Game/GameMap/Maps/map0.json"))).makeStores());
+            gameMaps.add(new MapModifier(new MapReader().loadMap(Path.of("src/models/Game/GameMap/Maps/map0.json"))).makeStores());
         } catch (IOException e) {
             e.printStackTrace();
         }
