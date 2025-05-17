@@ -402,12 +402,12 @@ public enum ItemFinder {
     PINE_CONE(new Item("pine cone", 5)) // Base sell price: 5g, not edible
 
     ;
+
+
+    // Initialize IDs after enum construction
     private final InventoryItem inventoryItem;
     private final Item item;
     private final int id;
-//    private final int baseID;
-
-    // Initialize IDs after enum construction
     private static final int[] ids;
 
     static {
@@ -418,17 +418,21 @@ public enum ItemFinder {
     }
 
     ItemFinder(InventoryItem item) {
+        this.inventoryItem = item;
         this.item = null;
         this.id = ordinal() + 1;
-        item.setId(id);
-        this.inventoryItem = item;
+        if (item != null) {
+            item.setId(id);
+        }
     }
 
     ItemFinder(Item item) {
-        this.id = ordinal() + 1;
-        item.setId(id);
-        this.item = item;
         this.inventoryItem = null;
+        this.item = item;
+        this.id = ordinal() + 1;
+        if (item != null) {
+            item.setId(id);
+        }
     }
 
     public int getId() {

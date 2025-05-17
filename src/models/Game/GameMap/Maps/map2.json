@@ -4383,6 +4383,269 @@
     },{
     "tileType": "Water"
     },{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  }
+
+],
+
+	[
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
     "tileType": "Water"
     },{
     "tileType": "Water"
@@ -4397,14 +4660,83 @@
     },{
     "tileType": "Water"
     },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
     "tileType": "Dirt",
     "isBlocked": false,
     "isHoed": false,
@@ -5049,28 +5381,6 @@
     },{
     "tileType": "Water"
     },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
     "tileType": "Dirt",
     "isBlocked": false,
     "isHoed": false,
@@ -5148,151 +5458,6 @@
     "isFertilized": false
   },
 {
-    "tileType": "Dirt",
-    "isBlocked": false,
-    "isHoed": false,
-    "isWatered": false,
-    "isFertilized": false
-  },
-{
-    "tileType": "Dirt",
-    "isBlocked": false,
-    "isHoed": false,
-    "isWatered": false,
-    "isFertilized": false
-  },
-{
-    "tileType": "Dirt",
-    "isBlocked": false,
-    "isHoed": false,
-    "isWatered": false,
-    "isFertilized": false
-  }
-
-],
-
-	[
-{
-    "tileType": "Dirt",
-    "isBlocked": false,
-    "isHoed": false,
-    "isWatered": false,
-    "isFertilized": false
-  },
-{
-    "tileType": "Dirt",
-    "isBlocked": false,
-    "isHoed": false,
-    "isWatered": false,
-    "isFertilized": false
-  },
-{
-    "tileType": "Dirt",
-    "isBlocked": false,
-    "isHoed": false,
-    "isWatered": false,
-    "isFertilized": false
-  },
-{
-    "tileType": "Dirt",
-    "isBlocked": false,
-    "isHoed": false,
-    "isWatered": false,
-    "isFertilized": false
-  },
-{
-    "tileType": "Dirt",
-    "isBlocked": false,
-    "isHoed": false,
-    "isWatered": false,
-    "isFertilized": false
-  },
-{
-    "tileType": "Dirt",
-    "isBlocked": false,
-    "isHoed": false,
-    "isWatered": false,
-    "isFertilized": false
-  },
-{
-    "tileType": "Dirt",
-    "isBlocked": false,
-    "isHoed": false,
-    "isWatered": false,
-    "isFertilized": false
-  },
-{
-    "tileType": "Dirt",
-    "isBlocked": false,
-    "isHoed": false,
-    "isWatered": false,
-    "isFertilized": false
-  },
-{
-    "tileType": "Dirt",
-    "isBlocked": false,
-    "isHoed": false,
-    "isWatered": false,
-    "isFertilized": false
-  },
-{
-    "tileType": "Dirt",
-    "isBlocked": false,
-    "isHoed": false,
-    "isWatered": false,
-    "isFertilized": false
-  },
-{
-    "tileType": "Dirt",
-    "isBlocked": false,
-    "isHoed": false,
-    "isWatered": false,
-    "isFertilized": false
-  },
-{
-    "tileType": "Dirt",
-    "isBlocked": false,
-    "isHoed": false,
-    "isWatered": false,
-    "isFertilized": false
-  },
-{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
     "tileType": "Dirt",
     "isBlocked": false,
     "isHoed": false,
@@ -5493,28 +5658,83 @@
     },{
     "tileType": "Water"
     },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
-    "tileType": "Water"
-    },{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
+    "tileType": "Dirt",
+    "isBlocked": false,
+    "isHoed": false,
+    "isWatered": false,
+    "isFertilized": false
+  },
+{
     "tileType": "Dirt",
     "isBlocked": false,
     "isHoed": false,

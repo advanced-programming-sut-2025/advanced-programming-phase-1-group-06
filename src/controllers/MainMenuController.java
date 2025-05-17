@@ -35,15 +35,7 @@ public class MainMenuController {
     }
 
     public MainMenuController() {
-        try {
-            String json = new String(Files.readAllBytes(Paths.get("src/models/data/lastGameData.json")));
-            JsonObject jsonObject = new Gson().fromJson(json, JsonObject.class);
-//            if (jsonObject.get("stayLoggedIn").getAsBoolean()) {
-//                App.setLoggedInUser(App.getUserByUsername(jsonObject.get("userName").getAsString()));
-//            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
     }
 
     public String newGame(Matcher matcher, Scanner scanner){

@@ -17,7 +17,22 @@ import java.util.ArrayList;
 
 public class App {
 
-    private static Menu currentMenu = Menu.REGISTER;
+    private static Menu currentMenu;
+    static {
+        try {
+            String json = Files.readString(Paths.get("src/models/data/lastGameData.json"));
+            JsonObject jsonObject = new Gson().fromJson(json, JsonObject.class);
+            if (jsonObject.get("stayLoggedIn").getAsBoolean()) {
+                App.setLoggedInUser(App.getUserByUsername(jsonObject.get("userName").getAsString()));
+                currentMenu = Menu.MAIN;
+            }
+            else {
+                currentMenu = Menu.REGISTER;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     private static ArrayList<User> users = new ArrayList<>();
     private static  Game game;
 

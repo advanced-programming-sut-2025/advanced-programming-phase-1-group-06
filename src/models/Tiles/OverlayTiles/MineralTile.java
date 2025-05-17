@@ -18,7 +18,7 @@ public class MineralTile extends OverlayTile {
     private int level;  // 0: stone 1: copper 2: iron 3: gold 4: iridium
 
     public MineralTile(MineralTileInfo mineralTileInfo, GameMap gameMap, Coordinates coordinates) {
-        super(mineralTileInfo.getSymbol(), mineralTileInfo.getColor(), mineralTileInfo.getHardness() * 2, true,
+        super(mineralTileInfo.getSymbol(), mineralTileInfo.getColor(), mineralTileInfo.getHardness(), true,
                 gameMap, coordinates);
         mineralsInfo = mineralTileInfo.getMineralsInfo();
 
@@ -32,14 +32,10 @@ public class MineralTile extends OverlayTile {
     @Override
     public boolean useTool(Tool tool, Player player) {
         if (tool instanceof Pickaxe pickaxe) {
-            if (pickaxe.getLevel() + 1 < hardness) return false;
-
-            hits -= pickaxe.getDamage();
-            if (hits <= 0) {
                 player.getInventory().addItem(mineralsInfo.create());
                 player.increaseSkill("mining");
                 this.destroy();
-            }
+            System.out.println("destroyed!");
             return true;
         } else {
             System.out.println("wrong tool");

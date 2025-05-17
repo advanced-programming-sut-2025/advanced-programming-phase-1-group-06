@@ -58,7 +58,7 @@ public class MapBuilder {
             map.deleteCharAt(map.length()-2);
             map.append("\n],\n");
         }
-        FileWriter fileWriter = new FileWriter("C:\\Users\\user\\Desktop\\Proj\\src\\models\\Game\\GameMap\\Maps\\map0.json");
+        FileWriter fileWriter = new FileWriter("C:\\Users\\user\\Desktop\\Proj\\src\\models\\Game\\GameMap\\Maps\\map2.json");
         fileWriter.write(map.toString());
         fileWriter.close();
     }

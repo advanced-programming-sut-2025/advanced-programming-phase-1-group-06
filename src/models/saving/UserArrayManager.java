@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserArrayManager {
-    private static final String FILE_PATH = "C:\\Users\\user\\Desktop\\Proj\\src\\models\\data\\users.json";
+    private static final String FILE_PATH = "src/models/data/users.json";
     private static final Gson gson = new GsonBuilder()
             .registerTypeAdapter(User.class, new UserSerializer())
             .registerTypeAdapter(User.class, new UserDeserializer())
