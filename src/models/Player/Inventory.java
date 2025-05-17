@@ -164,7 +164,7 @@ public class Inventory {
     public String toString(){
         StringBuilder output = new StringBuilder();
         for (InventoryItem item : items){
-            output.append(items.indexOf(item)).append(". ").append(item.getAmount()).append(" ").append(item.getName()).append("\n");
+            output.append(items.indexOf(item)+1).append(". ").append(item.getAmount()).append(" ").append(item.getName()).append("\n");
         }
         return output.toString();
     }
@@ -173,6 +173,7 @@ public class Inventory {
         StringBuilder output = new StringBuilder();
         for (InventoryItem item : items){
             if (item instanceof Tool){
+                item = (Tool) item;
                 output.append(item.toString()).append("\n");
             }
         }

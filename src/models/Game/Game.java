@@ -36,7 +36,7 @@ public class Game {
         growables = new ArrayList<>();
         dateTime = new DateTime();
         artisanDevices = new ArrayList<>();
-//        weather2 = Weather.weatherRandomizer();
+        weather2 = WeatherType.SUNNY.getWeather();
     }
 
     private GameMap makeBigMap(ArrayList<GameMap> gameMaps) {

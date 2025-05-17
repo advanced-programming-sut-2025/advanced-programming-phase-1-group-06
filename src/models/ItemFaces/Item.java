@@ -34,10 +34,14 @@ public class Item extends InventoryItem implements Edible, Sellable, Placeable {
 // for sellable edible items
     public Item(String name, int energy, int price){
         this.name = name;
-        isEdible = true;
-        this.energy = energy;
-        isSellable = true;
-        this.price = price;
+        if (energy != 0) {
+            isEdible = true;
+            this.energy = energy;
+        }
+        if (price != 0) {
+            isSellable = true;
+            this.price = price;
+        }
         isPlaceable = false;
     }
 

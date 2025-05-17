@@ -6,6 +6,7 @@ import models.Game.Coordinates;
 import models.Game.GameMap.GameMap;
 import models.ItemFaces.InventoryItem;
 import models.ItemFaces.Item;
+import models.tools.Hoe;
 import models.tools.Tool;
 
 import java.util.ArrayList;
@@ -139,6 +140,7 @@ public class Player {
         cookableFoods = new ArrayList<ArtisanRecipe>();
         craftableItems = new ArrayList<>();
         maxEnergy = 200;
+        energy = maxEnergy;
         trashcan = false;
         money = 500;
         isPassedOut = false;

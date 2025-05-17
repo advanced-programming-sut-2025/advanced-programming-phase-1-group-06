@@ -530,7 +530,7 @@ public enum ArtisanRecipeInfo {
     }
 
     public Item getResult() {
-        return result;
+        return new Item(resultName, energy, price);
     }
 
     public ArrayList<InventoryItem> getIngredients() {

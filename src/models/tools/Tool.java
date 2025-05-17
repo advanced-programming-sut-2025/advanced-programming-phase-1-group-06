@@ -32,7 +32,7 @@ public abstract class Tool extends InventoryItem {
 
     public Tool(String name, int level, int energyCost){
         this.name = name;
-        this.level = 1;
+        this.level = level;
         this.energyCost = energyCost;
         isEquipped = false;
     }
@@ -50,7 +50,6 @@ public abstract class Tool extends InventoryItem {
     @Override
     public String toString(){
         String levelName = switch (level){
-            case 0 -> "default";
             case 1 -> "copper";
             case 2 -> "iron";
             case 3 -> "gold";
