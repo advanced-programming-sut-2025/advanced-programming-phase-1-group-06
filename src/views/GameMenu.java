@@ -42,14 +42,12 @@ public class GameMenu implements AppMenu {
         } else if ((matcher = Regex.ENERGY_UNLIMITED.getMatcher(input)) != null){
             currentPlayer.setEnergy(Integer.MAX_VALUE);
         } else if ((matcher = Regex.INVENTORY_SHOW.getMatcher(input)) != null){
-            currentPlayer.getInventory().toString();
+            System.out.println(currentPlayer.getInventory().toString());
         } else if ((matcher = Regex.INVENTORY_TRASH.getMatcher(input)) != null){
             String itemName = matcher.group("item");
             int amount = 0;
             try {
                  amount = Integer.parseInt(matcher.group("count"));
-            } catch (Exception e) {
-                amount = 0;
             }
             finally {
                 controller.inventoryTrash(currentPlayer, itemName, amount);
@@ -190,6 +188,12 @@ public class GameMenu implements AppMenu {
         } else if ((matcher = Regex.ARTISAN_GET.getMatcher(input)) != null) {
             String artisanName = matcher.group("artisanName");
             controller.getArtisanProduct(artisanName);
+        } else if ((matcher = Regex.ADD_MONEY_CHEAT.getMatcher(input)) != null){
+            currentPlayer.setMoney(currentPlayer.getMoney() + Integer.parseInt(matcher.group("amount")));
+        } else if ((matcher = Regex.GIVE_ITEM_CHEAT.getMatcher(input)) != null){
+            String itemName = matcher.group("itemName");
+            int amount = Integer.parseInt(matcher.group("amount"));
+            controller.giveItemCheat(currentPlayer, itemName, amount);
         }
 
     }

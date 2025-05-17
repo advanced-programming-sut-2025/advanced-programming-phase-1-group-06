@@ -32,7 +32,6 @@ public class Player {
     private ArrayList<ArtisanRecipe> craftableItems;
     private boolean trashcan;
 
-
     public int getMoney() {
         return money;
     }

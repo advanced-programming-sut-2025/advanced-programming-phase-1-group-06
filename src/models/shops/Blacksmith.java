@@ -1,5 +1,6 @@
 package models.shops;
 
+import models.Game.Coordinates;
 import models.ItemFaces.InventoryItem;
 import models.ItemFaces.ItemFinder;
 import models.Player.Player;
@@ -11,6 +12,10 @@ import java.util.Map;
 import java.util.regex.Matcher;
 
 public class Blacksmith extends Shop {
+
+    public Blacksmith(Coordinates balaChap, Coordinates doorCoordinates) {
+        super(balaChap, doorCoordinates);
+    }
 
     public void buyItem(InventoryItem item) {
     }

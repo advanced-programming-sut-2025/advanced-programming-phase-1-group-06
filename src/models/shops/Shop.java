@@ -1,5 +1,6 @@
 package models.shops;
 
+import models.Game.Coordinates;
 import models.Game.NPC;
 import models.ItemFaces.ItemFinder;
 import models.Player.Player;
@@ -15,6 +16,11 @@ public abstract class Shop extends Building {
     protected int closingHour;
     protected HashMap<String, Integer> itemNameToPrice;
     protected HashMap<String, Integer> itemNameToQuantity;
+
+    public Shop(Coordinates balaChap, Coordinates doorCoordinates) {
+        super(balaChap, doorCoordinates);
+    }
+
     public void openShop() {
     }
 
