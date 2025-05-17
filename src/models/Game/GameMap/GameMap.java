@@ -58,7 +58,7 @@ public class GameMap {
             for (int x = minX; x < maxX; x++) {
                 try {
                     if (x == App.getCurrentPlayer().getX() && y == App.getCurrentPlayer().getY()) {
-                        System.out.println(Color.BLACK_BG.getColorCode() + Color.BLUE_TEXT.getColorCode()
+                        System.out.print(Color.BLACK_BG.getColorCode() + Color.BLUE_TEXT.getColorCode()
                                 + "@" + Color.RESET.getColorCode());
                     }
                     else System.out.print(tiles[y][x].showTile());

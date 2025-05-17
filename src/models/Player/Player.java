@@ -76,10 +76,10 @@ public class Player {
         this.energy = energy;
     }
 
-    public void diminishEnergy(double energy){
+    public void diminishEnergy(double energy) {
         this.energy -= energy * App.getGame().getWeather().getEnergyConsumptionRate();
-        if (energy <= 0){
-            isPassedOut = true;
+        if (energy <= 0) {
+            passOut();
         }
     }
 
@@ -112,7 +112,7 @@ public class Player {
     }
 
     public Player(User user, GameMap currentMap, int x, int y, int money, Inventory inventory, ArrayList<Skill> skills, double energy, double maxEnergy, boolean isPassedOut, Tool currentTool, ArrayList<ArtisanRecipe> cookableFoods, ArrayList<ArtisanRecipe> craftableItems, boolean trashcan, int mapNumber, String currentBuilding, ArrayList<ArtisanDevice> artisanDevices, ArrayList<CraftingRecipeInfo> unlockedCraftingRecipes) {
-        this.currentBuilding =currentBuilding;
+        this.currentBuilding = currentBuilding;
         this.user = user;
         this.currentMap = currentMap;
         this.x = x;
@@ -132,7 +132,7 @@ public class Player {
         this.unlockedCraftingRecipes = unlockedCraftingRecipes;
     }
 
-    public Player(User user, int playerID){
+    public Player(User user, int playerID) {
         this.user = user;
 //        this.mapID = mapID;
         inventory = new Inventory();
@@ -143,37 +143,37 @@ public class Player {
         money = 500;
         isPassedOut = false;
         skills = new ArrayList<>();
-        for (SkillType skillType : SkillType.values()){
+        for (SkillType skillType : SkillType.values()) {
             skills.add(skillType.getSkill());
         }
         currentBuilding = "none";
         artisanDevices = new ArrayList<>();
         unlockedCraftingRecipes = new ArrayList<models.CraftingAndCooking.CraftingRecipeInfo>();
 
-        x = (playerID % 2) * 46 + 5;
-        y = (playerID / 2) * 46 + 5;
+        x = (playerID % 2) * 46 + 37;
+        y = (playerID / 2) * 46 + 7;
     }
 
-    public Skill getSkillByName(String skillName){
-        for (Skill skill : skills){
-            if (skill.getName().equals(skillName)){
+    public Skill getSkillByName(String skillName) {
+        for (Skill skill : skills) {
+            if (skill.getName().equals(skillName)) {
                 return skill;
             }
         }
         return null;
     }
 
-    public int getSkillLevel(String skillName){
+    public int getSkillLevel(String skillName) {
         Skill skill = getSkillByName(skillName);
-        if (skill != null){
+        if (skill != null) {
             return skill.getLevel();
         }
         return 0;
     }
 
-    public void increaseSkill(String skillName){
+    public void increaseSkill(String skillName) {
         Skill skill = getSkillByName(skillName);
-        if (skill != null){
+        if (skill != null) {
             skill.increaseXP();
         }
     }
@@ -182,45 +182,80 @@ public class Player {
         return false;
     }
 
-    public boolean removeItem(String name, int amount){
+    public boolean removeItem(String name, int amount) {
         if (!inventory.hasItemAmount(name, amount))
             return false;
         inventory.removeItem(name, amount);
         return true;
     }
 
-    public boolean removeItem(String name){
+    public boolean removeItem(String name) {
         if (!inventory.hasItem(name))
             return false;
         inventory.removeItem(name);
         return true;
     }
 
+
     public boolean canWalk(int x, int y) {
-        int i = App.getGame().getPlayers().indexOf(this);
-        if ((i == 0 && (x >= 46 ^ y >= 46) || (i == 1 && (x < 44)) || (i == 2 && y < 44))){
-            System.out.println("cant walk into other farms");
+        GameMap gameMap = App.getGame().getBigMap();
+
+        // 1. Check if target coordinates are valid
+        if (x < 0 || x >= gameMap.getLength() || y < 0 || y >= gameMap.getWidth()) {
+            System.out.println("Target coordinates are out of bounds");
             return false;
         }
-        ArrayList<Coordinates> coordinates = AStar.findPath(App.getGame().getBigMap(), this.x, this.y, x, y);
-        ArrayList<Integer> energyCosts = AStar.calculateEachMoveCost(coordinates); //energy costs should be divided by 200
-        int sum = energyCosts.stream().mapToInt(energyCost -> energyCost).sum();
-        if (sum * App.getGame().getWeather().getEnergyConsumptionRate() > maxEnergy){
+
+        // 2. Check if player's current position is valid
+        if (this.x < 0 || this.x >= gameMap.getLength() || this.y < 0 || this.y >= gameMap.getWidth()) {
+            System.out.println("Current position is invalid");
+            return false;
+        }
+
+        // 3. Check farm boundaries (existing code)
+        int i = App.getGame().getPlayers().indexOf(this);
+//        if ((i == 2 && (x >= 46 ^ y >= 46) || (i == 0 && (x < 44)) || (i == 1 && y < 44))) {
+//            System.out.println("cant walk into other farms");
+//            return false;
+//        }
+
+        // 4. Check if target tile is blocked
+        if (gameMap.isBlocked(x, y)) {
+            System.out.println("Target location is blocked");
+            return false;
+        }
+
+        // 5. Try to find path
+        ArrayList<Coordinates> coordinates = AStar.findPath(gameMap, this.x, this.y, x, y);
+
+        if (coordinates.isEmpty()) {
+            System.out.println("No valid path found to target location");
+            return false;
+        }
+
+        // Calculate energy costs and continue with existing logic
+        ArrayList<Double> energyCosts = AStar.calculateEachMoveCost(coordinates);
+        double sum = energyCosts.stream().mapToDouble(energyCost -> energyCost).sum();
+
+        if (sum * App.getGame().getWeather().getEnergyConsumptionRate() > maxEnergy) {
             System.out.println("not enough energy to do that");
             return false;
         }
+        System.out.println(coordinates);
         walk(coordinates, energyCosts);
         return true;
-        // you should do the menus first so we can get confirmation from player that they want to walk
     }
 
-    public void walk(ArrayList<Coordinates> coordinates, ArrayList<Integer> energyCosts) {
+
+
+    public void walk(ArrayList<Coordinates> coordinates, ArrayList<Double> energyCosts) {
         for (int i = 0; i < coordinates.size() && !isPassedOut; i++){
              Coordinates coordinate = coordinates.get(i);
-             int energyCost = energyCosts.get(i);
+             double energyCost = energyCosts.get(i);
              this.x = coordinate.x();
              this.y = coordinate.y();
              diminishEnergy(energyCost);
+             System.out.println("current x: " + this.x + ", current y: " + this.y);
         }
     }
 
@@ -254,6 +289,8 @@ public class Player {
     }
 
     public void passOut() {
+        isPassedOut = true;
+        App.getGame().deactivatePlayer(this);
     }
 
     public void sell(InventoryItem item) {

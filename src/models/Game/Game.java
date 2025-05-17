@@ -28,7 +28,7 @@ public class Game {
 
     public Game(ArrayList<Player> players, ArrayList<GameMap>  gameMaps) {
         this.players = players;
-        currentPlayer = players.get(0);
+        currentPlayer = players.get(1);
         this.activePlayers = new ArrayList<>(players);
         weather = WeatherType.SUNNY.getWeather();
         this.gameMaps = gameMaps;
@@ -112,7 +112,10 @@ public class Game {
         return "";
     }
 
-
+    public void deactivatePlayer(Player player) {
+        activePlayers.remove(player);
+        System.out.println("player " + player.getName() + " goes for a nap");
+    }
 
     public void adavanceDay(){
         long currentDay = dateTime.getPreciseDay();
