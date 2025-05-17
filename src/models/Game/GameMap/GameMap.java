@@ -6,6 +6,7 @@ import models.Game.Coordinates;
 import models.PlantsAndForaging.Growable;
 import models.Tiles.OverlayTiles.OverlayTile;
 import models.Tiles.Tile;
+import models.enums.Color;
 
 import java.util.Arrays;
 
@@ -56,7 +57,11 @@ public class GameMap {
         for (int y = minY; y < maxY; y++) {
             for (int x = minX; x < maxX; x++) {
                 try {
-                    System.out.print(tiles[y][x].showTile());
+                    if (x == App.getCurrentPlayer().getX() && y == App.getCurrentPlayer().getY()) {
+                        System.out.println(Color.BLACK_BG.getColorCode() + Color.BLUE_TEXT.getColorCode()
+                                + "@" + Color.RESET.getColorCode());
+                    }
+                    else System.out.print(tiles[y][x].showTile());
                 } catch (NullPointerException e) {
                     System.out.println("x: " + x + ", y: " + y);
                 }

@@ -132,9 +132,9 @@ public class Player {
         this.unlockedCraftingRecipes = unlockedCraftingRecipes;
     }
 
-    public Player(User user, int mapID){
+    public Player(User user, int playerID){
         this.user = user;
-        this.mapID = mapID;
+//        this.mapID = mapID;
         inventory = new Inventory();
         cookableFoods = new ArrayList<ArtisanRecipe>();
         craftableItems = new ArrayList<>();
@@ -149,6 +149,9 @@ public class Player {
         currentBuilding = "none";
         artisanDevices = new ArrayList<>();
         unlockedCraftingRecipes = new ArrayList<models.CraftingAndCooking.CraftingRecipeInfo>();
+
+        x = (playerID % 2) * 46 + 5;
+        y = (playerID / 2) * 46 + 5;
     }
 
     public Skill getSkillByName(String skillName){

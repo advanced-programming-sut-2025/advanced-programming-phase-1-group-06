@@ -120,7 +120,8 @@ public class GameMenuController {
     }
 
     public void walkTo(int x, int y) {
-        // TODO: Implement walk logic
+         App.getCurrentPlayer().canWalk(x, y);
+
     }
 
     public void printMapAt(int x, int y, int size) {
