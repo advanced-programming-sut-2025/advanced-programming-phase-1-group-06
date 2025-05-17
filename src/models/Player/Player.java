@@ -22,7 +22,7 @@ public class Player {
     private Inventory inventory;
     private ArrayList<Skill> skills;
     private double energy;
-    private double maxEnergy;
+    private static double maxEnergy = 200.0;
     private int mapID;
     private String currentBuilding;
     private ArrayList<ArtisanDevice> artisanDevices;
@@ -79,7 +79,7 @@ public class Player {
 
     public void diminishEnergy(double energy) {
         this.energy -= energy * App.getGame().getWeather().getEnergyConsumptionRate();
-        if (energy <= 0) {
+        if (this.energy <= 0) {
             passOut();
         }
     }
@@ -239,11 +239,11 @@ public class Player {
         ArrayList<Double> energyCosts = AStar.calculateEachMoveCost(coordinates);
         double sum = energyCosts.stream().mapToDouble(energyCost -> energyCost).sum();
 
-        if (sum * App.getGame().getWeather().getEnergyConsumptionRate() > maxEnergy) {
+        if (sum * App.getGame().getWeather().getEnergyConsumptionRate() > energy) {
             System.out.println("not enough energy to do that");
             return false;
         }
-        System.out.println(coordinates);
+//        System.out.println(coordinates);
         walk(coordinates, energyCosts);
         return true;
     }
@@ -251,13 +251,14 @@ public class Player {
 
 
     public void walk(ArrayList<Coordinates> coordinates, ArrayList<Double> energyCosts) {
-        for (int i = 0; i < coordinates.size() && !isPassedOut; i++){
+        for (int i = 1; i < coordinates.size(); i++){
              Coordinates coordinate = coordinates.get(i);
-             double energyCost = energyCosts.get(i);
+             double energyCost = energyCosts.get(i - 1);
+//             System.out.println(energyCosts);
              this.x = coordinate.x();
              this.y = coordinate.y();
              diminishEnergy(energyCost);
-             System.out.println("current x: " + this.x + ", current y: " + this.y);
+//             System.out.println("current x: " + this.x + ", current y: " + this.y);
         }
     }
 

@@ -225,27 +225,38 @@ public class AStar {
     }
 
     public static ArrayList<Double> calculateEachMoveCost(ArrayList<Coordinates> path) {
+        if (path.isEmpty()) {
+            return new ArrayList<>();
+        }
+
         int currentX = path.getFirst().x();
         int currentY = path.getFirst().y();
         int dx = 0;
         int dy = 0;
         ArrayList<Double> moveCost = new ArrayList<>();
+
+        // Don't add initial cost for starting position
+        moveCost.add(0.0);  // First position costs nothing
         moveCost.add(0.0);
-        for (Coordinates c : path) {
+        for (int i = 1; i < path.size(); i++) {  // Start from index 1
+            Coordinates c = path.get(i);
             int nextX = c.x();
             int nextY = c.y();
+
             if (nextX == currentX && nextY == currentY) {
-                moveCost.add(0.0);
+                moveCost.add(0.0);  // Same position
             }
             else if (dx == nextX - currentX && dy == nextY - currentY) {
-                moveCost.add(0.05);
+                moveCost.add(5.0);  // Continuing same direction
             }
-            else if ((dx == nextX - currentX && dy != nextY - currentY) || (dx != nextX - currentX && dy == nextY)) {
-                moveCost.add(0.07);
+            else if ((dx == nextX - currentX && dy != nextY - currentY) ||
+                    (dx != nextX - currentX && dy == nextY)) {
+                moveCost.add(7.0);  // 90-degree turn
             }
             else if (dx != nextX - currentX && dy != nextY - currentY) {
-                moveCost.add(0.5);
+                moveCost.add(10.0);  // 180-degree turn
             }
+
             dx = nextX - currentX;
             dy = nextY - currentY;
             currentX = nextX;

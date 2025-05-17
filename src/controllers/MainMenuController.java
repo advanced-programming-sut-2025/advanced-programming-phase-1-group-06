@@ -78,7 +78,7 @@ public class MainMenuController {
                 }
                 gameMaps.add(new MapInitializer(gameMap).generateObstacles().getGameMap());
                 //App.getGame().addMap(gameMap); i dont think it will be of any use
-                Player player = new Player(users.get(userCount), mapNumber);
+                Player player = new Player(users.get(userCount), userCount);
                 players.add(player);
                 userCount ++;
             }else

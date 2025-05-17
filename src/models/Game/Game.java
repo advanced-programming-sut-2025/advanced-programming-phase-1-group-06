@@ -97,6 +97,7 @@ public class Game {
     public void nextTurn() {
         if (activePlayers.isEmpty()){
             dateTime.advanceDay(1);
+            return;
         }
         currentPlayer = activePlayers.get((activePlayers.indexOf(currentPlayer) + 1) % activePlayers.size());
         if (currentPlayer.isPassedOut()){
@@ -115,6 +116,7 @@ public class Game {
     public void deactivatePlayer(Player player) {
         activePlayers.remove(player);
         System.out.println("player " + player.getName() + " goes for a nap");
+        nextTurn();
     }
 
     public void adavanceDay(){
