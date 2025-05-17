@@ -291,18 +291,18 @@ public class GameMenuController {
             return;
         }
         ArtisanDevice artisanDevice = ArtisanDeviceTypes.getArtisanDeviceByName(artisanName);
-        if (artisanDevice == null) {
-            System.out.println("artisan device not found");
-        }
         if (!player.hasArtisanDevcie(artisanName)) {
             System.out.println("player hasn't unlocked this artisan device yet.");
             return;
+        }
+        if (artisanDevice == null) {
+            System.out.println("artisan device not found");
         }
         artisanDevice.craft(recipe, player);
     }
 
     public void getArtisanProduct(String artisanName) {
-        // TODO: Retrieve the finished product from an artisan machine
+        player.getArtisanProduct(artisanName);
     }
 
     public void nextTurn() {
