@@ -8,8 +8,7 @@ public class Barn extends Building {
     private int currentStorage;
     private Animal[] animals;
 
-    public Barn(Coordinates balaChap, Coordinates doorCoordinates) {
-        super(balaChap, doorCoordinates);
+    public Barn() {
     }
 
     public void addAnimal(Animal animal) {

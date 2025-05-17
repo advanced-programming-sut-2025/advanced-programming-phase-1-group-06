@@ -7,6 +7,7 @@ import models.App;
 import models.Game.Game;
 import models.Game.GameMap.GameMap;
 import models.Game.GameMap.MapInitializer;
+import models.Game.GameMap.MapModifier;
 import models.Game.GameMap.MapReader;
 import models.Player.Player;
 import models.User;
@@ -35,12 +36,11 @@ public class MainMenuController {
 
     public MainMenuController() {
         try {
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            String json = Files.readString(Path.of("..", "models", "data", "lastGameData.json"));
-            JsonObject jsonObject = gson.fromJson(json, JsonObject.class);
-            if (jsonObject.get("stayLoggedIn").getAsBoolean()) {
-                App.setLoggedInUser(App.getUserByUsername(jsonObject.get("userName").getAsString()));
-            }
+            String json = new String(Files.readAllBytes(Paths.get("src/models/data/lastGameData.json")));
+            JsonObject jsonObject = new Gson().fromJson(json, JsonObject.class);
+//            if (jsonObject.get("stayLoggedIn").getAsBoolean()) {
+//                App.setLoggedInUser(App.getUserByUsername(jsonObject.get("userName").getAsString()));
+//            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -53,6 +53,7 @@ public class MainMenuController {
             if (user == null){
                 return "user " + i + " does not exist";
             }
+            users.add(user);
         }
         ArrayList<Player> players = new ArrayList<>();
         Matcher mapMatcher;
@@ -61,30 +62,36 @@ public class MainMenuController {
         int userCount = 0;
         ArrayList<GameMap> gameMaps = new ArrayList<>();
         while (userCount != 3){
-            System.out.println("pick your map. choose a number between 1 to 3");
+            System.out.println("pick your map. choose a number between 1 to 2");
             input = scanner.nextLine();
             if ((mapMatcher = Regex.GAME_MAP.getMatcher(input)) != null){
                 mapNumber = Integer.parseInt(mapMatcher.group("mapNumber"));
-                if (mapNumber > 3 || mapNumber < 1){
-                    System.out.println("number out of range please choose a number from 1 to 3.");
+                if (mapNumber > 2 || mapNumber < 1){
+                    System.out.println("number out of range please choose a number from 1 to 2.");
                     continue;
                 }
                 GameMap gameMap;
                 try {
-                    gameMap = new MapReader().loadMap("./Maps/map".concat(String.valueOf(mapNumber)).concat(".json"));
+                    gameMap = new MapReader().loadMap(Path.of("src/models/Game/GameMap/Maps/map".concat(String.valueOf(mapNumber).concat(".json"))));
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
                 gameMaps.add(new MapInitializer(gameMap).generateObstacles().getGameMap());
                 //App.getGame().addMap(gameMap); i dont think it will be of any use
-                Player player = new Player(users.get(userCount), App.getGame().getMapID(gameMap));
+                Player player = new Player(users.get(userCount), mapNumber);
                 players.add(player);
                 userCount ++;
             }else
                 System.out.println("please answer in the format bellow.\n\"game map <mapNumber>\"");
 
         }
+        try {
+            gameMaps.add(new MapModifier(new MapReader().loadMap(Path.of("src/Models/Game/GameMap/Maps/map0.json"))).makeStores());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         App.setGame(new Game(players, gameMaps));
+        App.setCurrentMenu(Menu.GAME);
         return "game created successfully";
     }
 }

@@ -2,6 +2,7 @@ package controllers;
 
 import models.App;
 import models.CraftingAndCooking.*;
+import models.Game.Coordinates;
 import models.Game.Game;
 import models.Game.Weather;
 import models.ItemFaces.InventoryItem;
@@ -84,9 +85,9 @@ public class GameMenuController {
             return;
         }
         if (player.getGameMap().getTileAt(player.getX() + x, player.getY() + y).useTool(tool, player)) {
-            player.dimnishEnergy(tool.getSuccessfulEnergyCost());
+            player.diminishEnergy(tool.getSuccessfulEnergyCost());
         } else {
-            player.dimnishEnergy(tool.getUnsuccessfulEnergyCost());
+            player.diminishEnergy(tool.getUnsuccessfulEnergyCost());
         }
     }
 
@@ -123,7 +124,7 @@ public class GameMenuController {
     }
 
     public void printMapAt(int x, int y, int size) {
-        // TODO: Implement logic to print part of map
+        App.getGame().getBigMap().print(new Coordinates(x, y), size);
     }
 
     public void showMapHelp() {
@@ -309,6 +310,7 @@ public class GameMenuController {
         turn++;
         game.nextTurn();
         if (turn % 3 == 0) {
+            game.getDateTime().advanceHour(1);
             System.out.println("everybody had their turns time has passed by an hour");
         }
         System.out.println("next player can enter their command now");

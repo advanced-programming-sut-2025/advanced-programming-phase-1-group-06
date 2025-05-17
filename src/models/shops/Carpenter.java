@@ -7,7 +7,10 @@ public class Carpenter extends Shop {
     private InventoryItem[] items;
 
     public Carpenter(Coordinates balaChap, Coordinates doorCoordinates) {
-        super(balaChap, doorCoordinates);
+    }
+
+    public Carpenter() {
+
     }
 
     public void buyItem(InventoryItem item) {

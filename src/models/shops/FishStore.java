@@ -6,8 +6,9 @@ import models.ItemFaces.InventoryItem;
 public class FishStore extends Shop {
     private InventoryItem[] items;
 
-    public FishStore(Coordinates balaChap, Coordinates doorCoordinates) {
-        super(balaChap, doorCoordinates);
+
+    public FishStore() {
+
     }
 
     public void buyItem(InventoryItem item) {

@@ -6,9 +6,6 @@ import models.ItemFaces.InventoryItem;
 public class Ranch extends Shop {
     private InventoryItem[] items;
 
-    public Ranch(Coordinates balaChap, Coordinates doorCoordinates) {
-        super(balaChap, doorCoordinates);
-    }
 
     public void buyItem(InventoryItem item) {
     }

@@ -38,7 +38,7 @@ public class Inventory {
 
     public boolean addItem(InventoryItem item) {
         for (InventoryItem inventoryItem : items){
-            if (item.getId() == inventoryItem.getId()){
+            if (item.equals(inventoryItem)){
                 inventoryItem.setAmount(inventoryItem.getAmount() + item.getAmount());
                 System.out.println("item amount increased");
                 return true;

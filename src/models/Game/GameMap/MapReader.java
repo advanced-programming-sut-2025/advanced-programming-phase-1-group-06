@@ -14,6 +14,7 @@ import models.Tiles.Tile;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class MapReader {
@@ -36,8 +37,8 @@ public class MapReader {
 //        Files.writeString(Path.of(filename), json);
 //    }
 
-    public GameMap loadMap(String fileName) throws IOException {
-        String json = Files.readString(Paths.get(fileName)); //does this work?
+    public GameMap loadMap(Path filePath) throws IOException {
+        String json = Files.readString(filePath); //does this work?
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(Tile.class, new TileDeserializer()).create();
 //                .registerTypeAdapter(OverlayTile.class, new OverlayTileDeserializer())

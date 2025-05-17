@@ -28,12 +28,14 @@ public class Game {
 
     public Game(ArrayList<Player> players, ArrayList<GameMap>  gameMaps) {
         this.players = players;
-//        this.activePlayers = new ArrayList<>(players);
+        currentPlayer = players.get(0);
+        this.activePlayers = new ArrayList<>(players);
         weather = WeatherType.SUNNY.getWeather();
         this.gameMaps = gameMaps;
         bigMap = makeBigMap(gameMaps);
         growables = new ArrayList<>();
         dateTime = new DateTime();
+        artisanDevices = new ArrayList<>();
 //        weather2 = Weather.weatherRandomizer();
     }
 

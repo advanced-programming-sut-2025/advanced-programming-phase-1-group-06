@@ -135,7 +135,6 @@ public class Player {
     public Player(User user, int mapID){
         this.user = user;
         this.mapID = mapID;
-        currentMap = App.getGame().getMap(mapID);
         inventory = new Inventory();
         cookableFoods = new ArrayList<ArtisanRecipe>();
         craftableItems = new ArrayList<>();

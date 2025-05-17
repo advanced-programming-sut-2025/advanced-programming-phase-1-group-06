@@ -14,7 +14,10 @@ import java.util.regex.Matcher;
 public class Blacksmith extends Shop {
 
     public Blacksmith(Coordinates balaChap, Coordinates doorCoordinates) {
-        super(balaChap, doorCoordinates);
+    }
+
+    public Blacksmith() {
+
     }
 
     public void buyItem(InventoryItem item) {

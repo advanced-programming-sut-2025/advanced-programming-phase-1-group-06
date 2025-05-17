@@ -15,22 +15,8 @@ public class Main {
 //        AppView.run();
 //    }
 public static void main(String[] args) throws IOException {
-    Game game = new Game(null, new ArrayList<GameMap>(){{
-        add( new MapInitializer(new MapReader().
-                loadMap("models")
-                ).generateObstacles().getGameMap());
-        add( new MapInitializer(new MapReader().
-                loadMap("C:\\Users\\user\\Desktop\\Proj\\src\\models\\Game\\GameMap\\Maps\\map1.json")
-                ).generateObstacles().getGameMap());
-        add( new MapInitializer(new MapReader().
-                loadMap("C:\\Users\\user\\Desktop\\Proj\\src\\models\\Game\\GameMap\\Maps\\map1.json")
-                ).generateObstacles().getGameMap());
-        add(new MapModifier(new MapReader().
-                loadMap("C:\\Users\\user\\Desktop\\Proj\\src\\models\\Game\\GameMap\\Maps\\map0.json")
-                ).makeStores());
-    }});
-    game.getBigMap().print(new Coordinates(0, 0), 100);
-//         AppView.run();
+
+         AppView.run();
     }
 }
 

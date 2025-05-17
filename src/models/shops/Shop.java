@@ -17,8 +17,8 @@ public abstract class Shop extends Building {
     protected HashMap<String, Integer> itemNameToPrice;
     protected HashMap<String, Integer> itemNameToQuantity;
 
-    public Shop(Coordinates balaChap, Coordinates doorCoordinates) {
-        super(balaChap, doorCoordinates);
+    public Shop() {
+
     }
 
     public void openShop() {

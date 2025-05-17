@@ -7,7 +7,11 @@ public class JojoMart extends Shop {
     private InventoryItem[] items;
 
     public JojoMart(Coordinates balaChap, Coordinates doorCoordinates) {
-        super(balaChap, doorCoordinates);
+
+    }
+
+    public JojoMart() {
+
     }
 
     public void buyItem(InventoryItem item) {
