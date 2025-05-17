@@ -10,10 +10,11 @@ import models.ItemFaces.ItemFinder;
 import models.PlantsAndForaging.Plant;
 import models.PlantsAndForaging.Seed;
 import models.Player.Player;
+import models.Tiles.OverlayTiles.BuildingTile;
+import models.enums.Menu;
 import models.enums.WeatherType;
+import models.shops.Shop;
 import models.tools.Tool;
-
-import java.util.regex.Matcher;
 
 public class GameMenuController {
     Game game = App.getGame();
@@ -85,13 +86,27 @@ public class GameMenuController {
             return;
         }
         if (player.getGameMap().getTileAt(player.getX() + x, player.getY() + y).useTool(tool, player)) {
-            player.dimnishEnergy(tool.getSuccessfulEnergyCost());
+            player.diminishEnergy(tool.getSuccessfulEnergyCost());
         }
         else {
-            player.dimnishEnergy(tool.getUnsuccessfulEnergyCost());
+            player.diminishEnergy(tool.getUnsuccessfulEnergyCost());
         }
     }
 
+    public void enterShop(String shopName) {
+        for (Direction dir : Direction.values()) {
+            if (App.getGame().getBigMap().getTileAt(dir.getX() + player.getX(), dir.getY() + player.getY())
+                    .getOverlayTile() instanceof BuildingTile buildingTile &&
+                    buildingTile.getBuilding() instanceof Shop shop &&
+                    shop.getName().equals(shopName)) {
+                if (player.canWalk((shop.getMainTile()))) {
+                    App.setCurrentMenu(Menu.
+                            valueOf(shopName.toUpperCase().replaceAll("[-\\s]+", "_")));
+                }
+                 //how to implement it?
+            }
+        }
+    }
     public void answerQuestion(String answer) {
         // TODO: Implement answering logic
     }

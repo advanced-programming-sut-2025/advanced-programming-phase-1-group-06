@@ -36,7 +36,7 @@ public class MainMenuController {
     public MainMenuController() {
         try {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            String json = Files.readString(Path.of("C:\\Users\\user\\Desktop\\Proj\\src\\models\\data\\lastGameData.json"));
+            String json = Files.readString(Path.of("..", "models", "data", "lastGameData.json"));
             JsonObject jsonObject = gson.fromJson(json, JsonObject.class);
             if (jsonObject.get("stayLoggedIn").getAsBoolean()) {
                 App.setLoggedInUser(App.getUserByUsername(jsonObject.get("userName").getAsString()));

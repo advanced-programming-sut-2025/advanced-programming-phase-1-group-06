@@ -23,6 +23,9 @@ public class BuildingTile extends OverlayTile {
         this.building = building;
     }
 
+    public Building getBuilding() {
+        return building;
+    }
 
     @Override
     public boolean useTool(Tool tool, Player player) {

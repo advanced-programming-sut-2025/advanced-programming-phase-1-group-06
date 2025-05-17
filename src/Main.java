@@ -17,7 +17,7 @@ public class Main {
 public static void main(String[] args) throws IOException {
     Game game = new Game(null, new ArrayList<GameMap>(){{
         add( new MapInitializer(new MapReader().
-                loadMap("C:\\Users\\user\\Desktop\\Proj\\src\\models\\Game\\GameMap\\Maps\\map1.json")
+                loadMap("models")
                 ).generateObstacles().getGameMap());
         add( new MapInitializer(new MapReader().
                 loadMap("C:\\Users\\user\\Desktop\\Proj\\src\\models\\Game\\GameMap\\Maps\\map1.json")

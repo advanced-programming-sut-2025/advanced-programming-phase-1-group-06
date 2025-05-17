@@ -9,7 +9,8 @@ TODO hassan: crafting and artisan commands and shit edit that bih.
 TODO hassan: money cheat
 TODO roham: stay logged in
 done
-TODO roham: energy consumption in different weather types.
+TODO roham: energy consumption in different weather types
+done
 TODO roham: go home at the end of the day
 TODO roham: big boy map
 TODO roham: planting

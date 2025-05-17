@@ -4,12 +4,12 @@ import models.*;
 import models.CraftingAndCooking.*;
 import models.Game.Coordinates;
 import models.Game.GameMap.GameMap;
-import models.Game.GameMap.MapReader;
 import models.ItemFaces.InventoryItem;
 import models.ItemFaces.Item;
 import models.tools.Tool;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Player {
     private User user;
@@ -77,8 +77,8 @@ public class Player {
         this.energy = energy;
     }
 
-    public void dimnishEnergy(double energy){
-        this.energy -= energy;
+    public void diminishEnergy(double energy){
+        this.energy -= energy * App.getGame().getWeather().getEnergyConsumptionRate();
         if (energy <= 0){
             isPassedOut = true;
         }
@@ -195,15 +195,32 @@ public class Player {
         return true;
     }
 
-    public void walk(int x, int y) {
+    public boolean canWalk(int x, int y) {
         int i = App.getGame().getPlayers().indexOf(this);
         if ((i == 0 && (x >= 46 ^ y >= 46) || (i == 1 && (x < 44)) || (i == 2 && y < 44))){
             System.out.println("cant walk into other farms");
-            return;
+            return false;
         }
         ArrayList<Coordinates> coordinates = AStar.findPath(App.getGame().getBigMap(), this.x, this.y, x, y);
         ArrayList<Integer> energyCosts = AStar.calculateEachMoveCost(coordinates); //energy costs should be divided by 200
+        int sum = energyCosts.stream().mapToInt(energyCost -> energyCost).sum();
+        if (sum * App.getGame().getWeather().getEnergyConsumptionRate() > maxEnergy){
+            System.out.println("not enough energy to do that");
+            return false;
+        }
+        walk(coordinates, energyCosts);
+        return true;
         // you should do the menus first so we can get confirmation from player that they want to walk
+    }
+
+    public void walk(ArrayList<Coordinates> coordinates, ArrayList<Integer> energyCosts) {
+        for (int i = 0; i < coordinates.size() && !isPassedOut; i++){
+             Coordinates coordinate = coordinates.get(i);
+             int energyCost = energyCosts.get(i);
+             this.x = coordinate.x();
+             this.y = coordinate.y();
+             diminishEnergy(energyCost);
+        }
     }
 
     public String getName(){
@@ -310,5 +327,9 @@ public class Player {
             }
         }
     }
+
+//    public boolean canWalk(Coordinates mainTile) {
+//        return canWalk(mainTile.x(), mainTile.y());
+//    }
 }
 

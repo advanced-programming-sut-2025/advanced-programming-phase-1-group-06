@@ -11,6 +11,10 @@ public class Building {
     protected String name;
     protected Coordinates mainTile;
 
+    public Coordinates getMainTile() {
+        return mainTile;
+    }
+
     public Building() {
     }
 
