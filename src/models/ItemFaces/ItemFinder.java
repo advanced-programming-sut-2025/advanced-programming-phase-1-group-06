@@ -427,12 +427,19 @@ public enum ItemFinder {
     }
 
     ItemFinder(Item item) {
+<<<<<<< HEAD
         this.inventoryItem = null;
         this.item = item;
         this.id = ordinal() + 1;
         if (item != null) {
             item.setId(id);
         }
+=======
+        this.id = ordinal() + 1;
+        item.setId(id);
+        this.item = item;
+        this.inventoryItem = item;
+>>>>>>> hassan-development-branch
     }
 
     public int getId() {
@@ -476,23 +483,35 @@ public enum ItemFinder {
         return values().length;
     }
 
+//    public static InventoryItem getItemByName(String searchName) {
+//        if (searchName == null) return null;
+//
+//        for (ItemFinder item : values()) {
+//            // Check InventoryItem first
+//            if (item.getInventoryItem() != null &&
+//                    item.getInventoryItem().getName().equals(searchName)) {
+//                return item.getInventoryItem();
+//            }
+//            // Also check Item type since some entries are Items
+//            if (item.getItem() != null &&
+//                    item.getItem().getName().equals(searchName)) {
+//                return item.getItem();
+//            }
+//        }
+//        return null;  // Return null if item not found
+//    }
+
     public static InventoryItem getItemByName(String searchName) {
         if (searchName == null) return null;
-
-        for (ItemFinder item : values()) {
-            // Check InventoryItem first
-            if (item.getInventoryItem() != null &&
-                    item.getInventoryItem().getName().equals(searchName)) {
-                return item.getInventoryItem();
-            }
-            // Also check Item type since some entries are Items
-            if (item.getItem() != null &&
-                    item.getItem().getName().equals(searchName)) {
-                return item.getItem();
+        for (ItemFinder itemFinder : values()){
+            if (itemFinder.inventoryItem.getName().equals(searchName)){
+                return itemFinder.inventoryItem;
             }
         }
         return null;  // Return null if item not found
     }
+
+
 
     public static int getIdByItem(InventoryItem searchItem) {
         if (searchItem == null) return -1;

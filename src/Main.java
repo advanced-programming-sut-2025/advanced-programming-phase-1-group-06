@@ -31,6 +31,7 @@ game new -u hassan sara roham
 game map 1
 game map 1
 game map 1
+print map -l 0, 0 -s 90
 forget password -u hassan
 nirvana
 */

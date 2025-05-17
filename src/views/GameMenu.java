@@ -197,6 +197,8 @@ public class GameMenu implements AppMenu {
             String itemName = matcher.group("itemName");
             int amount = Integer.parseInt(matcher.group("count"));
             controller.giveItemCheat(currentPlayer, itemName, amount);
+        } else if ((matcher = Regex.SHOW_MONEY.getMatcher(input)) != null){
+            System.out.println(currentPlayer.getMoney());
         }
 
     }

@@ -6,9 +6,14 @@ import models.Game.Coordinates;
 import models.Game.Game;
 import models.Game.Weather;
 import models.ItemFaces.InventoryItem;
+import models.ItemFaces.Item;
 import models.ItemFaces.ItemFinder;
+<<<<<<< HEAD
 import models.PlantsAndForaging.Plant;
 import models.PlantsAndForaging.Seed;
+=======
+import models.Player.Inventory;
+>>>>>>> hassan-development-branch
 import models.Player.Player;
 import models.Tiles.OverlayTiles.BuildingTile;
 import models.enums.Menu;
@@ -362,17 +367,22 @@ public class GameMenuController {
     public void giveItemCheat(Player player, String name, int amount) {
         InventoryItem item = null;
         System.out.println(name);
-        try {
-            item = ItemFinder.valueOf(name.toUpperCase().replaceAll("[-\\s]+", "_")).getItem(amount);
-        } catch (IllegalArgumentException e) {
-            System.out.println("item doesn't exist");
-        } catch (ExceptionInInitializerError e) {
-            System.out.println(name.toUpperCase().replaceAll("[-\\s]+", "_"));
-        }
-        if (item == null) {
+        item = ItemFinder.getItemByName(name);
+        if (item == null){
             System.out.println("item not found");
-            return;
         }
+        item.setAmount(amount);
+//        try {
+//            item = ItemFinder.valueOf(name.toUpperCase().replaceAll("[-\\s]+", "_")).getItem(amount);
+//        } catch (IllegalArgumentException e) {
+//            System.out.println("item doesn't exist");
+//        } catch (ExceptionInInitializerError e) {
+//            System.out.println(name.toUpperCase().replaceAll("[-\\s]+", "_"));
+//        }
+//        if (item == null) {
+//            System.out.println("item not found");
+//            return;
+//        }
         player.getInventory().addItem(item);
     }
 
