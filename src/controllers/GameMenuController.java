@@ -23,14 +23,14 @@ public class GameMenuController {
     Player player = game.getCurrentPlayer();
     private static int turn = 0;
     enum Direction {
-        NORTH_EAST(1, 1),
-        NORTH_WEST(1, -1),
-        SOUTH_EAST(-1, 1),
-        SOUTH_WEST(-1, -1),
-        NORTH(1, 0),
+        NORTH_EAST(-1, 1),
+        NORTH_WEST(-1, -1),
+        SOUTH_EAST(1, 1),
+        SOUTH_WEST(1, -1),
+        NORTH(-1, 0),
         EAST(0, 1),
         WEST(0, -1),
-        SOUTH(-1, 0);
+        SOUTH(1, 0);
         int y;
         int x;
 
@@ -74,6 +74,7 @@ public class GameMenuController {
     }
 
     public void useTool(String direction) {
+        System.out.println("trynna use tool");
         int x, y;
         try {
             Direction dir = Direction.valueOf(direction.toUpperCase().replaceAll("[-\\s]+", "_"));
@@ -143,7 +144,6 @@ public class GameMenuController {
 
     public void walkTo(int x, int y) {
          App.getCurrentPlayer().canWalk(x, y);
-
     }
 
     public void printMapAt(int x, int y, int size) {

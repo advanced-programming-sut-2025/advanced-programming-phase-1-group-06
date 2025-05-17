@@ -139,6 +139,7 @@ public class Player {
         inventory = new Inventory();
         cookableFoods = new ArrayList<ArtisanRecipe>();
         craftableItems = new ArrayList<>();
+
         maxEnergy = 200;
         energy = maxEnergy;
         trashcan = false;
@@ -151,7 +152,11 @@ public class Player {
         currentBuilding = "none";
         artisanDevices = new ArrayList<>();
         unlockedCraftingRecipes = new ArrayList<models.CraftingAndCooking.CraftingRecipeInfo>();
-
+        for(CraftingRecipeInfo craftingRecipeInfo : CraftingRecipeInfo.values()){
+            if (craftingRecipeInfo.getRequiredLevel() == 0){
+                unlockedCraftingRecipes.add(craftingRecipeInfo);
+            }
+        }
         x = (playerID % 2) * 46 + 37;
         y = (playerID / 2) * 46 + 7;
     }
@@ -366,6 +371,13 @@ public class Player {
             }else {
                 System.out.println("you don't have this device");
             }
+        }
+    }
+
+    public void showCraftedArtisanDevices(){
+        StringBuilder sb = new StringBuilder();
+        for (ArtisanDevice artisanDevice : artisanDevices){
+            System.out.println((artisanDevice.getName()));
         }
     }
 

@@ -5,8 +5,6 @@ import models.ItemFaces.Sellable;
 import models.PlantsAndForaging.Info.MineralsInfo;
 
 public class Mineral extends InventoryItem implements Sellable {
-
-    private String name;
     private String description;
     private int sellPrice;
 
@@ -23,11 +21,6 @@ public class Mineral extends InventoryItem implements Sellable {
     @Override
     public void setPrice(int price) {
         sellPrice = price;
-    }
-
-    @Override
-    public String getName() {
-        return "";
     }
 
     @Override
