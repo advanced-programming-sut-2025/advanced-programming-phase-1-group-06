@@ -427,19 +427,12 @@ public enum ItemFinder {
     }
 
     ItemFinder(Item item) {
-<<<<<<< HEAD
         this.inventoryItem = null;
         this.item = item;
         this.id = ordinal() + 1;
         if (item != null) {
             item.setId(id);
         }
-=======
-        this.id = ordinal() + 1;
-        item.setId(id);
-        this.item = item;
-        this.inventoryItem = item;
->>>>>>> hassan-development-branch
     }
 
     public int getId() {

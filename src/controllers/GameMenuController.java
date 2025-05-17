@@ -8,12 +8,9 @@ import models.Game.Weather;
 import models.ItemFaces.InventoryItem;
 import models.ItemFaces.Item;
 import models.ItemFaces.ItemFinder;
-<<<<<<< HEAD
 import models.PlantsAndForaging.Plant;
 import models.PlantsAndForaging.Seed;
-=======
 import models.Player.Inventory;
->>>>>>> hassan-development-branch
 import models.Player.Player;
 import models.Tiles.OverlayTiles.BuildingTile;
 import models.enums.Menu;
@@ -36,6 +33,7 @@ public class GameMenuController {
         SOUTH(-1, 0);
         int y;
         int x;
+
 
         public int getY() {
             return y;
