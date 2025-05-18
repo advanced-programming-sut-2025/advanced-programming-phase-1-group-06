@@ -1,6 +1,6 @@
 package models.shops;
 
-import models.Game.NPC;
+import models.Game.NPCs.*;
 import models.ItemFaces.ItemFinder;
 import models.Player.Player;
 import models.buildings.Building;

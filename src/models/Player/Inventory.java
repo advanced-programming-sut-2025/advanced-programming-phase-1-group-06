@@ -3,7 +3,6 @@ package models.Player;
 import java.util.ArrayList;
 
 import models.ItemFaces.InventoryItem;
-import models.ItemFaces.Item;
 import models.tools.ToolType;
 
 public class Inventory {
@@ -67,25 +66,26 @@ public class Inventory {
         return null;
     }
 
-    public void removeItem(String itemName, int amount) {
+    public boolean removeItem(String itemName, int amount) {
         if (!hasItemAmount(itemName, amount))
-            return;
+            return false;
         for (InventoryItem item : items){
             if (itemName.equals(item.getName())){
                 if (amount < item.getAmount()){
                     item.setAmount(item.getAmount() - amount);
-                    return;
+                    return false;
                 }
                 if (amount >= item.getAmount()){
                     amount -= item.getAmount();
                     items.remove(item);
                 }
                 if (amount == 0)
-                    return;
+                    return false;
                 if (item.getAmount() > amount)
                     item.setAmount(item.getAmount() - amount);
             }
         }
+        return false;
     }
     public void removeItem(InventoryItem item, int amount) {
         if (!hasItemAmount(item.getName(), amount))
@@ -139,4 +139,6 @@ public class Inventory {
         }
         return null;
     }
+
+
 }

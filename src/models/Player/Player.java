@@ -6,10 +6,11 @@ import models.Crafting.CraftingRecipeInfo;
 import models.Game.Coordinates;
 import models.Game.GameMap.GameMap;
 import models.Crafting.ArtisanRecipe;
-import models.Game.NPC;
+import models.Game.NPCs.*;
 import models.ItemFaces.InventoryItem;
 import models.tools.Tool;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,6 +30,12 @@ public class Player {
     private String currentBuilding;
     private ArrayList<ArtisanDevice> artisanDevices;
     private ArrayList<CraftingRecipeInfo> unlockedCraftingRecipes;
+
+
+
+    private HashMap<NPC, Integer> friendshipsWithNPCs;
+    private HashMap<NPC, LocalDate> lastGiftDates;
+    private HashMap<NPC, LocalDate> lastTalkDates;
 
     public int getMoney() {
         return money;
@@ -109,13 +116,12 @@ public class Player {
         return skills;
     }
 
-    private double maxEnergy;
+   // private double maxEnergy;
     private boolean isPassedOut;
     private Tool currentTool;
     private ArrayList<ArtisanRecipe> cookableFoods;
     private ArrayList<ArtisanRecipe> craftableItems;
     private boolean trashcan;
-    private HashMap<NPC, Integer> friendshipsWithNPCs;
 
     public Player(User user, GameMap currentMap, int x, int y, int money, Inventory inventory, ArrayList<Skill> skills, double energy, double maxEnergy, boolean isPassedOut, Tool currentTool, ArrayList<ArtisanRecipe> cookableFoods, ArrayList<ArtisanRecipe> craftableItems, boolean trashcan, int mapNumber, String currentBuilding, ArrayList<ArtisanDevice> artisanDevices, ArrayList<CraftingRecipeInfo> unlockedCraftingRecipes) {
         this.currentBuilding =currentBuilding;
@@ -157,6 +163,8 @@ public class Player {
         artisanDevices = new ArrayList<>();
         unlockedCraftingRecipes = new ArrayList<models.Crafting.CraftingRecipeInfo>();
         this.friendshipsWithNPCs = new HashMap<>();
+        this.lastGiftDates = new HashMap<>();
+        this.lastTalkDates = new HashMap<>();
     }
 
     public Skill getSkillByName(String skillName){
@@ -222,8 +230,6 @@ public class Player {
     public void sell(InventoryItem item) {
     }
 
-    public void gift(Player player, InventoryItem item) {
-    }
     public HashMap<NPC, Integer> getFriendShipsWithNPCs() {
         return friendshipsWithNPCs;
     }
@@ -254,38 +260,81 @@ public class Player {
         return "Best Friends Forever";
     }
 
-    public void giveGift(NPC npc, InventoryItem item) {
-        if (item == null || !inventory.hasItem(item.getName())) {
-            return;
+    public boolean giveGift(NPC npc, InventoryItem item) {
+        LocalDate currentDate = LocalDate.parse(App.getDateTime());
+
+        // Check basic conditions
+        if (item == null || !inventory.hasItemAmount(item.getName(), 1)) {
+            return false;
         }
 
-        inventory.removeItem(item.getName(), 1);
+        // Check if item is a tool
+        if (item instanceof Tool) {
+            return false;
+        }
 
+        // Check if already gave gift today
+        if (lastGiftDates.containsKey(npc) &&
+                lastGiftDates.get(npc).equals(currentDate)) {
+            return false;
+        }
+
+        // Check if within 8 surrounding tiles
+        if (!isNextToNPC(npc)) {
+            return false;
+        }
+
+        // Remove item from inventory
+        if (!inventory.removeItem(item.getName(), 1)) {
+            return false;
+        }
+
+        // Update last gift date
+        lastGiftDates.put(npc, currentDate);
+
+        // Calculate friendship points
+        int pointsToAdd = 50; // Base points for first gift of the day
         if (npc.getFavorites().contains(item)) {
-            increaseFriendship(npc, 80);
-        } else {
-            increaseFriendship(npc, 20);
+            pointsToAdd = 200; // Override with favorite item points
         }
+
+        // Update friendship
+        increaseFriendship(npc, pointsToAdd);
+        return true;
+    }
+    private boolean isNextToNPC(NPC npc) {
+        int dx = Math.abs(this.x - npc.getCoordinates().x());
+        int dy = Math.abs(this.y - npc.getCoordinates().y());
+        return dx <= 1 && dy <= 1;
     }
 
-    public ArrayList<NPC> getMaxFriendshipNPCs() {
-        ArrayList<NPC> maxFriends = new ArrayList<>();
-        for (Map.Entry<NPC, Integer> entry : friendshipsWithNPCs.entrySet()) {
-            if (entry.getValue() >= 799) {
-                maxFriends.add(entry.getKey());
-            }
-        }
-        return maxFriends;
+public boolean talkToNPC(NPC npc) {
+    LocalDate currentDate = LocalDate.parse(App.getDateTime());
+
+    // Check if within 8 surrounding tiles
+    if (!isNextToNPC(npc)) {
+        return false;
     }
+
+    // Give friendship points if first talk of the day
+    if (!lastTalkDates.containsKey(npc) ||
+            !lastTalkDates.get(npc).equals(currentDate)) {
+        increaseFriendship(npc, 20);
+        lastTalkDates.put(npc, currentDate);
+        return true;
+    }
+
+    return false;
+}
 
     public void initializeNPCFriendships(ArrayList<NPC> npcs) {
         for (NPC npc : npcs) {
             friendshipsWithNPCs.put(npc, 0);
         }
     }
-    @Override
+
     public void gift(Player player, InventoryItem item) {
-        if (item == null || !inventory.hasItem(item.getName())) {
+        if (item == null || !inventory.hasItemAmount(item.getName(), 1)) {
             return;
         }
 

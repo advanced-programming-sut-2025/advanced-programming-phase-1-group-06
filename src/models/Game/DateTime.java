@@ -102,6 +102,34 @@ public class DateTime {
             default -> "idk";
         };
     }
+    public String getFormattedDateTime() {
+        // Calculate year (starting from 2025)
+        int year = 2025 + ((season - 1) / 4);
+
+        // Calculate month (1-12)
+        int month = ((season - 1) % 4) * 3 + day / 10 + 1;
+
+        // Ensure month stays within 1-12 range
+        if (month > 12) {
+            month = 12;
+        }
+
+        // Format components with leading zeros where needed
+        String formattedMonth = String.format("%02d", month);
+        String formattedDay = String.format("%02d", day);
+        String formattedHour = String.format("%02d", hour);
+        String formattedMinute = String.format("%02d", minute);
+        String formattedSecond = "00"; // Since your game doesn't track seconds
+
+        // Return in YYYY-MM-DD HH:MM:SS format
+        return String.format("%d-%s-%s %s:%s:%s",
+                year,
+                formattedMonth,
+                formattedDay,
+                formattedHour,
+                formattedMinute,
+                formattedSecond);
+    }
 
     public String showDateTime(){
         return "date: " + showDate() + "time: " + showHour();

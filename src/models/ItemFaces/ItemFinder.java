@@ -394,8 +394,9 @@ public enum ItemFinder {
     ACORN(new Item("acorn", 5)), // Base sell price: 5g, not edible
     MAHOGANY_SEED(new Item("mahogany seed", 15)), // Base sell price: 15g, not edible
     PINE_CONE(new Item("pine cone", 5)) // Base sell price: 5g, not edible
+    ,
 
-    ;
+    IRIDIUM_SPRINKLER();
     private final InventoryItem inventoryItem;
     private final Item item;
     private final int id;

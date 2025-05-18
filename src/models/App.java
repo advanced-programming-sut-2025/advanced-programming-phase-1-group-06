@@ -88,4 +88,8 @@ public class App {
     public static void exit(){
         return;
     }
+
+    public static CharSequence getDateTime() {
+        return null;
+    }
 }
