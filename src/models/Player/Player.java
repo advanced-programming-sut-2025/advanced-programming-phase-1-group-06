@@ -6,10 +6,13 @@ import models.Crafting.CraftingRecipeInfo;
 import models.Game.Coordinates;
 import models.Game.GameMap.GameMap;
 import models.Crafting.ArtisanRecipe;
+import models.Game.NPC;
 import models.ItemFaces.InventoryItem;
 import models.tools.Tool;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Player {
     private User user;
@@ -112,6 +115,7 @@ public class Player {
     private ArrayList<ArtisanRecipe> cookableFoods;
     private ArrayList<ArtisanRecipe> craftableItems;
     private boolean trashcan;
+    private HashMap<NPC, Integer> friendshipsWithNPCs;
 
     public Player(User user, GameMap currentMap, int x, int y, int money, Inventory inventory, ArrayList<Skill> skills, double energy, double maxEnergy, boolean isPassedOut, Tool currentTool, ArrayList<ArtisanRecipe> cookableFoods, ArrayList<ArtisanRecipe> craftableItems, boolean trashcan, int mapNumber, String currentBuilding, ArrayList<ArtisanDevice> artisanDevices, ArrayList<CraftingRecipeInfo> unlockedCraftingRecipes) {
         this.currentBuilding =currentBuilding;
@@ -132,6 +136,7 @@ public class Player {
         this.mapNumber = mapNumber;
         this.artisanDevices = artisanDevices;
         this.unlockedCraftingRecipes = unlockedCraftingRecipes;
+        this.friendshipsWithNPCs = new HashMap<>();
     }
 
     public Player(User user, int mapNumber){
@@ -151,6 +156,7 @@ public class Player {
         currentBuilding = "none";
         artisanDevices = new ArrayList<>();
         unlockedCraftingRecipes = new ArrayList<models.Crafting.CraftingRecipeInfo>();
+        this.friendshipsWithNPCs = new HashMap<>();
     }
 
     public Skill getSkillByName(String skillName){
@@ -218,6 +224,75 @@ public class Player {
 
     public void gift(Player player, InventoryItem item) {
     }
+    public HashMap<NPC, Integer> getFriendShipsWithNPCs() {
+        return friendshipsWithNPCs;
+    }
+
+    public int getFriendshipLevel(NPC npc) {
+        return friendshipsWithNPCs.getOrDefault(npc, 0);
+    }
+
+    public void increaseFriendship(NPC npc, int amount) {
+        int currentFriendship = getFriendshipLevel(npc);
+        int newFriendship = Math.min(799, currentFriendship + amount);
+        friendshipsWithNPCs.put(npc, newFriendship);
+    }
+
+    public void decreaseFriendship(NPC npc, int amount) {
+        int currentFriendship = getFriendshipLevel(npc);
+        int newFriendship = Math.max(0, currentFriendship - amount);
+        friendshipsWithNPCs.put(npc, newFriendship);
+    }
+
+    public String getFriendshipStatus(NPC npc) {
+        int level = getFriendshipLevel(npc);
+        if (level < 50) return "Stranger";
+        if (level < 200) return "Acquaintance";
+        if (level < 400) return "Friend";
+        if (level < 600) return "Good Friend";
+        if (level < 799) return "Best Friend";
+        return "Best Friends Forever";
+    }
+
+    public void giveGift(NPC npc, InventoryItem item) {
+        if (item == null || !inventory.hasItem(item.getName())) {
+            return;
+        }
+
+        inventory.removeItem(item.getName(), 1);
+
+        if (npc.getFavorites().contains(item)) {
+            increaseFriendship(npc, 80);
+        } else {
+            increaseFriendship(npc, 20);
+        }
+    }
+
+    public ArrayList<NPC> getMaxFriendshipNPCs() {
+        ArrayList<NPC> maxFriends = new ArrayList<>();
+        for (Map.Entry<NPC, Integer> entry : friendshipsWithNPCs.entrySet()) {
+            if (entry.getValue() >= 799) {
+                maxFriends.add(entry.getKey());
+            }
+        }
+        return maxFriends;
+    }
+
+    public void initializeNPCFriendships(ArrayList<NPC> npcs) {
+        for (NPC npc : npcs) {
+            friendshipsWithNPCs.put(npc, 0);
+        }
+    }
+    @Override
+    public void gift(Player player, InventoryItem item) {
+        if (item == null || !inventory.hasItem(item.getName())) {
+            return;
+        }
+
+        inventory.removeItem(item.getName(), 1);
+        player.getInventory().addItem(item);
+    }
+
 
     public GameMap getGameMap() {
         return currentMap;
