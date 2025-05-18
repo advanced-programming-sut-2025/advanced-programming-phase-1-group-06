@@ -244,11 +244,6 @@ public class Player {
         friendshipsWithNPCs.put(npc, newFriendship);
     }
 
-    public void decreaseFriendship(NPC npc, int amount) {
-        int currentFriendship = getFriendshipLevel(npc);
-        int newFriendship = Math.max(0, currentFriendship - amount);
-        friendshipsWithNPCs.put(npc, newFriendship);
-    }
 
     public String getFriendshipStatus(NPC npc) {
         int level = getFriendshipLevel(npc);

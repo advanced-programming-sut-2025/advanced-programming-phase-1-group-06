@@ -22,6 +22,7 @@ public abstract class NPC {
     protected Building home;
     protected GameMap currentMap;
 
+
     public NPC(String name, String job, Building home, GameMap currentMap) {
         this.name = name;
         this.job = job;

@@ -166,7 +166,16 @@ public class GameMenu implements AppMenu {
             controller.respondToTrade(response, id);
         } else if ((matcher = Regex.TRADE_HISTORY.getMatcher(input)) != null) {
             controller.showTradeHistory();
-        } else if ((matcher = Regex.FRIENDSHIP_NPC_LIST.getMatcher(input)) != null) {
+        }
+        else if ((matcher = Regex.MEET_NPC.getMatcher(input)) != null) {
+            String npcName = matcher.group("npc_name");
+            controller.meetNPC(npcName);
+        } else if ((matcher = Regex.GIFT_NPC.getMatcher(input)) != null) {
+            String npcName = matcher.group("npc_name");
+            String item = matcher.group("item");
+            controller.giftNPC(npcName, item);
+        }
+        else if ((matcher = Regex.FRIENDSHIP_NPC_LIST.getMatcher(input)) != null) {
             controller.listFriendshipNPCs();
         } else if ((matcher = Regex.QUESTS_LIST.getMatcher(input)) != null) {
             controller.listQuests();

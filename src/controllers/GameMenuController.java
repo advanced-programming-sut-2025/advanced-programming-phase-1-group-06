@@ -2,6 +2,8 @@ package controllers;
 
 import models.App;
 import models.Game.Game;
+import models.Game.NPCs.Abigail;
+import models.Game.NPCs.NPC;
 import models.Game.Weather;
 import models.ItemFaces.InventoryItem;
 import models.Player.Player;
@@ -241,4 +243,26 @@ public class GameMenuController {
                 return "next player can enter their command now";
             }
 
-        }
+    public void respondToTrade(String response, int id) {
+    }
+
+    public void showTradeHistory() {
+    }
+
+    public void listFriendshipNPCs() {
+
+    }
+
+    public void listQuests() {
+    }
+
+    public void finishQuest(int index) {
+    }
+
+    public void meetNPC(String npcName) {
+    }
+
+    public void giftNPC(String npcName, String item) {
+    }
+
+}

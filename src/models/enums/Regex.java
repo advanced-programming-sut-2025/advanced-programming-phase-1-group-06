@@ -98,7 +98,11 @@ public enum Regex {
     TEST("^\\s*test\\s*$"),
     CHEAT_CODE("^\\s*cheat\\s+code\\s*$"),
     ARTISAN_USE("^\\s*artisan\\s+use\\s+(?<artisan_name>\\S+)\\s+(?<item1_name>\\S+)\\s*$"),
-    ARTISAN_GET("^\\s*artisan\\s+get\\s+(?<artisan_name>\\S+)\\s*$");
+    ARTISAN_GET("^\\s*artisan\\s+get\\s+(?<artisan_name>\\S+)\\s*$"),
+    GIFT_NPC("^\\s*gift\\s+NPC\\s+(?<npc_name>\\S+)\\s+-i\\s+(?<item>\\S+)\\s*$"),
+    MEET_NPC("^\\s*meet\\s+NPC\\s+(?<npc_name>\\S+)\\s*$")
+
+
 
 
     ;
