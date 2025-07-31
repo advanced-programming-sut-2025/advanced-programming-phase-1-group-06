@@ -1,0 +1,11 @@
+left.png
+size:128,64
+repeat:none
+idle_left
+bounds:2,2,32,32
+walk_left
+index:2
+bounds:36,2,32,32
+walk_left
+index:1
+bounds:70,2,32,32

@@ -1,0 +1,11 @@
+front.png
+size:128,64
+repeat:none
+idle_front
+bounds:36,2,32,32
+walk_front
+index:2
+bounds:2,2,32,32
+walk_front
+index:1
+bounds:70,2,32,32

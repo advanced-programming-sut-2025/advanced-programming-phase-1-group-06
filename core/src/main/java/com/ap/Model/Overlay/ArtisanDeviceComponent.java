@@ -1,0 +1,24 @@
+package com.ap.Model.Overlay;
+
+import com.ap.Model.Component;
+import com.ap.Model.Item.Item;
+import com.ap.Model.Recipe;
+
+import java.util.List;
+import java.util.Map;
+
+public class ArtisanDeviceComponent extends Component {
+    private final Map<Recipe, Integer> recipes; //integer is time to craft in hours
+    // some recipes are ready the next morning so we mark them with negative hours
+    private List<Item> placedItems;
+    private final String preparingItemId = null;
+    private final boolean isActive = false;
+    private final long remainingTime = 0;
+    private final boolean selfSustained = false; //only for bee house
+    private final boolean isPlaced = false; // in inventory or on ground
+    private String animationAtlasPath;
+
+    public ArtisanDeviceComponent(Map<Recipe, Integer> recipes) {
+        this.recipes = recipes;
+    }
+}
