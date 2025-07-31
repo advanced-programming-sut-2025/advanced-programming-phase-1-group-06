@@ -3,7 +3,7 @@ package com.ap.View;
 import com.ap.Controller.MapController;
 import com.ap.Controller.PlayerController;
 import com.ap.Main;
-import com.ap.Model.Player;
+import com.ap.Model.Player.Player;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;

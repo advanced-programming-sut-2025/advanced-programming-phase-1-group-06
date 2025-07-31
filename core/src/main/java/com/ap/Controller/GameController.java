@@ -4,7 +4,7 @@ package com.ap.Controller;
 import com.ap.Model.Direction;
 import com.ap.Model.Item.Item;
 import com.ap.Model.Item.ToolComponent;
-import com.ap.Model.Player;
+import com.ap.Model.Player.Player;
 import com.ap.Model.Position;
 import com.ap.Model.Tile.Tile;
 
@@ -49,5 +49,13 @@ public class GameController {
         } catch (IndexOutOfBoundsException e) {
             return tiles[0][0];
         }
+    }
+
+    public double getEnergyConsumptionRate() {
+        //TODO
+    }
+
+    public void deactivatePlayer(Player player) {
+        //TODO
     }
 }

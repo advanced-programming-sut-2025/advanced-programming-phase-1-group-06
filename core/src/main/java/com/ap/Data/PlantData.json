@@ -1,0 +1,330 @@
+{
+  "planted_blue_jazz": {
+    "harvestedCropId": "blue_jazz",
+    "growthStages": [1, 2, 2, 2],
+    "totalHarvestTime": 7,
+    "oneTime": true,
+    "regrowthTime": 0,
+    "seasons": ["SPRING"]
+  },
+  "planted_carrot": {
+    "harvestedCropId": "carrot",
+    "growthStages": [1, 1, 1],
+    "totalHarvestTime": 3,
+    "oneTime": true,
+    "regrowthTime": 0,
+    "seasons": ["SPRING"]
+  },
+  "planted_cauliflower": {
+    "harvestedCropId": "cauliflower",
+    "growthStages": [1, 2, 4, 4, 1],
+    "totalHarvestTime": 12,
+    "oneTime": true,
+    "regrowthTime": 0,
+    "seasons": ["SPRING"]
+  },
+  "planted_coffee_bean": {
+    "harvestedCropId": "coffee_bean",
+    "growthStages": [1, 2, 2, 3, 2],
+    "totalHarvestTime": 10,
+    "oneTime": false,
+    "regrowthTime": 2,
+    "seasons": ["SPRING", "SUMMER"]
+  },
+  "planted_garlic": {
+    "harvestedCropId": "garlic",
+    "growthStages": [1, 1, 1, 1],
+    "totalHarvestTime": 4,
+    "oneTime": true,
+    "regrowthTime": 0,
+    "seasons": ["SPRING"]
+  },
+  "planted_green_bean": {
+    "harvestedCropId": "green_bean",
+    "growthStages": [1, 1, 1, 3, 4],
+    "totalHarvestTime": 10,
+    "oneTime": false,
+    "regrowthTime": 3,
+    "seasons": ["SPRING"]
+  },
+  "planted_kale": {
+    "harvestedCropId": "kale",
+    "growthStages": [1, 2, 2, 1],
+    "totalHarvestTime": 6,
+    "oneTime": true,
+    "regrowthTime": 0,
+    "seasons": ["SPRING"]
+  },
+  "planted_parsnip": {
+    "harvestedCropId": "parsnip",
+    "growthStages": [1, 1, 1, 1],
+    "totalHarvestTime": 4,
+    "oneTime": true,
+    "regrowthTime": 0,
+    "seasons": ["SPRING"]
+  },
+  "planted_potato": {
+    "harvestedCropId": "potato",
+    "growthStages": [1, 1, 1, 2, 1],
+    "totalHarvestTime": 6,
+    "oneTime": true,
+    "regrowthTime": 0,
+    "seasons": ["SPRING"]
+  },
+  "planted_rhubarb": {
+    "harvestedCropId": "rhubarb",
+    "growthStages": [2, 2, 2, 3, 4],
+    "totalHarvestTime": 13,
+    "oneTime": true,
+    "regrowthTime": 0,
+    "seasons": ["SPRING"]
+  },
+  "planted_strawberry": {
+    "harvestedCropId": "strawberry",
+    "growthStages": [1, 1, 2, 2, 2],
+    "totalHarvestTime": 8,
+    "oneTime": false,
+    "regrowthTime": 4,
+    "seasons": ["SPRING"]
+  },
+  "planted_tulip": {
+    "harvestedCropId": "tulip",
+    "growthStages": [1, 1, 2, 2],
+    "totalHarvestTime": 6,
+    "oneTime": true,
+    "regrowthTime": 0,
+    "seasons": ["SPRING"]
+  },
+  "planted_unmilled_rice": {
+    "harvestedCropId": "unmilled_rice",
+    "growthStages": [1, 2, 2, 3],
+    "totalHarvestTime": 8,
+    "oneTime": true,
+    "regrowthTime": 0,
+    "seasons": ["SPRING"]
+  },
+  "planted_blueberry": {
+    "harvestedCropId": "blueberry",
+    "growthStages": [1, 3, 3, 4, 2],
+    "totalHarvestTime": 13,
+    "oneTime": false,
+    "regrowthTime": 4,
+    "seasons": ["SUMMER"]
+  },
+  "planted_corn": {
+    "harvestedCropId": "corn",
+    "growthStages": [2, 3, 3, 3, 3],
+    "totalHarvestTime": 14,
+    "oneTime": false,
+    "regrowthTime": 4,
+    "seasons": ["SUMMER", "FALL"]
+  },
+  "planted_hops": {
+    "harvestedCropId": "hops",
+    "growthStages": [1, 1, 2, 3, 4],
+    "totalHarvestTime": 11,
+    "oneTime": false,
+    "regrowthTime": 1,
+    "seasons": ["SUMMER"]
+  },
+  "planted_hot_pepper": {
+    "harvestedCropId": "hot_pepper",
+    "growthStages": [1, 1, 1, 1, 1],
+    "totalHarvestTime": 5,
+    "oneTime": false,
+    "regrowthTime": 3,
+    "seasons": ["SUMMER"]
+  },
+  "planted_melon": {
+    "harvestedCropId": "melon",
+    "growthStages": [1, 2, 3, 3, 3],
+    "totalHarvestTime": 12,
+    "oneTime": true,
+    "regrowthTime": 0,
+    "seasons": ["SUMMER"]
+  },
+  "planted_poppy": {
+    "harvestedCropId": "poppy",
+    "growthStages": [1, 2, 2, 2],
+    "totalHarvestTime": 7,
+    "oneTime": true,
+    "regrowthTime": 0,
+    "seasons": ["SUMMER"]
+  },
+  "planted_radish": {
+    "harvestedCropId": "radish",
+    "growthStages": [2, 1, 2, 1],
+    "totalHarvestTime": 6,
+    "oneTime": true,
+    "regrowthTime": 0,
+    "seasons": ["SUMMER"]
+  },
+  "planted_red_cabbage": {
+    "harvestedCropId": "red_cabbage",
+    "growthStages": [2, 1, 2, 2, 2],
+    "totalHarvestTime": 9,
+    "oneTime": true,
+    "regrowthTime": 0,
+    "seasons": ["SUMMER"]
+  },
+  "planted_starfruit": {
+    "harvestedCropId": "starfruit",
+    "growthStages": [2, 3, 2, 3, 3],
+    "totalHarvestTime": 13,
+    "oneTime": true,
+    "regrowthTime": 0,
+    "seasons": ["SUMMER"]
+  },
+  "planted_summer_spangle": {
+    "harvestedCropId": "summer_spangle",
+    "growthStages": [1, 2, 3, 2],
+    "totalHarvestTime": 8,
+    "oneTime": true,
+    "regrowthTime": 0,
+    "seasons": ["SUMMER"]
+  },
+  "planted_summer_squash": {
+    "harvestedCropId": "summer_squash",
+    "growthStages": [1, 1, 1, 2, 1],
+    "totalHarvestTime": 6,
+    "oneTime": false,
+    "regrowthTime": 3,
+    "seasons": ["SUMMER"]
+  },
+  "planted_sunflower": {
+    "harvestedCropId": "sunflower",
+    "growthStages": [1, 2, 3, 2],
+    "totalHarvestTime": 8,
+    "oneTime": true,
+    "regrowthTime": 0,
+    "seasons": ["SUMMER", "FALL"]
+  },
+  "planted_tomato": {
+    "harvestedCropId": "tomato",
+    "growthStages": [2, 2, 2, 2, 3],
+    "totalHarvestTime": 11,
+    "oneTime": false,
+    "regrowthTime": 4,
+    "seasons": ["SUMMER"]
+  },
+  "planted_wheat": {
+    "harvestedCropId": "wheat",
+    "growthStages": [1, 1, 1, 1],
+    "totalHarvestTime": 4,
+    "oneTime": true,
+    "regrowthTime": 0,
+    "seasons": ["SUMMER", "FALL"]
+  },
+  "planted_amaranth": {
+    "harvestedCropId": "amaranth",
+    "growthStages": [1, 2, 2, 2],
+    "totalHarvestTime": 7,
+    "oneTime": true,
+    "regrowthTime": 0,
+    "seasons": ["FALL"]
+  },
+  "planted_artichoke": {
+    "harvestedCropId": "artichoke",
+    "growthStages": [2, 2, 1, 2, 1],
+    "totalHarvestTime": 8,
+    "oneTime": true,
+    "regrowthTime": 0,
+    "seasons": ["FALL"]
+  },
+  "planted_beet": {
+    "harvestedCropId": "beet",
+    "growthStages": [1, 1, 2, 2],
+    "totalHarvestTime": 6,
+    "oneTime": true,
+    "regrowthTime": 0,
+    "seasons": ["FALL"]
+  },
+  "planted_bok_choy": {
+    "harvestedCropId": "bok_choy",
+    "growthStages": [1, 1, 1, 1],
+    "totalHarvestTime": 4,
+    "oneTime": true,
+    "regrowthTime": 0,
+    "seasons": ["FALL"]
+  },
+  "planted_broccoli": {
+    "harvestedCropId": "broccoli",
+    "growthStages": [2, 2, 2, 2],
+    "totalHarvestTime": 8,
+    "oneTime": false,
+    "regrowthTime": 4,
+    "seasons": ["FALL"]
+  },
+  "planted_cranberries": {
+    "harvestedCropId": "cranberries",
+    "growthStages": [1, 2, 1, 1, 2],
+    "totalHarvestTime": 7,
+    "oneTime": false,
+    "regrowthTime": 5,
+    "seasons": ["FALL"]
+  },
+  "planted_eggplant": {
+    "harvestedCropId": "eggplant",
+    "growthStages": [1, 1, 1, 1, 1],
+    "totalHarvestTime": 5,
+    "oneTime": false,
+    "regrowthTime": 5,
+    "seasons": ["FALL"]
+  },
+  "planted_fairy_rose": {
+    "harvestedCropId": "fairy_rose",
+    "growthStages": [1, 4, 4, 3],
+    "totalHarvestTime": 12,
+    "oneTime": true,
+    "regrowthTime": 0,
+    "seasons": ["FALL"]
+  },
+  "planted_grape": {
+    "harvestedCropId": "grape",
+    "growthStages": [1, 1, 2, 3, 3],
+    "totalHarvestTime": 10,
+    "oneTime": false,
+    "regrowthTime": 3,
+    "seasons": ["FALL"]
+  },
+  "planted_pumpkin": {
+    "harvestedCropId": "pumpkin",
+    "growthStages": [1, 2, 3, 4, 3],
+    "totalHarvestTime": 13,
+    "oneTime": true,
+    "regrowthTime": 0,
+    "seasons": ["FALL"]
+  },
+  "planted_yam": {
+    "harvestedCropId": "yam",
+    "growthStages": [1, 3, 3, 3],
+    "totalHarvestTime": 10,
+    "oneTime": true,
+    "regrowthTime": 0,
+    "seasons": ["FALL"]
+  },
+  "planted_sweet_gem_berry": {
+    "harvestedCropId": "sweet_gem_berry",
+    "growthStages": [2, 4, 6, 6, 6],
+    "totalHarvestTime": 24,
+    "oneTime": true,
+    "regrowthTime": 0,
+    "seasons": ["FALL"]
+  },
+  "planted_powdermelon": {
+    "harvestedCropId": "powdermelon",
+    "growthStages": [1, 2, 1, 2, 1],
+    "totalHarvestTime": 7,
+    "oneTime": true,
+    "regrowthTime": 0,
+    "seasons": ["WINTER"]
+  },
+  "planted_ancient_fruit": {
+    "harvestedCropId": "ancient_fruit",
+    "growthStages": [2, 7, 7, 7, 5],
+    "totalHarvestTime": 28,
+    "oneTime": false,
+    "regrowthTime": 7,
+    "seasons": ["SPRING", "SUMMER", "FALL"]
+  }
+}

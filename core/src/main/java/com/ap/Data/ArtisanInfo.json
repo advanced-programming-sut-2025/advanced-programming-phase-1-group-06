@@ -1,0 +1,11 @@
+{
+  "bee_house": {
+    "recipes": null,
+    "selfSustained": true
+  },
+  "cheese_press": {
+      "recipes": {
+
+      }
+  }
+}

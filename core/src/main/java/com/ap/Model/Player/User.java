@@ -1,9 +1,5 @@
-package com.ap.Model;
+package com.ap.Model.Player;
 
-
-
-
-import java.util.ArrayList;
 
 public class User {
     private String username;

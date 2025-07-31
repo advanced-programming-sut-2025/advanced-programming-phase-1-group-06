@@ -33,4 +33,12 @@ public class PlantedCropComponent extends Component {
     public boolean isOneTime() { return oneTime; }
     public int getRegrowthTime() { return regrowthTime; }
     public List<Season> getSeasons() { return seasons; }
+
+    public void grow(int dayCount) { //TODO daycount is amount of days we want the thing to grow (usually will equal 1)
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void harvest() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }

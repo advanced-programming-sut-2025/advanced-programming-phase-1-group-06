@@ -8,7 +8,7 @@ import com.ap.Model.Item.Item;
 import java.util.Map;
 
 public class Tile {
-    private String atlasId;
+    private final String atlasId;
 
     public Map<Class<? extends Component>, Component> components;
 

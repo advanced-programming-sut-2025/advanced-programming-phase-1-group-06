@@ -9,6 +9,7 @@ public class Item {
     private String id;
     private String name;
     private String description;
+    private int stackCount;
     private int stackSize;
     private Map<Class<? extends Component>, Component> components;
     private int qualityTier;
@@ -52,9 +53,13 @@ public class Item {
 //        usageComponent.useItem();
 //    }
 
-    public boolean equals(Object o) { // for stacking purposes
-        if (this == o) return true;
-        if (!(o instanceof Item other)) return false;
-        return id.equals(other.id) && qualityTier == other.qualityTier && price == other.price;
+    public void setAmount(int amount) { this.stackCount = amount; }
+    public int getAmount() { return stackCount; }
+
+    public boolean equals(Item item) {
+        return !item.hasComponent(ToolComponent.class) &&
+            id.equals(item.getId()) &&
+            qualityTier == item.qualityTier &&
+            price == item.price;
     }
 }
