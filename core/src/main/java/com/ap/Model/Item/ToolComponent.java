@@ -22,5 +22,6 @@ public class ToolComponent extends Component {
 
     // Getters
     public ToolType getToolType() { return toolType; }
+
     public int getPower() { return power; }
 }

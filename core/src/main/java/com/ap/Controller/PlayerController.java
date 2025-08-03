@@ -70,6 +70,10 @@ public class PlayerController {
         }
     }
 
+    private void handleIntercation(){
+
+    }
+
     private Animation<TextureRegion> getAnimation(Vector2 direction) {
         Animation<TextureRegion> animation = null;
         if (direction.y > 0) {

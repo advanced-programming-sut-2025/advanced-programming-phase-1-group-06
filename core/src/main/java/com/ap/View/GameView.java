@@ -1,10 +1,13 @@
 package com.ap.View;
 
+import com.ap.Controller.GameController;
 import com.ap.Controller.MapController;
 import com.ap.Controller.PlayerController;
 import com.ap.Main;
+import com.ap.Model.Direction;
 import com.ap.Model.Player.Player;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -16,6 +19,7 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 public class GameView implements Screen, InputProcessor {
+
     private final OrthographicCamera camera;
     private Viewport viewport;
     private MapController mapController;
@@ -24,6 +28,7 @@ public class GameView implements Screen, InputProcessor {
     private Clock clock;
     private Stage uiStage;
     private Viewport uiViewport;
+
     public GameView() {
         camera = new OrthographicCamera();
         viewport = new ScreenViewport(camera);
@@ -113,7 +118,13 @@ public class GameView implements Screen, InputProcessor {
     }
 
     @Override
-    public boolean touchDown(int i, int i1, int i2, int i3) {
+    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        Direction direction = Direction.getFacingDirection(screenX, screenY);
+        if (button == Input.Buttons.RIGHT) {
+
+        } else if(button == Input.Buttons.LEFT) {
+            GameController.getInstance().interactLeftClick(player, direction);
+        }
         return false;
     }
 

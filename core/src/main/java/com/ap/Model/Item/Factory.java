@@ -39,12 +39,10 @@ public class Factory {
         switch (category) {
             case "fruit":
                 return fruitIds.contains(item.getId());
-
             case "vegetable":
                 return vegetableIds.contains(item.getId());
-
             case "ore":
-
         }
+        return false;
     }
 }

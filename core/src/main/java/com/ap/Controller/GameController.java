@@ -7,8 +7,10 @@ import com.ap.Model.Item.ToolComponent;
 import com.ap.Model.Player.Player;
 import com.ap.Model.Position;
 import com.ap.Model.Tile.Tile;
+import com.badlogic.gdx.math.Vector2;
 
 public class GameController {
+
     private static GameController instance;
     private Tile[][] tiles;
 
@@ -29,7 +31,7 @@ public class GameController {
         }
     }
 
-    public void interactLeftClick(Player player, Position pos, Direction dir) { // get player's held item by a method in Player
+    public void interactLeftClick(Player player, Direction dir) { // get player's held item by a method in Player
         Item item = player.getHeldItem();
         if (item != null) {
             if (item.hasComponent(ToolComponent.class)) {
@@ -38,7 +40,7 @@ public class GameController {
         }
     }
 
-    public void interactRightClick(Player player, Position pos, Direction dir) {
+    public void interactRightClick(Player player, Direction dir) {
 
     }
 

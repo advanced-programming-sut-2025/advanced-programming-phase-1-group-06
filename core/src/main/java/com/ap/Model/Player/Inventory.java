@@ -22,6 +22,10 @@ public class Inventory {
         this.level = level;
     }
 
+    private void addTools(){
+
+    }
+
     Inventory(){
         level = 1;
         items = new ArrayList<>();
