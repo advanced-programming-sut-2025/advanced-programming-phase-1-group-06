@@ -3,11 +3,7 @@ package com.ap.Model.Item;
 import java.util.List;
 import java.util.Map;
 
-public class ItemData {
+public class OverlayData {
     String id;
-    String name;
-    String description;
-    int stackSize;
-    int basePrice;
     List<Map<String, Object>> componentsData;
 }

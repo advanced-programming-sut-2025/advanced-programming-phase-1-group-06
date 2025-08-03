@@ -1,11 +1,456 @@
 {
-  "bee_house": {
-    "recipes": null,
-    "selfSustained": true
-  },
-  "cheese_press": {
-      "recipes": {
-
+  "bee_house_recipes": [
+    {
+      "outputItemId": "honey",
+      "outputItemName": "Honey",
+      "description": "It's a sweet syrup produced by bees.",
+      "basePrice": 350,
+      "baseEnergy": 75,
+      "pricingType": "FIXED",
+      "energyType": "FIXED",
+      "craftingTimeHours": 96,
+      "specificIngredients": {},
+      "inputCategory": null,
+      "selfSustained": true
+    }
+  ],
+  "cheese_press_recipes": [
+    {
+      "outputItemId": "cheese",
+      "outputItemName": "Cheese",
+      "description": "It's your basic cheese.",
+      "basePrice": 230,
+      "baseEnergy": 100,
+      "pricingType": "FIXED",
+      "energyType": "FIXED",
+      "craftingTimeHours": 3,
+      "specificIngredients": {
+        "milk": 1
       }
-  }
+    },
+    {
+      "outputItemId": "cheese_large",
+      "outputItemName": "Cheese",
+      "description": "It's your basic cheese.",
+      "basePrice": 345,
+      "baseEnergy": 100,
+      "pricingType": "FIXED",
+      "energyType": "FIXED",
+      "craftingTimeHours": 3,
+      "specificIngredients": {
+        "large_milk": 1
+      }
+    },
+    {
+      "outputItemId": "goat_cheese",
+      "outputItemName": "Goat Cheese",
+      "description": "Soft cheese made from goat's milk.",
+      "basePrice": 400,
+      "baseEnergy": 100,
+      "pricingType": "FIXED",
+      "energyType": "FIXED",
+      "craftingTimeHours": 3,
+      "specificIngredients": {
+        "goat_milk": 1
+      }
+    },
+    {
+      "outputItemId": "goat_cheese_large",
+      "outputItemName": "Goat Cheese",
+      "description": "Soft cheese made from goat's milk.",
+      "basePrice": 600,
+      "baseEnergy": 100,
+      "pricingType": "FIXED",
+      "energyType": "FIXED",
+      "craftingTimeHours": 3,
+      "specificIngredients": {
+        "large_goat_milk": 1
+      }
+    }
+  ],
+  "keg_recipes": [
+    {
+      "outputItemId": "beer",
+      "outputItemName": "Beer",
+      "description": "Drink in moderation.",
+      "basePrice": 200,
+      "baseEnergy": 50,
+      "pricingType": "FIXED",
+      "energyType": "FIXED",
+      "craftingTimeHours": 24,
+      "specificIngredients": {
+        "wheat": 1
+      }
+    },
+    {
+      "outputItemId": "vinegar",
+      "outputItemName": "Vinegar",
+      "description": "An aged fermented liquid used in many cooking recipes.",
+      "basePrice": 100,
+      "baseEnergy": 13,
+      "pricingType": "FIXED",
+      "energyType": "FIXED",
+      "craftingTimeHours": 10,
+      "specificIngredients": {
+        "unmilled_rice": 1
+      }
+    },
+    {
+      "outputItemId": "coffee",
+      "outputItemName": "Coffee",
+      "description": "It smells delicious. This is sure to give you a boost.",
+      "basePrice": 150,
+      "baseEnergy": 75,
+      "pricingType": "FIXED",
+      "energyType": "FIXED",
+      "craftingTimeHours": 2,
+      "specificIngredients": {
+        "coffee_bean": 5
+      }
+    },
+    {
+      "outputItemId": "juice",
+      "outputItemName": "Juice",
+      "description": "A sweet, nutritious beverage.",
+      "basePrice": 0,
+      "baseEnergy": 0,
+      "pricingType": "MULTIPLIER",
+      "priceMultiplier": 2.25,
+      "energyType": "MULTIPLIER",
+      "energyMultiplier": 2.0,
+      "craftingTimeHours": 96,
+      "inputCategory": "vegetable"
+    },
+    {
+      "outputItemId": "mead",
+      "outputItemName": "Mead",
+      "description": "A fermented beverage made from honey. Drink in moderation.",
+      "basePrice": 300,
+      "baseEnergy": 100,
+      "pricingType": "FIXED",
+      "energyType": "FIXED",
+      "craftingTimeHours": 10,
+      "specificIngredients": {
+        "honey": 1
+      }
+    },
+    {
+      "outputItemId": "pale_ale",
+      "outputItemName": "Pale Ale",
+      "description": "Drink in moderation.",
+      "basePrice": 300,
+      "baseEnergy": 50,
+      "pricingType": "FIXED",
+      "energyType": "FIXED",
+      "craftingTimeHours": 72,
+      "specificIngredients": {
+        "hops": 1
+      }
+    },
+    {
+      "outputItemId": "wine",
+      "outputItemName": "Wine",
+      "description": "Drink in moderation.",
+      "basePrice": 0,
+      "baseEnergy": 0,
+      "pricingType": "MULTIPLIER",
+      "priceMultiplier": 3.0,
+      "energyType": "MULTIPLIER",
+      "energyMultiplier": 1.75,
+      "craftingTimeHours": 168,
+      "inputCategory": "fruit"
+    }
+  ],
+  "dehydrator_recipes": [
+    {
+      "outputItemId": "dried_mushrooms",
+      "outputItemName": "Dried Mushrooms",
+      "description": "A package of gourmet mushrooms.",
+      "basePrice": 25,
+      "baseEnergy": 50,
+      "pricingType": "BASE_PLUS_MULTI",
+      "priceMultiplier": 7.5,
+      "energyType": "FIXED",
+      "craftingTimeHours": -1,
+      "specificIngredients": {
+        "any_mushroom": 5
+      },
+      "inputCategory": "mushroom"
+    },
+    {
+      "outputItemId": "dried_fruit",
+      "outputItemName": "Dried Fruit",
+      "description": "Chewy pieces of dried fruit.",
+      "basePrice": 25,
+      "baseEnergy": 75,
+      "pricingType": "BASE_PLUS_MULTI",
+      "priceMultiplier": 7.5,
+      "energyType": "FIXED",
+      "craftingTimeHours": -1,
+      "specificIngredients": {
+        "any_fruit_except_grapes": 5
+      },
+      "inputCategory": "fruit_not_grapes"
+    },
+    {
+      "outputItemId": "raisins",
+      "outputItemName": "Raisins",
+      "description": "It's said to be the Junimos' favorite food.",
+      "basePrice": 600,
+      "baseEnergy": 125,
+      "pricingType": "FIXED",
+      "energyType": "FIXED",
+      "craftingTimeHours": -1,
+      "specificIngredients": {
+        "grape": 5
+      }
+    }
+  ],
+  "charcoal_kiln_recipes": [
+    {
+      "outputItemId": "coal",
+      "outputItemName": "Coal",
+      "description": "Turns 10 pieces of wood into one piece of coal.",
+      "basePrice": 50,
+      "baseEnergy": 0,
+      "pricingType": "FIXED",
+      "energyType": "INEDIBLE",
+      "craftingTimeHours": 1,
+      "specificIngredients": {
+        "wood": 10
+      }
+    }
+  ],
+  "loom_recipes": [
+    {
+      "outputItemId": "cloth",
+      "outputItemName": "Cloth",
+      "description": "A bolt of fine wool cloth.",
+      "basePrice": 470,
+      "baseEnergy": 0,
+      "pricingType": "FIXED",
+      "energyType": "INEDIBLE",
+      "craftingTimeHours": 4,
+      "specificIngredients": {
+        "wool": 1
+      }
+    }
+  ],
+  "mayonnaise_machine_recipes": [
+    {
+      "outputItemId": "mayonnaise",
+      "outputItemName": "Mayonnaise",
+      "description": "It looks spreadable.",
+      "basePrice": 190,
+      "baseEnergy": 50,
+      "pricingType": "FIXED",
+      "energyType": "FIXED",
+      "craftingTimeHours": 3,
+      "specificIngredients": {
+        "egg": 1
+      }
+    },
+    {
+      "outputItemId": "mayonnaise_large",
+      "outputItemName": "Mayonnaise",
+      "description": "It looks spreadable.",
+      "basePrice": 237,
+      "baseEnergy": 50,
+      "pricingType": "FIXED",
+      "energyType": "FIXED",
+      "craftingTimeHours": 3,
+      "specificIngredients": {
+        "large_egg": 1
+      }
+    },
+    {
+      "outputItemId": "duck_mayonnaise",
+      "outputItemName": "Duck Mayonnaise",
+      "description": "It's a rich, yellow mayonnaise.",
+      "basePrice": 375,
+      "baseEnergy": 75,
+      "pricingType": "FIXED",
+      "energyType": "FIXED",
+      "craftingTimeHours": 3,
+      "specificIngredients": {
+        "duck_egg": 1
+      }
+    },
+    {
+      "outputItemId": "dinosaur_mayonnaise",
+      "outputItemName": "Dinosaur Mayonnaise",
+      "description": "It's thick and creamy, with a vivid green hue. It smells like grass and leather.",
+      "basePrice": 800,
+      "baseEnergy": 125,
+      "pricingType": "FIXED",
+      "energyType": "FIXED",
+      "craftingTimeHours": 3,
+      "specificIngredients": {
+        "dinosaur_egg": 1
+      }
+    }
+  ],
+  "oil_maker_recipes": [
+    {
+      "outputItemId": "truffle_oil",
+      "outputItemName": "Truffle Oil",
+      "description": "A gourmet cooking ingredient.",
+      "basePrice": 1065,
+      "baseEnergy": 38,
+      "pricingType": "FIXED",
+      "energyType": "FIXED",
+      "craftingTimeHours": 6,
+      "specificIngredients": {
+        "truffle": 1
+      }
+    },
+    {
+      "outputItemId": "oil_corn",
+      "outputItemName": "Oil",
+      "description": "All purpose cooking oil.",
+      "basePrice": 100,
+      "baseEnergy": 13,
+      "pricingType": "FIXED",
+      "energyType": "FIXED",
+      "craftingTimeHours": 6,
+      "specificIngredients": {
+        "corn": 1
+      }
+    },
+    {
+      "outputItemId": "oil_sunflower_seeds",
+      "outputItemName": "Oil",
+      "description": "All purpose cooking oil.",
+      "basePrice": 100,
+      "baseEnergy": 13,
+      "pricingType": "FIXED",
+      "energyType": "FIXED",
+      "craftingTimeHours": 48,
+      "specificIngredients": {
+        "sunflower_seeds": 1
+      }
+    },
+    {
+      "outputItemId": "oil_sunflower",
+      "outputItemName": "Oil",
+      "description": "All purpose cooking oil.",
+      "basePrice": 100,
+      "baseEnergy": 13,
+      "pricingType": "FIXED",
+      "energyType": "FIXED",
+      "craftingTimeHours": 25,
+      "specificIngredients": {
+        "sunflower": 1
+      }
+    }
+  ],
+  "preserves_jar_recipes": [
+    {
+      "outputItemId": "pickles",
+      "outputItemName": "Pickles",
+      "description": "A jar of your home-made pickles.",
+      "basePrice": 50,
+      "baseEnergy": 0,
+      "pricingType": "BASE_PLUS_MULTI",
+      "priceMultiplier": 2.0,
+      "energyType": "MULTIPLIER",
+      "energyMultiplier": 1.75,
+      "craftingTimeHours": 6,
+      "inputCategory": "vegetable"
+    },
+    {
+      "outputItemId": "jelly",
+      "outputItemName": "Jelly",
+      "description": "Gooey.",
+      "basePrice": 50,
+      "baseEnergy": 0,
+      "pricingType": "BASE_PLUS_MULTI",
+      "priceMultiplier": 2.0,
+      "energyType": "MULTIPLIER",
+      "energyMultiplier": 2.0,
+      "craftingTimeHours": 72,
+      "inputCategory": "fruit"
+    }
+  ],
+  "fish_smoker_recipes": [
+    {
+      "outputItemId": "smoked_fish",
+      "outputItemName": "Smoked Fish",
+      "description": "A whole fish, smoked to perfection.",
+      "basePrice": 0,
+      "baseEnergy": 0,
+      "pricingType": "MULTIPLIER",
+      "priceMultiplier": 2.0,
+      "energyType": "MULTIPLIER",
+      "energyMultiplier": 1.5,
+      "craftingTimeHours": 1,
+      "inputCategory": "fish",
+      "specificIngredients": {
+        "coal": 1
+      },
+      "requiresAdditionalIngredient": true
+    }
+  ],
+  "furnace_recipes": [
+    {
+      "outputItemId": "copper_bar",
+      "outputItemName": "Copper Bar",
+      "description": "A refined copper ingot.",
+      "basePrice": 0,
+      "baseEnergy": 0,
+      "pricingType": "MULTIPLIER",
+      "priceMultiplier": 10.0,
+      "energyType": "INEDIBLE",
+      "craftingTimeHours": 4,
+      "specificIngredients": {
+        "copper_ore": 5,
+        "coal": 1
+      }
+    },
+    {
+      "outputItemId": "iron_bar",
+      "outputItemName": "Iron Bar",
+      "description": "A refined iron ingot.",
+      "basePrice": 0,
+      "baseEnergy": 0,
+      "pricingType": "MULTIPLIER",
+      "priceMultiplier": 10.0,
+      "energyType": "INEDIBLE",
+      "craftingTimeHours": 4,
+      "specificIngredients": {
+        "iron_ore": 5,
+        "coal": 1
+      }
+    },
+    {
+      "outputItemId": "gold_bar",
+      "outputItemName": "Gold Bar",
+      "description": "A refined gold ingot.",
+      "basePrice": 0,
+      "baseEnergy": 0,
+      "pricingType": "MULTIPLIER",
+      "priceMultiplier": 10.0,
+      "energyType": "INEDIBLE",
+      "craftingTimeHours": 4,
+      "specificIngredients": {
+        "gold_ore": 5,
+        "coal": 1
+      }
+    },
+    {
+      "outputItemId": "iridium_bar",
+      "outputItemName": "Iridium Bar",
+      "description": "A refined iridium ingot.",
+      "basePrice": 0,
+      "baseEnergy": 0,
+      "pricingType": "MULTIPLIER",
+      "priceMultiplier": 10.0,
+      "energyType": "INEDIBLE",
+      "craftingTimeHours": 4,
+      "specificIngredients": {
+        "iridium_ore": 5,
+        "coal": 1
+      }
+    }
+  ]
 }

@@ -1,0 +1,185 @@
+{
+  "recipes": [
+    {
+      "itemId": "cherry_bomb",
+      "itemName": "Cherry Bomb",
+      "ingredients": {
+        "copper_ore": 4,
+        "coal": 1
+      }
+    },
+    {
+      "itemId": "bomb",
+      "itemName": "Bomb",
+      "ingredients": {
+        "iron_ore": 4,
+        "coal": 1
+      }
+    },
+    {
+      "itemId": "mega_bomb",
+      "itemName": "Mega Bomb",
+      "ingredients": {
+        "gold_ore": 4,
+        "coal": 1
+      }
+    },
+    {
+      "itemId": "sprinkler",
+      "itemName": "Sprinkler",
+      "ingredients": {
+        "copper_bar": 1,
+        "iron_bar": 1
+      }
+    },
+    {
+      "itemId": "quality_sprinkler",
+      "itemName": "Quality Sprinkler",
+      "ingredients": {
+        "iron_bar": 1,
+        "gold_bar": 1
+      }
+    },
+    {
+      "itemId": "iridium_sprinkler",
+      "itemName": "Iridium Sprinkler",
+      "ingredients": {
+        "gold_bar": 1,
+        "iridium_bar": 1
+      }
+    },
+    {
+      "itemId": "charcoal_kiln",
+      "itemName": "Charcoal Kiln",
+      "ingredients": {
+        "wood": 20,
+        "copper_bar": 2
+      }
+    },
+    {
+      "itemId": "furnace",
+      "itemName": "Furnace",
+      "ingredients": {
+        "copper_ore": 20,
+        "stone": 25
+      }
+    },
+    {
+      "itemId": "scarecrow",
+      "itemName": "Scarecrow",
+      "ingredients": {
+        "wood": 50,
+        "coal": 1,
+        "fiber": 20
+      }
+    },
+    {
+      "itemId": "deluxe_scarecrow",
+      "itemName": "Deluxe Scarecrow",
+      "ingredients": {
+        "wood": 50,
+        "coal": 1,
+        "fiber": 20,
+        "iridium_ore": 1
+      }
+    },
+    {
+      "itemId": "bee_house",
+      "itemName": "Bee House",
+      "ingredients": {
+        "wood": 40,
+        "coal": 8,
+        "iron_bar": 1
+      }
+    },
+    {
+      "itemId": "cheese_press",
+      "itemName": "Cheese Press",
+      "ingredients": {
+        "wood": 45,
+        "stone": 45,
+        "copper_bar": 1
+      }
+    },
+    {
+      "itemId": "keg",
+      "itemName": "Keg",
+      "ingredients": {
+        "wood": 30,
+        "copper_bar": 1,
+        "iron_bar": 1
+      }
+    },
+    {
+      "itemId": "loom",
+      "itemName": "Loom",
+      "ingredients": {
+        "wood": 60,
+        "fiber": 30
+      }
+    },
+    {
+      "itemId": "mayonnaise_machine",
+      "itemName": "Mayonnaise Machine",
+      "ingredients": {
+        "wood": 15,
+        "stone": 15,
+        "copper_bar": 1
+      }
+    },
+    {
+      "itemId": "oil_maker",
+      "itemName": "Oil Maker",
+      "ingredients": {
+        "wood": 100,
+        "gold_bar": 1,
+        "iron_bar": 1
+      }
+    },
+    {
+      "itemId": "preserves_jar",
+      "itemName": "Preserves Jar",
+      "ingredients": {
+        "wood": 50,
+        "stone": 40,
+        "coal": 8
+      }
+    },
+    {
+      "itemId": "dehydrator",
+      "itemName": "Dehydrator",
+      "ingredients": {
+        "wood": 30,
+        "stone": 20,
+        "fiber": 30
+      }
+    },
+    {
+      "itemId": "grass_starter",
+      "itemName": "Grass Starter",
+      "ingredients": {
+        "wood": 1,
+        "fiber": 1
+      }
+    },
+    {
+      "itemId": "fish_smoker",
+      "itemName": "Fish Smoker",
+      "ingredients": {
+        "wood": 50,
+        "iron_bar": 3,
+        "coal": 10
+      }
+    },
+    {
+      "itemId": "mystic_tree_seed",
+      "itemName": "Mystic Tree Seed",
+      "ingredients": {
+        "acorns": 5,
+        "maple_seeds": 5,
+        "pine_cones": 5,
+        "mahogany_seeds": 5
+      }
+    }
+  ]
+}

@@ -53,6 +53,7 @@ public class GameController {
 
     public double getEnergyConsumptionRate() {
         //TODO
+        return 0f;
     }
 
     public void deactivatePlayer(Player player) {

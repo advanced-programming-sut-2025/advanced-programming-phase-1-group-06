@@ -48,7 +48,7 @@ public class Item {
     public String getName() { return name; }
     public String getDescription() { return description; }
     public int getStackSize() { return stackSize; }
-
+    public int getPrice() { return price; }
 //    public void useItem() {
 //        usageComponent.useItem();
 //    }

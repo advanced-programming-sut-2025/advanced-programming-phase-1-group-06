@@ -9,6 +9,8 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -19,6 +21,9 @@ public class GameView implements Screen, InputProcessor {
     private MapController mapController;
     private PlayerController playerController;
     private Player player;
+    private Clock clock;
+    private Stage uiStage;
+    private Viewport uiViewport;
     public GameView() {
         camera = new OrthographicCamera();
         viewport = new ScreenViewport(camera);
@@ -28,6 +33,11 @@ public class GameView implements Screen, InputProcessor {
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.zoom = 0.2f;
         viewport.apply();
+        clock = new Clock(new Skin(Gdx.files.internal("skin/NzSkin.json")));
+        // UI viewport and stage setup
+        uiViewport = new ScreenViewport(new OrthographicCamera());
+        uiStage = new Stage(uiViewport);
+        uiStage.addActor(clock);
     }
 
     @Override
@@ -43,18 +53,28 @@ public class GameView implements Screen, InputProcessor {
         camera.position.set(playerPos.x, playerPos.y, 0);
 
         camera.update();
-        Main.getInstance().getBatch().setProjectionMatrix(camera.combined);
+    Main.getInstance().getBatch().setProjectionMatrix(camera.combined);
+    Main.getInstance().getBatch().begin();
+    mapController.renderMap(Main.getInstance().getBatch(), camera);
+    playerController.update(v, Main.getInstance().getBatch());
+    Main.getInstance().getBatch().end();
 
-
-        Main.getInstance().getBatch().begin();
-        mapController.renderMap(Main.getInstance().getBatch(), camera);
-        playerController.update(v, Main.getInstance().getBatch());
-        Main.getInstance().getBatch().end();
+    // UI rendering (separate from game world)
+    uiViewport.apply();
+    uiStage.act(v);
+    uiStage.draw();
     }
 
     @Override
-    public void resize(int i, int i1) {
-        viewport.update(i, i1);
+    public void resize(int width, int height) {
+        viewport.update(width, height);
+        uiViewport.update(width, height, true);
+
+    // Update clock position
+    clock.setPosition(
+        width - clock.getWidth() - 10,
+        height - clock.getHeight() - 10
+    );
     }
 
     @Override
