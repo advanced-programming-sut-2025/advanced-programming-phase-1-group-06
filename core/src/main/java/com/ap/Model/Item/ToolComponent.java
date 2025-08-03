@@ -4,16 +4,16 @@ import com.ap.Model.Component;
 
 public class ToolComponent extends Component {
     public enum ToolType {
-        AXE, PICKAXE, WATERING_CAN, HOE, SWORD
+        AXE, PICKAXE, WATERING_CAN, HOE, SCYTHE, SHEAR, MILK_PAIL, FISHING_ROD
     }
 
     private ToolType toolType;
-    private int power;
 
-    public ToolComponent(ToolType toolType, int power) {
-        this.toolType = toolType;
-        this.power = power;
-    }
+    private int successfulEnergyUse;
+    private int unsuccessfulEnergyUse;
+    private int capacity; // 0 for all except watering can
+
+    
 
     public void useTool() {
 
@@ -22,5 +22,5 @@ public class ToolComponent extends Component {
 
     // Getters
     public ToolType getToolType() { return toolType; }
-    public int getPower() { return power; }
+
 }

@@ -46,5 +46,6 @@ public class Factory {
             case "ore":
 
         }
+        return false;
     }
 }

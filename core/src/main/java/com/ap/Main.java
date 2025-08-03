@@ -1,5 +1,6 @@
 package com.ap;
 
+import com.ap.Model.InventoryTest.GameScreen;
 import com.ap.View.GameView;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Game;
@@ -28,7 +29,7 @@ public class Main extends Game {
         instance = this;
         batch = new SpriteBatch();
         Gdx.graphics.setWindowedMode(1920, 1080);
-        this.setScreen(new GameView());
+        this.setScreen(new GameScreen());
     }
 
     @Override
