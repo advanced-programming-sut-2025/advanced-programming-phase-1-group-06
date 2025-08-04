@@ -956,5 +956,423 @@
         }
       ]
     }
+  ],
+  "tools": [
+    {
+      "id": "hoe",
+      "name": "Hoe",
+      "description": "Used to till soil for planting crops.",
+      "stackSize": 1,
+      "basePrice": 0,
+      "componentsData": [
+        {
+          "type": "ToolComponent",
+          "toolType": "HOE",
+          "successfulEnergyUse": 5,
+          "unsuccessfulEnergyUse": 5,
+          "capacity": 0
+        }
+      ]
+    },
+    {
+      "id": "copper_hoe",
+      "name": "Copper Hoe",
+      "description": "Tills soil in a 3x1 area. More efficient than basic hoe.",
+      "stackSize": 1,
+      "basePrice": 2000,
+      "componentsData": [
+        {
+          "type": "ToolComponent",
+          "toolType": "HOE",
+          "successfulEnergyUse": 4,
+          "unsuccessfulEnergyUse": 4,
+          "capacity": 0
+        }
+      ]
+    },
+    {
+      "id": "iron_hoe",
+      "name": "Iron Hoe",
+      "description": "Tills soil in a 5x1 area. More efficient than copper hoe.",
+      "stackSize": 1,
+      "basePrice": 5000,
+      "componentsData": [
+        {
+          "type": "ToolComponent",
+          "toolType": "HOE",
+          "successfulEnergyUse": 3,
+          "unsuccessfulEnergyUse": 3,
+          "capacity": 0
+        }
+      ]
+    },
+    {
+      "id": "gold_hoe",
+      "name": "Gold Hoe",
+      "description": "Tills soil in a 3x3 area. More efficient than iron hoe.",
+      "stackSize": 1,
+      "basePrice": 10000,
+      "componentsData": [
+        {
+          "type": "ToolComponent",
+          "toolType": "HOE",
+          "successfulEnergyUse": 2,
+          "unsuccessfulEnergyUse": 2,
+          "capacity": 0
+        }
+      ]
+    },
+    {
+      "id": "iridium_hoe",
+      "name": "Iridium Hoe",
+      "description": "Tills soil in a 6x3 area. The most efficient hoe.",
+      "stackSize": 1,
+      "basePrice": 25000,
+      "componentsData": [
+        {
+          "type": "ToolComponent",
+          "toolType": "HOE",
+          "successfulEnergyUse": 1,
+          "unsuccessfulEnergyUse": 1,
+          "capacity": 0
+        }
+      ]
+    },
+    {
+      "id": "pickaxe",
+      "name": "Pickaxe",
+      "description": "Used to break stones and clear paths.",
+      "stackSize": 1,
+      "basePrice": 0,
+      "componentsData": [
+        {
+          "type": "ToolComponent",
+          "toolType": "PICKAXE",
+          "successfulEnergyUse": 5,
+          "unsuccessfulEnergyUse": 4,
+          "capacity": 0
+        }
+      ]
+    },
+    {
+      "id": "copper_pickaxe",
+      "name": "Copper Pickaxe",
+      "description": "Breaks rocks more efficiently than basic pickaxe.",
+      "stackSize": 1,
+      "basePrice": 2000,
+      "componentsData": [
+        {
+          "type": "ToolComponent",
+          "toolType": "PICKAXE",
+          "successfulEnergyUse": 4,
+          "unsuccessfulEnergyUse": 3,
+          "capacity": 0
+        }
+      ]
+    },
+    {
+      "id": "iron_pickaxe",
+      "name": "Iron Pickaxe",
+      "description": "Breaks rocks more efficiently than copper pickaxe.",
+      "stackSize": 1,
+      "basePrice": 5000,
+      "componentsData": [
+        {
+          "type": "ToolComponent",
+          "toolType": "PICKAXE",
+          "successfulEnergyUse": 3,
+          "unsuccessfulEnergyUse": 2,
+          "capacity": 0
+        }
+      ]
+    },
+    {
+      "id": "gold_pickaxe",
+      "name": "Gold Pickaxe",
+      "description": "Breaks rocks more efficiently than iron pickaxe.",
+      "stackSize": 1,
+      "basePrice": 10000,
+      "componentsData": [
+        {
+          "type": "ToolComponent",
+          "toolType": "PICKAXE",
+          "successfulEnergyUse": 2,
+          "unsuccessfulEnergyUse": 1,
+          "capacity": 0
+        }
+      ]
+    },
+    {
+      "id": "iridium_pickaxe",
+      "name": "Iridium Pickaxe",
+      "description": "The most efficient pickaxe for breaking rocks.",
+      "stackSize": 1,
+      "basePrice": 25000,
+      "componentsData": [
+        {
+          "type": "ToolComponent",
+          "toolType": "PICKAXE",
+          "successfulEnergyUse": 1,
+          "unsuccessfulEnergyUse": 0,
+          "capacity": 0
+        }
+      ]
+    },
+    {
+      "id": "axe",
+      "name": "Axe",
+      "description": "Used to chop wood and clear trees.",
+      "stackSize": 1,
+      "basePrice": 0,
+      "componentsData": [
+        {
+          "type": "ToolComponent",
+          "toolType": "AXE",
+          "successfulEnergyUse": 5,
+          "unsuccessfulEnergyUse": 4,
+          "capacity": 0
+        }
+      ]
+    },
+    {
+      "id": "copper_axe",
+      "name": "Copper Axe",
+      "description": "Chops wood more efficiently than basic axe.",
+      "stackSize": 1,
+      "basePrice": 2000,
+      "componentsData": [
+        {
+          "type": "ToolComponent",
+          "toolType": "AXE",
+          "successfulEnergyUse": 4,
+          "unsuccessfulEnergyUse": 3,
+          "capacity": 0
+        }
+      ]
+    },
+    {
+      "id": "iron_axe",
+      "name": "Iron Axe",
+      "description": "Chops wood more efficiently than copper axe.",
+      "stackSize": 1,
+      "basePrice": 5000,
+      "componentsData": [
+        {
+          "type": "ToolComponent",
+          "toolType": "AXE",
+          "successfulEnergyUse": 3,
+          "unsuccessfulEnergyUse": 2,
+          "capacity": 0
+        }
+      ]
+    },
+    {
+      "id": "gold_axe",
+      "name": "Gold Axe",
+      "description": "Chops wood more efficiently than iron axe.",
+      "stackSize": 1,
+      "basePrice": 10000,
+      "componentsData": [
+        {
+          "type": "ToolComponent",
+          "toolType": "AXE",
+          "successfulEnergyUse": 2,
+          "unsuccessfulEnergyUse": 1,
+          "capacity": 0
+        }
+      ]
+    },
+    {
+      "id": "iridium_axe",
+      "name": "Iridium Axe",
+      "description": "The most efficient axe for chopping wood.",
+      "stackSize": 1,
+      "basePrice": 25000,
+      "componentsData": [
+        {
+          "type": "ToolComponent",
+          "toolType": "AXE",
+          "successfulEnergyUse": 1,
+          "unsuccessfulEnergyUse": 0,
+          "capacity": 0
+        }
+      ]
+    },
+    {
+      "id": "watering_can",
+      "name": "Watering Can",
+      "description": "Used to water crops. Must be refilled at water sources.",
+      "stackSize": 1,
+      "basePrice": 0,
+      "componentsData": [
+        {
+          "type": "ToolComponent",
+          "toolType": "WATERING_CAN",
+          "successfulEnergyUse": 5,
+          "unsuccessfulEnergyUse": 5,
+          "capacity": 40
+        }
+      ]
+    },
+    {
+      "id": "copper_watering_can",
+      "name": "Copper Watering Can",
+      "description": "Waters crops in a 3x1 area. Holds more water than basic can.",
+      "stackSize": 1,
+      "basePrice": 2000,
+      "componentsData": [
+        {
+          "type": "ToolComponent",
+          "toolType": "WATERING_CAN",
+          "successfulEnergyUse": 4,
+          "unsuccessfulEnergyUse": 4,
+          "capacity": 55
+        }
+      ]
+    },
+    {
+      "id": "iron_watering_can",
+      "name": "Iron Watering Can",
+      "description": "Waters crops in a 5x1 area. Holds more water than copper can.",
+      "stackSize": 1,
+      "basePrice": 5000,
+      "componentsData": [
+        {
+          "type": "ToolComponent",
+          "toolType": "WATERING_CAN",
+          "successfulEnergyUse": 3,
+          "unsuccessfulEnergyUse": 3,
+          "capacity": 70
+        }
+      ]
+    },
+    {
+      "id": "gold_watering_can",
+      "name": "Gold Watering Can",
+      "description": "Waters crops in a 3x3 area. Holds more water than iron can.",
+      "stackSize": 1,
+      "basePrice": 10000,
+      "componentsData": [
+        {
+          "type": "ToolComponent",
+          "toolType": "WATERING_CAN",
+          "successfulEnergyUse": 2,
+          "unsuccessfulEnergyUse": 2,
+          "capacity": 85
+        }
+      ]
+    },
+    {
+      "id": "iridium_watering_can",
+      "name": "Iridium Watering Can",
+      "description": "Waters crops in a 6x3 area. The most efficient watering can.",
+      "stackSize": 1,
+      "basePrice": 25000,
+      "componentsData": [
+        {
+          "type": "ToolComponent",
+          "toolType": "WATERING_CAN",
+          "successfulEnergyUse": 1,
+          "unsuccessfulEnergyUse": 1,
+          "capacity": 100
+        }
+      ]
+    },
+    {
+      "id": "scythe",
+      "name": "Scythe",
+      "description": "Used to harvest crops and cut grass.",
+      "stackSize": 1,
+      "basePrice": 0,
+      "componentsData": [
+        {
+          "type": "ToolComponent",
+          "toolType": "SCYTHE",
+          "successfulEnergyUse": 2,
+          "unsuccessfulEnergyUse": 2,
+          "capacity": 0
+        }
+      ]
+    },
+    {
+      "id": "shear",
+      "name": "Shears",
+      "description": "Used to shear wool from sheep.",
+      "stackSize": 1,
+      "basePrice": 1000,
+      "componentsData": [
+        {
+          "type": "ToolComponent",
+          "toolType": "SHEAR",
+          "successfulEnergyUse": 4,
+          "unsuccessfulEnergyUse": 4,
+          "capacity": 0
+        }
+      ]
+    },
+    {
+      "id": "training_rod",
+      "name": "Training Rod",
+      "description": "A simple fishing rod that can only catch the most common fish.",
+      "stackSize": 1,
+      "basePrice": 25,
+      "componentsData": [
+        {
+          "type": "ToolComponent",
+          "toolType": "FISHING_ROD",
+          "successfulEnergyUse": 8,
+          "unsuccessfulEnergyUse": 8,
+          "capacity": 0
+        }
+      ]
+    },
+    {
+      "id": "bamboo_rod",
+      "name": "Bamboo Pole",
+      "description": "A basic fishing rod that can catch any fish.",
+      "stackSize": 1,
+      "basePrice": 500,
+      "componentsData": [
+        {
+          "type": "ToolComponent",
+          "toolType": "FISHING_ROD",
+          "successfulEnergyUse": 8,
+          "unsuccessfulEnergyUse": 8,
+          "capacity": 0
+        }
+      ]
+    },
+    {
+      "id": "fiberglass_rod",
+      "name": "Fiberglass Rod",
+      "description": "An improved fishing rod that can catch any fish with less energy.",
+      "stackSize": 1,
+      "basePrice": 1800,
+      "componentsData": [
+        {
+          "type": "ToolComponent",
+          "toolType": "FISHING_ROD",
+          "successfulEnergyUse": 6,
+          "unsuccessfulEnergyUse": 6,
+          "capacity": 0
+        }
+      ]
+    },
+    {
+      "id": "iridium_rod",
+      "name": "Iridium Rod",
+      "description": "The most efficient fishing rod. Can catch any fish with minimal energy.",
+      "stackSize": 1,
+      "basePrice": 7500,
+      "componentsData": [
+        {
+          "type": "ToolComponent",
+          "toolType": "FISHING_ROD",
+          "successfulEnergyUse": 4,
+          "unsuccessfulEnergyUse": 4,
+          "capacity": 0
+        }
+      ]
+    }
   ]
 }

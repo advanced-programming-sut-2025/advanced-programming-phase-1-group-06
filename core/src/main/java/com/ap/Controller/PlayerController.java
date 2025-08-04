@@ -37,6 +37,7 @@ public class PlayerController {
             currentFrame = currentAnimation.getKeyFrame(0.7f, true);
         }
         batch.draw(currentFrame, player.position.x, player.position.y);
+        System.out.println(player.position.x + " " + player.position.y);
     }
 
     public void handleInput() {
