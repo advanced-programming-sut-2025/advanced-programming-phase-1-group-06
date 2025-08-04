@@ -1,13 +1,10 @@
 package com.ap.View;
 
-import com.ap.Controller.GameController;
 import com.ap.Controller.MapController;
 import com.ap.Controller.PlayerController;
 import com.ap.Main;
-import com.ap.Model.Direction;
 import com.ap.Model.Player.Player;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -19,7 +16,6 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 public class GameView implements Screen, InputProcessor {
-
     private final OrthographicCamera camera;
     private Viewport viewport;
     private MapController mapController;
@@ -28,7 +24,6 @@ public class GameView implements Screen, InputProcessor {
     private Clock clock;
     private Stage uiStage;
     private Viewport uiViewport;
-
     public GameView() {
         camera = new OrthographicCamera();
         viewport = new ScreenViewport(camera);
@@ -58,16 +53,16 @@ public class GameView implements Screen, InputProcessor {
         camera.position.set(playerPos.x, playerPos.y, 0);
 
         camera.update();
-    Main.getInstance().getBatch().setProjectionMatrix(camera.combined);
-    Main.getInstance().getBatch().begin();
-    mapController.renderMap(Main.getInstance().getBatch(), camera);
-    playerController.update(v, Main.getInstance().getBatch());
-    Main.getInstance().getBatch().end();
+        Main.getInstance().getBatch().setProjectionMatrix(camera.combined);
+        Main.getInstance().getBatch().begin();
+        mapController.renderMap(Main.getInstance().getBatch(), camera);
+        playerController.update(v, Main.getInstance().getBatch());
+        Main.getInstance().getBatch().end();
 
-    // UI rendering (separate from game world)
-    uiViewport.apply();
-    uiStage.act(v);
-    uiStage.draw();
+        // UI rendering (separate from game world)
+        uiViewport.apply();
+        uiStage.act(v);
+        uiStage.draw();
     }
 
     @Override
@@ -75,11 +70,11 @@ public class GameView implements Screen, InputProcessor {
         viewport.update(width, height);
         uiViewport.update(width, height, true);
 
-    // Update clock position
-    clock.setPosition(
-        width - clock.getWidth() - 10,
-        height - clock.getHeight() - 10
-    );
+        // Update clock position
+        clock.setPosition(
+            width - clock.getWidth() - 10,
+            height - clock.getHeight() - 10
+        );
     }
 
     @Override
@@ -118,13 +113,7 @@ public class GameView implements Screen, InputProcessor {
     }
 
     @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        Direction direction = Direction.getFacingDirection(screenX, screenY);
-        if (button == Input.Buttons.RIGHT) {
-
-        } else if(button == Input.Buttons.LEFT) {
-            GameController.getInstance().interactLeftClick(player, direction);
-        }
+    public boolean touchDown(int i, int i1, int i2, int i3) {
         return false;
     }
 

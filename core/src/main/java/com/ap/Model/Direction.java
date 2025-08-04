@@ -40,6 +40,7 @@ public enum Direction {
         else if (angle >= 202.5f && angle < 247.5f) return Direction.DOWN_LEFT;
         else if (angle >= 247.5f && angle < 292.5f) return Direction.DOWN;
         else return Direction.DOWN_RIGHT;
+
     }
 }
 
