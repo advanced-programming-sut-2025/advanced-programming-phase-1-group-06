@@ -1,6 +1,11 @@
 package com.ap.Model.Player;
 
 import com.ap.Model.Item.Item;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Stack;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -8,6 +13,8 @@ import java.util.Objects;
 
 public class Inventory {
     private final ArrayList<Item> items;
+    private Item equippeditem;
+    private final ArrayList<Item> quickAccessItems;
     private int level;
 
     public ArrayList<Item> getItems() {
@@ -28,10 +35,13 @@ public class Inventory {
 
     Inventory(){
         level = 1;
+        quickAccessItems = new ArrayList<>();
         items = new ArrayList<>();
+        addTools();
     }
 
-    Inventory(ArrayList<Item> items, int level){
+    Inventory(ArrayList<Item> quickAccessItems, ArrayList<Item> items, int level){
+        this.quickAccessItems = quickAccessItems;
         this.items = items;
         this.level = level;
     }
@@ -160,5 +170,14 @@ public class Inventory {
         return null;
     }
 
+
+    public Table inventoryTable(Skin skin){
+        Table table = new Table(skin);
+        for (int i = 0; i < 11; i ++){
+            Image backgroundImage =  new Image(new Texture("transparent.png"));
+            Stack cellStack = new Stack();
+
+        }
+    }
 
 }

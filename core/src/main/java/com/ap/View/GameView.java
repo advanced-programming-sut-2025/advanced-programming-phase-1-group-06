@@ -14,6 +14,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -28,8 +29,11 @@ public class GameView implements Screen, InputProcessor {
     private Clock clock;
     private Stage uiStage;
     private Viewport uiViewport;
+    private Table inventoryTable;
 
     public GameView() {
+        Skin skin = new Skin(Gdx.files.internal("skin/NzSkin.json"));
+        inventoryTable = new Table(skin);
         camera = new OrthographicCamera();
         viewport = new ScreenViewport(camera);
         mapController = new MapController();
@@ -38,7 +42,7 @@ public class GameView implements Screen, InputProcessor {
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.zoom = 0.2f;
         viewport.apply();
-        clock = new Clock(new Skin(Gdx.files.internal("skin/NzSkin.json")));
+        clock = new Clock(skin);
         // UI viewport and stage setup
         uiViewport = new ScreenViewport(new OrthographicCamera());
         uiStage = new Stage(uiViewport);
