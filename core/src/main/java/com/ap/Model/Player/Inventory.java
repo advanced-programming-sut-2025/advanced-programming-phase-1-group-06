@@ -35,14 +35,14 @@ public class Inventory {
     }
 
     private void addTools() {
-
+//        TODO add tools or whatever is needed at the beginning of the game
     }
 
     Inventory() {
         level = 1;
         quickAccessItems = new ArrayList<>();
         items = new ArrayList<>();
-        stacks = new Stack[11];
+        stacks = new Stack[12];
         addTools();
     }
 
@@ -185,7 +185,7 @@ public class Inventory {
         table.setPosition(0, 40);
         table.bottom();
 //        table.debug();
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < 12; i++) {
             stacks[i] = new Stack();
             Image backgroundImage = new Image(new Texture(Gdx.files.internal("inventory/inventory-slot.png")));
             stacks[i].add(backgroundImage);

@@ -6,6 +6,8 @@ import com.ap.Controller.PlayerController;
 import com.ap.Main;
 import com.ap.Model.Direction;
 import com.ap.Model.Player.Player;
+import com.ap.View.InGameMenus.InventoryView;
+import com.ap.View.InGameMenus.SkillView;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
@@ -117,7 +119,14 @@ public class GameView implements Screen, InputProcessor {
     public boolean keyDown(int i) {
         if (i >= Input.Keys.NUM_1 && i <= Input.Keys.NUM_9) {
             player.getInventory().equipItem(i-8, player);
-
+        } else if (i == Input.Keys.NUM_0){
+            player.getInventory().equipItem(9, player);
+        } else if (i == Input.Keys.MINUS){
+            player.getInventory().equipItem(10, player);
+        } else if (i == Input.Keys.EQUALS){
+            player.getInventory().equipItem(11, player);
+        } else if (i == Input.Keys.I){
+            Main.getInstance().setScreen(new SkillView(player));
         }
         return false;
     }

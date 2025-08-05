@@ -30,7 +30,9 @@ public class Player {
         money = 200;
         inventory = new Inventory();
         skills = new ArrayList<>();
-
+        for (Skill.SkillType skillType : Skill.SkillType.values()){
+            skills.add(skillType.getSkill());
+        }
     }
 
     public void setCurrentItem(Item item){

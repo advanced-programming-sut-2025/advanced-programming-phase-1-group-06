@@ -2,6 +2,7 @@ package com.ap;
 
 //import com.ap.Model.InventoryTest.GameScreen;
 import com.ap.View.GameView;
+import com.ap.View.InGameMenus.SkillView;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -44,9 +45,8 @@ public class Main extends Game {
         skin = new Skin(Gdx.files.internal("skin/NzSkin.json"));
         instance = this;
         batch = new SpriteBatch();
-        Gdx.graphics.setWindowedMode(1920, 1080);
+        Gdx.graphics.setWindowedMode(1920, 1200);
         this.setScreen(new GameView());
-        //        this.setScreen(new GameScreen());
     }
 
     @Override
