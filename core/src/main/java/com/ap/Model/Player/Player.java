@@ -13,25 +13,9 @@ public class Player {
     private static final float PLAYER_HEIGHT = 8f; //fix these later
     private double maxEnergy = 200.0;
     public Vector2 position = new Vector2(10, 10);
-
-    public Item getHeldItem() {
-        return null;
-    }
-
-    public float getSpeed() {
-        return 80f;
-    }
-
-    public Vector2 getTruePosition() {
-        return new Vector2(PLAYER_WIDTH, PLAYER_HEIGHT).add(position);
-    }
-
-    private User user;
-
-
     private int x, y;
     private int money;
-    private Inventory inventory;
+    private Inventory inventory = new Inventory();
     private ArrayList<Skill> skills;
     private double energy;
     private int mapID;
@@ -41,6 +25,32 @@ public class Player {
     private ArrayList<Recipe> cookableFoods;
     private ArrayList<Recipe> craftableItems;
     private boolean trashcan;
+
+    public Player(){
+        money = 200;
+        inventory = new Inventory();
+        skills = new ArrayList<>();
+
+    }
+
+    public void setCurrentItem(Item item){
+        currentItem = item;
+    }
+
+    public Item getHeldItem() {
+        return currentItem;
+    }
+
+    public float getSpeed() {
+        return 80f;
+    }
+
+    public Vector2 getTruePosition() {
+        return new Vector2(PLAYER_WIDTH, PLAYER_HEIGHT).add(position);
+    }
+    private User user;
+
+
 
     public int getMoney() {
         return money;

@@ -53,6 +53,11 @@ public class Item {
 //        usageComponent.useItem();
 //    }
 
+
+    public String getTexturePath() {
+        return texturePath;
+    }
+
     public void setAmount(int amount) { this.stackCount = amount; }
     public int getAmount() { return stackCount; }
 
