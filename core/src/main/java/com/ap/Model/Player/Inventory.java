@@ -18,7 +18,8 @@ public class Inventory {
     private int equipedInt = 0;
     private int level;
     private final ArrayList<Item> quickAccessItems;
-    private Stack[] stacks;
+    private ArrayList<Stack> quickAccessStacks;
+    private ArrayList<Stack> inventoryStacks;
     Image selectedImage = new Image(new Texture(Gdx.files.internal("inventory/selected-border.png")));
     private int SLOT_SIZE = 60;
 
@@ -34,6 +35,15 @@ public class Inventory {
         this.level = level;
     }
 
+    public int getSize(){
+        return switch (level) {
+            case 1 -> 12;
+            case 2 -> 24;
+            case 3 -> items.size() + 12;
+            default -> 12;
+        };
+    }
+
     private void addTools() {
 //        TODO add tools or whatever is needed at the beginning of the game
     }
@@ -42,7 +52,8 @@ public class Inventory {
         level = 1;
         quickAccessItems = new ArrayList<>();
         items = new ArrayList<>();
-        stacks = new Stack[12];
+        quickAccessStacks = new ArrayList<>();
+        inventoryStacks = new ArrayList<>();
         addTools();
     }
 
@@ -179,29 +190,67 @@ public class Inventory {
     }
 
 
-    public Table getInventoryTable(Skin skin) {
+    public Table getQuickAccessTable(Skin skin) {
         Table table = new Table(skin);
         table.setSize(1920, 200);
         table.setPosition(0, 40);
         table.bottom();
 //        table.debug();
         for (int i = 0; i < 12; i++) {
-            stacks[i] = new Stack();
+            Stack stack = new Stack();
             Image backgroundImage = new Image(new Texture(Gdx.files.internal("inventory/inventory-slot.png")));
-            stacks[i].add(backgroundImage);
+            stack.add(backgroundImage);
             if (quickAccessItems.size() > i)
-                stacks[i].add(new Image(new Texture(quickAccessItems.get(i).getTexturePath())));
+                stack.add(new Image(new Texture(quickAccessItems.get(i).getTexturePath())));
             if (i == equipedInt)
-                stacks[i].add(selectedImage);
-            table.add(stacks[i]).size(SLOT_SIZE, SLOT_SIZE);
+                stack.add(selectedImage);
+            table.add(stack).size(SLOT_SIZE, SLOT_SIZE);
+            quickAccessStacks.add(stack);
+        }
+        return table;
+    }
+
+    public Table getInventoryTable(Skin skin){
+        Table table = new Table(skin);
+        table.top();
+//        table.debug();
+        for (int i = 0; i < 12; i++) {
+            Stack stack = new Stack();
+            Image backgroundImage = new Image(new Texture(Gdx.files.internal("inventory/inventory-slot.png")));
+            stack.add(backgroundImage);
+            if (quickAccessItems.size() > i)
+                stack.add(new Image(new Texture(quickAccessItems.get(i).getTexturePath())));
+            table.add(stack).size(SLOT_SIZE * 1.5f, SLOT_SIZE * 1.5f).padBottom(50);
+            inventoryStacks.add(stack);
+        }
+        table.row();
+        for (int j = 0; j < getSize() / 12; j ++) {
+            for (int i = 0; i < 12; i++) {
+                Stack stack = new Stack();
+                Image backgroundImage = new Image(new Texture(Gdx.files.internal("inventory/inventory-slot.png")));
+                stack.add(backgroundImage);
+                if (items.size() > i && !quickAccessItems.contains(items.get(i)))
+                    stack.add(new Image(new Texture(items.get(i).getTexturePath())));
+                table.add(stack).size(SLOT_SIZE * 1.5f, SLOT_SIZE * 1.5f);
+                inventoryStacks.add(stack);
+            }
+            table.row();
         }
         return table;
     }
 
     public void equipItem(int i, Player player) {
-        stacks[equipedInt].removeActor(selectedImage);
+        if (equipedInt >= quickAccessStacks.size()){
+            System.out.println(quickAccessStacks.size() + " fuck");
+            return;
+        }
+        quickAccessStacks.get(equipedInt).removeActor(selectedImage);
         equipedInt = i;
-        stacks[equipedInt].add(selectedImage);
+        if (equipedInt >= quickAccessStacks.size()){
+            System.out.println(quickAccessStacks.size() + " fuck");
+            return;
+        }
+        quickAccessStacks.get(equipedInt).add(selectedImage);
         if (items.size() > i)
             player.setCurrentItem(quickAccessItems.get(i));
     }

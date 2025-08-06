@@ -1,68 +1,34 @@
 package com.ap.View.InGameMenus;
 
 import com.ap.Main;
-import com.ap.Model.Player.Inventory;
 import com.ap.Model.Player.Player;
-import com.badlogic.gdx.*;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
-public class InventoryView implements Screen, InputProcessor {
+public class SettingsView implements Screen, InputProcessor {
 
     private Player player;
     private Stage stage;
-    private Table table;
-    private Window inventoryWindow;
-    private Window infoWindow;
+    private Window window;
     private Skin skin;
 
-    public InventoryView(Player player){
+    public SettingsView(Player player){
+        skin = Main.getInstance().getSkin();
         this.player = player;
-        this.skin = Main.getInstance().getSkin();
-
-        // Create inventory window
-        inventoryWindow = new Window("Skill", skin); // "Skill" might be a typo for "Inventory"?
-        inventoryWindow.setSize(1600, 500);
-        inventoryWindow.setPosition(160, 580);
-        inventoryWindow.top();
-
-        // Create inventory table
-        Table inventoryTable = player.getInventory().getInventoryTable(skin);
-
-        // Create ScrollPane
-        ScrollPane scrollPane = new ScrollPane(inventoryTable, skin);
-        scrollPane.setScrollingDisabled(true, false); // Vertical scrolling only
-        scrollPane.isRightEdge();
-        scrollPane.setFadeScrollBars(false); // Keep scrollbars visible
-        scrollPane.setSmoothScrolling(true);
-        scrollPane.setScrollBarPositions(true, true); // Scrollbar on right
-
-        // Add ScrollPane to Window (not the table directly)
-        inventoryWindow.add(scrollPane); // Uniform padding
-
-        // Create info window (unchanged)
-        infoWindow = new Window("", skin);
-        infoWindow.setPosition(160, 80);
-        infoWindow.setSize(1600, 500);
+        window = new Window("Skill" , skin);
     }
 
     @Override
     public void show() {
         stage = new Stage(new ScreenViewport());
+        Gdx.input.setInputProcessor(this);
 
-        InputMultiplexer multiplexer = new InputMultiplexer();
-        multiplexer.addProcessor(this); // Add Journal as an InputProcessor for keyboard input
-        multiplexer.addProcessor(stage); // Add Stage for UI input (buttons)
-        Gdx.input.setInputProcessor(multiplexer);
-
-
-        stage.addActor(infoWindow);
-        Journal.addButtonsToStage(inventoryWindow, stage, Journal.getImageButtons(), "inventory");
     }
 
     @Override
@@ -108,9 +74,6 @@ public class InventoryView implements Screen, InputProcessor {
 
     @Override
     public boolean keyUp(int keycode) {
-        if (keycode == Input.Keys.I){
-            Main.getInstance().changeScreen(Main.getInstance().getGameView());
-        }
         return false;
     }
 

@@ -6,8 +6,7 @@ import com.ap.Controller.PlayerController;
 import com.ap.Main;
 import com.ap.Model.Direction;
 import com.ap.Model.Player.Player;
-import com.ap.View.InGameMenus.InventoryView;
-import com.ap.View.InGameMenus.SkillView;
+import com.ap.View.InGameMenus.Journal;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
@@ -50,8 +49,8 @@ public class GameView implements Screen, InputProcessor {
         uiStage = new Stage(uiViewport);
         uiStage.addActor(clock);
         try {
-            inventoryTable = player.getInventory().getInventoryTable(skin);
-            assert  inventoryTable != null;
+            inventoryTable = player.getInventory().getQuickAccessTable(skin);
+            assert inventoryTable != null;
             uiStage.addActor(inventoryTable);
         } catch (Exception e) {
             e.printStackTrace();
@@ -118,15 +117,16 @@ public class GameView implements Screen, InputProcessor {
     @Override
     public boolean keyDown(int i) {
         if (i >= Input.Keys.NUM_1 && i <= Input.Keys.NUM_9) {
-            player.getInventory().equipItem(i-8, player);
-        } else if (i == Input.Keys.NUM_0){
+            player.getInventory().equipItem(i - 8, player);
+        } else if (i == Input.Keys.NUM_0) {
             player.getInventory().equipItem(9, player);
-        } else if (i == Input.Keys.MINUS){
+        } else if (i == Input.Keys.MINUS) {
             player.getInventory().equipItem(10, player);
-        } else if (i == Input.Keys.EQUALS){
+        } else if (i == Input.Keys.EQUALS) {
             player.getInventory().equipItem(11, player);
-        } else if (i == Input.Keys.I){
-            Main.getInstance().setScreen(new SkillView(player));
+        } else if (i == Input.Keys.I) {
+            Main.getInstance().changeScreen(new Journal(player));
+//            Main.getInstance().changeScreen(new SkillView(player));
         }
         return false;
     }
@@ -145,7 +145,7 @@ public class GameView implements Screen, InputProcessor {
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         Direction direction = Direction.getFacingDirection(screenX, screenY);
         if (button == Input.Buttons.RIGHT) {
-        } else if(button == Input.Buttons.LEFT) {
+        } else if (button == Input.Buttons.LEFT) {
             GameController.getInstance().interactLeftClick(player, direction);
         }
         return false;
@@ -175,4 +175,6 @@ public class GameView implements Screen, InputProcessor {
     public boolean scrolled(float v, float v1) {
         return false;
     }
+
+
 }

@@ -6,6 +6,8 @@ import com.ap.View.InGameMenus.SkillView;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -20,6 +22,8 @@ public class Main extends Game {
     private static Main instance;
     private Skin defaultSkin;
     private Skin skin;
+    private GameView gameView;
+    private AssetManager assetManager;
 
     public static Main getInstance() {
         if (instance == null) {
@@ -43,10 +47,16 @@ public class Main extends Game {
     public void create() {
         defaultSkin = new Skin(Gdx.files.internal("ui/uiskin.json"));
         skin = new Skin(Gdx.files.internal("skin/NzSkin.json"));
+        assetManager = new AssetManager();
         instance = this;
         batch = new SpriteBatch();
         Gdx.graphics.setWindowedMode(1920, 1200);
-        this.setScreen(new GameView());
+        gameView = new GameView();
+        this.setScreen(gameView);
+    }
+
+    public GameView getGameView() {
+        return gameView;
     }
 
     @Override
@@ -58,5 +68,17 @@ public class Main extends Game {
     public void dispose() {
         batch.dispose();
         image.dispose();
+    }
+
+    public void changeScreen(Screen screen){
+        Screen currentScreen = ((Main) Gdx.app.getApplicationListener()).getScreen();
+        if (currentScreen != null) {
+            currentScreen.dispose();
+        }
+        ((Main) Gdx.app.getApplicationListener()).setScreen(screen);
+    }
+
+    public AssetManager getAssetManager() {
+        return assetManager;
     }
 }
