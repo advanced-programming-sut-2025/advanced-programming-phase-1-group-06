@@ -15,8 +15,16 @@ public class Clock extends Group {
 //    private TextureAtlas seasonsAtlas = new TextureAtlas("Clock/seasons.atlas");
     private TextureRegion clockBase = new TextureRegion(new Texture("Clock/clock_base.png"));
     private TextureRegion clockHand = new TextureRegion(new Texture("Clock/clock_hand.png"));
-    private TextureRegion weatherIcon;
+    private TextureRegion sunny = new TextureRegion(new Texture("Clock/sunny.png"));
+    private TextureRegion rainy = new TextureRegion(new Texture("Clock/rainy.png"));
+    private TextureRegion snowy = new TextureRegion(new Texture("Clock/snowy.png"));
+    private TextureRegion stormy = new TextureRegion(new Texture("Clock/stormy.png"));
+    private TextureRegion fall = new TextureRegion(new Texture("Clock/fall.png"));
+    private TextureRegion winter = new TextureRegion(new Texture("Clock/winter.png"));
+    private TextureRegion spring = new TextureRegion(new Texture("Clock/spring.png"));
+    private TextureRegion ssummer = new TextureRegion(new Texture("Clock/summer.png"));
     private TextureRegion seasonIcon;
+    private TextureRegion weatherIcon;
 
     private Label dayLabel;
     private Label timeLabel;
@@ -177,8 +185,8 @@ public class Clock extends Group {
             batch.draw(seasonIcon, getX() + 40, getY() + 50); // Adjust position
         }
 
-//        // Draw all child actors (labels)
-//        super.draw(batch, parentAlpha);
+        // Draw all child actors (labels)
+        super.draw(batch, parentAlpha);
     }
 
     // Public methods to interact with the clock
