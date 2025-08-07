@@ -1,7 +1,5 @@
 package com.ap.Model.Item;
 
-import com.ap.Model.Component;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,6 +41,10 @@ public class Item {
         return components.containsKey(componentType);
     }
 
+    public Map<Class<? extends Component>, Component> getComponents() {
+        return components;
+    }
+
     // Getters
     public String getId() { return id; }
     public String getName() { return name; }
@@ -66,5 +68,9 @@ public class Item {
             id.equals(item.getId()) &&
             qualityTier == item.qualityTier &&
             price == item.price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

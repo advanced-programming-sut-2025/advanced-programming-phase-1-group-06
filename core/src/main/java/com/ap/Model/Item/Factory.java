@@ -1,7 +1,6 @@
 package com.ap.Model.Item;
 
 import com.ap.Model.Recipe;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -12,27 +11,41 @@ public class Factory {
     HashMap<String, Recipe> recipes;
     ArrayList<String> fruitIds;
     ArrayList<String> vegetableIds;
+
     public Factory() {
-        //loadedItems = new ArrayList<>();
+        // Initialization/load ItemData.json into 'items'
+        // Omitted: loading logic
     }
 
     public static Factory getInstance() {
         if (instance == null) {
             instance = new Factory();
         }
-        return null;
+        return instance;
     }
 
-    public Item createItem(String itemName) {
-        return createItem(itemName, 1);
+    public Item createItem(String itemId) {
+        return createItem(itemId, 1);
     }
 
-    public Item createItem(String itemName, int amount) {
-        return null;
+    public Item createItem(String itemId, int amount) {
+        ItemData data = items.get(itemId);
+        if (data == null) return null;
+
+        Item item = new Item(data.id, data.name, data.description, data.stackSize);
+        if (data.getBasePrice() != 0) item.setPrice(data.getBasePrice());
+        item.setAmount(amount);
+        return item;
     }
 
     public Item cloneItem(Item item, int amount) {
-        return null;
+        Item newItem = new Item(item.getId(), item.getName(), item.getDescription(), item.getStackSize());
+        for (Component comp : item.getComponents().values()) {
+            // You may need to implement a deepCopy/clone for each component
+            newItem.addComponent(comp); // This should be a copy, not the same instance!
+        }
+        newItem.setAmount(amount);
+        return newItem;
     }
 
     public boolean hasCategory(Item item, String category) {

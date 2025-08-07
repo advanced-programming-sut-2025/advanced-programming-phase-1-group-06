@@ -1,4 +1,4 @@
-package com.ap.Model;
+package com.ap.Model.Item;
 
 
 public abstract class Component {

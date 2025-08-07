@@ -1,6 +1,5 @@
 package com.ap.Model.Item;
 
-import com.ap.Model.Component;
 import com.ap.Model.Season;
 
 import java.util.List;

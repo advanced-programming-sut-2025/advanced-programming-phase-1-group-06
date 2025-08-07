@@ -1,6 +1,6 @@
 package com.ap.Model.Overlay;
 
-import com.ap.Model.Component;
+import com.ap.Model.Item.Component;
 
 public class ForagingCropComponent extends Component {
     private String harvestedCropId;

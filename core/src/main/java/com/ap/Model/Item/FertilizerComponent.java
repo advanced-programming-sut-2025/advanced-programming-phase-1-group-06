@@ -1,7 +1,5 @@
 package com.ap.Model.Item;
 
-import com.ap.Model.Component;
-
 public class FertilizerComponent extends Component {
     private int growthSpeedBonus;
     private int qualityBonus;

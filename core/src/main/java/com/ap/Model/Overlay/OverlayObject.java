@@ -2,7 +2,7 @@ package com.ap.Model.Overlay;
 
 
 
-import com.ap.Model.Component;
+import com.ap.Model.Item.Component;
 import com.ap.Model.Item.Item;
 
 import java.util.Map;

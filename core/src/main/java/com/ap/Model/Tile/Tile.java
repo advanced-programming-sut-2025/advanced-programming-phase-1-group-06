@@ -2,7 +2,7 @@ package com.ap.Model.Tile;
 
 
 
-import com.ap.Model.Component;
+import com.ap.Model.Item.Component;
 import com.ap.Model.Item.Item;
 import com.ap.Model.Overlay.OverlayObject;
 

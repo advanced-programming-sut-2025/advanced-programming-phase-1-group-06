@@ -1,7 +1,5 @@
 package com.ap.Model.Item;
 
-import com.ap.Model.Component;
-
 public class ToolComponent extends Component {
     public enum ToolType {
         AXE, PICKAXE, WATERING_CAN, HOE, SCYTHE, SHEAR, MILK_PAIL, FISHING_ROD
@@ -13,7 +11,7 @@ public class ToolComponent extends Component {
     private int unsuccessfulEnergyUse;
     private int capacity; // 0 for all except watering can
 
-    
+
 
     public void useTool() {
 
