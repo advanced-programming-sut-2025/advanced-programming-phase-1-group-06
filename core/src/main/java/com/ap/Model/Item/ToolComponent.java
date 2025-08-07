@@ -5,7 +5,7 @@ public class ToolComponent extends Component {
         AXE, PICKAXE, WATERING_CAN, HOE, SCYTHE, SHEAR, MILK_PAIL, FISHING_ROD
     }
 
-    private ToolType toolType;
+//    private ToolType toolType;
 
     private int successfulEnergyUse;
     private int unsuccessfulEnergyUse;
@@ -19,6 +19,6 @@ public class ToolComponent extends Component {
 
 
     // Getters
-    public ToolType getToolType() { return toolType; }
+//    public ToolType getToolType() { return toolType; }
 
 }

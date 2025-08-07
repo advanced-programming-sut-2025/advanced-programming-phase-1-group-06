@@ -15,6 +15,7 @@ public class Item {
     private String texturePath;
 
 
+
     public Item(String id, String name, String description, int stackSize) {
         this.id = id;
         this.name = name;
@@ -72,5 +73,9 @@ public class Item {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public void setTexturePath(String texturePath) {
+        this.texturePath = texturePath;
     }
 }

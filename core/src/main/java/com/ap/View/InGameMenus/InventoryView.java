@@ -4,11 +4,10 @@ import com.ap.Main;
 import com.ap.Model.Player.Inventory;
 import com.ap.Model.Player.Player;
 import com.badlogic.gdx.*;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
@@ -19,6 +18,7 @@ public class InventoryView implements Screen, InputProcessor {
     private Table table;
     private Window inventoryWindow;
     private Window infoWindow;
+    private Image trashcan;
     private Skin skin;
 
     public InventoryView(Player player){
@@ -44,11 +44,18 @@ public class InventoryView implements Screen, InputProcessor {
 
         // Add ScrollPane to Window (not the table directly)
         inventoryWindow.add(scrollPane); // Uniform padding
+        inventoryWindow.setMovable(false);
+        inventoryWindow.setResizable(false);
+        inventoryWindow.setTouchable(Touchable.disabled);
+
+        trashcan = new Image(new Texture(Gdx.files.internal("in-game-menu-stuff/trashcan.png")));
 
         // Create info window (unchanged)
         infoWindow = new Window("", skin);
         infoWindow.setPosition(160, 80);
         infoWindow.setSize(1600, 500);
+        trashcan.setPosition(infoWindow.getX() + infoWindow.getWidth() - 100, infoWindow.getY() + infoWindow.getHeight() + 30);
+        trashcan.setSize(trashcan.getWidth() / 2, trashcan.getHeight() / 2);
     }
 
     @Override
@@ -63,6 +70,8 @@ public class InventoryView implements Screen, InputProcessor {
 
         stage.addActor(infoWindow);
         Journal.addButtonsToStage(inventoryWindow, stage, Journal.getImageButtons(), "inventory");
+        stage.addActor(trashcan);
+
     }
 
     @Override
