@@ -1,15 +1,33 @@
 package com.ap.Model.Item;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class ItemData {
-    String id;
-    String name;
-    String description;
-    int stackSize;
-    int basePrice;
-    List<Map<String, Object>> componentsData;
+    public String id;
+    public String name;
+    public String description;
+    public int stackSize;
+    public int basePrice = 0; // Optional
+    public String texture;
+    public ArrayList<ComponentData> componentsData;
+
+    public String getTexture() {
+        return texture;
+    }
+
+    public void setTexture(String texture) {
+        this.texture = texture;
+    }
+
+    public ArrayList<ComponentData> getComponentsData() {
+        return componentsData;
+    }
+
+    public void setComponentsData(ArrayList<ComponentData> componentsData) {
+        this.componentsData = componentsData;
+    }
 
     public String getId() {
         return id;
@@ -49,13 +67,5 @@ public class ItemData {
 
     public void setBasePrice(int basePrice) {
         this.basePrice = basePrice;
-    }
-
-    public List<Map<String, Object>> getComponentsData() {
-        return componentsData;
-    }
-
-    public void setComponentsData(List<Map<String, Object>> componentsData) {
-        this.componentsData = componentsData;
     }
 }

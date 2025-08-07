@@ -15,7 +15,7 @@ public class Player {
     public Vector2 position = new Vector2(10, 10);
     private int x, y;
     private int money;
-    private Inventory inventory = new Inventory();
+    private Inventory inventory;
     private ArrayList<Skill> skills;
     private double energy;
     private int mapID;

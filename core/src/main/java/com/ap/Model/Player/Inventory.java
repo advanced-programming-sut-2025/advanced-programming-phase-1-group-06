@@ -1,14 +1,14 @@
 package com.ap.Model.Player;
 
+import com.ap.Model.Item.Factory;
 import com.ap.Model.Item.Item;
+import com.ap.Model.Item.ToolComponent;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Stack;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 
 public class Inventory {
@@ -20,6 +20,7 @@ public class Inventory {
     private final ArrayList<Item> quickAccessItems;
     private ArrayList<Stack> quickAccessStacks;
     private ArrayList<Stack> inventoryStacks;
+
     Image selectedImage = new Image(new Texture(Gdx.files.internal("inventory/selected-border.png")));
     private int SLOT_SIZE = 60;
 
@@ -46,6 +47,23 @@ public class Inventory {
 
     private void addTools() {
 //        TODO add tools or whatever is needed at the beginning of the game
+        Factory factory = Factory.getInstance();
+//        Item item = factory.createItem("blue_jazz");
+//        Item item = factory.createItem("blue_jazz");
+
+        for (ToolComponent.ToolType toolType : ToolComponent.ToolType.values()){
+            try {
+                Item item = Factory.getInstance().createItemByName(toolType.name());
+                if (item == null) {
+                    System.out.println(toolType.name().toLowerCase()+ " isn't found");
+
+                } else
+                    addItem(item);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
     Inventory() {
@@ -201,7 +219,7 @@ public class Inventory {
             Image backgroundImage = new Image(new Texture(Gdx.files.internal("inventory/inventory-slot.png")));
             stack.add(backgroundImage);
             if (quickAccessItems.size() > i)
-                stack.add(new Image(new Texture(quickAccessItems.get(i).getTexturePath())));
+                stack.add(new Image(new Texture(Gdx.files.internal(quickAccessItems.get(i).getTexturePath()))));
             if (i == equipedInt)
                 stack.add(selectedImage);
             table.add(stack).size(SLOT_SIZE, SLOT_SIZE);
@@ -214,12 +232,13 @@ public class Inventory {
         Table table = new Table(skin);
         table.top();
 //        table.debug();
+
         for (int i = 0; i < 12; i++) {
             Stack stack = new Stack();
             Image backgroundImage = new Image(new Texture(Gdx.files.internal("inventory/inventory-slot.png")));
             stack.add(backgroundImage);
             if (quickAccessItems.size() > i)
-                stack.add(new Image(new Texture(quickAccessItems.get(i).getTexturePath())));
+                stack.add(new Image(new Texture(Gdx.files.internal(quickAccessItems.get(i).getTexturePath()))));
             table.add(stack).size(SLOT_SIZE * 1.5f, SLOT_SIZE * 1.5f).padBottom(50);
             inventoryStacks.add(stack);
         }
@@ -229,8 +248,18 @@ public class Inventory {
                 Stack stack = new Stack();
                 Image backgroundImage = new Image(new Texture(Gdx.files.internal("inventory/inventory-slot.png")));
                 stack.add(backgroundImage);
-                if (items.size() > i && !quickAccessItems.contains(items.get(i)))
-                    stack.add(new Image(new Texture(items.get(i).getTexturePath())));
+                if (items.size() > i) {
+                    if (!quickAccessItems.contains(items.get(i)) && items.get(i) != null) {
+                        try {
+                            stack.add(new Image(new Texture(Gdx.files.internal(items.get(i).getTexturePath()))));
+                        } catch (Exception e) {
+                            Label label = new Label(items.get(i).getName(), skin);
+                            stack.add(label);
+                            System.out.println(items.get(i).getTexturePath());
+                            //                            e.printStackTrace();
+                        }
+                    }
+                }
                 table.add(stack).size(SLOT_SIZE * 1.5f, SLOT_SIZE * 1.5f);
                 inventoryStacks.add(stack);
             }
