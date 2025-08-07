@@ -10,7 +10,8 @@
           "type": "ConsumableComponent",
           "energyRestore": 45
         }
-      ]
+      ],
+      "texture": "Items/blue_jazz.png"
     },
     {
       "id": "carrot",
@@ -22,7 +23,8 @@
           "type": "ConsumableComponent",
           "energyRestore": 75
         }
-      ]
+      ],
+      "texture": "Items/carrot.png"
     },
     {
       "id": "cauliflower",
@@ -41,7 +43,8 @@
       "name": "Coffee Bean",
       "description": "Plant in spring or summer to grow a coffee plant. Place five in a keg to make coffee.",
       "stackSize": 999,
-      "componentsData": []
+      "componentsData": [],
+      "texture": "Items/coffee_bean.png"
     },
     {
       "id": "garlic",
@@ -65,7 +68,8 @@
           "type": "ConsumableComponent",
           "energyRestore": 25
         }
-      ]
+      ],
+      "texture": "Items/green_bean.png"
     },
     {
       "id": "kale",
@@ -77,7 +81,8 @@
           "type": "ConsumableComponent",
           "energyRestore": 50
         }
-      ]
+      ],
+      "texture": "Items/kale.png"
     },
     {
       "id": "parsnip",
@@ -89,7 +94,8 @@
           "type": "ConsumableComponent",
           "energyRestore": 25
         }
-      ]
+      ],
+      "texture": "Items/parsnip.png"
     },
     {
       "id": "potato",
@@ -101,14 +107,16 @@
           "type": "ConsumableComponent",
           "energyRestore": 25
         }
-      ]
+      ],
+      "texture": "Items/potato.png"
     },
     {
       "id": "rhubarb",
       "name": "Rhubarb",
       "description": "The stalks are extremely tart, but make a great dessert when sweetened.",
       "stackSize": 999,
-      "componentsData": []
+      "componentsData": [],
+      "texture": "Items/rhubarb.png"
     },
     {
       "id": "strawberry",
@@ -132,7 +140,8 @@
           "type": "ConsumableComponent",
           "energyRestore": 45
         }
-      ]
+      ],
+      "texture": "Items/tulip.png"
     },
     {
       "id": "unmilled_rice",
@@ -144,7 +153,8 @@
           "type": "ConsumableComponent",
           "energyRestore": 3
         }
-      ]
+      ],
+      "texture": "Items/unmilled_rice.png"
     },
     {
       "id": "blueberry",
@@ -156,7 +166,8 @@
           "type": "ConsumableComponent",
           "energyRestore": 25
         }
-      ]
+      ],
+      "texture": "Items/blueberry.png"
     },
     {
       "id": "corn",
@@ -168,7 +179,8 @@
           "type": "ConsumableComponent",
           "energyRestore": 25
         }
-      ]
+      ],
+      "texture": "Items/corn.png"
     },
     {
       "id": "hops",
@@ -180,7 +192,8 @@
           "type": "ConsumableComponent",
           "energyRestore": 45
         }
-      ]
+      ],
+      "texture": "Items/hops.png"
     },
     {
       "id": "hot_pepper",
@@ -192,7 +205,8 @@
           "type": "ConsumableComponent",
           "energyRestore": 13
         }
-      ]
+      ],
+      "texture": "Items/hot_pepper.png"
     },
     {
       "id": "melon",
@@ -204,7 +218,8 @@
           "type": "ConsumableComponent",
           "energyRestore": 113
         }
-      ]
+      ],
+      "texture": "Items/melon.png"
     },
     {
       "id": "poppy",
@@ -216,7 +231,8 @@
           "type": "ConsumableComponent",
           "energyRestore": 45
         }
-      ]
+      ],
+      "texture": "Items/poppy.png"
     },
     {
       "id": "radish",
@@ -228,7 +244,8 @@
           "type": "ConsumableComponent",
           "energyRestore": 45
         }
-      ]
+      ],
+      "texture": "Items/radish.png"
     },
     {
       "id": "red_cabbage",
@@ -240,7 +257,8 @@
           "type": "ConsumableComponent",
           "energyRestore": 75
         }
-      ]
+      ],
+      "texture": "Items/red_cabbage.png"
     },
     {
       "id": "starfruit",
@@ -252,7 +270,8 @@
           "type": "ConsumableComponent",
           "energyRestore": 125
         }
-      ]
+      ],
+      "texture": "Items/starfruit.png"
     },
     {
       "id": "summer_spangle",
@@ -264,7 +283,8 @@
           "type": "ConsumableComponent",
           "energyRestore": 45
         }
-      ]
+      ],
+      "texture": "Items/summer_spangle.png"
     },
     {
       "id": "summer_squash",
@@ -276,7 +296,8 @@
           "type": "ConsumableComponent",
           "energyRestore": 63
         }
-      ]
+      ],
+      "texture": "Items/summer_squash.png"
     },
     {
       "id": "sunflower",
@@ -288,7 +309,8 @@
           "type": "ConsumableComponent",
           "energyRestore": 45
         }
-      ]
+      ],
+      "texture": "Items/sunflower.png"
     },
     {
       "id": "tomato",
@@ -300,14 +322,16 @@
           "type": "ConsumableComponent",
           "energyRestore": 20
         }
-      ]
+      ],
+      "texture": "Items/tomato.png"
     },
     {
       "id": "wheat",
       "name": "Wheat",
       "description": "One of the most widely cultivated grains.",
       "stackSize": 999,
-      "componentsData": []
+      "componentsData": [],
+      "texture": "Items/wheat.png"
     },
     {
       "id": "amaranth",
@@ -319,7 +343,8 @@
           "type": "ConsumableComponent",
           "energyRestore": 50
         }
-      ]
+      ],
+      "texture": "Items/amaranth.png"
     },
     {
       "id": "artichoke",
@@ -331,7 +356,8 @@
           "type": "ConsumableComponent",
           "energyRestore": 30
         }
-      ]
+      ],
+      "texture": "Items/artichoke.png"
     },
     {
       "id": "beet",
@@ -343,7 +369,8 @@
           "type": "ConsumableComponent",
           "energyRestore": 30
         }
-      ]
+      ],
+      "texture": "Items/beet.png"
     },
     {
       "id": "bok_choy",
@@ -355,7 +382,8 @@
           "type": "ConsumableComponent",
           "energyRestore": 25
         }
-      ]
+      ],
+      "texture": "Items/bok_choy.png"
     },
     {
       "id": "broccoli",
@@ -367,7 +395,8 @@
           "type": "ConsumableComponent",
           "energyRestore": 63
         }
-      ]
+      ],
+      "texture": "Items/broccoli.png"
     },
     {
       "id": "cranberries",
@@ -379,7 +408,8 @@
           "type": "ConsumableComponent",
           "energyRestore": 38
         }
-      ]
+      ],
+      "texture": "Items/cranberries.png"
     },
     {
       "id": "eggplant",
@@ -391,7 +421,8 @@
           "type": "ConsumableComponent",
           "energyRestore": 20
         }
-      ]
+      ],
+      "texture": "Items/eggplant.png"
     },
     {
       "id": "fairy_rose",
@@ -403,7 +434,8 @@
           "type": "ConsumableComponent",
           "energyRestore": 45
         }
-      ]
+      ],
+      "texture": "Items/fairy_rose.png"
     },
     {
       "id": "grape",
@@ -415,14 +447,16 @@
           "type": "ConsumableComponent",
           "energyRestore": 38
         }
-      ]
+      ],
+      "texture": "Items/grape.png"
     },
     {
       "id": "pumpkin",
       "name": "Pumpkin",
       "description": "A fall favorite, grown for the festivities of the season.",
       "stackSize": 999,
-      "componentsData": []
+      "componentsData": [],
+      "texture": "Items/pumpkin.png"
     },
     {
       "id": "yam",
@@ -434,14 +468,16 @@
           "type": "ConsumableComponent",
           "energyRestore": 45
         }
-      ]
+      ],
+      "texture": "Items/yam.png"
     },
     {
       "id": "sweet_gem_berry",
       "name": "Sweet Gem Berry",
       "description": "It's by far the sweetest thing you've ever smelled.",
       "stackSize": 999,
-      "componentsData": []
+      "componentsData": [],
+      "texture": "Items/sweet_gem_berry.png"
     },
     {
       "id": "powdermelon",
@@ -453,14 +489,16 @@
           "type": "ConsumableComponent",
           "energyRestore": 63
         }
-      ]
+      ],
+      "texture": "Items/powdermelon.png"
     },
     {
       "id": "ancient_fruit",
       "name": "Ancient Fruit",
       "description": "It's been dormant for eons.",
       "stackSize": 999,
-      "componentsData": []
+      "componentsData": [],
+      "texture": "Items/ancient_fruit.png"
     }
   ],
   "seeds": [
@@ -474,7 +512,8 @@
           "type": "SeedComponent",
           "cropId": "planted_blue_jazz"
         }
-      ]
+      ],
+      "texture": "Items/jazz_seeds.png"
     },
     {
       "id": "carrot_seeds",
@@ -486,7 +525,8 @@
           "type": "SeedComponent",
           "cropId": "planted_carrot"
         }
-      ]
+      ],
+      "texture": "Items/carrot_seeds.png"
     },
     {
       "id": "cauliflower_seeds",
@@ -498,7 +538,8 @@
           "type": "SeedComponent",
           "cropId": "planted_cauliflower"
         }
-      ]
+      ],
+      "texture": "Items/cauliflower_seeds.png"
     },
     {
       "id": "coffee_bean",
@@ -510,7 +551,8 @@
           "type": "SeedComponent",
           "cropId": "planted_coffee_bean"
         }
-      ]
+      ],
+      "texture": "Items/coffee_bean.png"
     },
     {
       "id": "garlic_seeds",
@@ -522,7 +564,8 @@
           "type": "SeedComponent",
           "cropId": "planted_garlic"
         }
-      ]
+      ],
+      "texture": "Items/garlic_seeds.png"
     },
     {
       "id": "bean_starter",
@@ -534,7 +577,8 @@
           "type": "SeedComponent",
           "cropId": "planted_green_bean"
         }
-      ]
+      ],
+      "texture": "Items/bean_starter.png"
     },
     {
       "id": "kale_seeds",
@@ -546,7 +590,8 @@
           "type": "SeedComponent",
           "cropId": "planted_kale"
         }
-      ]
+      ],
+      "texture": "Items/kale_seeds.png"
     },
     {
       "id": "parsnip_seeds",
@@ -558,7 +603,8 @@
           "type": "SeedComponent",
           "cropId": "planted_parsnip"
         }
-      ]
+      ],
+      "texture": "Items/parsnip_seeds.png"
     },
     {
       "id": "potato_seeds",
@@ -570,7 +616,8 @@
           "type": "SeedComponent",
           "cropId": "planted_potato"
         }
-      ]
+      ],
+      "texture": "Items/potato_seeds.png"
     },
     {
       "id": "rhubarb_seeds",
@@ -582,7 +629,8 @@
           "type": "SeedComponent",
           "cropId": "planted_rhubarb"
         }
-      ]
+      ],
+      "texture": "Items/rhubarb_seeds.png"
     },
     {
       "id": "strawberry_seeds",
@@ -606,7 +654,8 @@
           "type": "SeedComponent",
           "cropId": "planted_tulip"
         }
-      ]
+      ],
+      "texture": "Items/tulip_bulb.png"
     },
     {
       "id": "rice_shoot",
@@ -618,7 +667,8 @@
           "type": "SeedComponent",
           "cropId": "planted_unmilled_rice"
         }
-      ]
+      ],
+      "texture": "Items/rice_shoot.png"
     },
     {
       "id": "blueberry_seeds",
@@ -630,7 +680,8 @@
           "type": "SeedComponent",
           "cropId": "planted_blueberry"
         }
-      ]
+      ],
+      "texture": "Items/blueberry_seeds.png"
     },
     {
       "id": "corn_seeds",
@@ -642,7 +693,8 @@
           "type": "SeedComponent",
           "cropId": "planted_corn"
         }
-      ]
+      ],
+      "texture": "Items/corn_seeds.png"
     },
     {
       "id": "hops_starter",
@@ -654,7 +706,8 @@
           "type": "SeedComponent",
           "cropId": "planted_hops"
         }
-      ]
+      ],
+      "texture": "Items/hops_starter.png"
     },
     {
       "id": "pepper_seeds",
@@ -666,7 +719,8 @@
           "type": "SeedComponent",
           "cropId": "planted_hot_pepper"
         }
-      ]
+      ],
+      "texture": "Items/pepper_seeds.png"
     },
     {
       "id": "melon_seeds",
@@ -678,7 +732,8 @@
           "type": "SeedComponent",
           "cropId": "planted_melon"
         }
-      ]
+      ],
+      "texture": "Items/melon_seeds.png"
     },
     {
       "id": "poppy_seeds",
@@ -690,7 +745,8 @@
           "type": "SeedComponent",
           "cropId": "planted_poppy"
         }
-      ]
+      ],
+      "texture": "Items/poppy_seeds.png"
     },
     {
       "id": "radish_seeds",
@@ -702,7 +758,8 @@
           "type": "SeedComponent",
           "cropId": "planted_radish"
         }
-      ]
+      ],
+      "texture": "Items/radish_seeds.png"
     },
     {
       "id": "red_cabbage_seeds",
@@ -714,7 +771,8 @@
           "type": "SeedComponent",
           "cropId": "planted_red_cabbage"
         }
-      ]
+      ],
+      "texture": "Items/red_cabbage_seeds.png"
     },
     {
       "id": "starfruit_seeds",
@@ -726,7 +784,8 @@
           "type": "SeedComponent",
           "cropId": "planted_starfruit"
         }
-      ]
+      ],
+      "texture": "Items/starfruit_seeds.png"
     },
     {
       "id": "spangle_seeds",
@@ -738,7 +797,8 @@
           "type": "SeedComponent",
           "cropId": "planted_summer_spangle"
         }
-      ]
+      ],
+      "texture": "Items/spangle_seeds.png"
     },
     {
       "id": "summer_squash_seeds",
@@ -750,7 +810,8 @@
           "type": "SeedComponent",
           "cropId": "planted_summer_squash"
         }
-      ]
+      ],
+      "texture": "Items/summer_squash_seeds.png"
     },
     {
       "id": "sunflower_seeds",
@@ -762,7 +823,8 @@
           "type": "SeedComponent",
           "cropId": "planted_sunflower"
         }
-      ]
+      ],
+      "texture": "Items/sunflower_seeds.png"
     },
     {
       "id": "tomato_seeds",
@@ -774,7 +836,8 @@
           "type": "SeedComponent",
           "cropId": "planted_tomato"
         }
-      ]
+      ],
+      "texture": "Items/tomato_seeds.png"
     },
     {
       "id": "wheat_seeds",
@@ -786,7 +849,8 @@
           "type": "SeedComponent",
           "cropId": "planted_wheat"
         }
-      ]
+      ],
+      "texture": "Items/wheat_seeds.png"
     },
     {
       "id": "amaranth_seeds",
@@ -798,7 +862,8 @@
           "type": "SeedComponent",
           "cropId": "planted_amaranth"
         }
-      ]
+      ],
+      "texture": "Items/amaranth_seeds.png"
     },
     {
       "id": "artichoke_seeds",
@@ -810,7 +875,8 @@
           "type": "SeedComponent",
           "cropId": "planted_artichoke"
         }
-      ]
+      ],
+      "texture": "Items/artichoke_seeds.png"
     },
     {
       "id": "beet_seeds",
@@ -822,7 +888,8 @@
           "type": "SeedComponent",
           "cropId": "planted_beet"
         }
-      ]
+      ],
+      "texture": "Items/beet_seeds.png"
     },
     {
       "id": "bok_choy_seeds",
@@ -834,7 +901,8 @@
           "type": "SeedComponent",
           "cropId": "planted_bok_choy"
         }
-      ]
+      ],
+      "texture": "Items/bok_choy_seeds.png"
     },
     {
       "id": "broccoli_seeds",
@@ -846,7 +914,8 @@
           "type": "SeedComponent",
           "cropId": "planted_broccoli"
         }
-      ]
+      ],
+      "texture": "Items/broccoli_seeds.png"
     },
     {
       "id": "cranberry_seeds",
@@ -858,7 +927,8 @@
           "type": "SeedComponent",
           "cropId": "planted_cranberries"
         }
-      ]
+      ],
+      "texture": "Items/cranberry_seeds.png"
     },
     {
       "id": "eggplant_seeds",
@@ -870,7 +940,8 @@
           "type": "SeedComponent",
           "cropId": "planted_eggplant"
         }
-      ]
+      ],
+      "texture": "Items/eggplant_seeds.png"
     },
     {
       "id": "fairy_seeds",
@@ -882,7 +953,8 @@
           "type": "SeedComponent",
           "cropId": "planted_fairy_rose"
         }
-      ]
+      ],
+      "texture": "Items/fairy_seeds.png"
     },
     {
       "id": "grape_starter",
@@ -894,7 +966,8 @@
           "type": "SeedComponent",
           "cropId": "planted_grape"
         }
-      ]
+      ],
+      "texture": "Items/grape_starter.png"
     },
     {
       "id": "pumpkin_seeds",
@@ -906,7 +979,8 @@
           "type": "SeedComponent",
           "cropId": "planted_pumpkin"
         }
-      ]
+      ],
+      "texture": "Items/pumpkin_seeds.png"
     },
     {
       "id": "yam_seeds",
@@ -918,7 +992,8 @@
           "type": "SeedComponent",
           "cropId": "planted_yam"
         }
-      ]
+      ],
+      "texture": "Items/yam_seeds.png"
     },
     {
       "id": "rare_seeds",
@@ -942,7 +1017,8 @@
           "type": "SeedComponent",
           "cropId": "planted_powdermelon"
         }
-      ]
+      ],
+      "texture": "Items/powdermelon_seeds.png"
     },
     {
       "id": "ancient_seeds",
@@ -954,7 +1030,8 @@
           "type": "SeedComponent",
           "cropId": "planted_ancient_fruit"
         }
-      ]
+      ],
+      "texture": "Items/ancient_seeds.png"
     }
   ],
   "tools": [
@@ -972,7 +1049,8 @@
           "unsuccessfulEnergyUse": 5,
           "capacity": 0
         }
-      ]
+      ],
+      "texture": "Items/Hoe.png"
     },
     {
       "id": "copper_hoe",
@@ -988,7 +1066,8 @@
           "unsuccessfulEnergyUse": 4,
           "capacity": 0
         }
-      ]
+      ],
+      "texture": "Items/Copper_Hoe.png"
     },
     {
       "id": "iron_hoe",
@@ -1004,7 +1083,8 @@
           "unsuccessfulEnergyUse": 3,
           "capacity": 0
         }
-      ]
+      ],
+      "texture": "Items/Iron_hoe.png"
     },
     {
       "id": "gold_hoe",
@@ -1020,7 +1100,8 @@
           "unsuccessfulEnergyUse": 2,
           "capacity": 0
         }
-      ]
+      ],
+      "texture": "Items/Gold_Hoe.png"
     },
     {
       "id": "iridium_hoe",
@@ -1036,7 +1117,8 @@
           "unsuccessfulEnergyUse": 1,
           "capacity": 0
         }
-      ]
+      ],
+      "texture": "Items/Iridium_Hoe.png"
     },
     {
       "id": "pickaxe",
@@ -1052,7 +1134,8 @@
           "unsuccessfulEnergyUse": 4,
           "capacity": 0
         }
-      ]
+      ],
+      "texture": "Items/Pickaxe.png"
     },
     {
       "id": "copper_pickaxe",
@@ -1068,7 +1151,8 @@
           "unsuccessfulEnergyUse": 3,
           "capacity": 0
         }
-      ]
+      ],
+      "texture": "Items/Copper_Pickaxe.png"
     },
     {
       "id": "iron_pickaxe",
@@ -1084,7 +1168,8 @@
           "unsuccessfulEnergyUse": 2,
           "capacity": 0
         }
-      ]
+      ],
+      "texture": "Items/Iron_Pickaxe.png"
     },
     {
       "id": "gold_pickaxe",
@@ -1100,7 +1185,8 @@
           "unsuccessfulEnergyUse": 1,
           "capacity": 0
         }
-      ]
+      ],
+      "texture": "Items/Gold_Pickaxe.png"
     },
     {
       "id": "iridium_pickaxe",
@@ -1116,7 +1202,8 @@
           "unsuccessfulEnergyUse": 0,
           "capacity": 0
         }
-      ]
+      ],
+      "texture": "Items/Iridium_Pickaxe.png"
     },
     {
       "id": "axe",
@@ -1132,7 +1219,8 @@
           "unsuccessfulEnergyUse": 4,
           "capacity": 0
         }
-      ]
+      ],
+      "texture": "Items/Axe.png"
     },
     {
       "id": "copper_axe",
@@ -1148,7 +1236,8 @@
           "unsuccessfulEnergyUse": 3,
           "capacity": 0
         }
-      ]
+      ],
+      "texture": "Items/Copper_Axe.png"
     },
     {
       "id": "iron_axe",
@@ -1164,7 +1253,8 @@
           "unsuccessfulEnergyUse": 2,
           "capacity": 0
         }
-      ]
+      ],
+      "texture": "Items/Iron_Axe.png"
     },
     {
       "id": "gold_axe",
@@ -1180,7 +1270,8 @@
           "unsuccessfulEnergyUse": 1,
           "capacity": 0
         }
-      ]
+      ],
+      "texture": "Items/Gold_Axe.png"
     },
     {
       "id": "iridium_axe",
@@ -1196,7 +1287,8 @@
           "unsuccessfulEnergyUse": 0,
           "capacity": 0
         }
-      ]
+      ],
+      "texture": "Items/Iridium_Axe.png"
     },
     {
       "id": "watering_can",
@@ -1212,7 +1304,8 @@
           "unsuccessfulEnergyUse": 5,
           "capacity": 40
         }
-      ]
+      ],
+      "texture": "Items/Watering_Can.png"
     },
     {
       "id": "copper_watering_can",
@@ -1228,7 +1321,8 @@
           "unsuccessfulEnergyUse": 4,
           "capacity": 55
         }
-      ]
+      ],
+      "texture": "Items/Copper_Watering_Can.png"
     },
     {
       "id": "iron_watering_can",
@@ -1244,7 +1338,8 @@
           "unsuccessfulEnergyUse": 3,
           "capacity": 70
         }
-      ]
+      ],
+      "texture": "Items/Iron_Watering_Can.png"
     },
     {
       "id": "gold_watering_can",
@@ -1260,7 +1355,8 @@
           "unsuccessfulEnergyUse": 2,
           "capacity": 85
         }
-      ]
+      ],
+      "texture": "Items/Gold_Watering_Can.png"
     },
     {
       "id": "iridium_watering_can",
@@ -1276,7 +1372,8 @@
           "unsuccessfulEnergyUse": 1,
           "capacity": 100
         }
-      ]
+      ],
+      "texture": "Items/Iridium_Watering_Can.png"
     },
     {
       "id": "scythe",
@@ -1292,7 +1389,8 @@
           "unsuccessfulEnergyUse": 2,
           "capacity": 0
         }
-      ]
+      ],
+      "texture": "Items/Scythe.png"
     },
     {
       "id": "shear",
@@ -1308,7 +1406,8 @@
           "unsuccessfulEnergyUse": 4,
           "capacity": 0
         }
-      ]
+      ],
+      "texture": "Items/Shears.png"
     },
     {
       "id": "training_rod",
@@ -1324,7 +1423,8 @@
           "unsuccessfulEnergyUse": 8,
           "capacity": 0
         }
-      ]
+      ],
+      "texture": "Items/Training_Rod.png"
     },
     {
       "id": "bamboo_rod",
@@ -1340,7 +1440,8 @@
           "unsuccessfulEnergyUse": 8,
           "capacity": 0
         }
-      ]
+      ],
+      "texture": "Items/Bamboo_Pole.png"
     },
     {
       "id": "fiberglass_rod",
@@ -1356,7 +1457,8 @@
           "unsuccessfulEnergyUse": 6,
           "capacity": 0
         }
-      ]
+      ],
+      "texture": "Items/Fiberglass_Rod.png"
     },
     {
       "id": "iridium_rod",
@@ -1372,7 +1474,8 @@
           "unsuccessfulEnergyUse": 4,
           "capacity": 0
         }
-      ]
+      ],
+      "texture": "Items/Iridium_Rod.png"
     }
   ]
 }
