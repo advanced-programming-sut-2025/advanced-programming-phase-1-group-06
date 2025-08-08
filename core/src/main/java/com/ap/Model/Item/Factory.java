@@ -83,7 +83,7 @@ public class Factory {
 
     public Item createItemByName(String name) {
         for (ItemData data : items.values()) {
-            if (data.name.equalsIgnoreCase(name)) {
+            if (data.id.equalsIgnoreCase(name)) {
                 return createItem(data.id);
             }
         }

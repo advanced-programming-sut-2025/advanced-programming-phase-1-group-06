@@ -53,12 +53,17 @@ public class Inventory {
 
         for (ToolComponent.ToolType toolType : ToolComponent.ToolType.values()){
             try {
+                if (toolType.equals(ToolComponent.ToolType.FISHING_ROD) || toolType.equals(ToolComponent.ToolType.MILK_PAIL)){
+                    continue;
+                }
                 Item item = Factory.getInstance().createItemByName(toolType.name());
                 if (item == null) {
                     System.out.println(toolType.name().toLowerCase()+ " isn't found");
 
-                } else
+                } else {
                     addItem(item);
+                    quickAccessItems.add(item);
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
