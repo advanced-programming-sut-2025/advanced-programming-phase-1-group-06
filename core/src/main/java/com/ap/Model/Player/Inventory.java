@@ -264,7 +264,7 @@ public class Inventory {
             inventoryStacks.put(stack, item);
         }
         table.row();
-        for (int j = 0; j < getSize() / 12; j ++) {
+        for (int j = 0; j < /*getSize() / 12*/ 10; j ++) {
             for (int i = 0; i < 12; i++) {
                 item = null;
                 Stack stack = new Stack();
@@ -322,4 +322,10 @@ public class Inventory {
             equipItem(equipedInt + amount);
         }
     }
+}
+
+class slot{
+    Item item;
+    int index;
+    float x, y;
 }

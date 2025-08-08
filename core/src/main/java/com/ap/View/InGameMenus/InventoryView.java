@@ -19,6 +19,7 @@ public class InventoryView implements Screen, InputProcessor {
     private Window inventoryWindow;
     private Window infoWindow;
     private Image trashcan;
+    private Label moneyLabel;
     private Skin skin;
 
     public InventoryView(Player player){
@@ -30,6 +31,8 @@ public class InventoryView implements Screen, InputProcessor {
         inventoryWindow.setSize(1600, 500);
         inventoryWindow.setPosition(160, 580);
         inventoryWindow.top();
+
+        moneyLabel = new Label(player.getMoney()+" g" , skin);
 
         // Create inventory table
         Table inventoryTable = player.getInventory().getInventoryTable(skin);
@@ -46,7 +49,7 @@ public class InventoryView implements Screen, InputProcessor {
         inventoryWindow.add(scrollPane); // Uniform padding
         inventoryWindow.setMovable(false);
         inventoryWindow.setResizable(false);
-        inventoryWindow.setTouchable(Touchable.disabled);
+        inventoryWindow.setTouchable(Touchable.childrenOnly);
 
         trashcan = new Image(new Texture(Gdx.files.internal("in-game-menu-stuff/trashcan.png")));
 
@@ -56,6 +59,9 @@ public class InventoryView implements Screen, InputProcessor {
         infoWindow.setSize(1600, 500);
         trashcan.setPosition(infoWindow.getX() + infoWindow.getWidth() - 100, infoWindow.getY() + infoWindow.getHeight() + 30);
         trashcan.setSize(trashcan.getWidth() / 2, trashcan.getHeight() / 2);
+        infoWindow.top();
+        infoWindow.right();
+        infoWindow.add(moneyLabel);
     }
 
     @Override
