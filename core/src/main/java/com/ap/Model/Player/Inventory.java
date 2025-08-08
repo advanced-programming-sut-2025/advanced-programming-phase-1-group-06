@@ -6,9 +6,12 @@ import com.ap.Model.Item.ToolComponent;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.Locale;
+import java.util.Map;
 
 
 public class Inventory {
@@ -18,11 +21,22 @@ public class Inventory {
     private int equipedInt = 0;
     private int level;
     private final ArrayList<Item> quickAccessItems;
-    private ArrayList<Stack> quickAccessStacks;
-    private ArrayList<Stack> inventoryStacks;
+    private LinkedHashMap<Stack, Item> quickAccessStacks;
+    private LinkedHashMap<Stack, Item> inventoryStacks;
+    private DragAndDrop dragAndDrop;
 
     Image selectedImage = new Image(new Texture(Gdx.files.internal("inventory/selected-border.png")));
     private int SLOT_SIZE = 60;
+
+    Inventory() {
+        level = 1;
+        quickAccessItems = new ArrayList<>();
+        items = new ArrayList<>();
+        quickAccessStacks = new LinkedHashMap<>();
+        inventoryStacks = new LinkedHashMap<>();
+        addTools();
+        dragAndDrop = new DragAndDrop();
+    }
 
     public ArrayList<Item> getItems() {
         return items;
@@ -69,15 +83,6 @@ public class Inventory {
             }
         }
 
-    }
-
-    Inventory() {
-        level = 1;
-        quickAccessItems = new ArrayList<>();
-        items = new ArrayList<>();
-        quickAccessStacks = new ArrayList<>();
-        inventoryStacks = new ArrayList<>();
-        addTools();
     }
 
     Inventory(ArrayList<Item> quickAccessItems, ArrayList<Item> items, int level) {
@@ -219,16 +224,22 @@ public class Inventory {
         table.setPosition(0, 40);
         table.bottom();
 //        table.debug();
+        Item item;
         for (int i = 0; i < 12; i++) {
+            item = null;
             Stack stack = new Stack();
             Image backgroundImage = new Image(new Texture(Gdx.files.internal("inventory/inventory-slot.png")));
             stack.add(backgroundImage);
-            if (quickAccessItems.size() > i)
-                stack.add(new Image(new Texture(Gdx.files.internal(quickAccessItems.get(i).getTexturePath()))));
+            if (quickAccessItems.size() > i) {
+                if (quickAccessItems.get(i) != null) {
+                    item = quickAccessItems.get(i);
+                    stack.add(new Image(new Texture(Gdx.files.internal(item.getTexturePath()))));
+                }
+            }
             if (i == equipedInt)
                 stack.add(selectedImage);
             table.add(stack).size(SLOT_SIZE, SLOT_SIZE);
-            quickAccessStacks.add(stack);
+            quickAccessStacks.put(stack, item);
         }
         return table;
     }
@@ -237,26 +248,33 @@ public class Inventory {
         Table table = new Table(skin);
         table.top();
 //        table.debug();
-
+        Item item;
         for (int i = 0; i < 12; i++) {
+            item = null;
             Stack stack = new Stack();
             Image backgroundImage = new Image(new Texture(Gdx.files.internal("inventory/inventory-slot.png")));
             stack.add(backgroundImage);
-            if (quickAccessItems.size() > i)
-                stack.add(new Image(new Texture(Gdx.files.internal(quickAccessItems.get(i).getTexturePath()))));
+            if (quickAccessItems.size() > i) {
+                item = quickAccessItems.get(i);
+                if (item != null) {
+                    stack.add(new Image(new Texture(Gdx.files.internal(item.getTexturePath()))));
+                }
+            }
             table.add(stack).size(SLOT_SIZE * 1.5f, SLOT_SIZE * 1.5f).padBottom(50);
-            inventoryStacks.add(stack);
+            inventoryStacks.put(stack, item);
         }
         table.row();
         for (int j = 0; j < getSize() / 12; j ++) {
             for (int i = 0; i < 12; i++) {
+                item = null;
                 Stack stack = new Stack();
                 Image backgroundImage = new Image(new Texture(Gdx.files.internal("inventory/inventory-slot.png")));
                 stack.add(backgroundImage);
                 if (items.size() > i) {
                     if (!quickAccessItems.contains(items.get(i)) && items.get(i) != null) {
                         try {
-                            stack.add(new Image(new Texture(Gdx.files.internal(items.get(i).getTexturePath()))));
+                            item = items.get(i);
+                            stack.add(new Image(new Texture(Gdx.files.internal(item.getTexturePath()))));
                         } catch (Exception e) {
                             Label label = new Label(items.get(i).getName(), skin);
                             stack.add(label);
@@ -266,7 +284,7 @@ public class Inventory {
                     }
                 }
                 table.add(stack).size(SLOT_SIZE * 1.5f, SLOT_SIZE * 1.5f);
-                inventoryStacks.add(stack);
+                inventoryStacks.put(stack, item);
             }
             table.row();
         }
@@ -274,19 +292,28 @@ public class Inventory {
     }
 
     public void equipItem(int i, Player player) {
-        if (equipedInt >= quickAccessStacks.size()){
+        if (i >= quickAccessStacks.size()){
             System.out.println(quickAccessStacks.size() + " fuck");
             return;
         }
-        quickAccessStacks.get(equipedInt).removeActor(selectedImage);
+        new ArrayList<>(quickAccessStacks.keySet()).get(i).removeActor(selectedImage);
         equipedInt = i;
         if (equipedInt >= quickAccessStacks.size()){
             System.out.println(quickAccessStacks.size() + " fuck");
             return;
         }
-        quickAccessStacks.get(equipedInt).add(selectedImage);
+        new ArrayList<>(quickAccessStacks.keySet()).get(i).add(selectedImage);
         if (items.size() > i)
             player.setCurrentItem(quickAccessItems.get(i));
+    }
+
+    public Stack getStackByItem(Item item){
+        for (Map.Entry<Stack, Item> entry : quickAccessStacks.entrySet()){
+            if (entry.getValue() == item){
+                return entry.getKey();
+            }
+        }
+        return null;
     }
 
     public void equipItem(float y) {
