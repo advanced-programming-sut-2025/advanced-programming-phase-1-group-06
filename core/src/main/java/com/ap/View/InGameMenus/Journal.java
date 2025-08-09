@@ -206,7 +206,6 @@ public class Journal implements Screen, InputProcessor {
         imageButtons.get("inventory").addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-
                 Main.getInstance().changeScreen(new InventoryView(player));
             }
         });

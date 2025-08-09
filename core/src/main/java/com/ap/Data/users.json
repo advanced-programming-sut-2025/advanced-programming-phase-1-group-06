@@ -1,26 +1,6 @@
 [
   {
-    "username": "arshia",
-    "password": "1",
-    "email": "arshia@gmail.com",
-    "nickname": "arshia",
-    "gender": 1,
-    "points": 0,
-    "questionNumber": 0,
-    "answer": "balls"
-  },
-  {
     "username": "arshia1",
-    "password": "12345678aA#",
-    "email": "arshia@gmail.com",
-    "nickname": "arshia",
-    "gender": 1,
-    "points": 0,
-    "questionNumber": 0,
-    "answer": "balls"
-  },
-  {
-    "username": "arshia2",
     "password": "12345678aA#",
     "email": "arshia@gmail.com",
     "nickname": "arshia",

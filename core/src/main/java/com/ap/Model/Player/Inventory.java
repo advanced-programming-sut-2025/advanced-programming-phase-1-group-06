@@ -24,20 +24,26 @@ public class Inventory {
     private final ArrayList<Item> items;
     private final ArrayList<Item> quickAccessItems;
 
+    private float TRASHCAN_X;
+    private float TRASHCAN_Y;
+    private float TRASHCAN_WIDTH;
+    private float TRASHCAN_HEIGHT;
+
     public float SLOT_DIMENSION = 100;
     public float INVENTORY_START_X = 400;
     public float INVENTORY_START_Y = 900;
-    public float QUICK_ACCESS_START_X = 500;
+    public float QUICK_ACCESS_START_X = 600;
     public float QUICK_ACCESS_START_Y = 80;
     private ArrayList<Slot> inventorySlots;
     private ArrayList<Slot> quickAccessSlots;
+    private Stage stage;
     private Image selectedBorder;
 
     public InventoryView inventoryView;
 
     private DragAndDrop dragAndDrop;
 
-    Image selectedImage = new Image(new Texture(Gdx.files.internal("inventory/selected-border.png")));
+    Image selectedImage;
     private int SLOT_SIZE = 60;
 
     Inventory() {
@@ -46,11 +52,19 @@ public class Inventory {
         quickAccessSlots = new ArrayList<>();
         quickAccessItems = new ArrayList<>();
         items = new ArrayList<>();
-        addTools();
         dragAndDrop = new DragAndDrop();
         selectedBorder = new Image(new Texture(Gdx.files.internal("inventory/selected-border.png")));
         selectedBorder.setSize(SLOT_SIZE, SLOT_SIZE);
-        initiateSlots();
+        selectedImage = new Image(new Texture(Gdx.files.internal("inventory/selected-border.png")));
+        addTools();
+        initiateInventorySlots();
+    }
+
+    public void setTrashcanInfo(float x, float y, float width, float height){
+        TRASHCAN_Y = y;
+        TRASHCAN_X = x;
+        TRASHCAN_HEIGHT = height;
+        TRASHCAN_WIDTH = width;
     }
 
     public void setInventoryView(InventoryView inventoryView) {
@@ -79,11 +93,6 @@ public class Inventory {
     }
 
     private void addTools() {
-//        TODO add tools or whatever is needed at the beginning of the game
-        Factory factory = Factory.getInstance();
-//        Item item = factory.createItem("blue_jazz");
-//        Item item = factory.createItem("blue_jazz");
-
         for (ToolComponent.ToolType toolType : ToolComponent.ToolType.values()) {
             try {
                 if (toolType.equals(ToolComponent.ToolType.FISHING_ROD) || toolType.equals(ToolComponent.ToolType.MILK_PAIL)) {
@@ -147,6 +156,18 @@ public class Inventory {
 
     public void removeItem(String name) {
         items.removeIf(item -> item.getName().equals(name));
+    }
+
+    public void removeItem(Item item){
+        quickAccessItems.remove(item);
+        items.remove(item);
+        Slot slot = getInventorySlotByItem(item);
+        slot.item = null;
+        slot.itemImage = null;
+        slot = getQuickAccessSlotByItem(item);
+        slot.item = null;
+        slot.itemImage = null;
+        System.out.println("removed");
     }
 
     public void removeItem(String itemName, int amount) {
@@ -237,21 +258,24 @@ public class Inventory {
     }
 
     public void initiateQuickAccessSlots() {
+        quickAccessSlots.clear();
         Slot slot;
         float x = QUICK_ACCESS_START_X;
         float y = QUICK_ACCESS_START_Y;
         for (int i = 0; i < 12; i++) {
-            slot = new Slot(inventorySlots.get(i));
+            slot = new Slot(inventorySlots.get(i), this);
             slot.setCoordinates(x, y);
             x += SLOT_SIZE;
             if (slot.itemImage != null) {
                 slot.itemImage.setPosition(slot.x, slot.y);
+                slot.itemImage.setSize(SLOT_SIZE, SLOT_SIZE);
             }
             quickAccessSlots.add(slot);
         }
     }
 
     public void drawQuickAccess(Stage stage) {
+        this.stage = stage;
         Group itemImages = new Group();
         Group slotImages = new Group();
         for (int i = 0; i < 12; i++) {
@@ -262,15 +286,20 @@ public class Inventory {
             }
             quickAccessSlots.add(slot);
             Image slotImage = new Image(new Texture("inventory/inventory-slot.png"));
-            slotImages.setSize(SLOT_SIZE, SLOT_SIZE);
+            slotImage.setSize(SLOT_SIZE, SLOT_SIZE);
             slotImage.setPosition(slot.x, slot.y);
             slotImages.addActor(slotImage);
+            if (i == equipedInt){
+                selectedImage.setPosition(slot.x-5, slot.y-5);
+                selectedImage.setSize(SLOT_SIZE * 1.15f, SLOT_SIZE * 1.15f);
+            }
         }
         stage.addActor(slotImages);
         stage.addActor(itemImages);
+        stage.addActor(selectedImage);
     }
 
-    public void initiateSlots() {
+    public void initiateInventorySlots() {
         inventorySlots.clear();
         float x = INVENTORY_START_X;
         float y = INVENTORY_START_Y;
@@ -284,7 +313,7 @@ public class Inventory {
                     item = quickAccessItems.get(i);
                 }
             }
-            slot = new Slot(item, index, x, y);
+            slot = new Slot(item, index, x, y, this);
             inventorySlots.add(slot);
             x += SLOT_DIMENSION;
             index++;
@@ -299,7 +328,7 @@ public class Inventory {
                         item = items.get(index - 1);
                     }
                 }
-                slot = new Slot(item, index, x, y);
+                slot = new Slot(item, index, x, y, this);
                 inventorySlots.add(slot);
                 index++;
                 x += (SLOT_DIMENSION);
@@ -309,11 +338,11 @@ public class Inventory {
         initiateQuickAccessSlots();
     }
 
-    public void equipItem(float y, Player player) {
-        int amount = (int) y;
-        Slot slot = inventorySlots.get(amount);
-        if (equipedInt + amount < 9 && equipedInt > 0) {
-            selectedImage.setPosition(slot.x, slot.y);
+    public void equipItem(int amount, Player player) {
+        Slot slot = quickAccessSlots.get(amount);
+        if (amount <= 12 && amount >= 0) {
+            equipedInt = amount;
+            selectedImage.setPosition(slot.x-5, slot.y-5);
             player.setCurrentItem(slot.getItem());
         }
     }
@@ -330,6 +359,7 @@ public class Inventory {
             image.setPosition(slot.x, slot.y);
             slotGroup.addActor(image);
             if (slot.getItem() != null) {
+                System.out.println("slot " + slot.index + " has item " + slot.item.getName());
                 imageGroup.addActor(slot.getItemImage());
             }
         }
@@ -346,13 +376,33 @@ public class Inventory {
         return null;
     }
 
+    public Slot getInventorySlotByItem(Item item){
+        for (Slot slot : inventorySlots) {
+            if (slot.item == item){
+               return slot;
+            }
+        }
+        return null;
+    }
+
+    public Slot getQuickAccessSlotByItem(Item item){
+        for (Slot slot : quickAccessSlots) {
+            if (slot.item == item){
+                return slot;
+            }
+        }
+        return null;
+    }
+
+    public boolean checkTrashcan(float x, float y){
+        return (TRASHCAN_X <= x && TRASHCAN_Y <= y && TRASHCAN_X + TRASHCAN_WIDTH >= x && TRASHCAN_Y + TRASHCAN_HEIGHT >= y);
+    }
+
     public ArrayList<Slot> getInventorySlots() {
         return inventorySlots;
     }
 
     class Slot {
-
-
         private Item item;
         public int index;
         public float x, y;
@@ -361,10 +411,11 @@ public class Inventory {
         private float touchOffsetY;
         private float startX;
         private float startY;
+        private Inventory inventory;
 
-        public Slot(Slot slot) {
+        public Slot(Slot slot, Inventory inventory) {
+            this.inventory = inventory;
             this.item = slot.item;
-
             if (item != null) {
                 itemImage = new Image(new Texture(Gdx.files.internal(item.getTexturePath())));
                 itemImage.setSize(SLOT_SIZE, SLOT_SIZE);
@@ -372,7 +423,8 @@ public class Inventory {
             this.index = slot.index;
         }
 
-        public Slot(Item item, int index, float x, float y) {
+        public Slot(Item item, int index, float x, float y, Inventory inventory) {
+            this.inventory = inventory;
             this.item = item;
             this.index = index;
             this.x = x;
@@ -382,68 +434,142 @@ public class Inventory {
                 itemImage = new Image(new Texture(Gdx.files.internal(item.getTexturePath())));
                 itemImage.setPosition(x, y);
                 itemImage.setSize(100, 100);
-                itemImage.addListener(new InputListener() {
-                    @Override
-                    public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                        if (itemImage == null) {
-                            System.out.println("item image null");
-                            return true;
-                        }
-                        touchOffsetX = x;
-                        touchOffsetY = y;
-                        startX = itemImage.getX();
-                        startY = itemImage.getY();
-                        return true;
-                    }
-
-                    @Override
-                    public void touchDragged(InputEvent event, float x, float y, int pointer) {
-                        if (itemImage == null) {
-                            System.out.println("item image null");
-                            return;
-                        }
-                        itemImage.setPosition(
-                            event.getStageX() - touchOffsetX,
-                            event.getStageY() - touchOffsetY
-                        );
-                    }
-
-                    @Override
-                    public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                        if (itemImage == null){
-                            System.out.println("item image null");
-                            return;
-                        }
-                        Slot toSlot = getSlotByCoordinate(itemImage.getX() + itemImage.getWidth() / 2, itemImage.getY() + itemImage.getHeight() / 2);
-                        if (toSlot != null) {
-                            itemImage.setPosition(toSlot.x, toSlot.y);
-                            Slot fromSlot = getSlotByCoordinate(startX + itemImage.getWidth() / 2, startY + itemImage.getHeight() / 2);
-                            swapItem(toSlot, fromSlot);
-                        } else {
-                            itemImage.setPosition(startX, startY);
-                        }
-                    }
-                });
-
+                addImageListeners(itemImage);
             }
         }
 
-        public static void swapItem(Slot slot1, Slot slot2) {
-            Item item = slot1.item;
-//            Image itemImage = slot1.itemImage;
-            slot1.item = slot2.item;
-//            slot1.itemImage = slot2.itemImage;
-            slot2.item = item;
-//            slot2.itemImage = itemImage;
-            if (slot1.item != null){
-                slot1.setItemImage(new Image(new Texture(Gdx.files.internal(slot1.item.getTexturePath()))), slot1.x, slot1.y, 100);
-                System.out.println("slot1: " + slot1.index);
+        private void addImageListeners(Image itemImage) {
+            itemImage.addListener(new InputListener() {
+                @Override
+                public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                    if (itemImage == null) {
+                        System.out.println("item image null");
+                        return true;
+                    }
+                    touchOffsetX = x;
+                    touchOffsetY = y;
+                    startX = itemImage.getX();
+                    startY = itemImage.getY();
+                    return true;
+                }
+
+                @Override
+                public void touchDragged(InputEvent event, float x, float y, int pointer) {
+                    if (itemImage == null) {
+                        System.out.println("item image null");
+                        return;
+                    }
+                    itemImage.setPosition(
+                        event.getStageX() - touchOffsetX,
+                        event.getStageY() - touchOffsetY
+                    );
+                }
+
+                @Override
+                public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                    if (itemImage == null){
+                        System.out.println("item image null");
+                        return;
+                    }
+                    if (checkTrashcan(itemImage.getX() + itemImage.getWidth() / 2, itemImage.getY() + itemImage.getHeight() / 2)){
+                        inventory.removeItem(item);
+                        itemImage.remove();
+                    }
+                    Slot toSlot = getSlotByCoordinate(itemImage.getX() + itemImage.getWidth() / 2, itemImage.getY() + itemImage.getHeight() / 2);
+                    if (toSlot != null) {
+                        itemImage.setPosition(toSlot.x, toSlot.y);
+                        Slot fromSlot = getSlotByCoordinate(startX + itemImage.getWidth() / 2, startY + itemImage.getHeight() / 2);
+                        swapItem(toSlot, fromSlot);
+                    } else {
+                        itemImage.setPosition(startX, startY);
+                    }
+                }
+            });
+        }
+
+        public static void swapItem(Slot toSlot, Slot fromSlot) {
+            // Swap items
+            Item tempItem = toSlot.item;
+            toSlot.item = fromSlot.item;
+            fromSlot.item = tempItem;
+
+            if (toSlot.item != null){
+                System.out.println(toSlot.item.getName() + "moved from index " + fromSlot.index + " to " + toSlot.index);
             }
-            if (slot2.item != null){
-                slot2.setItemImage(new Image(new Texture(Gdx.files.internal(slot2.item.getTexturePath()))), slot2.x, slot2.y, 100);
-//                slot2.itemImage.setPosition(slot1.x, slot2.y);
-                System.out.println("slot2: " + slot2.index);
+
+            // Store original images
+            Image tempImage = toSlot.itemImage;
+
+            // Update positions and images
+            if (toSlot.item != null) {
+                if (fromSlot.itemImage != null) {
+                    toSlot.itemImage = fromSlot.itemImage;
+                    toSlot.itemImage.setPosition(toSlot.x, toSlot.y);
+                } else {
+                    toSlot.createNewItemImage(); // Create new image with listeners
+                }
+            } else {
+                toSlot.itemImage = null;
             }
+
+            if (fromSlot.item != null) {
+                if (tempImage != null) {
+                    fromSlot.itemImage = tempImage;
+                    fromSlot.itemImage.setPosition(fromSlot.x, fromSlot.y);
+                } else {
+                    fromSlot.createNewItemImage(); // Create new image with listeners
+                }
+            } else {
+                fromSlot.itemImage = null;
+            }
+            fromSlot.inventory.initiateQuickAccessSlots();
+        }
+
+        private void createNewItemImage() {
+            if (item != null) {
+                itemImage = new Image(new Texture(Gdx.files.internal(item.getTexturePath())));
+                itemImage.setPosition(x, y);
+                itemImage.setSize(100, 100);
+                addDragListener();
+            }
+        }
+
+        private void addDragListener() {
+            itemImage.addListener(new InputListener() {
+                @Override
+                public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                    touchOffsetX = x;
+                    touchOffsetY = y;
+                    startX = itemImage.getX();
+                    startY = itemImage.getY();
+                    return true;
+                }
+
+                @Override
+                public void touchDragged(InputEvent event, float x, float y, int pointer) {
+                    itemImage.setPosition(
+                        event.getStageX() - touchOffsetX,
+                        event.getStageY() - touchOffsetY
+                    );
+                    itemImage.toFront(); // Bring dragged item to front
+                }
+
+                @Override
+                public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                    Slot toSlot = getSlotByCoordinate(
+                        itemImage.getX() + itemImage.getWidth() / 2,
+                        itemImage.getY() + itemImage.getHeight() / 2
+                    );
+
+                    if (toSlot != null && toSlot != Slot.this) { // Check if not same slot
+                        Slot fromSlot = Slot.this;
+                        swapItem(toSlot, fromSlot);
+                    } else {
+                        // Return to original position if invalid drop
+                        itemImage.setPosition(startX, startY);
+                    }
+                }
+            });
         }
 
         public Image getItemImage() {

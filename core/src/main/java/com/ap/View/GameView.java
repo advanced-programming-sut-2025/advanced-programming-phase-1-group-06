@@ -57,6 +57,7 @@ public class GameView implements Screen, InputProcessor {
         player.getInventory().drawQuickAccess(uiStage);
     }
 
+
     @Override
     public void render(float v) {
         ScreenUtils.clear(0.15f, 0.15f, 0.2f, 1f);

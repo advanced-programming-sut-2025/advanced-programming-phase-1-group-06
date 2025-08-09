@@ -1,7 +1,6 @@
 package com.ap.View.InGameMenus;
 
 import com.ap.Main;
-import com.ap.Model.Player.Inventory;
 import com.ap.Model.Player.Player;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.Texture;
@@ -34,7 +33,6 @@ public class InventoryView implements Screen, InputProcessor {
 
         moneyLabel = new Label(player.getMoney()+" g" , skin);
         player.getInventory().setInventoryView(this);
-        player.getInventory().initiateSlots();
         // Create inventory table
 
 //        // Create ScrollPane
@@ -59,6 +57,7 @@ public class InventoryView implements Screen, InputProcessor {
         infoWindow.setSize(1600, 500);
         trashcan.setPosition(infoWindow.getX() + infoWindow.getWidth() - 100, infoWindow.getY() + infoWindow.getHeight() + 30);
         trashcan.setSize(trashcan.getWidth() / 2, trashcan.getHeight() / 2);
+        player.getInventory().setTrashcanInfo(trashcan.getX(), trashcan.getY(), trashcan.getWidth(), trashcan.getHeight());
         infoWindow.top();
         infoWindow.right();
         infoWindow.add(moneyLabel);

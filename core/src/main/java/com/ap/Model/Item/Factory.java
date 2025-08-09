@@ -27,9 +27,6 @@ public class Factory {
     public Factory() {
         try {
             Gson gson = new GsonBuilder().create();
-//            InputStreamReader reader = new InputStreamReader(
-//                getClass().getResourceAsStream("/com/ap/Data/ItemData.json"), "UTF-8");
-//            ItemDataRoot root = gson.fromJson(reader, ItemDataRoot.class);
             FileReader reader = new FileReader("core/src/main/java/com/ap/Data/ItemData.json");
             ItemDataRoot root = gson.fromJson(reader, ItemDataRoot.class);
 
