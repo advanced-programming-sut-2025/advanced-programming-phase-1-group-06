@@ -1,8 +1,10 @@
 package com.ap;
 
 //import com.ap.Model.InventoryTest.GameScreen;
+import com.ap.Model.GameAssetManager;
 import com.ap.View.GameView;
 import com.ap.View.InGameMenus.SkillView;
+import com.ap.View.PreGameMenus.StartScreen;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -51,8 +53,15 @@ public class Main extends Game {
         instance = this;
         batch = new SpriteBatch();
         Gdx.graphics.setWindowedMode(1920, 1200);
-        gameView = new GameView();
-        this.setScreen(gameView);
+        GameAssetManager gameAssetManager = GameAssetManager.getInstance();
+        gameAssetManager.initialize();
+//        gameView = new GameView();
+//        changeScreen(gameView);
+        changeScreen(new StartScreen());
+    }
+
+    public void setGameView(GameView gameView) {
+        this.gameView = gameView;
     }
 
     public GameView getGameView() {
@@ -81,4 +90,9 @@ public class Main extends Game {
     public AssetManager getAssetManager() {
         return assetManager;
     }
+
+    public void exit(){
+        Gdx.app.exit();
+    }
+
 }

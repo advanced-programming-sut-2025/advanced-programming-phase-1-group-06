@@ -33,6 +33,7 @@ public class GameView implements Screen, InputProcessor {
     private Table inventoryTable;
 
     public GameView() {
+        Main.getInstance().setGameView(this);
         Skin skin = new Skin(Gdx.files.internal("skin/NzSkin.json"));
         inventoryTable = new Table(skin);
         camera = new OrthographicCamera();
