@@ -3,26 +3,38 @@ package com.ap.Model.Player;
 import com.ap.Model.Item.Factory;
 import com.ap.Model.Item.Item;
 import com.ap.Model.Item.ToolComponent;
+import com.ap.View.InGameMenus.InventoryView;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Locale;
-import java.util.Map;
 
 
 public class Inventory {
 
-    private final ArrayList<Item> items;
     private Item equippeditem;
     private int equipedInt = 0;
     private int level;
+    private final ArrayList<Item> items;
     private final ArrayList<Item> quickAccessItems;
-    private LinkedHashMap<Stack, Item> quickAccessStacks;
-    private LinkedHashMap<Stack, Item> inventoryStacks;
+
+    public float SLOT_DIMENSION = 100;
+    public float INVENTORY_START_X = 400;
+    public float INVENTORY_START_Y = 900;
+    public float QUICK_ACCESS_START_X = 500;
+    public float QUICK_ACCESS_START_Y = 80;
+    private ArrayList<Slot> inventorySlots;
+    private ArrayList<Slot> quickAccessSlots;
+    private Image selectedBorder;
+
+    public InventoryView inventoryView;
+
     private DragAndDrop dragAndDrop;
 
     Image selectedImage = new Image(new Texture(Gdx.files.internal("inventory/selected-border.png")));
@@ -30,12 +42,19 @@ public class Inventory {
 
     Inventory() {
         level = 1;
+        inventorySlots = new ArrayList<>();
+        quickAccessSlots = new ArrayList<>();
         quickAccessItems = new ArrayList<>();
         items = new ArrayList<>();
-        quickAccessStacks = new LinkedHashMap<>();
-        inventoryStacks = new LinkedHashMap<>();
         addTools();
         dragAndDrop = new DragAndDrop();
+        selectedBorder = new Image(new Texture(Gdx.files.internal("inventory/selected-border.png")));
+        selectedBorder.setSize(SLOT_SIZE, SLOT_SIZE);
+        initiateSlots();
+    }
+
+    public void setInventoryView(InventoryView inventoryView) {
+        this.inventoryView = inventoryView;
     }
 
     public ArrayList<Item> getItems() {
@@ -50,7 +69,7 @@ public class Inventory {
         this.level = level;
     }
 
-    public int getSize(){
+    public int getSize() {
         return switch (level) {
             case 1 -> 12;
             case 2 -> 24;
@@ -65,14 +84,14 @@ public class Inventory {
 //        Item item = factory.createItem("blue_jazz");
 //        Item item = factory.createItem("blue_jazz");
 
-        for (ToolComponent.ToolType toolType : ToolComponent.ToolType.values()){
+        for (ToolComponent.ToolType toolType : ToolComponent.ToolType.values()) {
             try {
-                if (toolType.equals(ToolComponent.ToolType.FISHING_ROD) || toolType.equals(ToolComponent.ToolType.MILK_PAIL)){
+                if (toolType.equals(ToolComponent.ToolType.FISHING_ROD) || toolType.equals(ToolComponent.ToolType.MILK_PAIL)) {
                     continue;
                 }
                 Item item = Factory.getInstance().createItemByName(toolType.name());
                 if (item == null) {
-                    System.out.println(toolType.name().toLowerCase()+ " isn't found");
+                    System.out.println(toolType.name().toLowerCase() + " isn't found");
 
                 } else {
                     addItem(item);
@@ -217,115 +236,247 @@ public class Inventory {
         return null;
     }
 
+    public void initiateQuickAccessSlots() {
+        Slot slot;
+        float x = QUICK_ACCESS_START_X;
+        float y = QUICK_ACCESS_START_Y;
+        for (int i = 0; i < 12; i++) {
+            slot = new Slot(inventorySlots.get(i));
+            slot.setCoordinates(x, y);
+            x += SLOT_SIZE;
+            if (slot.itemImage != null) {
+                slot.itemImage.setPosition(slot.x, slot.y);
+            }
+            quickAccessSlots.add(slot);
+        }
+    }
 
-    public Table getQuickAccessTable(Skin skin) {
-        Table table = new Table(skin);
-        table.setSize(1920, 200);
-        table.setPosition(0, 40);
-        table.bottom();
-//        table.debug();
-        Item item;
+    public void drawQuickAccess(Stage stage) {
+        Group itemImages = new Group();
+        Group slotImages = new Group();
+        for (int i = 0; i < 12; i++) {
+            Slot slot = quickAccessSlots.get(i);
+            if (slot.itemImage != null) {
+                slot.itemImage.setPosition(slot.x, slot.y);
+                itemImages.addActor(slot.itemImage);
+            }
+            quickAccessSlots.add(slot);
+            Image slotImage = new Image(new Texture("inventory/inventory-slot.png"));
+            slotImages.setSize(SLOT_SIZE, SLOT_SIZE);
+            slotImage.setPosition(slot.x, slot.y);
+            slotImages.addActor(slotImage);
+        }
+        stage.addActor(slotImages);
+        stage.addActor(itemImages);
+    }
+
+    public void initiateSlots() {
+        inventorySlots.clear();
+        float x = INVENTORY_START_X;
+        float y = INVENTORY_START_Y;
+        Item item = null;
+        Slot slot;
+        int index = 1;
         for (int i = 0; i < 12; i++) {
             item = null;
-            Stack stack = new Stack();
-            Image backgroundImage = new Image(new Texture(Gdx.files.internal("inventory/inventory-slot.png")));
-            stack.add(backgroundImage);
             if (quickAccessItems.size() > i) {
                 if (quickAccessItems.get(i) != null) {
                     item = quickAccessItems.get(i);
-                    stack.add(new Image(new Texture(Gdx.files.internal(item.getTexturePath()))));
                 }
             }
-            if (i == equipedInt)
-                stack.add(selectedImage);
-            table.add(stack).size(SLOT_SIZE, SLOT_SIZE);
-            quickAccessStacks.put(stack, item);
+            slot = new Slot(item, index, x, y);
+            inventorySlots.add(slot);
+            x += SLOT_DIMENSION;
+            index++;
         }
-        return table;
-    }
-
-    public Table getInventoryTable(Skin skin){
-        Table table = new Table(skin);
-        table.top();
-//        table.debug();
-        Item item;
-        for (int i = 0; i < 12; i++) {
-            item = null;
-            Stack stack = new Stack();
-            Image backgroundImage = new Image(new Texture(Gdx.files.internal("inventory/inventory-slot.png")));
-            stack.add(backgroundImage);
-            if (quickAccessItems.size() > i) {
-                item = quickAccessItems.get(i);
-                if (item != null) {
-                    stack.add(new Image(new Texture(Gdx.files.internal(item.getTexturePath()))));
-                }
-            }
-            table.add(stack).size(SLOT_SIZE * 1.5f, SLOT_SIZE * 1.5f).padBottom(50);
-            inventoryStacks.put(stack, item);
-        }
-        table.row();
-        for (int j = 0; j < /*getSize() / 12*/ 10; j ++) {
-            for (int i = 0; i < 12; i++) {
+        x = INVENTORY_START_X;
+        y -= SLOT_DIMENSION + 50;
+        for (int i = 0; i < getSize() / 12; i++) {
+            for (int j = 0; j < 12; j++) {
                 item = null;
-                Stack stack = new Stack();
-                Image backgroundImage = new Image(new Texture(Gdx.files.internal("inventory/inventory-slot.png")));
-                stack.add(backgroundImage);
-                if (items.size() > i) {
-                    if (!quickAccessItems.contains(items.get(i)) && items.get(i) != null) {
-                        try {
-                            item = items.get(i);
-                            stack.add(new Image(new Texture(Gdx.files.internal(item.getTexturePath()))));
-                        } catch (Exception e) {
-                            Label label = new Label(items.get(i).getName(), skin);
-                            stack.add(label);
-                            System.out.println(items.get(i).getTexturePath());
-                            //                            e.printStackTrace();
-                        }
+                if (items.size() > index - 1) {
+                    if (items.get(index - 1) != null && !quickAccessItems.contains(items.get(index - 1))) {
+                        item = items.get(index - 1);
                     }
                 }
-                table.add(stack).size(SLOT_SIZE * 1.5f, SLOT_SIZE * 1.5f);
-                inventoryStacks.put(stack, item);
+                slot = new Slot(item, index, x, y);
+                inventorySlots.add(slot);
+                index++;
+                x += (SLOT_DIMENSION);
             }
-            table.row();
+            y -= SLOT_DIMENSION;
         }
-        return table;
+        initiateQuickAccessSlots();
     }
 
-    public void equipItem(int i, Player player) {
-        if (i >= quickAccessStacks.size()){
-            System.out.println(quickAccessStacks.size() + " fuck");
-            return;
+    public void equipItem(float y, Player player) {
+        int amount = (int) y;
+        Slot slot = inventorySlots.get(amount);
+        if (equipedInt + amount < 9 && equipedInt > 0) {
+            selectedImage.setPosition(slot.x, slot.y);
+            player.setCurrentItem(slot.getItem());
         }
-        new ArrayList<>(quickAccessStacks.keySet()).get(i).removeActor(selectedImage);
-        equipedInt = i;
-        if (equipedInt >= quickAccessStacks.size()){
-            System.out.println(quickAccessStacks.size() + " fuck");
-            return;
-        }
-        new ArrayList<>(quickAccessStacks.keySet()).get(i).add(selectedImage);
-        if (items.size() > i)
-            player.setCurrentItem(quickAccessItems.get(i));
     }
 
-    public Stack getStackByItem(Item item){
-        for (Map.Entry<Stack, Item> entry : quickAccessStacks.entrySet()){
-            if (entry.getValue() == item){
-                return entry.getKey();
+    public void drawInventory(Stage stage) {
+        Group slotGroup = new Group();
+        Group imageGroup = new Group();
+        for (Slot slot : inventorySlots) {
+            if (slot.y > 1000 || slot.y < 40) {
+                continue;
+            }
+            Image image = new Image(new Texture(Gdx.files.internal("inventory/inventory-slot.png")));
+            image.setSize(SLOT_DIMENSION, SLOT_DIMENSION);
+            image.setPosition(slot.x, slot.y);
+            slotGroup.addActor(image);
+            if (slot.getItem() != null) {
+                imageGroup.addActor(slot.getItemImage());
+            }
+        }
+        stage.addActor(slotGroup);
+        stage.addActor(imageGroup);
+    }
+
+    public Slot getSlotByCoordinate(float x, float y) {
+        for (Slot slot : inventorySlots) {
+            if (slot.x <= x && slot.y <= y && slot.x + SLOT_DIMENSION >= x && slot.y + SLOT_DIMENSION >= y) {
+                return slot;
             }
         }
         return null;
     }
 
-    public void equipItem(float y) {
-        int amount = (int) y;
-        if (equipedInt + amount < 9 && equipedInt > 0){
-            equipItem(equipedInt + amount);
+    public ArrayList<Slot> getInventorySlots() {
+        return inventorySlots;
+    }
+
+    class Slot {
+
+
+        private Item item;
+        public int index;
+        public float x, y;
+        private Image itemImage;
+        private float touchOffsetX;
+        private float touchOffsetY;
+        private float startX;
+        private float startY;
+
+        public Slot(Slot slot) {
+            this.item = slot.item;
+
+            if (item != null) {
+                itemImage = new Image(new Texture(Gdx.files.internal(item.getTexturePath())));
+                itemImage.setSize(SLOT_SIZE, SLOT_SIZE);
+            }
+            this.index = slot.index;
+        }
+
+        public Slot(Item item, int index, float x, float y) {
+            this.item = item;
+            this.index = index;
+            this.x = x;
+            this.y = y;
+            itemImage = null;
+            if (item != null) {
+                itemImage = new Image(new Texture(Gdx.files.internal(item.getTexturePath())));
+                itemImage.setPosition(x, y);
+                itemImage.setSize(100, 100);
+                itemImage.addListener(new InputListener() {
+                    @Override
+                    public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                        if (itemImage == null) {
+                            System.out.println("item image null");
+                            return true;
+                        }
+                        touchOffsetX = x;
+                        touchOffsetY = y;
+                        startX = itemImage.getX();
+                        startY = itemImage.getY();
+                        return true;
+                    }
+
+                    @Override
+                    public void touchDragged(InputEvent event, float x, float y, int pointer) {
+                        if (itemImage == null) {
+                            System.out.println("item image null");
+                            return;
+                        }
+                        itemImage.setPosition(
+                            event.getStageX() - touchOffsetX,
+                            event.getStageY() - touchOffsetY
+                        );
+                    }
+
+                    @Override
+                    public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                        if (itemImage == null){
+                            System.out.println("item image null");
+                            return;
+                        }
+                        Slot toSlot = getSlotByCoordinate(itemImage.getX() + itemImage.getWidth() / 2, itemImage.getY() + itemImage.getHeight() / 2);
+                        if (toSlot != null) {
+                            itemImage.setPosition(toSlot.x, toSlot.y);
+                            Slot fromSlot = getSlotByCoordinate(startX + itemImage.getWidth() / 2, startY + itemImage.getHeight() / 2);
+                            swapItem(toSlot, fromSlot);
+                        } else {
+                            itemImage.setPosition(startX, startY);
+                        }
+                    }
+                });
+
+            }
+        }
+
+        public static void swapItem(Slot slot1, Slot slot2) {
+            Item item = slot1.item;
+//            Image itemImage = slot1.itemImage;
+            slot1.item = slot2.item;
+//            slot1.itemImage = slot2.itemImage;
+            slot2.item = item;
+//            slot2.itemImage = itemImage;
+            if (slot1.item != null){
+                slot1.setItemImage(new Image(new Texture(Gdx.files.internal(slot1.item.getTexturePath()))), slot1.x, slot1.y, 100);
+                System.out.println("slot1: " + slot1.index);
+            }
+            if (slot2.item != null){
+                slot2.setItemImage(new Image(new Texture(Gdx.files.internal(slot2.item.getTexturePath()))), slot2.x, slot2.y, 100);
+//                slot2.itemImage.setPosition(slot1.x, slot2.y);
+                System.out.println("slot2: " + slot2.index);
+            }
+        }
+
+        public Image getItemImage() {
+            return itemImage;
+        }
+
+        public void setItemImage(Image itemImage, float x, float y, float size) {
+            this.itemImage = itemImage;
+            if(itemImage != null){
+                itemImage.setPosition(x, y);
+                itemImage.setSize(size, size);
+            }
+        }
+
+        public void setItemImage(Image itemImage) {
+            this.itemImage = itemImage;
+        }
+
+        public Item getItem() {
+            return item;
+        }
+
+        public void setItem(Item item) {
+            this.item = item;
+        }
+
+        public void setCoordinates(float x, float y) {
+            this.x = x;
+            this.y = y;
+            if (itemImage != null)
+                itemImage.setPosition(x, y);
         }
     }
+
 }
 
-class slot{
-    Item item;
-    int index;
-    float x, y;
-}

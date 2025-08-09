@@ -33,20 +33,20 @@ public class InventoryView implements Screen, InputProcessor {
         inventoryWindow.top();
 
         moneyLabel = new Label(player.getMoney()+" g" , skin);
-
+        player.getInventory().setInventoryView(this);
+        player.getInventory().initiateSlots();
         // Create inventory table
-        Table inventoryTable = player.getInventory().getInventoryTable(skin);
 
-        // Create ScrollPane
-        ScrollPane scrollPane = new ScrollPane(inventoryTable, skin);
-        scrollPane.setScrollingDisabled(true, false); // Vertical scrolling only
-        scrollPane.isRightEdge();
-        scrollPane.setFadeScrollBars(false); // Keep scrollbars visible
-        scrollPane.setSmoothScrolling(true);
-        scrollPane.setScrollBarPositions(true, true); // Scrollbar on right
+//        // Create ScrollPane
+//        ScrollPane scrollPane = new ScrollPane(inventoryTable, skin);
+//        scrollPane.setScrollingDisabled(true, false); // Vertical scrolling only
+//        scrollPane.isRightEdge();
+//        scrollPane.setFadeScrollBars(false); // Keep scrollbars visible
+//        scrollPane.setSmoothScrolling(true);
+//        scrollPane.setScrollBarPositions(true, true); // Scrollbar on right
 
         // Add ScrollPane to Window (not the table directly)
-        inventoryWindow.add(scrollPane); // Uniform padding
+//        inventoryWindow.add(scrollPane); // Uniform padding
         inventoryWindow.setMovable(false);
         inventoryWindow.setResizable(false);
         inventoryWindow.setTouchable(Touchable.childrenOnly);
@@ -77,7 +77,7 @@ public class InventoryView implements Screen, InputProcessor {
         stage.addActor(infoWindow);
         Journal.addButtonsToStage(inventoryWindow, stage, Journal.getImageButtons(), "inventory");
         stage.addActor(trashcan);
-
+        player.getInventory().drawInventory(stage);
     }
 
     @Override

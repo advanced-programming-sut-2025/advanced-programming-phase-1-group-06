@@ -48,18 +48,12 @@ public class GameView implements Screen, InputProcessor {
         uiViewport = new ScreenViewport(new OrthographicCamera());
         uiStage = new Stage(uiViewport);
         uiStage.addActor(clock);
-        try {
-            inventoryTable = player.getInventory().getQuickAccessTable(skin);
-            assert inventoryTable != null;
-            uiStage.addActor(inventoryTable);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
     public void show() {
         Gdx.input.setInputProcessor(this);
+        player.getInventory().drawQuickAccess(uiStage);
     }
 
     @Override
