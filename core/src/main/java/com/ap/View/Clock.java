@@ -9,23 +9,41 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+
 
 public class Clock extends Group {
     private static final float SCALE = 2.0f; // Adjust this value to change overall size
+
+    private float SEASON_IMAGE_Y = 25 ;
+    private float SEASON_IMAGE_X = 70;
+
+    private float SEASON_IMAGE_WIDTH;
+    private float SEASON_IMAGE_HEIGHT;
+
+    private float WEATHER_IMAGE_Y = 25;
+    private float WEATHER_IMAGE_X = -28;
+
+    private float SEASON_IMAGE_SCALE = 4;
+
     //    private TextureAtlas weatherAtlas = new TextureAtlas("Clock/weather.atlas");
-//    private TextureAtlas seasonsAtlas = new TextureAtlas("Clock/seasons.atlas");
+    //    private TextureAtlas seasonsAtlas = new TextureAtlas("Clock/seasons.atlas");
     private TextureRegion clockBase = new TextureRegion(new Texture("Clock/clock_base.png"));
     private TextureRegion clockHand = new TextureRegion(new Texture("Clock/clock_hand.png"));
-    private TextureRegion sunny = new TextureRegion(new Texture("Clock/sunny.png"));
-    private TextureRegion rainy = new TextureRegion(new Texture("Clock/rainy.png"));
-    private TextureRegion snowy = new TextureRegion(new Texture("Clock/snowy.png"));
-    private TextureRegion stormy = new TextureRegion(new Texture("Clock/stormy.png"));
-    private TextureRegion fall = new TextureRegion(new Texture("Clock/fall.png"));
-    private TextureRegion winter = new TextureRegion(new Texture("Clock/winter.png"));
-    private TextureRegion spring = new TextureRegion(new Texture("Clock/spring.png"));
-    private TextureRegion summer = new TextureRegion(new Texture("Clock/summer.png"));
-    private TextureRegion seasonIcon;
-    private TextureRegion weatherIcon;
+    private Image sunny = new Image(new Texture(Gdx.files.internal("Clock/sunny.png")));
+    private Image rainy = new Image(new Texture(Gdx.files.internal("Clock/rainy.png")));
+    private Image snowy = new Image(new Texture(Gdx.files.internal("Clock/snowy.png")));
+    private Image stormy = new Image(new Texture(Gdx.files.internal("Clock/stormy.png")));
+    private Image fall = new Image(new Texture(Gdx.files.internal("Clock/fall.png")));
+    private Image winter = new Image(new Texture(Gdx.files.internal("Clock/winter.png")));
+    private Image spring = new Image(new Texture(Gdx.files.internal("Clock/spring.png")));
+    private Image summer = new Image(new Texture(Gdx.files.internal("Clock/summer.png")));
+    private Image seasonIcon;
+    private Image weatherIcon;
+    private Image weatherImage;
+    private Image seasonImage;
+
+
 
     private Label dayLabel;
     private Label timeLabel;
@@ -48,15 +66,32 @@ public class Clock extends Group {
 
     public Clock(Skin skin) {
         setSize(clockBase.getRegionWidth() * SCALE, clockBase.getRegionHeight() * SCALE);
-
-        // Set position in top-right corner
         setPosition(0, 0);
 
-        // Create labels
         setupLabels(skin);
+
+        // Create icon actors (no drawables yet)
+        weatherImage = sunny;
+        seasonImage  = spring;
+
+        SEASON_IMAGE_HEIGHT = weatherImage.getHeight() * SEASON_IMAGE_SCALE;
+        SEASON_IMAGE_WIDTH = weatherImage.getWidth() * SEASON_IMAGE_SCALE;
+        weatherImage.setSize(SEASON_IMAGE_WIDTH, SEASON_IMAGE_HEIGHT);
+        weatherImage.setPosition(WEATHER_IMAGE_X, WEATHER_IMAGE_Y);
+
+        seasonImage.setSize(SEASON_IMAGE_WIDTH, SEASON_IMAGE_HEIGHT);
+        seasonImage.setPosition(SEASON_IMAGE_X, SEASON_IMAGE_Y);
+
+        // Add to this Group so they’re part of the stage graph
+
+        addActor(weatherImage);
+        addActor(seasonImage);
+
+
+        initIcons();
+
         updateDisplay();
         Main.getInstance().setClock(this);
-        initIcons();
     }
 
     private void setupLabels(Skin skin) {
@@ -82,7 +117,6 @@ public class Clock extends Group {
 
         // Update game time
         gameTimeAccumulator += delta;
-
         if (gameTimeAccumulator >= gameMinuteLength) {
             gameTimeAccumulator = 0f;
             advanceGameTime();
@@ -91,7 +125,14 @@ public class Clock extends Group {
 
         // Update hand rotation (smooth animation)
         updateHandRotation();
+
+        // ---- Position the icon actors to match your absolute clock placement ----
+        float baseX = Gdx.graphics.getWidth()  - getWidth() * SCALE;
+        float baseY = Gdx.graphics.getHeight() - getHeight() * SCALE;
+
+        // Same offsets you used when batch-drawing
     }
+
 
     private void advanceGameTime() {
         gameMinute += 10; // Stardew Valley increments by 10 minutes
@@ -225,13 +266,13 @@ public class Clock extends Group {
             handRotation);
 
         // Draw weather/season icons if you have them
-        if (weatherIcon != null) {
-            batch.draw(weatherIcon, getX() + 20, getY() + 50); // Adjust position
-        }
-
-        if (seasonIcon != null) {
-            batch.draw(seasonIcon, getX() + 40, getY() + 50); // Adjust position
-        }
+//        if (weatherIcon != null) {
+//            batch.draw(weatherIcon, getX() + 20, getY() + 50); // Adjust position
+//        }
+//
+//        if (seasonIcon != null) {
+//            batch.draw(seasonIcon, getX() + 40, getY() + 50); // Adjust position
+//        }
 
         // Draw all child actors (labels)
         super.draw(batch, parentAlpha);
@@ -264,12 +305,20 @@ public class Clock extends Group {
         updateDisplay();
     }
 
-    public void setWeatherIcon(TextureRegion icon) {
+    public void setWeatherIcon(Image icon) {
         this.weatherIcon = icon;
+        if (icon != null) {
+            weatherImage.setSize(SEASON_IMAGE_WIDTH, SEASON_IMAGE_HEIGHT);
+            weatherImage.setPosition(WEATHER_IMAGE_X, WEATHER_IMAGE_Y);
+        }
     }
 
-    public void setSeasonIcon(TextureRegion icon) {
+    public void setSeasonIcon(Image icon) {
         this.seasonIcon = icon;
+        if (icon != null) {
+            seasonImage.setSize(SEASON_IMAGE_WIDTH, SEASON_IMAGE_HEIGHT);
+            seasonImage.setPosition(SEASON_IMAGE_X, SEASON_IMAGE_Y);
+        }
     }
 
     public void setGameSpeed(float minutesPerSecond) {
