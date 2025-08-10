@@ -1494,7 +1494,7 @@
       "description": "It's a sweet syrup produced by bees.",
       "stackSize": 99,
       "basePrice": 350,
-      "texture": "items/honey.png",
+      "texture": "Items/honey.png",
       "componentsData": [
         {
           "type": "ArtisanComponent",
@@ -1511,7 +1511,7 @@
       "description": "It's your basic cheese.",
       "stackSize": 99,
       "basePrice": 230,
-      "texture": "items/cheese.png",
+      "texture": "Items/cheese.png",
       "componentsData": [
         {
           "type": "ArtisanComponent",
@@ -1528,7 +1528,7 @@
       "description": "It's your basic cheese.",
       "stackSize": 99,
       "basePrice": 345,
-      "texture": "items/cheese.png",
+      "texture": "Items/cheese.png",
       "componentsData": [
         {
           "type": "ArtisanComponent",
@@ -1545,7 +1545,7 @@
       "description": "Soft cheese made from goat's milk.",
       "stackSize": 99,
       "basePrice": 400,
-      "texture": "items/goat_cheese.png",
+      "texture": "Items/goat_cheese.png",
       "componentsData": [
         {
           "type": "ArtisanComponent",
@@ -1562,7 +1562,7 @@
       "description": "Soft cheese made from goat's milk.",
       "stackSize": 99,
       "basePrice": 600,
-      "texture": "items/goat_cheese.png",
+      "texture": "Items/goat_cheese.png",
       "componentsData": [
         {
           "type": "ArtisanComponent",
@@ -1579,7 +1579,7 @@
       "description": "Drink in moderation.",
       "stackSize": 99,
       "basePrice": 200,
-      "texture": "items/beer.png",
+      "texture": "Items/beer.png",
       "componentsData": [
         {
           "type": "ArtisanComponent",
@@ -1596,7 +1596,7 @@
       "description": "An aged fermented liquid used in many cooking recipes.",
       "stackSize": 99,
       "basePrice": 100,
-      "texture": "items/vinegar.png",
+      "texture": "Items/vinegar.png",
       "componentsData": [
         {
           "type": "ArtisanComponent",
@@ -1613,7 +1613,7 @@
       "description": "It smells delicious. This is sure to give you a boost.",
       "stackSize": 99,
       "basePrice": 150,
-      "texture": "items/coffee.png",
+      "texture": "Items/coffee.png",
       "componentsData": [
         {
           "type": "ArtisanComponent",
@@ -1631,7 +1631,7 @@
       "description": "A fermented beverage made from honey. Drink in moderation.",
       "stackSize": 99,
       "basePrice": 300,
-      "texture": "items/mead.png",
+      "texture": "Items/mead.png",
       "componentsData": [
         {
           "type": "ArtisanComponent",
@@ -1648,7 +1648,7 @@
       "description": "Drink in moderation.",
       "stackSize": 99,
       "basePrice": 300,
-      "texture": "items/pale_ale.png",
+      "texture": "Items/pale_ale.png",
       "componentsData": [
         {
           "type": "ArtisanComponent",
@@ -1665,7 +1665,7 @@
       "description": "A gourmet cooking ingredient.",
       "stackSize": 99,
       "basePrice": 1065,
-      "texture": "items/truffle_oil.png",
+      "texture": "Items/truffle_oil.png",
       "componentsData": [
         {
           "type": "ArtisanComponent",
@@ -1682,7 +1682,7 @@
       "description": "All purpose cooking oil.",
       "stackSize": 99,
       "basePrice": 100,
-      "texture": "items/oil.png",
+      "texture": "Items/oil.png",
       "componentsData": [
         {
           "type": "ArtisanComponent",
@@ -1699,7 +1699,7 @@
       "description": "All purpose cooking oil.",
       "stackSize": 99,
       "basePrice": 100,
-      "texture": "items/oil.png",
+      "texture": "Items/oil.png",
       "componentsData": [
         {
           "type": "ArtisanComponent",
@@ -1716,7 +1716,7 @@
       "description": "All purpose cooking oil.",
       "stackSize": 99,
       "basePrice": 100,
-      "texture": "items/oil.png",
+      "texture": "Items/oil.png",
       "componentsData": [
         {
           "type": "ArtisanComponent",
@@ -1733,7 +1733,7 @@
       "description": "It looks spreadable.",
       "stackSize": 99,
       "basePrice": 190,
-      "texture": "items/mayonnaise.png",
+      "texture": "Items/mayonnaise.png",
       "componentsData": [
         {
           "type": "ArtisanComponent",
@@ -1750,7 +1750,7 @@
       "description": "It looks spreadable.",
       "stackSize": 99,
       "basePrice": 237,
-      "texture": "items/mayonnaise.png",
+      "texture": "Items/mayonnaise.png",
       "componentsData": [
         {
           "type": "ArtisanComponent",
@@ -1767,7 +1767,7 @@
       "description": "It's a rich, yellow mayonnaise.",
       "stackSize": 99,
       "basePrice": 375,
-      "texture": "items/duck_mayonnaise.png",
+      "texture": "Items/duck_mayonnaise.png",
       "componentsData": [
         {
           "type": "ArtisanComponent",
@@ -1784,7 +1784,7 @@
       "description": "It's thick and creamy, with a vivid green hue. It smells like grass and leather.",
       "stackSize": 99,
       "basePrice": 800,
-      "texture": "items/dinosaur_mayonnaise.png",
+      "texture": "Items/dinosaur_mayonnaise.png",
       "componentsData": [
         {
           "type": "ArtisanComponent",
@@ -1801,7 +1801,7 @@
       "description": "A bolt of fine wool cloth.",
       "stackSize": 99,
       "basePrice": 470,
-      "texture": "items/cloth.png",
+      "texture": "Items/cloth.png",
       "componentsData": [
         {
           "type": "ArtisanComponent",

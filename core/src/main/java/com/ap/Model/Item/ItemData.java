@@ -10,6 +10,7 @@ public class ItemData {
     public String description;
     public int stackSize;
     public int basePrice = 0; // Optional
+
     public String texture;
     public ArrayList<ComponentData> componentsData;
 
