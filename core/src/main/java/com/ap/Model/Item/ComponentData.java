@@ -11,5 +11,10 @@ public class ComponentData {
     public int successfulEnergyUse;
     public int unsuccessfulEnergyUse;
     public int capacity;
+    // For Artisan_goods
+
+    String sourceItem;
+    String resultItem;
+    int processingTime;
 }
 

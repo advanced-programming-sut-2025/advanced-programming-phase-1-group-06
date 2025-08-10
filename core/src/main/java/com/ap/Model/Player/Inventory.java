@@ -96,6 +96,7 @@ public class Inventory {
     }
 
     private void addTools() {
+        addItem(Factory.getInstance().createItemByName("oil_sunflower_seeds"));
         for (ToolComponent.ToolType toolType : ToolComponent.ToolType.values()) {
             try {
                 if (toolType.equals(ToolComponent.ToolType.FISHING_ROD) || toolType.equals(ToolComponent.ToolType.MILK_PAIL)) {

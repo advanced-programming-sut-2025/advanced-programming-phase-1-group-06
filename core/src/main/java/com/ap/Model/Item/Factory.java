@@ -39,7 +39,6 @@ public class Factory {
             for (ItemData data : root.tools) {
                 items.put(data.id, data);
             }
-
             for (ItemData data : root.artisan_goods) {
                 items.put(data.id, data);
             }
@@ -72,6 +71,9 @@ public class Factory {
         item.setAmount(amount);
         // Add components to item here if needed using data.componentsData
         item.setTexturePath(data.texture);
+        for (ComponentData component : data.componentsData){
+
+        }
         return item;
     }
 

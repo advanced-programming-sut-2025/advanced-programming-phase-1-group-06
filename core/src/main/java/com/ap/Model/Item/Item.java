@@ -78,4 +78,10 @@ public class Item {
     public void setTexturePath(String texturePath) {
         this.texturePath = texturePath;
     }
+
+    public void setComponents(Map<Class<? extends Component>, Component> components) {
+        this.components = components;
+    }
+
+
 }
