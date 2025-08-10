@@ -7,6 +7,6 @@ public class ItemDataRoot {
     public ArrayList<ItemData> seeds;
     public ArrayList<ItemData> tools;
     public ArrayList<ItemData> artisan_goods;
-    public ArrayList<ItemData> ArtisanDevices;
+    public ArrayList<ItemData> artisan_devices;
 
 }

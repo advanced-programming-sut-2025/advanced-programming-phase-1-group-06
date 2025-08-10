@@ -1812,6 +1812,230 @@
         }
       ]
     }
+  ],
+  "artisan_devices": [
+    {
+      "id": "charcoal_kiln",
+      "name": "Charcoal Kiln",
+      "description": "Converts 10 wood into 1 coal.",
+      "ingredients": [
+        {
+          "item": "wood",
+          "amount": 10
+        }
+      ],
+      "source": "Foraging Level 1",
+      "sellPrice": null,
+      "stackSize": 1,
+      "texture": "Items/charcoal_kiln.png"
+    },
+    {
+      "id": "furnace",
+      "name": "Furnace",
+      "description": "Smelts ores into bars.",
+      "ingredients": [
+        {
+          "item": "copper_ore",
+          "amount": 20
+        },
+        {
+          "item": "stone",
+          "amount": 25
+        }
+      ],
+      "source": "Mining Level 1",
+      "sellPrice": null,
+      "stackSize": 1,
+      "texture": "Items/furnace.png"
+    },
+    {
+      "id": "bee_house",
+      "name": "Bee House",
+      "description": "Produces honey when surrounded by flowers.",
+      "ingredients": [
+        {
+          "item": "wood",
+          "amount": 40
+        },
+        {
+          "item": "coal",
+          "amount": 8
+        },
+        {
+          "item": "iron_bar",
+          "amount": 1
+        }
+      ],
+      "source": "Farming Level 1",
+      "sellPrice": 240,
+      "stackSize": 1,
+      "texture": "Items/bee_house.png"
+    },
+    {
+      "id": "cheese_press",
+      "name": "Cheese Press",
+      "description": "Turns milk into cheese.",
+      "ingredients": [
+        {
+          "item": "hardwood",
+          "amount": 45
+        },
+        {
+          "item": "copper_ore",
+          "amount": 10
+        }
+      ],
+      "source": "Farming Level 2",
+      "sellPrice": 1000,
+      "stackSize": 1,
+      "texture": "Items/cheese_press.png"
+    },
+    {
+      "id": "keg",
+      "name": "Keg",
+      "description": "Ferments fruits and vegetables into wine or juice.",
+      "ingredients": [
+        {
+          "item": "wood",
+          "amount": 50
+        },
+        {
+          "item": "iron_bar",
+          "amount": 10
+        }
+      ],
+      "source": "Farming Level 3",
+      "sellPrice": 500,
+      "stackSize": 1,
+      "texture": "Items/keg.png"
+    },
+    {
+      "id": "loom",
+      "name": "Loom",
+      "description": "Turns wool into cloth.",
+      "ingredients": [
+        {
+          "item": "wood",
+          "amount": 60
+        },
+        {
+          "item": "fiber",
+          "amount": 10
+        },
+        {
+          "item": "iron_ore",
+          "amount": 10
+        }
+      ],
+      "source": "Farming Level 3",
+      "sellPrice": 500,
+      "stackSize": 1,
+      "texture": "Items/loom.png"
+    },
+    {
+      "id": "mayonnaise_machine",
+      "name": "Mayonnaise Machine",
+      "description": "Turns eggs into mayonnaise.",
+      "ingredients": [
+        {
+          "item": "wood",
+          "amount": 45
+        },
+        {
+          "item": "clay",
+          "amount": 20
+        }
+      ],
+      "source": "Farming Level 2",
+      "sellPrice": 200,
+      "stackSize": 1,
+      "texture": "Items/mayonnaise_machine.png"
+    },
+    {
+      "id": "oil_maker",
+      "name": "Oil Maker",
+      "description": "Turns olives or truffles into oil.",
+      "ingredients": [
+        {
+          "item": "copper_ore",
+          "amount": 25
+        },
+        {
+          "item": "gold_ore",
+          "amount": 5
+        },
+        {
+          "item": "iron_ore",
+          "amount": 10
+        }
+      ],
+      "source": "Farming Level 3",
+      "sellPrice": 1000,
+      "stackSize": 1,
+      "texture": "Items/oil_maker.png"
+    },
+    {
+      "id": "preserves_jar",
+      "name": "Preserves Jar",
+      "description": "Turns vegetables and fruits into pickles and jams.",
+      "ingredients": [
+        {
+          "item": "iron_bar",
+          "amount": 10
+        },
+        {
+          "item": "wood",
+          "amount": 20
+        }
+      ],
+      "source": "Farming Level 2",
+      "sellPrice": 250,
+      "stackSize": 1,
+      "texture": "Items/preserves_jar.png"
+    },
+    {
+      "id": "dehydrator",
+      "name": "Dehydrator",
+      "description": "Dries fruits into dried fruits and mushrooms into dried mushrooms.",
+      "ingredients": [
+        {
+          "item": "wood",
+          "amount": 15
+        },
+        {
+          "item": "fiber",
+          "amount": 10
+        }
+      ],
+      "source": "Pierre's General Store",
+      "sellPrice": null,
+      "buyPrice": 1000,
+      "stackSize": 1,
+      "texture": "Items/dehydrator.png"
+    },
+    {
+      "id": "fish_smoker",
+      "name": "Fish Smoker",
+      "description": "Smokes fish into smoked fish.",
+      "ingredients": [
+        {
+          "item": "wood",
+          "amount": 15
+        },
+        {
+          "item": "ore",
+          "amount": 10
+        },
+        {
+          "item": "coal",
+          "amount": 10
+        }
+      ],
+      "source": "Fish Shop",
+      "sellPrice": null,
+      "buyPrice": 10000,
+      "stackSize": 1,
+      "texture": "Items/fish_smoker.png"
+    }
   ]
-
 }

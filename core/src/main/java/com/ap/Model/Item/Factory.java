@@ -43,6 +43,9 @@ public class Factory {
             for (ItemData data : root.artisan_goods) {
                 items.put(data.id, data);
             }
+            for (ItemData data : root.artisan_devices) {
+                items.put(data.id, data);
+            }
             // populate fruitIds, vegetableIds, etc. if needed
         } catch (Exception e) {
             e.printStackTrace();
