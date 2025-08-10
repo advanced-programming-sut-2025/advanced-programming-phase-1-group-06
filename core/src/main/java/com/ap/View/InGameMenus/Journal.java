@@ -209,6 +209,12 @@ public class Journal implements Screen, InputProcessor {
                 Main.getInstance().changeScreen(new InventoryView(player));
             }
         });
+        imageButtons.get("exit").addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                Main.getInstance().changeScreen(new SettingsView(player));
+            }
+        });
     }
 
     public static LinkedHashMap<String, ImageButton> getImageButtons() {

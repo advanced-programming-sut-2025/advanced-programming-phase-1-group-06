@@ -36,6 +36,7 @@ public class MainMenuScreen implements Screen {
         table = new Table(skin);
 
         buttons = new LinkedHashMap<>();
+        buttons.put("resume", new TextButton("resum", skin));
         buttons.put("new game", new TextButton("new game", skin));
         buttons.put("load game", new TextButton("load game", skin));
         buttons.put("profile", new TextButton("profile", skin));
@@ -104,6 +105,12 @@ public class MainMenuScreen implements Screen {
 
     public void addListeners(){
 //        TODO new game and load game."
+        buttons.get("resume").addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                Main.getInstance().changeScreen(Main.getInstance().getGameView());
+            }
+        });
         buttons.get("profile").addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y){

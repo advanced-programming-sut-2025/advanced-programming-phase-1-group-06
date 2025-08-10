@@ -33,6 +33,14 @@ public class Player {
         for (Skill.SkillType skillType : Skill.SkillType.values()){
             skills.add(skillType.getSkill());
         }
+        increaseSkill("fishing");
+        increaseSkill("foraging");
+        increaseSkill("foraging");
+        increaseSkill("foraging");
+        increaseSkill("mining");
+        increaseSkill("farming");
+        increaseSkill("farming");
+        increaseSkill("farming");
     }
 
     public void setCurrentItem(Item item){

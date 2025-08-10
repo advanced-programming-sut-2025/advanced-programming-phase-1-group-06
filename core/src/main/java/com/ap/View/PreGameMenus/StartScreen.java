@@ -47,7 +47,6 @@ public class StartScreen implements Screen {
                 Main.getInstance().changeScreen(new LoginScreen());
             }
         });
-        GameAssetManager.getInstance().finishLoading();
 
         backgroundTexture = (Texture) AssetAddresses.BACKGROUND.get();
         logoImage = new Image((Texture) AssetAddresses.LOGO.get());

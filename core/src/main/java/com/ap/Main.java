@@ -57,6 +57,7 @@ public class Main extends Game {
         Gdx.graphics.setWindowedMode(1920, 1200);
         GameAssetManager gameAssetManager = GameAssetManager.getInstance();
         gameAssetManager.initialize();
+        GameAssetManager.getInstance().finishLoading();
         gameView = new GameView();
         changeScreen(gameView);
 //        changeScreen(new StartScreen());
@@ -82,6 +83,9 @@ public class Main extends Game {
     }
 
     public void changeScreen(Screen screen){
+        if (screen == null){
+            return;
+        }
         Screen currentScreen = ((Main) Gdx.app.getApplicationListener()).getScreen();
         if (currentScreen != null) {
             currentScreen.dispose();

@@ -7,6 +7,7 @@ import com.ap.Main;
 import com.ap.Model.Direction;
 import com.ap.Model.Player.Player;
 import com.ap.View.InGameMenus.Journal;
+import com.ap.View.InGameMenus.SettingsView;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
@@ -123,6 +124,8 @@ public class GameView implements Screen, InputProcessor {
         } else if (i == Input.Keys.I) {
             Main.getInstance().changeScreen(new Journal(player));
 //            Main.getInstance().changeScreen(new SkillView(player));
+        } else if (i == Input.Keys.ESCAPE){
+            Main.getInstance().changeScreen(new SettingsView(player));
         }
         return false;
     }

@@ -12,14 +12,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
-public class CraftingView implements Screen, InputProcessor {
+public class exampleScreen implements Screen, InputProcessor {
 
     private Player player;
     private Stage stage;
     private Window window;
     private Skin skin;
 
-    public CraftingView(Player player){
+    public exampleScreen(Player player){
         skin = Main.getInstance().getSkin();
         this.player = player;
         window = new Window("Skill" , skin);
