@@ -2,8 +2,10 @@ package com.ap;
 
 //import com.ap.Model.InventoryTest.GameScreen;
 import com.ap.Model.GameAssetManager;
+import com.ap.Model.Player.Player;
 import com.ap.View.Clock;
 import com.ap.View.GameView;
+import com.ap.View.InGameMenus.Journal;
 import com.ap.View.InGameMenus.SkillView;
 import com.ap.View.PreGameMenus.StartScreen;
 import com.badlogic.gdx.ApplicationAdapter;

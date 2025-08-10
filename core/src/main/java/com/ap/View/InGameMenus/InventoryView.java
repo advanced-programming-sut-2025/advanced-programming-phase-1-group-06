@@ -26,7 +26,7 @@ public class InventoryView implements Screen, InputProcessor {
         this.skin = Main.getInstance().getSkin();
 
         // Create inventory window
-        inventoryWindow = new Window("Skill", skin); // "Skill" might be a typo for "Inventory"?
+        inventoryWindow = new Window("Inventory", skin); // "Skill" might be a typo for "Inventory"?
         inventoryWindow.setSize(1600, 500);
         inventoryWindow.setPosition(160, 580);
         inventoryWindow.top();
@@ -122,7 +122,7 @@ public class InventoryView implements Screen, InputProcessor {
 
     @Override
     public boolean keyUp(int keycode) {
-        if (keycode == Input.Keys.I){
+        if (keycode == Input.Keys.ESCAPE){
             Main.getInstance().changeScreen(Main.getInstance().getGameView());
         }
         return false;

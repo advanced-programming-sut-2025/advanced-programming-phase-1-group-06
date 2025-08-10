@@ -3,6 +3,7 @@ package com.ap.View.InGameMenus;
 import com.ap.Main;
 import com.ap.Model.Player.Player;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -21,13 +22,20 @@ public class SocialView implements Screen, InputProcessor {
     public SocialView(Player player){
         skin = Main.getInstance().getSkin();
         this.player = player;
-        window = new Window("Skill" , skin);
+        window = new Window("Social" , skin);
     }
 
     @Override
     public void show() {
         stage = new Stage(new ScreenViewport());
-        Gdx.input.setInputProcessor(this);
+        InputMultiplexer multiplexer = new InputMultiplexer(this, stage);
+        multiplexer.addProcessor(this); // Add Journal as an InputProcessor for keyboard input
+        multiplexer.addProcessor(stage); // Add Stage for UI input (buttons)
+        Gdx.input.setInputProcessor(multiplexer);
+        window.setSize(1600, 1000);
+        window.setPosition(160, 80);
+
+        Journal.addButtonsToStage(window, stage, Journal.getImageButtons(), "social");
 
     }
 

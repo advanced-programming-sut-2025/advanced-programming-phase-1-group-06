@@ -61,7 +61,6 @@ public class Factory {
     public Item createItem(String itemId, int amount) {
         ItemData data = items.get(itemId);
         if (data == null) return null;
-
         Item item = new Item(data.id, data.name, data.description, data.stackSize);
         if (data.getBasePrice() != 0) item.setPrice(data.getBasePrice());
         item.setAmount(amount);
@@ -94,10 +93,12 @@ public class Factory {
      */
     public Item createItemByName(String name, int amount) {
         for (ItemData data : items.values()) {
-            if (data.name.equalsIgnoreCase(name)) {
+            if (data.id.equalsIgnoreCase(name)) {
+                System.out.println(name + " created");
                 return createItem(data.id, amount);
             }
         }
+        System.out.println(name +  " not found");
         return null;
     }
 

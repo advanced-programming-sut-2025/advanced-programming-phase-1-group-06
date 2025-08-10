@@ -3,10 +3,7 @@ package com.ap.View.InGameMenus;
 import com.ap.Main;
 import com.ap.Model.Player.Player;
 import com.ap.View.PreGameMenus.MainMenuScreen;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.*;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -23,15 +20,24 @@ public class SettingsView implements Screen, InputProcessor {
     private Window window;
     private Skin skin;
 
+    private final TextButton resumeButton;
     private final TextButton exitButton;
     private final TextButton backToMenuButton;
 
     public SettingsView(Player player){
         skin = Main.getInstance().getSkin();
         this.player = player;
+        resumeButton = new TextButton("resume", skin);
         exitButton = new TextButton("exit game", skin);
-        window = new Window("settings" , skin);
+        window = new Window("Settings" , skin);
         backToMenuButton = new TextButton("back to menu", skin);
+
+        resumeButton.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                Main.getInstance().changeScreen(Main.getInstance().getGameView());
+            }
+        });
 
         backToMenuButton.addListener(new ClickListener(){
             @Override
@@ -56,6 +62,8 @@ public class SettingsView implements Screen, InputProcessor {
         multiplexer.addProcessor(stage); // Add Stage for UI input (buttons)
         Gdx.input.setInputProcessor(multiplexer);
         window.center();
+        window.add(resumeButton).size(300, 100).padBottom(50);
+        window.row();
         window.add(backToMenuButton).size(300, 100).padBottom(50);
         window.row();
         window.add(exitButton).size(300, 100).padBottom(50);
@@ -104,6 +112,9 @@ public class SettingsView implements Screen, InputProcessor {
 
     @Override
     public boolean keyDown(int keycode) {
+        if (keycode == Input.Keys.ESCAPE){
+            Main.getInstance().changeScreen(Main.getInstance().getGameView());
+        }
         return false;
     }
 

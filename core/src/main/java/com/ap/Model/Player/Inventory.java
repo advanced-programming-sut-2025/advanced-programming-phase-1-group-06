@@ -1,5 +1,6 @@
 package com.ap.Model.Player;
 
+import com.ap.Main;
 import com.ap.Model.Item.Factory;
 import com.ap.Model.Item.Item;
 import com.ap.Model.Item.ToolComponent;
@@ -22,7 +23,6 @@ public class Inventory {
     private int equipedInt = 0;
     private int level;
     private final ArrayList<Item> items;
-    private final ArrayList<Item> quickAccessItems;
 
     private float TRASHCAN_X;
     private float TRASHCAN_Y;
@@ -39,6 +39,10 @@ public class Inventory {
     private Stage stage;
     private Image selectedBorder;
 
+    Group itemImages = new Group();
+    Group slotImages = new Group();
+
+
     public InventoryView inventoryView;
 
     private DragAndDrop dragAndDrop;
@@ -50,7 +54,6 @@ public class Inventory {
         level = 1;
         inventorySlots = new ArrayList<>();
         quickAccessSlots = new ArrayList<>();
-        quickAccessItems = new ArrayList<>();
         items = new ArrayList<>();
         dragAndDrop = new DragAndDrop();
         selectedBorder = new Image(new Texture(Gdx.files.internal("inventory/selected-border.png")));
@@ -104,7 +107,6 @@ public class Inventory {
 
                 } else {
                     addItem(item);
-                    quickAccessItems.add(item);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -114,12 +116,13 @@ public class Inventory {
     }
 
     Inventory(ArrayList<Item> quickAccessItems, ArrayList<Item> items, int level) {
-        this.quickAccessItems = quickAccessItems;
         this.items = items;
         this.level = level;
     }
 
     public boolean addItem(Item itemToAdd) {
+        if (itemToAdd == null)
+            return false;
         for (Item item : items) {
             if (item.equals(itemToAdd)) {
                 item.setAmount(item.getAmount() + itemToAdd.getAmount());
@@ -132,7 +135,7 @@ public class Inventory {
             return false;
         }
         items.add(itemToAdd);
-        System.out.println("item added to inventory");
+        System.out.println(itemToAdd.getName() + " item added to inventory");
         return true;
     }
 
@@ -159,7 +162,6 @@ public class Inventory {
     }
 
     public void removeItem(Item item){
-        quickAccessItems.remove(item);
         items.remove(item);
         Slot slot = getInventorySlotByItem(item);
         slot.item = null;
@@ -275,9 +277,9 @@ public class Inventory {
     }
 
     public void drawQuickAccess(Stage stage) {
+        slotImages.clearChildren();
+        itemImages.clearChildren();
         this.stage = stage;
-        Group itemImages = new Group();
-        Group slotImages = new Group();
         for (int i = 0; i < 12; i++) {
             Slot slot = quickAccessSlots.get(i);
             if (slot.itemImage != null) {
@@ -296,6 +298,7 @@ public class Inventory {
         }
         stage.addActor(slotImages);
         stage.addActor(itemImages);
+//        selectedImage.toFront();
         stage.addActor(selectedImage);
     }
 
@@ -308,9 +311,9 @@ public class Inventory {
         int index = 1;
         for (int i = 0; i < 12; i++) {
             item = null;
-            if (quickAccessItems.size() > i) {
-                if (quickAccessItems.get(i) != null) {
-                    item = quickAccessItems.get(i);
+            if (items.size() > i) {
+                if (items.get(i) != null) {
+                    item = items.get(i);
                 }
             }
             slot = new Slot(item, index, x, y, this);
@@ -324,7 +327,7 @@ public class Inventory {
             for (int j = 0; j < 12; j++) {
                 item = null;
                 if (items.size() > index - 1) {
-                    if (items.get(index - 1) != null && !quickAccessItems.contains(items.get(index - 1))) {
+                    if (items.get(index - 1) != null){
                         item = items.get(index - 1);
                     }
                 }
@@ -344,6 +347,7 @@ public class Inventory {
             equipedInt = amount;
             selectedImage.setPosition(slot.x-5, slot.y-5);
             player.setCurrentItem(slot.getItem());
+//            selectedImage.toFront();
         }
     }
 
@@ -361,6 +365,11 @@ public class Inventory {
             if (slot.getItem() != null) {
                 System.out.println("slot " + slot.index + " has item " + slot.item.getName());
                 imageGroup.addActor(slot.getItemImage());
+                if (slot.getItem().getAmount() != 1) {
+                    Label label = new Label("" + slot.getItem().getAmount(), Main.getInstance().getSkin());
+                    label.setPosition(slot.x + SLOT_DIMENSION - label.getWidth(), slot.y);
+                    imageGroup.addActor(label);
+                }
             }
         }
         stage.addActor(slotGroup);

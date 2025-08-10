@@ -6,12 +6,11 @@ import com.ap.Controller.PlayerController;
 import com.ap.Main;
 import com.ap.Model.Direction;
 import com.ap.Model.Player.Player;
+import com.ap.View.InGameMenus.InventoryView;
 import com.ap.View.InGameMenus.Journal;
 import com.ap.View.InGameMenus.SettingsView;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.Screen;
+import com.ap.View.InGameMenus.SkillView;
+import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -41,6 +40,7 @@ public class GameView implements Screen, InputProcessor {
         viewport = new ScreenViewport(camera);
         mapController = new MapController();
         player = new Player();
+        Journal.getInstance(player);
         playerController = new PlayerController(player);
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.zoom = 0.2f;
@@ -54,7 +54,10 @@ public class GameView implements Screen, InputProcessor {
 
     @Override
     public void show() {
-        Gdx.input.setInputProcessor(this);
+        InputMultiplexer multiplexer = new InputMultiplexer();
+        multiplexer.addProcessor(this); // Add Journal as an InputProcessor for keyboard input
+        multiplexer.addProcessor(uiStage); // Add Stage for UI input (buttons)
+        Gdx.input.setInputProcessor(multiplexer);
         player.getInventory().drawQuickAccess(uiStage);
     }
 
@@ -121,11 +124,14 @@ public class GameView implements Screen, InputProcessor {
             player.getInventory().equipItem(10, player);
         } else if (i == Input.Keys.EQUALS) {
             player.getInventory().equipItem(11, player);
-        } else if (i == Input.Keys.I) {
-            Main.getInstance().changeScreen(new Journal(player));
-//            Main.getInstance().changeScreen(new SkillView(player));
+        } else if (i == Input.Keys.J) {
+            Main.getInstance().setScreen(Journal.getInstance(player));
         } else if (i == Input.Keys.ESCAPE){
-            Main.getInstance().changeScreen(new SettingsView(player));
+            Main.getInstance().setScreen(new SettingsView(player));
+        }else if (i == Input.Keys.I){
+            Main.getInstance().setScreen(new InventoryView(player));
+        }else if (i == Input.Keys.N){
+            Main.getInstance().setScreen(new SkillView(player));
         }
         return false;
     }
