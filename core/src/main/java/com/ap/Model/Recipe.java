@@ -14,10 +14,9 @@ public class Recipe {
     private String itemId;
     private String itemName;
     private Map<String, Integer> ingredients;
-
+    private static ArrayList<Recipe> recipes;
     //    TODO load the recipes into this array; add methods to retrieve items through item instance and or name.
     //    TODO also add items from the recipes to the ItemData.json as a new category.
-    private static ArrayList<Recipe> recipes;
     public void load() {
         try {
             Gson gson = new GsonBuilder().create();
@@ -30,5 +29,4 @@ public class Recipe {
             e.printStackTrace();
         }
     }
-
 }

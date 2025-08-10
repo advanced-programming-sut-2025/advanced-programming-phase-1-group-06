@@ -1,8 +1,5 @@
 package com.ap.Model;
 
-
-
-
 public class DateTime {
     private static final int TIME_START_HOUR = 9;
     private static final int TIME_END_HOUR = 22;

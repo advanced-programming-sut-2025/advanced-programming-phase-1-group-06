@@ -106,6 +106,7 @@ public class ArtisanRecipe {
         return false;
     }
 
+
     // Getters
     public String getOutputItemId() { return outputItemId; }
     public String getOutputItemName() { return outputItemName; }

@@ -39,6 +39,7 @@ public class Factory {
             for (ItemData data : root.tools) {
                 items.put(data.id, data);
             }
+
             // populate fruitIds, vegetableIds, etc. if needed
         } catch (Exception e) {
             e.printStackTrace();

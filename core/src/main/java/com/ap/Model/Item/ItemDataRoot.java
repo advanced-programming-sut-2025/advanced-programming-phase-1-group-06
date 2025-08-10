@@ -6,4 +6,5 @@ public class ItemDataRoot {
     public ArrayList<ItemData> harvested_crops;
     public ArrayList<ItemData> seeds;
     public ArrayList<ItemData> tools;
+    public ArrayList<ItemData> ArtisanDevices;
 }

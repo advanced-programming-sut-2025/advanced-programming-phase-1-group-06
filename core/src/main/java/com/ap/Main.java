@@ -2,6 +2,7 @@ package com.ap;
 
 //import com.ap.Model.InventoryTest.GameScreen;
 import com.ap.Model.GameAssetManager;
+import com.ap.View.Clock;
 import com.ap.View.GameView;
 import com.ap.View.InGameMenus.SkillView;
 import com.ap.View.PreGameMenus.StartScreen;
@@ -26,6 +27,7 @@ public class Main extends Game {
     private Skin skin;
     private GameView gameView;
     private AssetManager assetManager;
+    private Clock clock;
 
     public static Main getInstance() {
         if (instance == null) {
@@ -95,4 +97,11 @@ public class Main extends Game {
         Gdx.app.exit();
     }
 
+    public Clock getClock() {
+        return clock;
+    }
+
+    public void setClock(Clock clock) {
+        this.clock = clock;
+    }
 }
