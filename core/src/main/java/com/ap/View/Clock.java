@@ -1,30 +1,49 @@
 package com.ap.View;
 
+import com.ap.Main;
+import com.ap.Model.Weather;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+
 
 public class Clock extends Group {
     private static final float SCALE = 2.0f; // Adjust this value to change overall size
-//    private TextureAtlas weatherAtlas = new TextureAtlas("Clock/weather.atlas");
-//    private TextureAtlas seasonsAtlas = new TextureAtlas("Clock/seasons.atlas");
+
+    private float SEASON_IMAGE_Y = 25 ;
+    private float SEASON_IMAGE_X = 70;
+
+    private float SEASON_IMAGE_WIDTH;
+    private float SEASON_IMAGE_HEIGHT;
+
+    private float WEATHER_IMAGE_Y = 25;
+    private float WEATHER_IMAGE_X = -28;
+
+    private float SEASON_IMAGE_SCALE = 4;
+
+    //    private TextureAtlas weatherAtlas = new TextureAtlas("Clock/weather.atlas");
+    //    private TextureAtlas seasonsAtlas = new TextureAtlas("Clock/seasons.atlas");
     private TextureRegion clockBase = new TextureRegion(new Texture("Clock/clock_base.png"));
     private TextureRegion clockHand = new TextureRegion(new Texture("Clock/clock_hand.png"));
-    private TextureRegion sunny = new TextureRegion(new Texture("Clock/sunny.png"));
-    private TextureRegion rainy = new TextureRegion(new Texture("Clock/rainy.png"));
-    private TextureRegion snowy = new TextureRegion(new Texture("Clock/snowy.png"));
-    private TextureRegion stormy = new TextureRegion(new Texture("Clock/stormy.png"));
-    private TextureRegion fall = new TextureRegion(new Texture("Clock/fall.png"));
-    private TextureRegion winter = new TextureRegion(new Texture("Clock/winter.png"));
-    private TextureRegion spring = new TextureRegion(new Texture("Clock/spring.png"));
-    private TextureRegion ssummer = new TextureRegion(new Texture("Clock/summer.png"));
-    private TextureRegion seasonIcon;
-    private TextureRegion weatherIcon;
+    private Image sunny = new Image(new Texture(Gdx.files.internal("Clock/sunny.png")));
+    private Image rainy = new Image(new Texture(Gdx.files.internal("Clock/rainy.png")));
+    private Image snowy = new Image(new Texture(Gdx.files.internal("Clock/snowy.png")));
+    private Image stormy = new Image(new Texture(Gdx.files.internal("Clock/stormy.png")));
+    private Image fall = new Image(new Texture(Gdx.files.internal("Clock/fall.png")));
+    private Image winter = new Image(new Texture(Gdx.files.internal("Clock/winter.png")));
+    private Image spring = new Image(new Texture(Gdx.files.internal("Clock/spring.png")));
+    private Image summer = new Image(new Texture(Gdx.files.internal("Clock/summer.png")));
+    private Image seasonIcon;
+    private Image weatherIcon;
+    private Image weatherImage;
+    private Image seasonImage;
+
+
 
     private Label dayLabel;
     private Label timeLabel;
@@ -32,44 +51,63 @@ public class Clock extends Group {
 
     private int currentDay = 1;
     private String currentSeason = "Spring";
-    private int gameHour = 6;
+    private int gameHour = 9;
     private int gameMinute = 0;
     private int playerMoney = 500;
+    private long totalMinute;
+    private Weather weather;
 
     // Timing
     private float gameTimeAccumulator = 0f;
-    private float gameMinuteLength = 0.7f; // Real seconds per game minute
+    private float gameMinuteLength = 1f; // Real seconds per game minute
 
     // Hand rotation
     private float handRotation = 0f;
 
     public Clock(Skin skin) {
+        setSize(clockBase.getRegionWidth() * SCALE, clockBase.getRegionHeight() * SCALE);
+        setPosition(0, 0);
+
+        setupLabels(skin);
+
+        // Create icon actors (no drawables yet)
+        weatherImage = sunny;
+        seasonImage  = spring;
+
+        SEASON_IMAGE_HEIGHT = weatherImage.getHeight() * SEASON_IMAGE_SCALE;
+        SEASON_IMAGE_WIDTH = weatherImage.getWidth() * SEASON_IMAGE_SCALE;
+        weatherImage.setSize(SEASON_IMAGE_WIDTH, SEASON_IMAGE_HEIGHT);
+        weatherImage.setPosition(WEATHER_IMAGE_X, WEATHER_IMAGE_Y);
+
+        seasonImage.setSize(SEASON_IMAGE_WIDTH, SEASON_IMAGE_HEIGHT);
+        seasonImage.setPosition(SEASON_IMAGE_X, SEASON_IMAGE_Y);
+
+        // Add to this Group so they’re part of the stage graph
+
+        addActor(weatherImage);
+        addActor(seasonImage);
 
 
-       setSize(clockBase.getRegionWidth() * SCALE, clockBase.getRegionHeight() * SCALE);
+        initIcons();
 
-    // Set position in top-right corner
-    setPosition(0, 0);
-
-    // Create labels
-    setupLabels(skin);
-    updateDisplay();
+        updateDisplay();
+        Main.getInstance().setClock(this);
     }
 
     private void setupLabels(Skin skin) {
         // Day label (e.g., "Mon. 1")
         dayLabel = new Label("", skin);
-        dayLabel.setPosition(45, 35); // Adjust based on your sprite
+        dayLabel.setPosition(0, 90); // Adjust based on your sprite
         addActor(dayLabel);
 
         // Time label (e.g., "6:00 am")
         timeLabel = new Label("", skin);
-        timeLabel.setPosition(45, 20); // Adjust based on your sprite
+        timeLabel.setPosition(-10, 0); // Adjust based on your sprite
         addActor(timeLabel);
 
         // Money label (bottom area)
         moneyLabel = new Label("", skin);
-        moneyLabel.setPosition(20, 5); // Adjust based on your sprite
+        moneyLabel.setPosition(57, -80); // Adjust based on your sprite
         addActor(moneyLabel);
     }
 
@@ -79,7 +117,6 @@ public class Clock extends Group {
 
         // Update game time
         gameTimeAccumulator += delta;
-
         if (gameTimeAccumulator >= gameMinuteLength) {
             gameTimeAccumulator = 0f;
             advanceGameTime();
@@ -88,7 +125,14 @@ public class Clock extends Group {
 
         // Update hand rotation (smooth animation)
         updateHandRotation();
+
+        // ---- Position the icon actors to match your absolute clock placement ----
+        float baseX = Gdx.graphics.getWidth()  - getWidth() * SCALE;
+        float baseY = Gdx.graphics.getHeight() - getHeight() * SCALE;
+
+        // Same offsets you used when batch-drawing
     }
+
 
     private void advanceGameTime() {
         gameMinute += 10; // Stardew Valley increments by 10 minutes
@@ -97,11 +141,30 @@ public class Clock extends Group {
             gameMinute = 0;
             gameHour++;
 
-            if (gameHour > 23) {
-                gameHour = 6; // Start new day at 6 AM
+            if (gameHour >= 22) {
+                gameHour = 9;
                 currentDay++;
 
-                // Handle season change (28 days per season)
+                // Randomize weather and update icon
+                weather = Weather.weatherRandomizer();
+                switch (weather.getName().toLowerCase()) {
+                    case "sunny":
+                        setWeatherIcon(sunny);
+                        break;
+                    case "stormy":
+                        setWeatherIcon(stormy);
+                        break;
+                    case "snowy":
+                        setWeatherIcon(snowy);
+                        break;
+                    case "rainy":
+                        setWeatherIcon(rainy);
+                        break;
+                    default:
+                        setWeatherIcon(sunny); // safe default
+                }
+
+                // Handle season change
                 if (currentDay > 28) {
                     currentDay = 1;
                     advanceSeason();
@@ -114,26 +177,52 @@ public class Clock extends Group {
         switch (currentSeason) {
             case "Spring":
                 currentSeason = "Summer";
+                setSeasonIcon(summer);
                 break;
             case "Summer":
                 currentSeason = "Fall";
+                setSeasonIcon(fall);
                 break;
             case "Fall":
                 currentSeason = "Winter";
+                setSeasonIcon(winter);
                 break;
             case "Winter":
                 currentSeason = "Spring";
+                setSeasonIcon(spring);
                 break;
         }
+    }
+
+    // Call this once in constructor to set initial icons
+    private void initIcons() {
+        // Set initial season icon
+        switch (currentSeason) {
+            case "Spring":
+                setSeasonIcon(spring);
+                break;
+            case "Summer":
+                setSeasonIcon(summer);
+                break;
+            case "Fall":
+                setSeasonIcon(fall);
+                break;
+            case "Winter":
+                setSeasonIcon(winter);
+                break;
+        }
+
+        // Set default weather icon
+        setWeatherIcon(sunny);
     }
 
     private void updateHandRotation() {
         // Calculate hand position based on time
         // 12-hour format: 12 hours = 360 degrees
-        int startingHour = 7;
-        float totalGameHours = 10;
+        int startingHour = 9;
+        float totalGameHours = 13;
         float hourAngle = ((gameHour - startingHour) + (gameMinute / 60f)) / totalGameHours * 180f; // 30 degrees per hour
-        handRotation =  180f - hourAngle; // Offset so 12 o'clock points up
+        handRotation = 180f - hourAngle; // Offset so 12 o'clock points up
     }
 
     private void updateDisplay() {
@@ -157,7 +246,7 @@ public class Clock extends Group {
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-         // Draw clock base using actor's position
+        // Draw clock base using actor's position
         batch.draw(clockBase, Gdx.graphics.getWidth() - getWidth() * SCALE,
             Gdx.graphics.getHeight() - getHeight() * SCALE,
             getWidth() * SCALE, getHeight() * SCALE);
@@ -167,7 +256,7 @@ public class Clock extends Group {
         float centerY = (float) (getY() + 40 + clockHand.getRegionHeight() * Math.cos(Math.toRadians(handRotation)));
 
         batch.draw(clockHand,
-            centerX ,
+            centerX,
             centerY,
             clockHand.getRegionWidth() * 0.5f,  // origin X
             clockHand.getRegionHeight() * 0.5f, // origin Y
@@ -177,13 +266,13 @@ public class Clock extends Group {
             handRotation);
 
         // Draw weather/season icons if you have them
-        if (weatherIcon != null) {
-            batch.draw(weatherIcon, getX() + 20, getY() + 50); // Adjust position
-        }
-
-        if (seasonIcon != null) {
-            batch.draw(seasonIcon, getX() + 40, getY() + 50); // Adjust position
-        }
+//        if (weatherIcon != null) {
+//            batch.draw(weatherIcon, getX() + 20, getY() + 50); // Adjust position
+//        }
+//
+//        if (seasonIcon != null) {
+//            batch.draw(seasonIcon, getX() + 40, getY() + 50); // Adjust position
+//        }
 
         // Draw all child actors (labels)
         super.draw(batch, parentAlpha);
@@ -216,12 +305,20 @@ public class Clock extends Group {
         updateDisplay();
     }
 
-    public void setWeatherIcon(TextureRegion icon) {
+    public void setWeatherIcon(Image icon) {
         this.weatherIcon = icon;
+        if (icon != null) {
+            weatherImage.setSize(SEASON_IMAGE_WIDTH, SEASON_IMAGE_HEIGHT);
+            weatherImage.setPosition(WEATHER_IMAGE_X, WEATHER_IMAGE_Y);
+        }
     }
 
-    public void setSeasonIcon(TextureRegion icon) {
+    public void setSeasonIcon(Image icon) {
         this.seasonIcon = icon;
+        if (icon != null) {
+            seasonImage.setSize(SEASON_IMAGE_WIDTH, SEASON_IMAGE_HEIGHT);
+            seasonImage.setPosition(SEASON_IMAGE_X, SEASON_IMAGE_Y);
+        }
     }
 
     public void setGameSpeed(float minutesPerSecond) {
@@ -229,9 +326,27 @@ public class Clock extends Group {
     }
 
     // Getters
-    public int getCurrentHour() { return gameHour; }
-    public int getCurrentMinute() { return gameMinute; }
-    public int getCurrentDay() { return currentDay; }
-    public String getCurrentSeason() { return currentSeason; }
-    public int getMoney() { return playerMoney; }
+    public int getCurrentHour() {
+        return gameHour;
+    }
+
+    public int getCurrentMinute() {
+        return gameMinute;
+    }
+
+    public int getCurrentDay() {
+        return currentDay;
+    }
+
+    public String getCurrentSeason() {
+        return currentSeason;
+    }
+
+    public int getMoney() {
+        return playerMoney;
+    }
+
+    public long getTotalMinutes(){
+        return totalMinute;
+    }
 }

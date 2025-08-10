@@ -1,6 +1,10 @@
 package com.ap.Model.Player;
 
 
+import com.ap.Model.Save.UserArrayManager;
+
+import java.util.ArrayList;
+
 public class User {
     private String username;
     private String password;
@@ -10,6 +14,37 @@ public class User {
     private int points;
     private int questionNumber;
     private String answer;
+
+    private static ArrayList<User> users = new ArrayList<>();
+    private static User loggedInUser;
+
+    public static void addUser(User user){
+        users.add(user);
+        UserArrayManager.appendUser(user);
+    }
+
+
+    public static User getLoggedInUser() {
+        return loggedInUser;
+    }
+
+    public static void setLoggedInUser(User user) {
+        loggedInUser = user;
+    }
+
+    public static User getUserByUsername(String username) {
+        for (User user : UserArrayManager.readAllUsers()) {
+            if (user.getUsername().equals(username)) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    public static ArrayList<User> getUsers(){
+        return users;
+    }
+
 
     private static final String [] questions =
     {
@@ -44,7 +79,7 @@ public class User {
     }
 
     public String getQuestion(){
-        return questions[questionNumber - 1];
+        return questions[questionNumber];
     }
 
     public String getNickname() {

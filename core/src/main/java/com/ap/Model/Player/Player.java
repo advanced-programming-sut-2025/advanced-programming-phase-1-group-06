@@ -12,7 +12,7 @@ public class Player {
     private static final float PLAYER_WIDTH = 8f;
     private static final float PLAYER_HEIGHT = 8f; //fix these later
     private double maxEnergy = 200.0;
-    public Vector2 position = new Vector2(10, 10);
+    public Vector2 position = new Vector2(100, 100);
     private int x, y;
     private int money;
     private Inventory inventory;
@@ -24,6 +24,7 @@ public class Player {
     private Item currentItem;
     private ArrayList<Recipe> cookableFoods;
     private ArrayList<Recipe> craftableItems;
+    private ArrayList<Item> artisanDevices;
     private boolean trashcan;
 
     public Player(){
@@ -33,6 +34,17 @@ public class Player {
         for (Skill.SkillType skillType : Skill.SkillType.values()){
             skills.add(skillType.getSkill());
         }
+        increaseSkill("fishing");
+        increaseSkill("foraging");
+        increaseSkill("foraging");
+        increaseSkill("foraging");
+        increaseSkill("mining");
+        increaseSkill("farming");
+        increaseSkill("farming");
+        increaseSkill("farming");
+        cookableFoods = new ArrayList<>();
+        artisanDevices = new ArrayList<>();
+        craftableItems = new ArrayList<>();
     }
 
     public void setCurrentItem(Item item){
@@ -223,6 +235,7 @@ public class Player {
     }
 
     public void upgradeInventory() {
+        inventory.setLevel(inventory.getLevel() + 1);
     }
 
     public void upgradeTrashcan() {
@@ -255,12 +268,22 @@ public class Player {
         return craftableItems;
     }
 
+    public void addCraftableItem(Recipe recipe){
+        if (recipe != null){
+            craftableItems.add(recipe);
+        }
+    }
+
     public void setCraftableItems(ArrayList<Recipe> craftableItems) {
         this.craftableItems = craftableItems;
     }
 
     public ArrayList<Recipe> getCookableFoods() {
         return cookableFoods;
+    }
+
+    public void addCookableFood(Recipe recipe){
+        cookableFoods.add(recipe);
     }
 
     public void setCookableFoods(ArrayList<Recipe> cookableFoods) {

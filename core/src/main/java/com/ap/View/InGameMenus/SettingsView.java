@@ -2,12 +2,14 @@ package com.ap.View.InGameMenus;
 
 import com.ap.Main;
 import com.ap.Model.Player.Player;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.Screen;
+import com.ap.View.PreGameMenus.MainMenuScreen;
+import com.badlogic.gdx.*;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
@@ -18,17 +20,58 @@ public class SettingsView implements Screen, InputProcessor {
     private Window window;
     private Skin skin;
 
+    private final TextButton resumeButton;
+    private final TextButton exitButton;
+    private final TextButton backToMenuButton;
+
     public SettingsView(Player player){
         skin = Main.getInstance().getSkin();
         this.player = player;
-        window = new Window("Skill" , skin);
+        resumeButton = new TextButton("resume", skin);
+        exitButton = new TextButton("exit game", skin);
+        window = new Window("Settings" , skin);
+        backToMenuButton = new TextButton("back to menu", skin);
+
+        resumeButton.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                Main.getInstance().changeScreen(Main.getInstance().getGameView());
+            }
+        });
+
+        backToMenuButton.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                Main.getInstance().changeScreen(new MainMenuScreen());
+            }
+        });
+
+        exitButton.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                Main.getInstance().exit();
+            }
+        });
     }
 
     @Override
     public void show() {
         stage = new Stage(new ScreenViewport());
-        Gdx.input.setInputProcessor(this);
+        InputMultiplexer multiplexer = new InputMultiplexer(this, stage);
+        multiplexer.addProcessor(this); // Add Journal as an InputProcessor for keyboard input
+        multiplexer.addProcessor(stage); // Add Stage for UI input (buttons)
+        Gdx.input.setInputProcessor(multiplexer);
+        window.center();
+        window.add(resumeButton).size(300, 100).padBottom(50);
+        window.row();
+        window.add(backToMenuButton).size(300, 100).padBottom(50);
+        window.row();
+        window.add(exitButton).size(300, 100).padBottom(50);
+        window.setSize(1600, 1000);
+        window.setPosition(160, 80);
 
+        stage.addActor(window);
+        Journal.addButtonsToStage(window, stage, Journal.getImageButtons(), "exit");
     }
 
     @Override
@@ -69,6 +112,9 @@ public class SettingsView implements Screen, InputProcessor {
 
     @Override
     public boolean keyDown(int keycode) {
+        if (keycode == Input.Keys.ESCAPE){
+            Main.getInstance().changeScreen(Main.getInstance().getGameView());
+        }
         return false;
     }
 

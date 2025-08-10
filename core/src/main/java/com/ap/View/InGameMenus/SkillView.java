@@ -111,7 +111,7 @@ public class SkillView implements Screen, InputProcessor {
 
     @Override
     public boolean keyDown(int keycode) {
-        if (keycode == Input.Keys.I){
+        if (keycode == Input.Keys.ESCAPE){
              Main.getInstance().changeScreen(Main.getInstance().getGameView());
         }
         return false;

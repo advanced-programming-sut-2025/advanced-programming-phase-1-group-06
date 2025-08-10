@@ -1,8 +1,13 @@
 package com.ap;
 
 //import com.ap.Model.InventoryTest.GameScreen;
+import com.ap.Model.GameAssetManager;
+import com.ap.Model.Player.Player;
+import com.ap.View.Clock;
 import com.ap.View.GameView;
+import com.ap.View.InGameMenus.Journal;
 import com.ap.View.InGameMenus.SkillView;
+import com.ap.View.PreGameMenus.StartScreen;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -24,6 +29,7 @@ public class Main extends Game {
     private Skin skin;
     private GameView gameView;
     private AssetManager assetManager;
+    private Clock clock;
 
     public static Main getInstance() {
         if (instance == null) {
@@ -51,8 +57,16 @@ public class Main extends Game {
         instance = this;
         batch = new SpriteBatch();
         Gdx.graphics.setWindowedMode(1920, 1200);
+        GameAssetManager gameAssetManager = GameAssetManager.getInstance();
+        gameAssetManager.initialize();
+        GameAssetManager.getInstance().finishLoading();
         gameView = new GameView();
-        this.setScreen(gameView);
+        changeScreen(gameView);
+//        changeScreen(new StartScreen());
+    }
+
+    public void setGameView(GameView gameView) {
+        this.gameView = gameView;
     }
 
     public GameView getGameView() {
@@ -71,6 +85,9 @@ public class Main extends Game {
     }
 
     public void changeScreen(Screen screen){
+        if (screen == null){
+            return;
+        }
         Screen currentScreen = ((Main) Gdx.app.getApplicationListener()).getScreen();
         if (currentScreen != null) {
             currentScreen.dispose();
@@ -80,5 +97,17 @@ public class Main extends Game {
 
     public AssetManager getAssetManager() {
         return assetManager;
+    }
+
+    public void exit(){
+        Gdx.app.exit();
+    }
+
+    public Clock getClock() {
+        return clock;
+    }
+
+    public void setClock(Clock clock) {
+        this.clock = clock;
     }
 }

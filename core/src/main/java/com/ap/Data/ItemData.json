@@ -723,6 +723,15 @@
       "texture": "Items/pepper_seeds.png"
     },
     {
+      "id": "null_item",
+      "name": "null",
+      "description": "null",
+      "stackSize": 999,
+      "componentsData": [
+      ],
+      "texture": "Items/Transparent.png"
+    },
+    {
       "id": "melon_seeds",
       "name": "Melon Seeds",
       "description": "Plant these in summer. Takes 12 days to mature.",

@@ -19,26 +19,33 @@ import java.util.Map;
 
 public class Journal implements Screen, InputProcessor {
 
+    private static Journal instance;
     private Player player;
     private Stage stage;
     private Window window;
     private Skin skin;
     private static LinkedHashMap<String, ImageButton> imageButtons;
-    private Label testLabel;
 
-    public Journal(Player player) {
 
+
+    private Journal(Player player) {
         skin = Main.getInstance().getSkin();
         this.player = player;
-        window = new Window("journal", skin);
+        window = new Window("Journal", skin);
         window.setSize(1600, 1000);
         window.setPosition(160, 80);
         imageButtons = new LinkedHashMap<>();
 //        imageButtons.put("crafting", new ImageButton(new Image,))
-        testLabel = new Label("test", skin);
-        testLabel.setPosition(window.getX(), window.getY());
         imageButtons = loadImageButtonsFromFolder("assets/in-game-menu-stuff");
     }
+
+    public static Journal getInstance(Player player) {
+        if (instance == null) {
+            instance = new Journal(player);
+        }
+        return instance;
+    }
+
 
     @Override
     public void show() {
@@ -51,7 +58,6 @@ public class Journal implements Screen, InputProcessor {
         Gdx.input.setInputProcessor(multiplexer);
 
         addButtonsToStage(window, stage, imageButtons, "journal");
-        stage.addActor(testLabel);
     }
 
     public static void addButtonsToStage(Window window, Stage stage, LinkedHashMap<String, ImageButton> imageButtons, String currentScreen) {
@@ -112,7 +118,7 @@ public class Journal implements Screen, InputProcessor {
 
     @Override
     public boolean keyDown(int keycode) {
-        if (keycode == Input.Keys.I) {
+        if (keycode == Input.Keys.ESCAPE) {
             Main.getInstance().changeScreen(Main.getInstance().getGameView());
         }
         return false;
@@ -206,8 +212,31 @@ public class Journal implements Screen, InputProcessor {
         imageButtons.get("inventory").addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-
                 Main.getInstance().changeScreen(new InventoryView(player));
+            }
+        });
+        imageButtons.get("exit").addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                Main.getInstance().changeScreen(new SettingsView(player));
+            }
+        });
+        imageButtons.get("crafting").addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                Main.getInstance().changeScreen(new CraftingView(player));
+            }
+        });
+        imageButtons.get("map").addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                Main.getInstance().changeScreen(new MapView(player));
+            }
+        });
+        imageButtons.get("social").addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                Main.getInstance().changeScreen(new SocialView(player));
             }
         });
     }

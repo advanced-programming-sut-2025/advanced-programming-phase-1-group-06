@@ -27,9 +27,6 @@ public class Factory {
     public Factory() {
         try {
             Gson gson = new GsonBuilder().create();
-//            InputStreamReader reader = new InputStreamReader(
-//                getClass().getResourceAsStream("/com/ap/Data/ItemData.json"), "UTF-8");
-//            ItemDataRoot root = gson.fromJson(reader, ItemDataRoot.class);
             FileReader reader = new FileReader("core/src/main/java/com/ap/Data/ItemData.json");
             ItemDataRoot root = gson.fromJson(reader, ItemDataRoot.class);
 
@@ -42,6 +39,7 @@ public class Factory {
             for (ItemData data : root.tools) {
                 items.put(data.id, data);
             }
+
             for (ItemData data : root.artisan_goods) {
                 items.put(data.id, data);
             }
@@ -66,7 +64,6 @@ public class Factory {
     public Item createItem(String itemId, int amount) {
         ItemData data = items.get(itemId);
         if (data == null) return null;
-
         Item item = new Item(data.id, data.name, data.description, data.stackSize);
         if (data.getBasePrice() != 0) item.setPrice(data.getBasePrice());
         item.setAmount(amount);
@@ -86,7 +83,7 @@ public class Factory {
 
     public Item createItemByName(String name) {
         for (ItemData data : items.values()) {
-            if (data.name.equalsIgnoreCase(name)) {
+            if (data.id.equalsIgnoreCase(name)) {
                 return createItem(data.id);
             }
         }
@@ -99,10 +96,12 @@ public class Factory {
      */
     public Item createItemByName(String name, int amount) {
         for (ItemData data : items.values()) {
-            if (data.name.equalsIgnoreCase(name)) {
+            if (data.id.equalsIgnoreCase(name)) {
+                System.out.println(name + " created");
                 return createItem(data.id, amount);
             }
         }
+        System.out.println(name +  " not found");
         return null;
     }
 

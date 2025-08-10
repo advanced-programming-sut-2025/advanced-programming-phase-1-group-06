@@ -7,29 +7,22 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
-import java.util.ArrayList;
-
-public class CraftingView implements Screen, InputProcessor {
+public class exampleScreen implements Screen, InputProcessor {
 
     private Player player;
     private Stage stage;
     private Window window;
     private Skin skin;
 
-    private ArrayList<Image> craftablesImages;
-
-
-    public CraftingView(Player player){
-        craftablesImages = new ArrayList<>();
+    public exampleScreen(Player player){
         skin = Main.getInstance().getSkin();
         this.player = player;
-        window = new Window("Crafting" , skin);
+        window = new Window("Skill" , skin);
     }
 
     @Override
@@ -39,10 +32,6 @@ public class CraftingView implements Screen, InputProcessor {
         multiplexer.addProcessor(this); // Add Journal as an InputProcessor for keyboard input
         multiplexer.addProcessor(stage); // Add Stage for UI input (buttons)
         Gdx.input.setInputProcessor(multiplexer);
-        window.setSize(1600, 1000);
-        window.setPosition(160, 80);
-
-        Journal.addButtonsToStage(window, stage, Journal.getImageButtons(), "crafting");
     }
 
     @Override
