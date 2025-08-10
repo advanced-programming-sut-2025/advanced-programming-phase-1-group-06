@@ -1,0 +1,57 @@
+[
+  {
+    "name": "Sebastian",
+    "texture": "NPC/Sebastian.png",
+    "requests": [
+      { "description": "Deliver 50 Iron Ore", "reward": "2 Diamonds", "completed": false },
+      { "description": "Deliver Pumpkin Pie", "reward": "5000 Gold Coins", "completed": false },
+      { "description": "Deliver 150 Stone", "reward": "50 Quartz", "completed": false }
+    ],
+    "friendshipPoints": 0,
+    "giftHistory": []
+  },
+  {
+    "name": "Abigail",
+    "texture": "NPC/Abigail.png",
+    "requests": [
+      { "description": "Deliver 1 Gold Bar", "reward": "1 Friendship Level", "completed": false },
+      { "description": "Deliver 1 Cow Tail", "reward": "500 Gold Coins", "completed": false },
+      { "description": "Deliver 50 Wheat", "reward": "1 Iridium Auto-Feeder", "completed": false }
+    ],
+    "friendshipPoints": 0,
+    "giftHistory": []
+  },
+  {
+    "name": "Emily",
+    "texture": "NPC/Emily.png",
+    "requests": [
+      { "description": "Deliver 5 Cloth", "reward": "1000 Gold Coins", "completed": false },
+      { "description": "Deliver 2 Emeralds", "reward": "1 Friendship Level", "completed": false },
+      { "description": "Deliver 1 Rainbow Shell", "reward": "2 Diamonds", "completed": false }
+    ],
+    "friendshipPoints": 0,
+    "giftHistory": []
+  },
+  {
+    "name": "Sam",
+    "texture": "NPC/Sam.png",
+    "requests": [
+      { "description": "Deliver 1 Electric Guitar", "reward": "2500 Gold Coins", "completed": false },
+      { "description": "Deliver 1 Pizza", "reward": "20 Friendship Points", "completed": false },
+      { "description": "Deliver 10 Cactus Fruit", "reward": "5 Gold Bars", "completed": false }
+    ],
+    "friendshipPoints": 0,
+    "giftHistory": []
+  },
+  {
+    "name": "Leah",
+    "texture": "NPC/Leah.png",
+    "requests": [
+      { "description": "Deliver 1 Salad", "reward": "500 Gold Coins", "completed": false },
+      { "description": "Deliver 1 Goat Cheese", "reward": "2 Friendship Levels", "completed": false },
+      { "description": "Deliver 1 Wine", "reward": "1 Diamond", "completed": false }
+    ],
+    "friendshipPoints": 0,
+    "giftHistory": []
+  }
+]

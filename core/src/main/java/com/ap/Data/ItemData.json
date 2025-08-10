@@ -1477,5 +1477,332 @@
       ],
       "texture": "Items/Iridium_Rod.png"
     }
+  ],
+  "artisan_goods": [
+    {
+      "id": "honey",
+      "name": "Honey",
+      "description": "It's a sweet syrup produced by bees.",
+      "stackSize": 99,
+      "basePrice": 350,
+      "texture": "items/honey.png",
+      "componentsData": [
+        {
+          "type": "ArtisanComponent",
+          "sourceItem": "bee_house",
+          "resultItem": "honey",
+          "processingTime": 96,
+          "energyRestore": 75
+        }
+      ]
+    },
+    {
+      "id": "cheese",
+      "name": "Cheese",
+      "description": "It's your basic cheese.",
+      "stackSize": 99,
+      "basePrice": 230,
+      "texture": "items/cheese.png",
+      "componentsData": [
+        {
+          "type": "ArtisanComponent",
+          "sourceItem": "milk",
+          "resultItem": "cheese",
+          "processingTime": 3,
+          "energyRestore": 100
+        }
+      ]
+    },
+    {
+      "id": "cheese_large",
+      "name": "Cheese",
+      "description": "It's your basic cheese.",
+      "stackSize": 99,
+      "basePrice": 345,
+      "texture": "items/cheese.png",
+      "componentsData": [
+        {
+          "type": "ArtisanComponent",
+          "sourceItem": "large_milk",
+          "resultItem": "cheese_large",
+          "processingTime": 3,
+          "energyRestore": 100
+        }
+      ]
+    },
+    {
+      "id": "goat_cheese",
+      "name": "Goat Cheese",
+      "description": "Soft cheese made from goat's milk.",
+      "stackSize": 99,
+      "basePrice": 400,
+      "texture": "items/goat_cheese.png",
+      "componentsData": [
+        {
+          "type": "ArtisanComponent",
+          "sourceItem": "goat_milk",
+          "resultItem": "goat_cheese",
+          "processingTime": 3,
+          "energyRestore": 100
+        }
+      ]
+    },
+    {
+      "id": "goat_cheese_large",
+      "name": "Goat Cheese",
+      "description": "Soft cheese made from goat's milk.",
+      "stackSize": 99,
+      "basePrice": 600,
+      "texture": "items/goat_cheese.png",
+      "componentsData": [
+        {
+          "type": "ArtisanComponent",
+          "sourceItem": "large_goat_milk",
+          "resultItem": "goat_cheese_large",
+          "processingTime": 3,
+          "energyRestore": 100
+        }
+      ]
+    },
+    {
+      "id": "beer",
+      "name": "Beer",
+      "description": "Drink in moderation.",
+      "stackSize": 99,
+      "basePrice": 200,
+      "texture": "items/beer.png",
+      "componentsData": [
+        {
+          "type": "ArtisanComponent",
+          "sourceItem": "wheat",
+          "resultItem": "beer",
+          "processingTime": 24,
+          "energyRestore": 50
+        }
+      ]
+    },
+    {
+      "id": "vinegar",
+      "name": "Vinegar",
+      "description": "An aged fermented liquid used in many cooking recipes.",
+      "stackSize": 99,
+      "basePrice": 100,
+      "texture": "items/vinegar.png",
+      "componentsData": [
+        {
+          "type": "ArtisanComponent",
+          "sourceItem": "unmilled_rice",
+          "resultItem": "vinegar",
+          "processingTime": 10,
+          "energyRestore": 13
+        }
+      ]
+    },
+    {
+      "id": "coffee",
+      "name": "Coffee",
+      "description": "It smells delicious. This is sure to give you a boost.",
+      "stackSize": 99,
+      "basePrice": 150,
+      "texture": "items/coffee.png",
+      "componentsData": [
+        {
+          "type": "ArtisanComponent",
+          "sourceItem": "coffee_bean",
+          "resultItem": "coffee",
+          "processingTime": 2,
+          "energyRestore": 75,
+          "inputAmount": 5
+        }
+      ]
+    },
+    {
+      "id": "mead",
+      "name": "Mead",
+      "description": "A fermented beverage made from honey. Drink in moderation.",
+      "stackSize": 99,
+      "basePrice": 300,
+      "texture": "items/mead.png",
+      "componentsData": [
+        {
+          "type": "ArtisanComponent",
+          "sourceItem": "honey",
+          "resultItem": "mead",
+          "processingTime": 10,
+          "energyRestore": 100
+        }
+      ]
+    },
+    {
+      "id": "pale_ale",
+      "name": "Pale Ale",
+      "description": "Drink in moderation.",
+      "stackSize": 99,
+      "basePrice": 300,
+      "texture": "items/pale_ale.png",
+      "componentsData": [
+        {
+          "type": "ArtisanComponent",
+          "sourceItem": "hops",
+          "resultItem": "pale_ale",
+          "processingTime": 72,
+          "energyRestore": 50
+        }
+      ]
+    },
+    {
+      "id": "truffle_oil",
+      "name": "Truffle Oil",
+      "description": "A gourmet cooking ingredient.",
+      "stackSize": 99,
+      "basePrice": 1065,
+      "texture": "items/truffle_oil.png",
+      "componentsData": [
+        {
+          "type": "ArtisanComponent",
+          "sourceItem": "truffle",
+          "resultItem": "truffle_oil",
+          "processingTime": 6,
+          "energyRestore": 38
+        }
+      ]
+    },
+    {
+      "id": "oil_corn",
+      "name": "Oil",
+      "description": "All purpose cooking oil.",
+      "stackSize": 99,
+      "basePrice": 100,
+      "texture": "items/oil.png",
+      "componentsData": [
+        {
+          "type": "ArtisanComponent",
+          "sourceItem": "corn",
+          "resultItem": "oil_corn",
+          "processingTime": 6,
+          "energyRestore": 13
+        }
+      ]
+    },
+    {
+      "id": "oil_sunflower_seeds",
+      "name": "Oil",
+      "description": "All purpose cooking oil.",
+      "stackSize": 99,
+      "basePrice": 100,
+      "texture": "items/oil.png",
+      "componentsData": [
+        {
+          "type": "ArtisanComponent",
+          "sourceItem": "sunflower_seeds",
+          "resultItem": "oil_sunflower_seeds",
+          "processingTime": 48,
+          "energyRestore": 13
+        }
+      ]
+    },
+    {
+      "id": "oil_sunflower",
+      "name": "Oil",
+      "description": "All purpose cooking oil.",
+      "stackSize": 99,
+      "basePrice": 100,
+      "texture": "items/oil.png",
+      "componentsData": [
+        {
+          "type": "ArtisanComponent",
+          "sourceItem": "sunflower",
+          "resultItem": "oil_sunflower",
+          "processingTime": 25,
+          "energyRestore": 13
+        }
+      ]
+    },
+    {
+      "id": "mayonnaise",
+      "name": "Mayonnaise",
+      "description": "It looks spreadable.",
+      "stackSize": 99,
+      "basePrice": 190,
+      "texture": "items/mayonnaise.png",
+      "componentsData": [
+        {
+          "type": "ArtisanComponent",
+          "sourceItem": "egg",
+          "resultItem": "mayonnaise",
+          "processingTime": 3,
+          "energyRestore": 50
+        }
+      ]
+    },
+    {
+      "id": "mayonnaise_large",
+      "name": "Mayonnaise",
+      "description": "It looks spreadable.",
+      "stackSize": 99,
+      "basePrice": 237,
+      "texture": "items/mayonnaise.png",
+      "componentsData": [
+        {
+          "type": "ArtisanComponent",
+          "sourceItem": "large_egg",
+          "resultItem": "mayonnaise_large",
+          "processingTime": 3,
+          "energyRestore": 50
+        }
+      ]
+    },
+    {
+      "id": "duck_mayonnaise",
+      "name": "Duck Mayonnaise",
+      "description": "It's a rich, yellow mayonnaise.",
+      "stackSize": 99,
+      "basePrice": 375,
+      "texture": "items/duck_mayonnaise.png",
+      "componentsData": [
+        {
+          "type": "ArtisanComponent",
+          "sourceItem": "duck_egg",
+          "resultItem": "duck_mayonnaise",
+          "processingTime": 3,
+          "energyRestore": 75
+        }
+      ]
+    },
+    {
+      "id": "dinosaur_mayonnaise",
+      "name": "Dinosaur Mayonnaise",
+      "description": "It's thick and creamy, with a vivid green hue. It smells like grass and leather.",
+      "stackSize": 99,
+      "basePrice": 800,
+      "texture": "items/dinosaur_mayonnaise.png",
+      "componentsData": [
+        {
+          "type": "ArtisanComponent",
+          "sourceItem": "dinosaur_egg",
+          "resultItem": "dinosaur_mayonnaise",
+          "processingTime": 3,
+          "energyRestore": 125
+        }
+      ]
+    },
+    {
+      "id": "cloth",
+      "name": "Cloth",
+      "description": "A bolt of fine wool cloth.",
+      "stackSize": 99,
+      "basePrice": 470,
+      "texture": "items/cloth.png",
+      "componentsData": [
+        {
+          "type": "ArtisanComponent",
+          "sourceItem": "wool",
+          "resultItem": "cloth",
+          "processingTime": 4,
+          "energyRestore": 0
+        }
+      ]
+    }
   ]
+
 }
