@@ -99,9 +99,9 @@ public class ArtisanRecipe {
         }
 
         // Check category-based recipes
-        if (inputCategory != null) {
-            return Factory.getInstance().hasCategory(item, inputCategory);
-        }
+//        if (inputCategory != null) {
+//            return Factory.getInstance().hasCategory(item, inputCategory);
+//        }
 
         return false;
     }

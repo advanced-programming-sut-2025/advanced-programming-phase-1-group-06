@@ -4,7 +4,7 @@ import com.ap.Model.Recipe;
 
 import java.util.ArrayList;
 
-public class ArtisanComponent extends Component{
+public class ArtisanComponent extends Component {
 
 
     String sourceItem;
@@ -13,7 +13,6 @@ public class ArtisanComponent extends Component{
     public String type;
     // For Consumable
     public int energyRestore;
-
 
 
     public String getSourceItem() {
@@ -64,19 +63,18 @@ public class ArtisanComponent extends Component{
         this.recipes = recipes;
     }
 
-    public enum ArtisanType{
-//        TODO write names idk if it'd even be any good atp;
-    }
-//    TODO: fill the recipes. idk do whatever else you wanna.
-    public void craft(){
-
+    public enum ArtisanType {
     }
 
-    public void checkRady(){
+    public void craft() {
 
     }
 
-    public void update(){
+    public void checkRady() {
+
+    }
+
+    public void update() {
 
     }
 

@@ -8,6 +8,9 @@ import java.util.List;
 // this contains tree saplings too
 
 class SeedComponent extends Component {
+
+    public SeedComponent(){}
+
     private String cropId;
 
     public SeedComponent(String cropId, List<Season> seasons) {

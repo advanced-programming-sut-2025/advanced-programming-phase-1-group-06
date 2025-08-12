@@ -11,6 +11,11 @@ public class ConsumableComponent extends Component {
 //        FISHING,
 //        MINING
 //    }
+
+
+    public ConsumableComponent(){}
+
+
     public enum Buff {
         ENERGY_SHORT(3),
         ENERGY_LONG(5),

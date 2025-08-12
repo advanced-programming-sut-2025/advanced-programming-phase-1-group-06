@@ -8,5 +8,6 @@ public class ItemDataRoot {
     public ArrayList<ItemData> tools;
     public ArrayList<ItemData> artisan_goods;
     public ArrayList<ItemData> artisan_devices;
-
+    public ArrayList<ItemData> craftables;
+    public ArrayList<ItemData> crafting_ingredients;
 }

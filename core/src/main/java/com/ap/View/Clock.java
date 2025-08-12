@@ -54,7 +54,7 @@ public class Clock extends Group {
     private int gameHour = 9;
     private int gameMinute = 0;
     private int playerMoney = 500;
-    private long totalMinute;
+    private long totalHour;
     private Weather weather;
 
     // Timing
@@ -140,6 +140,7 @@ public class Clock extends Group {
         if (gameMinute >= 60) {
             gameMinute = 0;
             gameHour++;
+            totalHour++;
 
             if (gameHour >= 22) {
                 gameHour = 9;
@@ -346,7 +347,8 @@ public class Clock extends Group {
         return playerMoney;
     }
 
-    public long getTotalMinutes(){
-        return totalMinute;
+    public long getTotalHours(){
+        return totalHour;
     }
+
 }

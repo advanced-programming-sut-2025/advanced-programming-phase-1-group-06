@@ -162,4 +162,6 @@ public class InventoryView implements Screen, InputProcessor {
     public boolean scrolled(float amountX, float amountY) {
         return false;
     }
+
+
 }

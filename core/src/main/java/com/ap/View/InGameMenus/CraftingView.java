@@ -2,34 +2,51 @@ package com.ap.View.InGameMenus;
 
 import com.ap.Main;
 import com.ap.Model.Player.Player;
+import com.ap.Model.Recipe;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
-import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 public class CraftingView implements Screen, InputProcessor {
 
     private Player player;
     private Stage stage;
-    private Window window;
+    private Window craftingWindow;
+    private Window inventoryWindow;
+    private Window errorwindow;
+
     private Skin skin;
+    private List<Recipe> craftables;
 
-    private ArrayList<Image> craftablesImages;
+    private LinkedHashMap<String, Image> craftablesImages;
 
 
-    public CraftingView(Player player){
-        craftablesImages = new ArrayList<>();
+    public CraftingView(Player player) {
+        craftablesImages = new LinkedHashMap<>();
+        craftables = player.getCraftableItems();
         skin = Main.getInstance().getSkin();
         this.player = player;
-        window = new Window("Crafting" , skin);
+        errorwindow = new Window("Message", skin);
+        errorwindow.setSize(500, 200);
+        errorwindow.setPosition(0, Gdx.graphics.getHeight() - errorwindow.getHeight());
+        errorwindow.center();
+        craftingWindow = new Window("Crafting", skin);
+        inventoryWindow = new Window("Inventory", skin); // "Skill" might be a typo for "Inventory"?
+        inventoryWindow.setSize(1600, 500);
+        inventoryWindow.setPosition(160, 580);
+        inventoryWindow.top();
     }
 
     @Override
@@ -39,10 +56,26 @@ public class CraftingView implements Screen, InputProcessor {
         multiplexer.addProcessor(this); // Add Journal as an InputProcessor for keyboard input
         multiplexer.addProcessor(stage); // Add Stage for UI input (buttons)
         Gdx.input.setInputProcessor(multiplexer);
-        window.setSize(1600, 1000);
-        window.setPosition(160, 80);
-
-        Journal.addButtonsToStage(window, stage, Journal.getImageButtons(), "crafting");
+        craftingWindow.setSize(1600, 500);
+        craftingWindow.setPosition(160, 80);
+        for (Recipe r : craftables) {
+            try {
+                Image image = new Image(new Texture(Gdx.files.internal(r.getItem().getTexturePath())));
+                image.addListener(new TextTooltip(r.getToolTip(), skin));
+                craftingWindow.add(image).padRight(40);
+                addListener(image, r);
+            } catch (Exception e) {
+                if (r.getItem() != null) {
+//                    System.out.println(r.getItem().getName() + ": " + r.getItem().getTexturePath());
+                } else {
+                    System.out.println(r.getItemName() + " is null");
+                }
+            }
+        }
+        stage.addActor(craftingWindow);
+        Journal.addButtonsToStage(inventoryWindow, stage, Journal.getImageButtons(), "crafting");
+        player.getInventory().drawInventory(stage);
+        stage.addActor(errorwindow);
     }
 
     @Override
@@ -124,5 +157,29 @@ public class CraftingView implements Screen, InputProcessor {
     @Override
     public boolean scrolled(float amountX, float amountY) {
         return false;
+    }
+
+    public void addListener(Image image, Recipe r){
+        image.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                System.out.println("clicked");
+                Label label = new Label("label", skin);
+                if (!player.getInventory().craft(r)){
+                    label.setText("can't craft this item");
+                } else {
+                    label.setText("item crafted");
+                }
+                label.setPosition(40, errorwindow.getHeight()/2-label.getHeight()/2);
+                errorwindow.addActor(label);
+                errorwindow.addAction(Actions.sequence(
+                    Actions.fadeIn(1f),
+                    Actions.delay(3f),              // wait 3 seconds
+                    Actions.fadeOut(1f),            // fade out over 1 second
+                    Actions.removeActor(label),
+                    Actions.removeActor()  // remove from stage
+                ));
+            }
+        });
     }
 }

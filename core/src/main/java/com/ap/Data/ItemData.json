@@ -1815,227 +1815,195 @@
   ],
   "artisan_devices": [
     {
-      "id": "charcoal_kiln",
-      "name": "Charcoal Kiln",
-      "description": "Converts 10 wood into 1 coal.",
-      "ingredients": [
-        {
-          "item": "wood",
-          "amount": 10
-        }
-      ],
-      "source": "Foraging Level 1",
-      "sellPrice": null,
-      "stackSize": 1,
-      "texture": "Items/charcoal_kiln.png"
-    },
-    {
-      "id": "furnace",
-      "name": "Furnace",
-      "description": "Smelts ores into bars.",
-      "ingredients": [
-        {
-          "item": "copper_ore",
-          "amount": 20
-        },
-        {
-          "item": "stone",
-          "amount": 25
-        }
-      ],
-      "source": "Mining Level 1",
-      "sellPrice": null,
-      "stackSize": 1,
-      "texture": "Items/furnace.png"
-    },
-    {
       "id": "bee_house",
       "name": "Bee House",
-      "description": "Produces honey when surrounded by flowers.",
-      "ingredients": [
-        {
-          "item": "wood",
-          "amount": 40
-        },
-        {
-          "item": "coal",
-          "amount": 8
-        },
-        {
-          "item": "iron_bar",
-          "amount": 1
-        }
-      ],
-      "source": "Farming Level 1",
-      "sellPrice": 240,
+      "description": "Produces honey.",
       "stackSize": 1,
-      "texture": "Items/bee_house.png"
+      "sellPrice": 0,
+      "texture": "Items/bee_house.png",
+      "deviceRecipes": [
+        {
+          "outputId": "honey",
+          "processingHours": 96,
+          "ingredients": { }
+        }
+      ]
+    },
+    {
+      "id": "keg",
+      "name": "Keg",
+      "description": "A device for fermenting liquids.",
+      "stackSize": 1,
+      "sellPrice": 0,
+      "texture": "Items/keg.png",
+      "deviceRecipes": [
+        { "outputId": "pale_ale", "processingHours": 90, "ingredients": { "hops": 1 } },
+        { "outputId": "wine", "processingHours": 168, "ingredients": { "grape": 1 } },
+        { "outputId": "beer", "processingHours": 35, "ingredients": { "wheat": 1 } },
+        { "outputId": "coffee", "processingHours": 2, "ingredients": { "coffee_bean": 5 } }
+      ]
+    },
+    {
+      "id": "preserves_jar",
+      "name": "Preserves Jar",
+      "description": "Turns fruit into jelly and vegetables into pickles.",
+      "stackSize": 1,
+      "sellPrice": 0,
+      "texture": "Items/preserves_jar.png",
+      "deviceRecipes": [
+        { "outputId": "jelly", "processingHours": 80, "ingredients": { "cat:any_fruit": 1 } },
+        { "outputId": "pickles", "processingHours": 80, "ingredients": { "cat:any_vegetable": 1 } }
+      ]
     },
     {
       "id": "cheese_press",
       "name": "Cheese Press",
       "description": "Turns milk into cheese.",
-      "ingredients": [
-        {
-          "item": "hardwood",
-          "amount": 45
-        },
-        {
-          "item": "copper_ore",
-          "amount": 10
-        }
-      ],
-      "source": "Farming Level 2",
-      "sellPrice": 1000,
       "stackSize": 1,
-      "texture": "Items/cheese_press.png"
+      "sellPrice": 0,
+      "texture": "Items/cheese_press.png",
+      "deviceRecipes": [
+        { "outputId": "cheese", "processingHours": 200, "ingredients": { "milk": 1 } },
+        { "outputId": "goat_cheese", "processingHours": 200, "ingredients": { "goat_milk": 1 } }
+      ]
     },
     {
-      "id": "keg",
-      "name": "Keg",
-      "description": "Ferments fruits and vegetables into wine or juice.",
-      "ingredients": [
-        {
-          "item": "wood",
-          "amount": 50
-        },
-        {
-          "item": "iron_bar",
-          "amount": 10
-        }
-      ],
-      "source": "Farming Level 3",
-      "sellPrice": 500,
+      "id": "oil_maker",
+      "name": "Oil Maker",
+      "description": "Turns various products into oil.",
       "stackSize": 1,
-      "texture": "Items/keg.png"
-    },
-    {
-      "id": "loom",
-      "name": "Loom",
-      "description": "Turns wool into cloth.",
-      "ingredients": [
-        {
-          "item": "wood",
-          "amount": 60
-        },
-        {
-          "item": "fiber",
-          "amount": 10
-        },
-        {
-          "item": "iron_ore",
-          "amount": 10
-        }
-      ],
-      "source": "Farming Level 3",
-      "sellPrice": 500,
-      "stackSize": 1,
-      "texture": "Items/loom.png"
+      "sellPrice": 0,
+      "texture": "Items/oil_maker.png",
+      "deviceRecipes": [
+        { "outputId": "oil", "processingHours": 24, "ingredients": { "corn": 1 } },
+        { "outputId": "oil", "processingHours": 24, "ingredients": { "truffle": 1 } },
+        { "outputId": "oil", "processingHours": 48, "ingredients": { "sunflower_seeds": 1 } },
+        { "outputId": "oil", "processingHours": 1,  "ingredients": { "sunflower": 1 } }
+      ]
     },
     {
       "id": "mayonnaise_machine",
       "name": "Mayonnaise Machine",
       "description": "Turns eggs into mayonnaise.",
-      "ingredients": [
-        {
-          "item": "wood",
-          "amount": 45
-        },
-        {
-          "item": "clay",
-          "amount": 20
-        }
-      ],
-      "source": "Farming Level 2",
-      "sellPrice": 200,
       "stackSize": 1,
-      "texture": "Items/mayonnaise_machine.png"
+      "sellPrice": 0,
+      "texture": "Items/mayonnaise_machine.png",
+      "deviceRecipes": [
+        { "outputId": "mayonnaise", "processingHours": 180, "ingredients": { "egg": 1 } },
+        { "outputId": "duck_mayonnaise", "processingHours": 180, "ingredients": { "duck_egg": 1 } },
+        { "outputId": "void_mayonnaise", "processingHours": 180, "ingredients": { "void_egg": 1 } },
+        { "outputId": "golden_mayonnaise", "processingHours": 180, "ingredients": { "golden_egg": 1 } }
+      ]
     },
     {
-      "id": "oil_maker",
-      "name": "Oil Maker",
-      "description": "Turns olives or truffles into oil.",
-      "ingredients": [
-        {
-          "item": "copper_ore",
-          "amount": 25
-        },
-        {
-          "item": "gold_ore",
-          "amount": 5
-        },
-        {
-          "item": "iron_ore",
-          "amount": 10
-        }
-      ],
-      "source": "Farming Level 3",
-      "sellPrice": 1000,
+      "id": "loom",
+      "name": "Loom",
+      "description": "Turns wool into cloth.",
       "stackSize": 1,
-      "texture": "Items/oil_maker.png"
-    },
-    {
-      "id": "preserves_jar",
-      "name": "Preserves Jar",
-      "description": "Turns vegetables and fruits into pickles and jams.",
-      "ingredients": [
-        {
-          "item": "iron_bar",
-          "amount": 10
-        },
-        {
-          "item": "wood",
-          "amount": 20
-        }
-      ],
-      "source": "Farming Level 2",
-      "sellPrice": 250,
-      "stackSize": 1,
-      "texture": "Items/preserves_jar.png"
+      "sellPrice": 0,
+      "texture": "Items/loom.png",
+      "deviceRecipes": [
+        { "outputId": "cloth", "processingHours": 240, "ingredients": { "wool": 1 } }
+      ]
     },
     {
       "id": "dehydrator",
       "name": "Dehydrator",
-      "description": "Dries fruits into dried fruits and mushrooms into dried mushrooms.",
-      "ingredients": [
-        {
-          "item": "wood",
-          "amount": 15
-        },
-        {
-          "item": "fiber",
-          "amount": 10
-        }
-      ],
-      "source": "Pierre's General Store",
-      "sellPrice": null,
-      "buyPrice": 1000,
+      "description": "Dries certain foods.",
       "stackSize": 1,
-      "texture": "Items/dehydrator.png"
+      "sellPrice": 0,
+      "texture": "Items/dehydrator.png",
+      "deviceRecipes": [
+        { "outputId": "dried_mushroom", "processingHours": 12, "ingredients": { "cat:any_mushroom": 4 } }
+      ]
     },
     {
-      "id": "fish_smoker",
-      "name": "Fish Smoker",
-      "description": "Smokes fish into smoked fish.",
-      "ingredients": [
-        {
-          "item": "wood",
-          "amount": 15
-        },
-        {
-          "item": "ore",
-          "amount": 10
-        },
-        {
-          "item": "coal",
-          "amount": 10
-        }
-      ],
-      "source": "Fish Shop",
-      "sellPrice": null,
-      "buyPrice": 10000,
+      "id": "charcoal_kiln",
+      "name": "Charcoal Kiln",
+      "description": "Burns wood pieces into coal.",
       "stackSize": 1,
-      "texture": "Items/fish_smoker.png"
+      "sellPrice": 0,
+      "texture": "Items/charcoal_kiln.png",
+      "deviceRecipes": [
+        { "outputId": "coal", "processingHours": 30, "ingredients": { "wood": 10 } }
+      ]
+    },
+    {
+      "id": "furnace",
+      "name": "Furnace",
+      "description": "Smelts ore into bars.",
+      "stackSize": 1,
+      "sellPrice": 0,
+      "texture": "Items/furnace.png",
+      "deviceRecipes": [
+        { "outputId": "copper_bar",   "processingHours": 150, "ingredients": { "copper_ore": 4,   "coal": 1 } },
+        { "outputId": "iron_bar",     "processingHours": 150, "ingredients": { "iron_ore": 4,     "coal": 1 } },
+        { "outputId": "gold_bar",     "processingHours": 150, "ingredients": { "gold_ore": 4,     "coal": 1 } },
+        { "outputId": "iridium_bar",  "processingHours": 150, "ingredients": { "iridium_ore": 4,  "coal": 1 } }
+      ]
+    },
+    {
+      "id": "seed_maker",
+      "name": "Seed Maker",
+      "description": "Turns crops into seeds.",
+      "stackSize": 1,
+      "sellPrice": 0,
+      "texture": "Items/seed_maker.png",
+      "deviceRecipes": [
+        { "outputId": "ancient_seeds", "processingHours": 20, "ingredients": { "ancient_fruit": 1 } },
+        { "outputId": "mixed_seeds",   "processingHours": 30, "ingredients": { "cat:any_crop": 1 } }
+      ]
     }
   ]
+,
+  "craftables": [
+    { "id": "cherry_bomb", "name": "Cherry Bomb", "description": "Destroys anything in a 3-tile radius.", "types": ["craftables"], "texture": "Items/cherry_bomb.png", "craftable": true, "craft": { "recipeId": "cherry_bomb" } },
+    { "id": "bomb", "name": "Bomb", "description": "Destroys anything in a 5-tile radius.", "types": ["craftables"], "texture": "Items/bomb.png", "craftable": true, "craft": { "recipeId": "bomb" } },
+    { "id": "mega_bomb", "name": "Mega Bomb", "description": "Destroys anything in a 7-tile radius.", "types": ["craftables"], "texture": "Items/mega_bomb.png", "craftable": true, "craft": { "recipeId": "mega_bomb" } },
+
+    { "id": "sprinkler", "name": "Sprinkler", "description": "Waters the 4 adjacent tiles.", "types": ["craftables"], "texture": "Items/sprinkler.png", "craftable": true, "craft": { "recipeId": "sprinkler" } },
+    { "id": "quality_sprinkler", "name": "Quality Sprinkler", "description": "Waters the 8 adjacent tiles.", "types": ["craftables"], "texture": "Items/quality_sprinkler.png", "craftable": true, "craft": { "recipeId": "quality_sprinkler" } },
+    { "id": "iridium_sprinkler", "name": "Iridium Sprinkler", "description": "Waters 24 surrounding tiles.", "types": ["craftables"], "texture": "Items/iridium_sprinkler.png", "craftable": true, "craft": { "recipeId": "iridium_sprinkler" } },
+
+    { "id": "charcoal_kiln", "name": "Charcoal Kiln", "description": "Turns 10 wood into 1 coal.", "types": ["craftables"], "texture": "Items/charcoal_kiln.png", "craftable": true, "craft": { "recipeId": "charcoal_kiln" } },
+    { "id": "furnace", "name": "Furnace", "description": "Smelts ore (with coal) into bars.", "types": ["craftables"], "texture": "Items/furnace.png", "craftable": true, "craft": { "recipeId": "furnace" } },
+
+    { "id": "scarecrow", "name": "Scarecrow", "description": "Prevents crow attacks within an 8-tile radius.", "types": ["craftables"], "texture": "Items/scarecrow.png", "craftable": true, "craft": { "recipeId": "scarecrow" } },
+    { "id": "deluxe_scarecrow", "name": "Deluxe Scarecrow", "description": "Prevents crow attacks within a 12-tile radius.", "types": ["craftables"], "texture": "Items/deluxe_scarecrow.png", "craftable": true, "craft": { "recipeId": "deluxe_scarecrow" } },
+
+    { "id": "bee_house", "name": "Bee House", "description": "Produces honey when placed on the farm.", "types": ["craftables"], "texture": "Items/bee_house.png", "craftable": true, "craft": { "recipeId": "bee_house" } },
+    { "id": "cheese_press", "name": "Cheese Press", "description": "Turns milk into cheese.", "types": ["craftables"], "texture": "Items/cheese_press.png", "craftable": true, "craft": { "recipeId": "cheese_press" } },
+    { "id": "keg", "name": "Keg", "description": "Turns fruit and vegetables into beverages.", "types": ["craftables"], "texture": "Items/keg.png", "craftable": true, "craft": { "recipeId": "keg" } },
+    { "id": "loom", "name": "Loom", "description": "Turns wool into cloth.", "types": ["craftables"], "texture": "Items/loom.png", "craftable": true, "craft": { "recipeId": "loom" } },
+    { "id": "mayonnaise_machine", "name": "Mayonnaise Machine", "description": "Turns eggs into mayonnaise.", "types": ["craftables"], "texture": "Items/mayonnaise_machine.png", "craftable": true, "craft": { "recipeId": "mayonnaise_machine" } },
+    { "id": "oil_maker", "name": "Oil Maker", "description": "Turns truffles into oil.", "types": ["craftables"], "texture": "Items/oil_maker.png", "craftable": true, "craft": { "recipeId": "oil_maker" } },
+    { "id": "preserves_jar", "name": "Preserves Jar", "description": "Turns vegetables into pickles and fruit into jelly.", "types": ["craftables"], "texture": "Items/preserves_jar.png", "craftable": true, "craft": { "recipeId": "preserves_jar" } },
+    { "id": "dehydrator", "name": "Dehydrator", "description": "Dries fruit or mushrooms.", "types": ["craftables"], "texture": "Items/dehydrator.png", "craftable": true, "craft": { "recipeId": "dehydrator" } },
+
+    { "id": "grass_starter", "name": "Grass Starter", "description": "Grows grass where placed.", "types": ["craftables"], "texture": "Items/grass_starter.png", "craftable": true, "craft": { "recipeId": "grass_starter" } },
+    { "id": "fish_smoker", "name": "Fish Smoker", "description": "Turns any fish into smoked fish using one coal, preserving its quality.", "types": ["craftables"], "texture": "Items/fish_smoker.png", "craftable": true, "craft": { "recipeId": "fish_smoker" } },
+    { "id": "mystic_tree_seed", "name": "Mystic Tree Seed", "description": "Can be planted to grow a Mystic Tree.", "types": ["craftables"], "texture": "Items/mystic_tree_seed.png", "craftable": true, "craft": { "recipeId": "mystic_tree_seed" } }
+  ],
+  "crafting_ingredients": [
+    { "id": "wood",           "name": "Wood",           "description": "Crafting ingredient.", "stackSize": 999, "componentsData": [], "texture": "Items/wood.png" },
+    { "id": "stone",          "name": "Stone",          "description": "Crafting ingredient.", "stackSize": 999, "componentsData": [], "texture": "Items/stone.png" },
+    { "id": "coal",           "name": "Coal",           "description": "Crafting ingredient.", "stackSize": 999, "componentsData": [], "texture": "Items/coal.png" },
+    { "id": "fiber",          "name": "Fiber",          "description": "Crafting ingredient.", "stackSize": 999, "componentsData": [], "texture": "Items/fiber.png" },
+
+    { "id": "copper_ore",     "name": "Copper Ore",     "description": "Crafting ingredient.", "stackSize": 999, "componentsData": [], "texture": "Items/copper_ore.png" },
+    { "id": "iron_ore",       "name": "Iron Ore",       "description": "Crafting ingredient.", "stackSize": 999, "componentsData": [], "texture": "Items/iron_ore.png" },
+    { "id": "gold_ore",       "name": "Gold Ore",       "description": "Crafting ingredient.", "stackSize": 999, "componentsData": [], "texture": "Items/gold_ore.png" },
+    { "id": "iridium_ore",    "name": "Iridium Ore",    "description": "Crafting ingredient.", "stackSize": 999, "componentsData": [], "texture": "Items/iridium_ore.png" },
+
+    { "id": "copper_bar",     "name": "Copper Bar",     "description": "Crafting ingredient.", "stackSize": 999, "componentsData": [], "texture": "Items/copper_bar.png" },
+    { "id": "iron_bar",       "name": "Iron Bar",       "description": "Crafting ingredient.", "stackSize": 999, "componentsData": [], "texture": "Items/iron_bar.png" },
+    { "id": "gold_bar",       "name": "Gold Bar",       "description": "Crafting ingredient.", "stackSize": 999, "componentsData": [], "texture": "Items/gold_bar.png" },
+    { "id": "iridium_bar",    "name": "Iridium Bar",    "description": "Crafting ingredient.", "stackSize": 999, "componentsData": [], "texture": "Items/iridium_bar.png" },
+
+    { "id": "acorns",         "name": "Acorns",         "description": "Crafting ingredient.", "stackSize": 999, "componentsData": [], "texture": "Items/acorns.png" },
+    { "id": "maple_seeds",    "name": "Maple Seeds",    "description": "Crafting ingredient.", "stackSize": 999, "componentsData": [], "texture": "Items/maple_seeds.png" },
+    { "id": "pine_cones",     "name": "Pine Cones",     "description": "Crafting ingredient.", "stackSize": 999, "componentsData": [], "texture": "Items/pine_cones.png" },
+    { "id": "mahogany_seeds", "name": "Mahogany Seeds", "description": "Crafting ingredient.", "stackSize": 999, "componentsData": [], "texture": "Items/mahogany_seeds.png" }
+  ]
+
 }

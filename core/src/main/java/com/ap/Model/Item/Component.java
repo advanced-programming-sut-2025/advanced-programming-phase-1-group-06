@@ -12,5 +12,5 @@ public abstract class Component {
         return object;
     }
 
-
+    public Component(){}
 }

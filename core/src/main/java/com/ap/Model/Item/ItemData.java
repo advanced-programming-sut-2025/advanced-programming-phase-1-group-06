@@ -10,6 +10,7 @@ public class ItemData {
     public String description;
     public int stackSize;
     public int basePrice = 0; // Optional
+    public String recipeId;
 
     public String texture;
     public ArrayList<ComponentData> componentsData;
@@ -68,5 +69,9 @@ public class ItemData {
 
     public void setBasePrice(int basePrice) {
         this.basePrice = basePrice;
+    }
+
+    public String getRecipeId() {
+        return recipeId;
     }
 }

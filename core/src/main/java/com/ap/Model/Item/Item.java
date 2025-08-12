@@ -84,4 +84,10 @@ public class Item {
     }
 
 
+    public boolean hasAmount(Item item){
+        if (item == null){
+            return false;
+        }
+        return (item.getAmount() <= getAmount() && item.getName().equals(getName()));
+    }
 }

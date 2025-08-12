@@ -7,6 +7,7 @@ import com.ap.Model.Recipe;
 import com.badlogic.gdx.math.Vector2;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Player {
     private static final float PLAYER_WIDTH = 8f;
@@ -264,8 +265,8 @@ public class Player {
     }
 
 
-    public ArrayList<Recipe> getCraftableItems() {
-        return craftableItems;
+    public List<Recipe> getCraftableItems() {
+        return Recipe.all();
     }
 
     public void addCraftableItem(Recipe recipe){

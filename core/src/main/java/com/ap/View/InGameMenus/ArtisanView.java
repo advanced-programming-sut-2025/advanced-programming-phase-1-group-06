@@ -1,6 +1,8 @@
 package com.ap.View.InGameMenus;
 
 import com.ap.Main;
+import com.ap.Model.Item.ArtisanDeviceComponent;
+import com.ap.Model.Item.Item;
 import com.ap.Model.Player.Player;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
@@ -12,17 +14,21 @@ import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
-public class exampleScreen implements Screen, InputProcessor {
+public class ArtisanView implements Screen, InputProcessor {
 
     private Player player;
     private Stage stage;
     private Window window;
     private Skin skin;
+    private Item artisanDevice;
+    private ArtisanDeviceComponent artisanComponent;
 
-    public exampleScreen(Player player){
+    public ArtisanView(Player player, Item artisanDevice){
+        if (artisanDevice.hasComponent(ArtisanDeviceComponent.class))
+            artisanComponent = artisanDevice.getComponent(ArtisanDeviceComponent.class);
         skin = Main.getInstance().getSkin();
         this.player = player;
-        window = new Window("Skill" , skin);
+        window = new Window(artisanDevice.getName(), skin);
     }
 
     @Override

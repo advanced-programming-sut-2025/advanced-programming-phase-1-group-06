@@ -4,6 +4,7 @@ import com.ap.Main;
 import com.ap.Model.Item.Factory;
 import com.ap.Model.Item.Item;
 import com.ap.Model.Item.ToolComponent;
+import com.ap.Model.Recipe;
 import com.ap.View.InGameMenus.InventoryView;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -96,7 +97,6 @@ public class Inventory {
     }
 
     private void addTools() {
-        addItem(Factory.getInstance().createItemByName("oil_sunflower_seeds"));
         for (ToolComponent.ToolType toolType : ToolComponent.ToolType.values()) {
             try {
                 if (toolType.equals(ToolComponent.ToolType.FISHING_ROD) || toolType.equals(ToolComponent.ToolType.MILK_PAIL)) {
@@ -136,9 +136,51 @@ public class Inventory {
             return false;
         }
         items.add(itemToAdd);
-        System.out.println(itemToAdd.getName() + " item added to inventory");
+//        System.out.println(itemToAdd.getName() + " item added to inventory");
         return true;
     }
+
+    public boolean hasItem(Item item){
+        for (Item inventoryItem : items){
+            if (inventoryItem.hasAmount(item)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean canCraft(Recipe recipe){
+        for (Item item : recipe.getIngredient()){
+            if (!hasItem(item)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean craft(Recipe r){
+        if (!canCraft(r)){
+            return false;
+        }
+        for (Item item : r.getIngredient()){
+            removeItemAmount(item);
+        }
+        items.add(r.getItem());
+        return true;
+    }
+
+    public void removeItemAmount(Item item){
+        for (Item inventoryItem : items){
+            if (inventoryItem.hasAmount(item)){
+                inventoryItem.setAmount(inventoryItem.getAmount() - item.getAmount());
+                if (inventoryItem.getAmount() == 0){
+                    items.remove(inventoryItem);
+                }
+            }
+        }
+    }
+
+
 
     public boolean checkExistense(String id, int amount) {
         for (Item item : items) {
@@ -241,16 +283,6 @@ public class Inventory {
         return items.stream().anyMatch(item -> item.getName().equals(name));
     }
 
-    public int getBaseItemCount(String itemName) {
-        int counter = 0;
-        for (Item item : items) {
-            if (item.getName().equals(itemName)) {
-                counter += item.getAmount();
-            }
-        }
-        return counter;
-    }
-
     public Item getItemByName(String name) {
         for (Item item : items) {
             if (item.getName().equals(name)) {
@@ -259,6 +291,12 @@ public class Inventory {
         }
         return null;
     }
+/*
+
+=================================================================================================
+    ui stuff
+
+*/
 
     public void initiateQuickAccessSlots() {
         quickAccessSlots.clear();
@@ -364,7 +402,7 @@ public class Inventory {
             image.setPosition(slot.x, slot.y);
             slotGroup.addActor(image);
             if (slot.getItem() != null) {
-                System.out.println("slot " + slot.index + " has item " + slot.item.getName());
+//                System.out.println("slot " + slot.index + " has item " + slot.item.getName());
                 imageGroup.addActor(slot.getItemImage());
                 if (slot.getItem().getAmount() != 1) {
                     Label label = new Label("" + slot.getItem().getAmount(), Main.getInstance().getSkin());
@@ -411,6 +449,8 @@ public class Inventory {
     public ArrayList<Slot> getInventorySlots() {
         return inventorySlots;
     }
+
+
 
     class Slot {
         private Item item;
