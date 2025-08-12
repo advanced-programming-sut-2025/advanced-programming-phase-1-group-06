@@ -6,10 +6,7 @@ import com.ap.Controller.PlayerController;
 import com.ap.Main;
 import com.ap.Model.Direction;
 import com.ap.Model.Player.Player;
-import com.ap.View.InGameMenus.InventoryView;
-import com.ap.View.InGameMenus.Journal;
-import com.ap.View.InGameMenus.SettingsView;
-import com.ap.View.InGameMenus.SkillView;
+import com.ap.View.InGameMenus.*;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
@@ -132,6 +129,8 @@ public class GameView implements Screen, InputProcessor {
             Main.getInstance().setScreen(new InventoryView(player));
         }else if (i == Input.Keys.N){
             Main.getInstance().setScreen(new SkillView(player));
+        } else if (i == Input.Keys.O) {
+            Main.getInstance().setScreen(new CheatView(player));
         }
         return false;
     }

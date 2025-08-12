@@ -133,6 +133,23 @@ public class Clock extends Group {
         // Same offsets you used when batch-drawing
     }
 
+    public void advanceTime(int hour){
+        totalHour += hour;
+        int day = currentDay;
+        if ((gameHour + hour) % 24 >= 22 || (gameHour + hour) % 24 <= 9){
+            day += (gameHour + hour / 24) + 1;
+            gameHour = 9;
+        } else {
+            gameHour += (hour % 24);
+            day += (gameHour + hour) / 24;
+        }
+        while (day > 28){
+            advanceSeason();
+            day -= 28;
+        }
+        currentDay = day;
+        updateDisplay();
+    }
 
     private void advanceGameTime() {
         gameMinute += 10; // Stardew Valley increments by 10 minutes
@@ -172,6 +189,7 @@ public class Clock extends Group {
                 }
             }
         }
+        updateDisplay();
     }
 
     private void advanceSeason() {
@@ -238,6 +256,7 @@ public class Clock extends Group {
 
         // Update money label
         moneyLabel.setText(String.valueOf(playerMoney));
+        updateHandRotation();
     }
 
     private String getDayOfWeek() {

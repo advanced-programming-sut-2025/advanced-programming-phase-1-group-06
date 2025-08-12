@@ -103,9 +103,6 @@ public class Inventory {
      */
 
     private void addTools() {
-        addItem(Factory.getInstance().createItem("wood", 50));
-        addItem(Factory.getInstance().createItem("iron_bar", 3));
-        addItem(Factory.getInstance().createItem("coal", 10));
         for (ToolComponent.ToolType toolType : ToolComponent.ToolType.values()) {
             try {
                 if (toolType.equals(ToolComponent.ToolType.FISHING_ROD) || toolType.equals(ToolComponent.ToolType.MILK_PAIL)) {
@@ -145,7 +142,7 @@ public class Inventory {
             return false;
         }
         items.add(itemToAdd);
-//        System.out.println(itemToAdd.getName() + " item added to inventory");
+        System.out.println(itemToAdd.getName() + " item added to inventory");
         return true;
     }
 
