@@ -29,6 +29,10 @@ public class Factory {
     // Also remember processing hours for each OUTPUT (per device)Recipe
     private final Map<String, Map<String,Integer>> deviceProcessingHours = new HashMap<>();
 
+    // --- Category support ---
+    private final Map<String, Set<String>> itemCategoriesById = new HashMap<String, Set<String>>(); // itemId -> categories
+    private final Map<String, Set<String>> categoryIndex = new HashMap<String, Set<String>>();       // category -> itemIds
+
     public static Factory getInstance() {
         if (instance == null) instance = new Factory();
         return instance;
@@ -52,112 +56,141 @@ public class Factory {
                 } catch (Throwable ignored) {}
             }
 
-            // Parse devices & their recipe tables (old-JDK friendly Gson usage)
+            // Raw JSON pass: collect categories for ALL items, and build devices
             FileReader rawReader = new FileReader("core/src/main/java/com/ap/Data/ItemData.json");
             JsonObject rawRoot = gson.fromJson(rawReader, JsonObject.class);
 
-            if (rawRoot != null && rawRoot.has("artisan_devices") && rawRoot.get("artisan_devices").isJsonArray()) {
-                JsonArray devices = rawRoot.getAsJsonArray("artisan_devices");
-                for (JsonElement el : devices) {
-                    if (!el.isJsonObject()) continue;
-                    JsonObject dev = el.getAsJsonObject();
-                    String id   = optString(dev,"id");
-                    String name = optString(dev,"name");
-                    String desc = optString(dev,"description");
-                    int stack   = optInt(dev,"stackSize",1);
-                    String tex  = optString(dev,"texture");
-                    int sell    = dev.has("sellPrice") && !dev.get("sellPrice").isJsonNull()
-                        ? dev.get("sellPrice").getAsInt() : 0;
-
-                    if (id != null && !id.isEmpty()) {
-                        // ensure device itself is an item
-                        ItemData data = items.get(id);
-                        if (data == null) {
-                            data = new ItemData();
-                            data.id = id;
-                            data.name = name;
-                            data.description = desc;
-                            data.stackSize = stack;
-                            data.texture = tex;
-                            data.basePrice = sell;
-                            data.componentsData = new ArrayList<>();
-                            items.put(id, data);
-                        }
-                        artisanDeviceIds.add(id);
-
-                        // Per-device maps
-                        HashMap<Item, ArrayList<Item>> legacyOutToInputs = new HashMap<>();
-                        Map<String,Integer> outToHours = new HashMap<>();
-                        Map<String, Map<String,Integer>> outToCounts = new HashMap<>();
-                        ArrayList<Recipe> recipeList = new ArrayList<>();
-
-                        if (dev.has("deviceRecipes") && dev.get("deviceRecipes").isJsonArray()) {
-                            JsonArray arr = dev.getAsJsonArray("deviceRecipes");
-                            for (JsonElement e : arr) {
-                                if (!e.isJsonObject()) continue;
-                                JsonObject r = e.getAsJsonObject();
-                                String outputId = optString(r,"outputId");
-                                int hours = optInt(r,"processingHours", 1);
-                                if (outputId == null) continue;
-
-                                // --- Build counted ingredients map ---
-                                Map<String,Integer> counted = new HashMap<>();
-
-                                // Prefer new "ingredients" map
-                                if (r.has("ingredients") && r.get("ingredients").isJsonObject()) {
-                                    JsonObject ings = r.getAsJsonObject("ingredients");
-                                    for (Map.Entry<String, JsonElement> ing : ings.entrySet()) {
-                                        if (ing.getValue() != null && ing.getValue().isJsonPrimitive()) {
-                                            counted.put(ing.getKey(), ing.getValue().getAsInt());
-                                        }
-                                    }
-                                }
-                                // Fallback to legacy "inputIds" list (collapse to counts)
-                                else if (r.has("inputIds") && r.get("inputIds").isJsonArray()) {
-                                    JsonArray inArr = r.getAsJsonArray("inputIds");
-                                    for (JsonElement ie : inArr) {
-                                        String inId = ie.getAsString();
-                                        counted.put(inId, counted.getOrDefault(inId, 0) + 1);
-                                    }
-                                }
-
-                                // --- Build LEGACY array list from counts so old code keeps working ---
-                                Item outputItem = createItem(outputId);
-                                if (outputItem == null) {
-                                    outputItem = new Item(outputId, outputId, "Virtual output", 999);
-                                }
-                                ArrayList<Item> legacyInputs = new ArrayList<>();
-                                for (Map.Entry<String,Integer> ing : counted.entrySet()) {
-                                    String inId = ing.getKey();
-                                    int c = Math.max(1, ing.getValue());
-                                    for (int i = 0; i < c; i++) {
-                                        Item in;
-                                        if (inId.startsWith("cat:")) {
-                                            in = new Item(inId, inId, "Category placeholder", 999);
-                                        } else {
-                                            in = createItem(inId);
-                                            if (in == null) in = new Item(inId, inId, "Virtual input", 999);
-                                        }
-                                        legacyInputs.add(in);
-                                    }
-                                }
-
-                                legacyOutToInputs.put(outputItem, legacyInputs);
-                                outToCounts.put(outputId, counted);
-                                outToHours.put(outputId, hours);
-
-                                // --- Build Recipe object for the device recipe (itemId = outputId) ---
-                                Recipe deviceRecipe = buildRecipeViaReflection(outputId, items.get(outputId) != null ? items.get(outputId).name : outputId, counted);
-                                if (deviceRecipe != null) {
-                                    recipeList.add(deviceRecipe);
-                                }
+            if (rawRoot != null) {
+                // --- 2.a Collect categories on every item in every top-level array ---
+                for (Map.Entry<String, JsonElement> top : rawRoot.entrySet()) {
+                    JsonElement val = top.getValue();
+                    if (val == null || !val.isJsonArray()) continue;
+                    JsonArray arr = val.getAsJsonArray();
+                    for (JsonElement je : arr) {
+                        if (je == null || !je.isJsonObject()) continue;
+                        JsonObject obj = je.getAsJsonObject();
+                        if (!obj.has("id")) continue;
+                        String itemId = obj.get("id").getAsString();
+                        if (obj.has("categories") && obj.get("categories").isJsonArray()) {
+                            JsonArray cats = obj.getAsJsonArray("categories");
+                            for (JsonElement ce : cats) {
+                                if (ce == null || !ce.isJsonPrimitive()) continue;
+                                String cat = ce.getAsString();
+                                if (cat == null || cat.isEmpty()) continue;
+                                addCategoryForItem(itemId, cat);
                             }
                         }
+                    }
+                }
 
-                        deviceRecipeMaps.put(id, legacyOutToInputs);          // legacy list
-                        deviceRecipeMapsCounts.put(id, outToCounts);          // counted map
-                        deviceRecipeLists.put(id, recipeList);                // ArrayList<Recipe>
-                        deviceProcessingHours.put(id, outToHours);
+                // --- 2.b Devices (build recipe maps & lists) ---
+                if (rawRoot.has("artisan_devices") && rawRoot.get("artisan_devices").isJsonArray()) {
+                    JsonArray devices = rawRoot.getAsJsonArray("artisan_devices");
+                    for (JsonElement el : devices) {
+                        if (!el.isJsonObject()) continue;
+                        JsonObject dev = el.getAsJsonObject();
+                        String id   = optString(dev,"id");
+                        String name = optString(dev,"name");
+                        String desc = optString(dev,"description");
+                        int stack   = optInt(dev,"stackSize",1);
+                        String tex  = optString(dev,"texture");
+                        int sell    = dev.has("sellPrice") && !dev.get("sellPrice").isJsonNull()
+                            ? dev.get("sellPrice").getAsInt() : 0;
+
+                        if (id != null && !id.isEmpty()) {
+                            // ensure device itself is an item
+                            ItemData data = items.get(id);
+                            if (data == null) {
+                                data = new ItemData();
+                                data.id = id;
+                                data.name = name;
+                                data.description = desc;
+                                data.stackSize = stack;
+                                data.texture = tex;
+                                data.basePrice = sell;
+                                data.componentsData = new ArrayList<>();
+                                items.put(id, data);
+                            }
+                            artisanDeviceIds.add(id);
+
+                            // Per-device maps
+                            HashMap<Item, ArrayList<Item>> legacyOutToInputs = new HashMap<>();
+                            Map<String,Integer> outToHours = new HashMap<>();
+                            Map<String, Map<String,Integer>> outToCounts = new HashMap<>();
+                            ArrayList<Recipe> recipeList = new ArrayList<>();
+
+                            if (dev.has("deviceRecipes") && dev.get("deviceRecipes").isJsonArray()) {
+                                JsonArray arr = dev.getAsJsonArray("deviceRecipes");
+                                for (JsonElement e : arr) {
+                                    if (!e.isJsonObject()) continue;
+                                    JsonObject r = e.getAsJsonObject();
+                                    String outputId = optString(r,"outputId");
+                                    int hours = optInt(r,"processingHours", 1);
+                                    if (outputId == null) continue;
+
+                                    // --- Build counted ingredients map ---
+                                    Map<String,Integer> counted = new HashMap<>();
+
+                                    // Prefer new "ingredients" map
+                                    if (r.has("ingredients") && r.get("ingredients").isJsonObject()) {
+                                        JsonObject ings = r.getAsJsonObject("ingredients");
+                                        for (Map.Entry<String, JsonElement> ing : ings.entrySet()) {
+                                            if (ing.getValue() != null && ing.getValue().isJsonPrimitive()) {
+                                                counted.put(ing.getKey(), ing.getValue().getAsInt());
+                                            }
+                                        }
+                                    }
+                                    // Fallback to legacy "inputIds" list (collapse to counts)
+                                    else if (r.has("inputIds") && r.get("inputIds").isJsonArray()) {
+                                        JsonArray inArr = r.getAsJsonArray("inputIds");
+                                        for (JsonElement ie : inArr) {
+                                            String inId = ie.getAsString();
+                                            counted.put(inId, counted.getOrDefault(inId, 0) + 1);
+                                        }
+                                    }
+
+                                    // --- Build LEGACY array list from counts so old code keeps working ---
+                                    Item outputItem = createItem(outputId);
+                                    if (outputItem == null) {
+                                        outputItem = new Item(outputId, outputId, "Virtual output", 999);
+                                    }
+                                    ArrayList<Item> legacyInputs = new ArrayList<>();
+                                    for (Map.Entry<String,Integer> ing : counted.entrySet()) {
+                                        String inId = ing.getKey();
+                                        int c = Math.max(1, ing.getValue());
+                                        for (int i = 0; i < c; i++) {
+                                            Item in;
+                                            if (inId.startsWith("cat:")) {
+                                                in = new Item(inId, inId, "Category placeholder", 999);
+                                            } else {
+                                                in = createItem(inId);
+                                                if (in == null) in = new Item(inId, inId, "Virtual input", 999);
+                                            }
+                                            legacyInputs.add(in);
+                                        }
+                                    }
+
+                                    legacyOutToInputs.put(outputItem, legacyInputs);
+                                    outToCounts.put(outputId, counted);
+                                    outToHours.put(outputId, hours);
+
+                                    // --- Build Recipe object for the device recipe (itemId = outputId) ---
+                                    Recipe deviceRecipe = buildRecipeViaReflection(
+                                        outputId,
+                                        items.get(outputId) != null ? items.get(outputId).name : outputId,
+                                        counted
+                                    );
+                                    if (deviceRecipe != null) {
+                                        recipeList.add(deviceRecipe);
+                                    }
+                                }
+                            }
+
+                            deviceRecipeMaps.put(id, legacyOutToInputs);          // legacy list
+                            deviceRecipeMapsCounts.put(id, outToCounts);          // counted map
+                            deviceRecipeLists.put(id, recipeList);                // ArrayList<Recipe>
+                            deviceProcessingHours.put(id, outToHours);
+                        }
                     }
                 }
             }
@@ -198,6 +231,30 @@ public class Factory {
         }
     }
 
+    // ---------------------- Category helpers ----------------------
+
+    private void addCategoryForItem(String itemId, String category) {
+        Set<String> cats = itemCategoriesById.get(itemId);
+        if (cats == null) {
+            cats = new HashSet<String>();
+            itemCategoriesById.put(itemId, cats);
+        }
+        cats.add(category);
+
+        Set<String> ids = categoryIndex.get(category);
+        if (ids == null) {
+            ids = new HashSet<String>();
+            categoryIndex.put(category, ids);
+        }
+        ids.add(itemId);
+    }
+
+    /** Test membership: does this itemId belong to 'categoryKey' (e.g., "any_fruit")? */
+    public boolean isItemInCategory(String itemId, String categoryKey) {
+        Set<String> members = categoryIndex.get(categoryKey);
+        return members != null && members.contains(itemId);
+    }
+
     // ---------------------- Item creation ----------------------
 
     public Item createItem(String itemId) { return createItem(itemId, 1); }
@@ -210,6 +267,12 @@ public class Factory {
         if (data.getBasePrice() != 0) item.setPrice(data.getBasePrice());
         item.setAmount(amount);
         item.setTexturePath(data.texture);
+
+        // Attach categories collected from ItemData.json
+        Set<String> cats = itemCategoriesById.get(itemId);
+        if (cats != null && !cats.isEmpty()) {
+            item.setCategories(new HashSet<String>(cats));
+        }
 
         if (data.componentsData != null) {
             for (ComponentData component : data.componentsData) {

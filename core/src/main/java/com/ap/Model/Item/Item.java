@@ -14,7 +14,21 @@ public class Item {
     private int price; // -1 for unsellable items
     private String texturePath;
 
+    private java.util.Set<String> categories = new java.util.HashSet<String>();
 
+    // --- add these methods anywhere in the class ---
+    public java.util.Set<String> getCategories() {
+        return java.util.Collections.unmodifiableSet(categories);
+    }
+
+    public void setCategories(java.util.Set<String> cats) {
+        this.categories.clear();
+        if (cats != null) this.categories.addAll(cats);
+    }
+
+    public boolean hasCategory(String categoryKey) {
+        return categories.contains(categoryKey);
+    }
 
     public Item(String id, String name, String description, int stackSize) {
         this.id = id;

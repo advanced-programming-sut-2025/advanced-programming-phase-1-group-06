@@ -16,6 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 
 public class Inventory {
@@ -64,7 +65,7 @@ public class Inventory {
         initiateInventorySlots();
     }
 
-    public void setTrashcanInfo(float x, float y, float width, float height){
+    public void setTrashcanInfo(float x, float y, float width, float height) {
         TRASHCAN_Y = y;
         TRASHCAN_X = x;
         TRASHCAN_HEIGHT = height;
@@ -95,8 +96,16 @@ public class Inventory {
             default -> 12;
         };
     }
+    /*
+     "wood": 50,
+     "iron_bar": 3,
+     "coal": 10
+     */
 
     private void addTools() {
+        addItem(Factory.getInstance().createItem("wood", 50));
+        addItem(Factory.getInstance().createItem("iron_bar", 3));
+        addItem(Factory.getInstance().createItem("coal", 10));
         for (ToolComponent.ToolType toolType : ToolComponent.ToolType.values()) {
             try {
                 if (toolType.equals(ToolComponent.ToolType.FISHING_ROD) || toolType.equals(ToolComponent.ToolType.MILK_PAIL)) {
@@ -140,44 +149,45 @@ public class Inventory {
         return true;
     }
 
-    public boolean hasItem(Item item){
-        for (Item inventoryItem : items){
-            if (inventoryItem.hasAmount(item)){
+    public boolean hasItem(Item item) {
+        for (Item inventoryItem : items) {
+            if (inventoryItem.hasAmount(item)) {
                 return true;
             }
         }
         return false;
     }
 
-    public boolean canCraft(Recipe recipe){
-        for (Item item : recipe.getIngredient()){
-            if (!hasItem(item)){
+    public boolean canCraft(Recipe recipe) {
+        for (Item item : recipe.getIngredient()) {
+            if (!hasItem(item)) {
                 return false;
             }
         }
         return true;
     }
 
-    public boolean craft(Recipe r){
-        if (!canCraft(r)){
+    public boolean craft(Recipe r) {
+        if (!canCraft(r)) {
             return false;
         }
-        for (Item item : r.getIngredient()){
-            removeItemAmount(item);
+        for (Item item : r.getIngredient()) {
+            removeItem(item);
         }
         items.add(r.getItem());
         return true;
     }
 
-    public void removeItemAmount(Item item){
-        for (Item inventoryItem : items){
-            if (inventoryItem.hasAmount(item)){
-                inventoryItem.setAmount(inventoryItem.getAmount() - item.getAmount());
-                if (inventoryItem.getAmount() == 0){
-                    items.remove(inventoryItem);
-                }
+    // Inventory.java
+    public boolean removeItem(Item target) {
+        for (Iterator<Item> it = items.iterator(); it.hasNext(); ) {
+            Item i = it.next();
+            if (i == target || i.equals(target) || i.getId().equals(target.getId())) {
+                it.remove();                 // <- safe removal
+                return true;
             }
         }
+        return false;
     }
 
 
@@ -200,11 +210,11 @@ public class Inventory {
         return null;
     }
 
-    public void removeItem(String name) {
+    public void removeItemByName(String name) {
         items.removeIf(item -> item.getName().equals(name));
     }
 
-    public void removeItem(Item item){
+    public void removeItemFromSlots(Item item) {
         items.remove(item);
         Slot slot = getInventorySlotByItem(item);
         slot.item = null;
@@ -215,7 +225,7 @@ public class Inventory {
         System.out.println("removed");
     }
 
-    public void removeItem(String itemName, int amount) {
+    public void removeItemAmountByName(String itemName, int amount) {
         if (!hasItemAmount(itemName, amount))
             return;
         for (Item item : items) {
@@ -330,8 +340,8 @@ public class Inventory {
             slotImage.setSize(SLOT_SIZE, SLOT_SIZE);
             slotImage.setPosition(slot.x, slot.y);
             slotImages.addActor(slotImage);
-            if (i == equipedInt){
-                selectedImage.setPosition(slot.x-5, slot.y-5);
+            if (i == equipedInt) {
+                selectedImage.setPosition(slot.x - 5, slot.y - 5);
                 selectedImage.setSize(SLOT_SIZE * 1.15f, SLOT_SIZE * 1.15f);
             }
         }
@@ -366,7 +376,7 @@ public class Inventory {
             for (int j = 0; j < 12; j++) {
                 item = null;
                 if (items.size() > index - 1) {
-                    if (items.get(index - 1) != null){
+                    if (items.get(index - 1) != null) {
                         item = items.get(index - 1);
                     }
                 }
@@ -384,7 +394,7 @@ public class Inventory {
         Slot slot = quickAccessSlots.get(amount);
         if (amount <= 12 && amount >= 0) {
             equipedInt = amount;
-            selectedImage.setPosition(slot.x-5, slot.y-5);
+            selectedImage.setPosition(slot.x - 5, slot.y - 5);
             player.setCurrentItem(slot.getItem());
 //            selectedImage.toFront();
         }
@@ -424,32 +434,31 @@ public class Inventory {
         return null;
     }
 
-    public Slot getInventorySlotByItem(Item item){
+    public Slot getInventorySlotByItem(Item item) {
         for (Slot slot : inventorySlots) {
-            if (slot.item == item){
-               return slot;
-            }
-        }
-        return null;
-    }
-
-    public Slot getQuickAccessSlotByItem(Item item){
-        for (Slot slot : quickAccessSlots) {
-            if (slot.item == item){
+            if (slot.item == item) {
                 return slot;
             }
         }
         return null;
     }
 
-    public boolean checkTrashcan(float x, float y){
+    public Slot getQuickAccessSlotByItem(Item item) {
+        for (Slot slot : quickAccessSlots) {
+            if (slot.item == item) {
+                return slot;
+            }
+        }
+        return null;
+    }
+
+    public boolean checkTrashcan(float x, float y) {
         return (TRASHCAN_X <= x && TRASHCAN_Y <= y && TRASHCAN_X + TRASHCAN_WIDTH >= x && TRASHCAN_Y + TRASHCAN_HEIGHT >= y);
     }
 
     public ArrayList<Slot> getInventorySlots() {
         return inventorySlots;
     }
-
 
 
     class Slot {
@@ -517,12 +526,12 @@ public class Inventory {
 
                 @Override
                 public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                    if (itemImage == null){
+                    if (itemImage == null) {
                         System.out.println("item image null");
                         return;
                     }
-                    if (checkTrashcan(itemImage.getX() + itemImage.getWidth() / 2, itemImage.getY() + itemImage.getHeight() / 2)){
-                        inventory.removeItem(item);
+                    if (checkTrashcan(itemImage.getX() + itemImage.getWidth() / 2, itemImage.getY() + itemImage.getHeight() / 2)) {
+                        inventory.removeItemFromSlots(item);
                         itemImage.remove();
                     }
                     Slot toSlot = getSlotByCoordinate(itemImage.getX() + itemImage.getWidth() / 2, itemImage.getY() + itemImage.getHeight() / 2);
@@ -543,7 +552,7 @@ public class Inventory {
             toSlot.item = fromSlot.item;
             fromSlot.item = tempItem;
 
-            if (toSlot.item != null){
+            if (toSlot.item != null) {
                 System.out.println(toSlot.item.getName() + "moved from index " + fromSlot.index + " to " + toSlot.index);
             }
 
@@ -628,7 +637,7 @@ public class Inventory {
 
         public void setItemImage(Image itemImage, float x, float y, float size) {
             this.itemImage = itemImage;
-            if(itemImage != null){
+            if (itemImage != null) {
                 itemImage.setPosition(x, y);
                 itemImage.setSize(size, size);
             }

@@ -75,7 +75,6 @@ public class CraftingView implements Screen, InputProcessor {
         stage.addActor(craftingWindow);
         Journal.addButtonsToStage(inventoryWindow, stage, Journal.getImageButtons(), "crafting");
         player.getInventory().drawInventory(stage);
-        stage.addActor(errorwindow);
     }
 
     @Override
@@ -169,9 +168,13 @@ public class CraftingView implements Screen, InputProcessor {
                     label.setText("can't craft this item");
                 } else {
                     label.setText("item crafted");
+                    player.getInventory().initiateInventorySlots();
+                    player.getInventory().initiateQuickAccessSlots();
+                    player.getInventory().drawInventory(stage);
                 }
                 label.setPosition(40, errorwindow.getHeight()/2-label.getHeight()/2);
                 errorwindow.addActor(label);
+                stage.addActor(errorwindow);
                 errorwindow.addAction(Actions.sequence(
                     Actions.fadeIn(1f),
                     Actions.delay(3f),              // wait 3 seconds

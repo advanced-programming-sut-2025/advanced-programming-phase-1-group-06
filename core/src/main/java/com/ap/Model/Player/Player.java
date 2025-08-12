@@ -142,22 +142,6 @@ public class Player {
         }
     }
 
-
-    public boolean removeItem(String name, int amount) {
-        if (!inventory.hasItemAmount(name, amount))
-            return false;
-        inventory.removeItem(name, amount);
-        return true;
-    }
-
-    public boolean removeItem(String name) {
-        if (!inventory.hasItem(name))
-            return false;
-        inventory.removeItem(name);
-        return true;
-    }
-
-
 //    public boolean canWalk(int x, int y) {
 //        GameMap gameMap = App.getGame().getBigMap();
 //

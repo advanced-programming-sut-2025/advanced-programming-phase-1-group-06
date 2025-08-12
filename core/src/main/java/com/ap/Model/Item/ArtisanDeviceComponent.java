@@ -10,7 +10,8 @@ import java.util.*;
  * Artisan device component that works with an ArrayList<Recipe>.
  * Each Recipe represents a possible OUTPUT for this device (itemId = outputId),
  * and its ingredients map contains { inputId -> count }. Category placeholders
- * use the "cat:*" prefix and are satisfied from any leftover inputs.
+ * use "cat:<categoryKey>" (e.g., "cat:any_fruit") and are satisfied ONLY by
+ * items that carry that category (from ItemData.json).
  *
  * Timing uses the game's total hours: clock.getTotalHours().
  */
@@ -30,6 +31,9 @@ public class ArtisanDeviceComponent extends Component {
     private String currentOutputId;
     private Map<String,Integer> currentInputs; // snapshot of consumed inputs (by id -> count)
     private long finishHour;                   // absolute in-game hour when this run completes
+
+    // Need factory for category lookups
+    private final Factory factory = Factory.getInstance();
 
     public ArtisanDeviceComponent(Item owner) {
         this.owner = owner;
@@ -54,7 +58,7 @@ public class ArtisanDeviceComponent extends Component {
 
     /**
      * Try to start a process given a bag of provided item counts (id -> count).
-     * Picks the first recipe whose requirements can be satisfied.
+     * Picks the first recipe whose requirements can be satisfied (with category-awareness).
      */
     public boolean tryStart(Map<String,Integer> providedItemsCounts) {
         if (recipes == null || recipes.isEmpty()) return false;
@@ -118,16 +122,17 @@ public class ArtisanDeviceComponent extends Component {
         return null;
     }
 
-    // --- helper: check counts with category support ---
+    // --- helper: category-aware check & consume simulation ---
     private boolean canSatisfy(Map<String,Integer> provided, Map<String,Integer> required) {
+        // Work on a mutable copy of provided counts
         Map<String,Integer> remaining = new HashMap<String,Integer>(provided);
 
-        // First, consume concrete ids
+        // 1) Consume all concrete ids first (exact id matches)
         for (Map.Entry<String,Integer> e : required.entrySet()) {
             String id = e.getKey();
             int need = e.getValue() == null ? 0 : e.getValue();
             if (need <= 0) continue;
-            if (id.startsWith("cat:")) continue;
+            if (isCategoryKey(id)) continue; // skip categories here
 
             int have = remaining.getOrDefault(id, 0);
             if (have < need) return false;
@@ -137,18 +142,56 @@ public class ArtisanDeviceComponent extends Component {
             else remaining.put(id, left);
         }
 
-        // Then, satisfy category placeholders using any leftover counts
-        int neededCats = 0;
+        // 2) For each category requirement, consume matching remaining items
+        //    Items must be members of that category as per Factory's category index
         for (Map.Entry<String,Integer> e : required.entrySet()) {
-            String id = e.getKey();
-            if (!id.startsWith("cat:")) continue;
+            String key = e.getKey();
+            if (!isCategoryKey(key)) continue;
             int need = e.getValue() == null ? 0 : e.getValue();
-            if (need > 0) neededCats += need;
+            if (need <= 0) continue;
+
+            String cat = categoryFromKey(key);
+            if (cat == null) return false;
+
+            need = consumeForCategory(remaining, cat, need);
+            if (need > 0) return false; // not enough category-matching items left
         }
 
-        int totalLeft = 0;
-        for (int v : remaining.values()) totalLeft += v;
+        return true;
+    }
 
-        return totalLeft >= neededCats;
+    private boolean isCategoryKey(String id) {
+        return id != null && id.startsWith("cat:");
+    }
+
+    private String categoryFromKey(String id) {
+        if (!isCategoryKey(id)) return null;
+        return id.substring("cat:".length()); // e.g., "any_fruit"
+    }
+
+    /**
+     * Consume items from 'remaining' that belong to category 'cat'.
+     * Returns how many units are still needed after consumption (0 means satisfied).
+     */
+    private int consumeForCategory(Map<String,Integer> remaining, String cat, int need) {
+        if (need <= 0) return 0;
+
+        // Iterate over a snapshot of keys to allow modifications
+        ArrayList<String> keys = new ArrayList<String>(remaining.keySet());
+        for (String itemId : keys) {
+            if (need <= 0) break;
+            if (!factory.isItemInCategory(itemId, cat)) continue;
+
+            int have = remaining.getOrDefault(itemId, 0);
+            if (have <= 0) continue;
+
+            int used = Math.min(have, need);
+            int left = have - used;
+            need -= used;
+
+            if (left <= 0) remaining.remove(itemId);
+            else remaining.put(itemId, left);
+        }
+        return need;
     }
 }
