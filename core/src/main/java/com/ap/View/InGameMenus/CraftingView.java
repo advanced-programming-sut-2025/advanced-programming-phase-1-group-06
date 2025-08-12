@@ -3,10 +3,7 @@ package com.ap.View.InGameMenus;
 import com.ap.Main;
 import com.ap.Model.Player.Player;
 import com.ap.Model.Recipe;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -115,6 +112,9 @@ public class CraftingView implements Screen, InputProcessor {
 
     @Override
     public boolean keyDown(int keycode) {
+        if (keycode == Input.Keys.ESCAPE){
+            Main.getInstance().changeScreen(Main.getInstance().getGameView());
+        }
         return false;
     }
 
