@@ -85,6 +85,7 @@ public class Item {
             price == item.price;
     }
 
+
     public void setPrice(int price) {
         this.price = price;
     }

@@ -19,6 +19,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.ScreenUtils;
 
+import java.awt.*;
+
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class Main extends Game {
 
@@ -57,6 +59,7 @@ public class Main extends Game {
         instance = this;
         batch = new SpriteBatch();
         Gdx.graphics.setWindowedMode(1920, 1200);
+        Gdx.graphics.setFullscreenMode(Gdx.graphics.getDisplayMode());
         GameAssetManager gameAssetManager = GameAssetManager.getInstance();
         gameAssetManager.initialize();
         GameAssetManager.getInstance().finishLoading();

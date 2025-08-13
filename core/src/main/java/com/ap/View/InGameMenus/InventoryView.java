@@ -66,7 +66,6 @@ public class InventoryView implements Screen, InputProcessor {
     @Override
     public void show() {
         stage = new Stage(new ScreenViewport());
-        player.getInventory().initiateInventorySlots();
         InputMultiplexer multiplexer = new InputMultiplexer();
         multiplexer.addProcessor(this); // Add Journal as an InputProcessor for keyboard input
         multiplexer.addProcessor(stage); // Add Stage for UI input (buttons)

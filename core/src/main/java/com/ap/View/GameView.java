@@ -11,6 +11,7 @@ import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -28,15 +29,19 @@ public class GameView implements Screen, InputProcessor {
     private Stage uiStage;
     private Viewport uiViewport;
     private Table inventoryTable;
+    private Label energyLabel;
 
     public GameView() {
         Main.getInstance().setGameView(this);
+        player = new Player();
+
         Skin skin = new Skin(Gdx.files.internal("skin/NzSkin.json"));
         inventoryTable = new Table(skin);
+        energyLabel = new Label("energy: " + player.getEnergy(), skin);
+        energyLabel.setPosition(Gdx.graphics.getWidth() - energyLabel.getWidth() - 10, Gdx.graphics.getHeight() * 0.8f);
         camera = new OrthographicCamera();
         viewport = new ScreenViewport(camera);
         mapController = new MapController();
-        player = new Player();
         Journal.getInstance(player);
         playerController = new PlayerController(player);
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -47,6 +52,7 @@ public class GameView implements Screen, InputProcessor {
         uiViewport = new ScreenViewport(new OrthographicCamera());
         uiStage = new Stage(uiViewport);
         uiStage.addActor(clock);
+        uiStage.addActor(energyLabel);
     }
 
     @Override

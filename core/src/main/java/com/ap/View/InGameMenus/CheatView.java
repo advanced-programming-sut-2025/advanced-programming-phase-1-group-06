@@ -19,6 +19,7 @@ public class CheatView implements Screen, InputProcessor {
     private String ITEM_PLACEHOLDER = "item name";
     private String COUNT_PLACEHOLDER = "item count";
     private String TIME_PLACEHOLDER = "time in hours";
+    private String MONEY_PLACEHOLDER = "money";
 
     private Player player;
     private Stage stage;
@@ -30,6 +31,7 @@ public class CheatView implements Screen, InputProcessor {
     private TextField itemCheatField;
     private TextField itemCountField;
     private TextField timeCheatField;
+    private TextField moneyField;
     private TextButton cheatButton;
 
 
@@ -41,11 +43,13 @@ public class CheatView implements Screen, InputProcessor {
         window.setSize(1600, 1000);
         window.setPosition(160, 80);
         window.center();
-        window.add(timeCheatField).padBottom(50).size(600, 150);
+        window.add(moneyField).padBottom(50).size(600, 100);
         window.row();
-        window.add(itemCheatField).padBottom(50).size(600, 150);
+        window.add(timeCheatField).padBottom(50).size(600, 100);
         window.row();
-        window.add(itemCountField).padBottom(50).size(600, 150);
+        window.add(itemCheatField).padBottom(50).size(600, 100);
+        window.row();
+        window.add(itemCountField).padBottom(50).size(600, 100);
         window.row();
         window.add(error);
         window.row();
@@ -58,6 +62,20 @@ public class CheatView implements Screen, InputProcessor {
         itemCheatField = new TextField(ITEM_PLACEHOLDER, skin);
         itemCountField = new TextField(COUNT_PLACEHOLDER, skin);
         timeCheatField = new TextField(TIME_PLACEHOLDER, skin);
+        moneyField = new TextField(MONEY_PLACEHOLDER, skin);
+        moneyField.addListener(new FocusListener() {
+            @Override
+            public void keyboardFocusChanged(FocusEvent event, Actor actor, boolean focused) {
+                TextField textField = (TextField) actor;
+                if (focused){
+                    if (textField.getText().equals(MONEY_PLACEHOLDER)){
+                        textField.setText("");
+                    }
+                } else if (textField.getText().isEmpty()){
+                    textField.setText(MONEY_PLACEHOLDER);
+                }
+            }
+        });
         itemCheatField.addListener(new FocusListener() {
             @Override
             public void keyboardFocusChanged(FocusEvent event, Actor actor, boolean focused) {
@@ -103,8 +121,12 @@ public class CheatView implements Screen, InputProcessor {
                 String time = timeCheatField.getText();
                 String itemName = itemCheatField.getText();
                 String itemCount = itemCountField.getText();
+                String money = moneyField.getText();
                 if (time != null && !time.isEmpty() && !time.equals(TIME_PLACEHOLDER) && time.matches("\\d+")){
                     Main.getInstance().getClock().advanceTime(Integer.parseInt(time));
+                }
+                if (money != null && !money.isEmpty() && !money.equals(MONEY_PLACEHOLDER) && money.matches("\\d+")){
+                    player.setMoney(player.getMoney()+Integer.parseInt(money));
                 }
                 System.out.println(itemName);
                 if (!itemName.isEmpty() && !itemName.equals(ITEM_PLACEHOLDER)){
@@ -118,6 +140,7 @@ public class CheatView implements Screen, InputProcessor {
                         System.out.println("item add");
                     }
                 }
+
             }
         });
     }

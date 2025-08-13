@@ -2008,7 +2008,226 @@
     { "id": "acorns",         "name": "Acorns",         "description": "Crafting ingredient.", "stackSize": 999, "componentsData": [], "texture": "Items/acorns.png" },
     { "id": "maple_seeds",    "name": "Maple Seeds",    "description": "Crafting ingredient.", "stackSize": 999, "componentsData": [], "texture": "Items/maple_seeds.png" },
     { "id": "pine_cones",     "name": "Pine Cones",     "description": "Crafting ingredient.", "stackSize": 999, "componentsData": [], "texture": "Items/pine_cones.png" },
-    { "id": "mahogany_seeds", "name": "Mahogany Seeds", "description": "Crafting ingredient.", "stackSize": 999, "componentsData": [], "texture": "Items/mahogany_seeds.png" }
+    { "id": "mahogany_seeds", "name": "Mahogany Seeds", "description": "Crafting ingredient.", "stackSize": 999, "componentsData": [], "texture": "Items/mahogany_seeds.png" },
+    {"id": "egg", "name": "Acorns",         "description": "Crafting ingredient.", "stackSize": 999, "componentsData": [], "texture":  "Items/egg.png"},
+    {"id": "sardine", "name": "Acorns",         "description": "Crafting ingredient.", "stackSize": 999, "componentsData": [], "texture":  "Items/sardine.png"},
+    {"id": "salmon", "name": "Acorns",         "description": "Crafting ingredient.", "stackSize": 999, "componentsData": [], "texture":  "Items/salmon.png"},
+    {"id": "dandelion", "name": "Acorns",         "description": "Crafting ingredient.", "stackSize": 999, "componentsData": [], "texture":  "Items/dandelion.png"},
+    {"id":  "leek", "name": "Acorns",         "description": "Crafting ingredient.", "stackSize": 999, "componentsData": [], "texture":  "Items/leek.png"},
+    {"id":  "milk", "name": "Acorns",         "description": "Crafting ingredient.", "stackSize": 999, "componentsData": [], "texture":  "Items/milk.png"},
+    {"id":  "wheat_flour", "name": "Acorns",         "description": "Crafting ingredient.", "stackSize": 999, "componentsData": [], "texture":  "Items/wheat_flour.png"},
+    {"id":  "sugar", "name": "Acorns",         "description": "Crafting ingredient.", "stackSize": 999, "componentsData": [], "texture":  "Items/sugar.png"},
+    {"id":  "flounder", "name": "Acorns",         "description": "Crafting ingredient.", "stackSize": 999, "componentsData": [], "texture":  "Items/flounder.png"}
+  ],
+  "food": [
+    {
+      "id": "fried_egg",
+      "componentsData": [
+        {
+          "type": "ConsumableComponent",
+          "energyRestore": 50
+        }
+      ]
+    },
+    {
+      "id": "baked_fish",
+      "componentsData": [
+        {
+          "type": "ConsumableComponent",
+          "energyRestore": 75
+        }
+      ]
+    },
+    {
+      "id": "salad",
+      "componentsData": [
+        {
+          "type": "ConsumableComponent",
+          "energyRestore": 113
+        }
+      ]
+    },
+    {
+      "id": "olmelet",
+      "componentsData": [
+        {
+          "type": "ConsumableComponent",
+          "energyRestore": 100
+        }
+      ]
+    },
+    {
+      "id": "pumpkin_pie",
+      "componentsData": [
+        {
+          "type": "ConsumableComponent",
+          "energyRestore": 225
+        }
+      ]
+    },
+    {
+      "id": "spaghetti",
+      "componentsData": [
+        {
+          "type": "ConsumableComponent",
+          "energyRestore": 75
+        }
+      ]
+    },
+    {
+      "id": "pizza",
+      "componentsData": [
+        {
+          "type": "ConsumableComponent",
+          "energyRestore": 150
+        }
+      ]
+    },
+    {
+      "id": "tortilla",
+      "componentsData": [
+        {
+          "type": "ConsumableComponent",
+          "energyRestore": 50
+        }
+      ]
+    },
+    {
+      "id": "maki_roll",
+      "componentsData": [
+        {
+          "type": "ConsumableComponent",
+          "energyRestore": 100
+        }
+      ]
+    },
+    {
+      "id": "triple_shot_espresso",
+      "componentsData": [
+        {
+          "type": "ConsumableComponent",
+          "energyRestore": 200
+        }
+      ]
+    },
+    {
+      "id": "cookie",
+      "componentsData": [
+        {
+          "type": "ConsumableComponent",
+          "energyRestore": 90
+        }
+      ]
+    },
+    {
+      "id": "hash_browns",
+      "componentsData": [
+        {
+          "type": "ConsumableComponent",
+          "energyRestore": 90
+        }
+      ]
+    },
+    {
+      "id": "pancakes",
+      "componentsData": [
+        {
+          "type": "ConsumableComponent",
+          "energyRestore": 90
+        }
+      ]
+    },
+    {
+      "id": "fruit_salad",
+      "componentsData": [
+        {
+          "type": "ConsumableComponent",
+          "energyRestore": 263
+        }
+      ]
+    },
+    {
+      "id": "red_plate",
+      "componentsData": [
+        {
+          "type": "ConsumableComponent",
+          "energyRestore": 240
+        }
+      ]
+    },
+    {
+      "id": "bread",
+      "componentsData": [
+        {
+          "type": "ConsumableComponent",
+          "energyRestore": 50
+        }
+      ]
+    },
+    {
+      "id": "salmon_dinner",
+      "componentsData": [
+        {
+          "type": "ConsumableComponent",
+          "energyRestore": 125
+        }
+      ]
+    },
+    {
+      "id": "vegetable_medley",
+      "componentsData": [
+        {
+          "type": "ConsumableComponent",
+          "energyRestore": 165
+        }
+      ]
+    },
+    {
+      "id": "farmers_lunch",
+      "componentsData": [
+        {
+          "type": "ConsumableComponent",
+          "energyRestore": 200
+        }
+      ]
+    },
+    {
+      "id": "survival_burger",
+      "componentsData": [
+        {
+          "type": "ConsumableComponent",
+          "energyRestore": 125
+        }
+      ]
+    },
+    {
+      "id": "dish_o_the_sea",
+      "componentsData": [
+        {
+          "type": "ConsumableComponent",
+          "energyRestore": 150
+        }
+      ]
+    },
+    {
+      "id": "seaform_pudding",
+      "componentsData": [
+        {
+          "type": "ConsumableComponent",
+          "energyRestore": 175
+        }
+      ]
+    },
+    {
+      "id": "miners_treat",
+      "componentsData": [
+        {
+          "type": "ConsumableComponent",
+          "energyRestore": 125
+        }
+      ]
+    }
+
   ]
 
 }

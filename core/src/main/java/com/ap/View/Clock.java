@@ -57,6 +57,7 @@ public class Clock extends Group {
     private long totalHour;
     private Weather weather;
 
+
     // Timing
     private float gameTimeAccumulator = 0f;
     private float gameMinuteLength = 1f; // Real seconds per game minute
@@ -107,7 +108,7 @@ public class Clock extends Group {
 
         // Money label (bottom area)
         moneyLabel = new Label("", skin);
-        moneyLabel.setPosition(57, -80); // Adjust based on your sprite
+        moneyLabel.setPosition(57 , -80); // Adjust based on your sprite
         addActor(moneyLabel);
     }
 
@@ -256,6 +257,8 @@ public class Clock extends Group {
 
         // Update money label
         moneyLabel.setText(String.valueOf(playerMoney));
+        moneyLabel.setPosition(129 - String.valueOf(playerMoney).length() * 24, -80);
+
         updateHandRotation();
     }
 

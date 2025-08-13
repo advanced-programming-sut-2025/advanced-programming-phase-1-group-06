@@ -2,6 +2,7 @@ package com.ap.Model.Player;
 
 
 import com.ap.Controller.GameController;
+import com.ap.Main;
 import com.ap.Model.Item.Item;
 import com.ap.Model.Recipe;
 import com.badlogic.gdx.math.Vector2;
@@ -29,7 +30,7 @@ public class Player {
     private boolean trashcan;
 
     public Player(){
-        money = 200;
+        money = 500;
         inventory = new Inventory();
         skills = new ArrayList<>();
         for (Skill.SkillType skillType : Skill.SkillType.values()){
@@ -46,6 +47,7 @@ public class Player {
         cookableFoods = new ArrayList<>();
         artisanDevices = new ArrayList<>();
         craftableItems = new ArrayList<>();
+        energy = maxEnergy;
     }
 
     public void setCurrentItem(Item item){
@@ -78,6 +80,8 @@ public class Player {
 
     public void setMoney(int money) {
         this.money = money;
+        Main.getInstance().getClock().setMoney(money);
+        System.out.println(money);
     }
 
 

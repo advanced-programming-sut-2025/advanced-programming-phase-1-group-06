@@ -181,5 +181,197 @@
         "mahogany_seeds": 5
       }
     }
+  ],
+  "food_recipes": [
+    {
+      "itemId": "fried_egg",
+      "itemName": "Fried egg",
+      "ingredients": {
+        "egg": 1
+      }
+    },
+    {
+      "itemId": "baked_fish",
+      "itemName": "Baked Fish",
+      "ingredients": {
+        "sardine": 1,
+        "salmon": 1,
+        "wheat": 1
+      }
+    },
+    {
+      "itemId": "salad",
+      "itemName": "Salad",
+      "ingredients": {
+        "leek": 1,
+        "dandelion": 1
+      }
+    },
+    {
+      "itemId": "olmelet",
+      "itemName": "Olmelet",
+      "ingredients": {
+        "egg": 1,
+        "milk": 1
+      }
+    },
+    {
+      "itemId": "pumpkin_pie",
+      "itemName": "Pumpkin Pie",
+      "ingredients": {
+        "pumpkin": 1,
+        "wheat flour": 1,
+        "milk": 1,
+        "sugar": 1
+      }
+    },
+    {
+      "itemId": "spaghetti",
+      "itemName": "Spaghetti",
+      "ingredients": {
+        "wheat flour": 1,
+        "tomato": 1
+      }
+    },
+    {
+      "itemId": "pizza",
+      "itemName": "Pizza",
+      "ingredients": {
+        "wheat flour": 1,
+        "tomato": 1,
+        "cheese": 1
+      }
+    },
+    {
+      "itemId": "tortilla",
+      "itemName": "Tortilla",
+      "ingredients": {
+        "corn": 1
+      }
+    },
+    {
+      "itemId": "maki_roll",
+      "itemName": "Maki Roll",
+      "ingredients": {
+        "any fish": 1,
+        "rice": 1,
+        "fiber": 1
+      }
+    },
+    {
+      "itemId": "triple_shot_espresso",
+      "itemName": "Triple Shot Espresso",
+      "ingredients": {
+        "coffee": 3
+      }
+    },
+    {
+      "itemId": "cookie",
+      "itemName": "Cookie",
+      "ingredients": {
+        "wheat flour": 1,
+        "sugar": 1,
+        "egg": 1
+      }
+    },
+    {
+      "itemId": "hash_browns",
+      "itemName": "Hash Browns",
+      "ingredients": {
+        "potato": 1,
+        "oil": 1
+      }
+    },
+    {
+      "itemId": "pancakes",
+      "itemName": "Pancakes",
+      "ingredients": {
+        "wheat flour": 1,
+        "egg": 1
+      }
+    },
+    {
+      "itemId": "fruit_salad",
+      "itemName": "Fruit Salad",
+      "ingredients": {
+        "blueberry": 1,
+        "melon": 1,
+        "apricot": 1
+      }
+    },
+    {
+      "itemId": "red_plate",
+      "itemName": "Red Plate",
+      "ingredients": {
+        "red cabbage": 1,
+        "radish": 1
+      }
+    },
+    {
+      "itemId": "bread",
+      "itemName": "Bread",
+      "ingredients": {
+        "wheat flour": 1
+      }
+    },
+    {
+      "itemId": "salmon_dinner",
+      "itemName": "Salmon Dinner",
+      "ingredients": {
+        "salmon": 1,
+        "Amaranth": 1,
+        "Kale": 1
+      }
+    },
+    {
+      "itemId": "vegetable_medley",
+      "itemName": "Vegetable Medley",
+      "ingredients": {
+        "tomato": 1,
+        "beet": 1
+      }
+    },
+    {
+      "itemId": "farmers_lunch",
+      "itemName": "Farmer's Lunch",
+      "ingredients": {
+        "omelet": 1,
+        "parsnip": 1
+      }
+    },
+    {
+      "itemId": "survival_burger",
+      "itemName": "Survival Burger",
+      "ingredients": {
+        "bread": 1,
+        "carrot": 1,
+        "eggplant": 1
+      }
+    },
+    {
+      "itemId": "dish_o_the_sea",
+      "itemName": "Dish O' the Sea",
+      "ingredients": {
+        "sardine": 2,
+        "hash browns": 1
+      }
+    },
+    {
+      "itemId": "seaform_pudding",
+      "itemName": "Seaform Pudding",
+      "ingredients": {
+        "Flounder": 1,
+        "midnight carp": 1
+      }
+    },
+    {
+      "itemId": "miners_treat",
+      "itemName": "Miner's Treat",
+      "ingredients": {
+        "carrot": 2,
+        "sugar": 1,
+        "milk": 1
+      }
+    }
   ]
 }

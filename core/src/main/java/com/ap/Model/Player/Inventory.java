@@ -1,6 +1,7 @@
 package com.ap.Model.Player;
 
 import com.ap.Main;
+import com.ap.Model.Item.ConsumableComponent;
 import com.ap.Model.Item.Factory;
 import com.ap.Model.Item.Item;
 import com.ap.Model.Item.ToolComponent;
@@ -15,8 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.*;
 
 
 public class Inventory {
@@ -57,6 +57,7 @@ public class Inventory {
         inventorySlots = new ArrayList<>();
         quickAccessSlots = new ArrayList<>();
         items = new ArrayList<>();
+        items.ensureCapacity(24);
         dragAndDrop = new DragAndDrop();
         selectedBorder = new Image(new Texture(Gdx.files.internal("inventory/selected-border.png")));
         selectedBorder.setSize(SLOT_SIZE, SLOT_SIZE);
@@ -103,6 +104,10 @@ public class Inventory {
      */
 
     private void addTools() {
+        Item balls = Factory.getInstance().createItemByName("kale");
+        System.out.println(balls.getComponents());
+        ConsumableComponent c = (balls.getComponent(ConsumableComponent.class));
+        System.out.println("energy: " + c.getEnergyRestore());
         for (ToolComponent.ToolType toolType : ToolComponent.ToolType.values()) {
             try {
                 if (toolType.equals(ToolComponent.ToolType.FISHING_ROD) || toolType.equals(ToolComponent.ToolType.MILK_PAIL)) {
@@ -221,7 +226,6 @@ public class Inventory {
         slot = getQuickAccessSlotByItem(item);
         slot.item = null;
         slot.itemImage = null;
-        System.out.println("removed");
     }
 
     public void removeItemAmountByName(String itemName, int amount) {
@@ -459,6 +463,11 @@ public class Inventory {
         return inventorySlots;
     }
 
+    public void sortSlots(){
+        inventorySlots.sort(Comparator.comparingInt(s -> s.index));
+        initiateQuickAccessSlots();
+    }
+
 
     class Slot {
         private Item item;
@@ -546,41 +555,46 @@ public class Inventory {
         }
 
         public static void swapItem(Slot toSlot, Slot fromSlot) {
-            // Swap items
-            Item tempItem = toSlot.item;
-            toSlot.item = fromSlot.item;
-            fromSlot.item = tempItem;
-
-            if (toSlot.item != null) {
-                System.out.println(toSlot.item.getName() + "moved from index " + fromSlot.index + " to " + toSlot.index);
-            }
-
-            // Store original images
-            Image tempImage = toSlot.itemImage;
-
-            // Update positions and images
-            if (toSlot.item != null) {
-                if (fromSlot.itemImage != null) {
-                    toSlot.itemImage = fromSlot.itemImage;
-                    toSlot.itemImage.setPosition(toSlot.x, toSlot.y);
-                } else {
-                    toSlot.createNewItemImage(); // Create new image with listeners
-                }
-            } else {
-                toSlot.itemImage = null;
-            }
-
-            if (fromSlot.item != null) {
-                if (tempImage != null) {
-                    fromSlot.itemImage = tempImage;
-                    fromSlot.itemImage.setPosition(fromSlot.x, fromSlot.y);
-                } else {
-                    fromSlot.createNewItemImage(); // Create new image with listeners
-                }
-            } else {
-                fromSlot.itemImage = null;
-            }
-            fromSlot.inventory.initiateQuickAccessSlots();
+//            // Swap items
+//            Item tempItem = toSlot.item;
+//            toSlot.item = fromSlot.item;
+//            fromSlot.item = tempItem;
+//
+//            if (toSlot.item != null) {
+////                System.out.println(toSlot.item.getName() + "moved from index " + fromSlot.index + " to " + toSlot.index);
+//            }
+//
+//            // Store original images
+//            Image tempImage = toSlot.itemImage;
+//
+//            // Update positions and images
+//            if (toSlot.item != null) {
+//                if (fromSlot.itemImage != null) {
+//                    toSlot.itemImage = fromSlot.itemImage;
+//                    toSlot.itemImage.setPosition(toSlot.x, toSlot.y);
+//
+//                } else {
+//                    toSlot.createNewItemImage(); // Create new image with listeners
+//                }
+//            } else {
+//                toSlot.itemImage = null;
+//            }
+//
+//            if (fromSlot.item != null) {
+//                if (tempImage != null) {
+//                    fromSlot.itemImage = tempImage;
+//                    fromSlot.itemImage.setPosition(fromSlot.x, fromSlot.y);
+//                } else {
+//                    fromSlot.createNewItemImage(); // Create new image with listeners
+//                }
+//            } else {
+//                fromSlot.itemImage = null;
+//            }
+//            fromSlot.inventory.initiateQuickAccessSlots();
+            int a = toSlot.index;
+            toSlot.index = fromSlot.index;
+            fromSlot.index = a;
+            fromSlot.inventory.sortSlots();
         }
 
         private void createNewItemImage() {
