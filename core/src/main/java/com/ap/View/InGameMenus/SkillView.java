@@ -66,7 +66,7 @@ public class SkillView implements Screen, InputProcessor {
 //        table.debug();
         window.center();
         window.add(table);
-        Journal.addButtonsToStage(window, stage, Journal.getImageButtons(), "skill");
+        Journal.addImageButtonsToStage(window, stage, Journal.getImageButtons(), "skill");
     }
 
     @Override

@@ -70,7 +70,7 @@ public class CraftingView implements Screen, InputProcessor {
             }
         }
         stage.addActor(craftingWindow);
-        Journal.addButtonsToStage(inventoryWindow, stage, Journal.getImageButtons(), "crafting");
+        Journal.addImageButtonsToStage(inventoryWindow, stage, Journal.getImageButtons(), "crafting");
         player.getInventory().drawInventory(stage);
     }
 

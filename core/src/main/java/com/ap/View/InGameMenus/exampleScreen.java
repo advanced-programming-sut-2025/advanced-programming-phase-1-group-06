@@ -35,7 +35,7 @@ public class exampleScreen implements Screen, InputProcessor {
         window.setSize(1600, 1000);
         window.setPosition(160, 80);
 
-        Journal.addButtonsToStage(window, stage, Journal.getImageButtons(), "crafting");
+        Journal.addImageButtonsToStage(window, stage, Journal.getImageButtons(), "crafting");
     }
 
     @Override

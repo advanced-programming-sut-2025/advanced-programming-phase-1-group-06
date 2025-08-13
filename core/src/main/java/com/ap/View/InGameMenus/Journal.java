@@ -26,6 +26,8 @@ public class Journal implements Screen, InputProcessor {
     private Skin skin;
     private static LinkedHashMap<String, ImageButton> imageButtons;
 
+    private TextButton shopButton;
+    private TextButton cookingButton;
 
 
     private Journal(Player player) {
@@ -37,6 +39,10 @@ public class Journal implements Screen, InputProcessor {
         imageButtons = new LinkedHashMap<>();
 //        imageButtons.put("crafting", new ImageButton(new Image,))
         imageButtons = loadImageButtonsFromFolder("assets/in-game-menu-stuff");
+
+        shopButton = new TextButton("shopping menu", skin);
+        cookingButton = new TextButton("cooking menu", skin);
+
     }
 
     public static Journal getInstance(Player player) {
@@ -57,10 +63,15 @@ public class Journal implements Screen, InputProcessor {
         multiplexer.addProcessor(stage); // Add Stage for UI input (buttons)
         Gdx.input.setInputProcessor(multiplexer);
 
-        addButtonsToStage(window, stage, imageButtons, "journal");
+        addImageButtonsToStage(window, stage, imageButtons, "journal");
+        window.center();
+        window.add(shopButton).size(300, 150).padBottom(50);
+        window.row();
+        window.add(cookingButton).size(300, 150).padBottom(50);
+        window.row();
     }
 
-    public static void addButtonsToStage(Window window, Stage stage, LinkedHashMap<String, ImageButton> imageButtons, String currentScreen) {
+    public static void addImageButtonsToStage(Window window, Stage stage, LinkedHashMap<String, ImageButton> imageButtons, String currentScreen) {
         float x = window.getX() + 200;
         float y = window.getY() + window.getHeight();
         float brightness = 1f;
@@ -93,7 +104,6 @@ public class Journal implements Screen, InputProcessor {
     @Override
     public void resize(int width, int height) {
         stage.getViewport().update(width, height, true);
-
     }
 
     @Override

@@ -8,7 +8,6 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -72,7 +71,7 @@ public class SettingsView implements Screen, InputProcessor {
         window.setPosition(160, 80);
 
         stage.addActor(window);
-        Journal.addButtonsToStage(window, stage, Journal.getImageButtons(), "exit");
+        Journal.addImageButtonsToStage(window, stage, Journal.getImageButtons(), "exit");
     }
 
     @Override

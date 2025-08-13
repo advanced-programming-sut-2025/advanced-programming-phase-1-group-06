@@ -171,7 +171,7 @@ public class Inventory {
         for (Item item : r.getIngredient()) {
             removeItem(item);
         }
-        items.add(r.getItem());
+        addItem(r.getItem());
         return true;
     }
 
@@ -180,7 +180,9 @@ public class Inventory {
         for (Iterator<Item> it = items.iterator(); it.hasNext(); ) {
             Item i = it.next();
             if (i == target || i.equals(target) || i.getId().equals(target.getId())) {
-                it.remove();                 // <- safe removal
+                i.setAmount(i.getAmount() - target.getAmount());
+                if (i.getAmount() <= 0)
+                    it.remove();                 // <- safe removal
                 return true;
             }
         }

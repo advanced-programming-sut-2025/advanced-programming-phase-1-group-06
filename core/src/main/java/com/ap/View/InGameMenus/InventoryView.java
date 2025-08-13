@@ -74,7 +74,7 @@ public class InventoryView implements Screen, InputProcessor {
 
 
         stage.addActor(infoWindow);
-        Journal.addButtonsToStage(inventoryWindow, stage, Journal.getImageButtons(), "inventory");
+        Journal.addImageButtonsToStage(inventoryWindow, stage, Journal.getImageButtons(), "inventory");
         stage.addActor(trashcan);
         player.getInventory().drawInventory(stage);
     }
