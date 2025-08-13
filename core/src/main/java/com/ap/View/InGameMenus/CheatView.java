@@ -140,7 +140,7 @@ public class CheatView implements Screen, InputProcessor {
                         System.out.println("item add");
                     }
                 }
-
+//                player.getInventory().initiateInventorySlots();
             }
         });
     }

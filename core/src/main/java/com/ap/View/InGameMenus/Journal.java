@@ -42,7 +42,23 @@ public class Journal implements Screen, InputProcessor {
 
         shopButton = new TextButton("shopping menu", skin);
         cookingButton = new TextButton("cooking menu", skin);
-
+        shopButton.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                Main.getInstance().changeScreen(new ShopingView(player));
+            }
+        });
+        cookingButton.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                Main.getInstance().changeScreen(new CookingView(player));
+            }
+        });
+        window.center();
+        window.add(shopButton).size(300, 150).padBottom(50);
+        window.row();
+        window.add(cookingButton).size(300, 150).padBottom(50);
+        window.row();
     }
 
     public static Journal getInstance(Player player) {
@@ -64,11 +80,7 @@ public class Journal implements Screen, InputProcessor {
         Gdx.input.setInputProcessor(multiplexer);
 
         addImageButtonsToStage(window, stage, imageButtons, "journal");
-        window.center();
-        window.add(shopButton).size(300, 150).padBottom(50);
-        window.row();
-        window.add(cookingButton).size(300, 150).padBottom(50);
-        window.row();
+
     }
 
     public static void addImageButtonsToStage(Window window, Stage stage, LinkedHashMap<String, ImageButton> imageButtons, String currentScreen) {
@@ -87,7 +99,6 @@ public class Journal implements Screen, InputProcessor {
             imageButton.setTouchable(Touchable.enabled);
             stage.addActor(imageButton);
             x += imageButton.getWidth() + 10;
-
         }
     }
 

@@ -254,7 +254,11 @@ public class Player {
 
 
     public List<Recipe> getCraftableItems() {
-        return Recipe.all();
+        return Recipe.getCraftables();
+    }
+
+    public List<Recipe> getCookableItems(){
+        return Recipe.getCookables();
     }
 
     public void addCraftableItem(Recipe recipe){

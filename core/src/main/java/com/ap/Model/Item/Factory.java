@@ -52,6 +52,10 @@ public class Factory {
                 if (root.artisan_goods != null)   for (ItemData d : root.artisan_goods)   items.put(d.id, d);
                 if (root.craftables != null)      for (ItemData d: root.craftables)       items.put(d.id, d);
                 try {
+                    if (root.food != null)           for (ItemData d: root.food) {
+                        items.put(d.id, d);
+                        System.out.println(d.name);
+                    }
                     if (root.crafting_ingredients != null) for (ItemData d : root.crafting_ingredients) items.put(d.id, d);
                 } catch (Throwable ignored) {}
             }

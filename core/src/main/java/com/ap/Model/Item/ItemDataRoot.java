@@ -10,4 +10,5 @@ public class ItemDataRoot {
     public ArrayList<ItemData> artisan_devices;
     public ArrayList<ItemData> craftables;
     public ArrayList<ItemData> crafting_ingredients;
+    public ArrayList<ItemData> food;
 }

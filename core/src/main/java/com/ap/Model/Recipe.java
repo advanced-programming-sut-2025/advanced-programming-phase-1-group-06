@@ -6,6 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.FilterOutputStream;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
@@ -16,10 +17,12 @@ public class Recipe {
     private Map<String, Integer> ingredients;
 
     private static class Root {
-        List<Recipe> recipes;
+        List<Recipe> recipes = new ArrayList<>();
+        List<Recipe> food_recipes = new ArrayList<>();
     }
 
-    private static final ArrayList<Recipe> ALL = new ArrayList<>();
+    private static final ArrayList<Recipe> RECIPES = new ArrayList<>();
+    private static final ArrayList<Recipe> FOOD_RECIPES = new ArrayList<>();
     private static final LinkedHashMap<String, Recipe> BY_ID = new LinkedHashMap<>();
 
     public static void load() {
@@ -27,19 +30,33 @@ public class Recipe {
             Gson gson = new GsonBuilder().create();
             Root root = gson.fromJson(reader, Root.class);
 
-            ALL.clear();
+            FOOD_RECIPES.clear();
+            RECIPES.clear();
             BY_ID.clear();
 
             if (root != null && root.recipes != null) {
-                ALL.addAll(root.recipes);
-                for (Recipe r : ALL) {
+                RECIPES.addAll(root.recipes);
+                for (Recipe r : RECIPES) {
                     if (r.itemId != null) {
                         BY_ID.put(r.itemId, r);
 //                        System.out.println(r.ingredients);
                     }
                 }
+//                for (Recipe r : root.food_recipes){
+//                    System.out.println(r.itemId);
+//                }
+                FOOD_RECIPES.addAll(root.food_recipes);
+                for (Recipe r : FOOD_RECIPES){
+                    if (r.itemId != null) {
+                        BY_ID.put(r.itemId, r);
+                    }
+                }
             }
-            Gdx.app.log("Recipe", "Loaded " + ALL.size() + " recipes.");
+            for (Recipe r : FOOD_RECIPES){
+//                System.out.println(r.getItem().getName());
+            }
+            Gdx.app.log("Recipe", "Loaded " + RECIPES.size() + " recipes.");
+            Gdx.app.log("food Recipe", "Loaded " + FOOD_RECIPES.size() + " recipes.");
         } catch (Exception e) {
             Gdx.app.error("Recipe", "Failed to load recipes from Data/Recipes.json", e);
         }
@@ -70,7 +87,10 @@ public class Recipe {
     }
 
     // --- Convenience accessors ---
-    public static List<Recipe> all() { return Collections.unmodifiableList(ALL); }
+    public static List<Recipe> getCraftables() { return Collections.unmodifiableList(RECIPES); }
+
+    public static List<Recipe> getCookables() { return Collections.unmodifiableList(FOOD_RECIPES); }
+
     public static Recipe getById(String id) { return BY_ID.get(id); }
 
     public String getItemId() { return itemId; }

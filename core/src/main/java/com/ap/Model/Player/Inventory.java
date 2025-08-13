@@ -147,6 +147,20 @@ public class Inventory {
             return false;
         }
         items.add(itemToAdd);
+        for (Slot slot : inventorySlots){
+            if (slot.item == null){
+                System.out.println(slot.index);
+                slot.item = itemToAdd;
+                slot.itemImage = new Image(new Texture(Gdx.files.internal(itemToAdd.getTexturePath())));
+                slot.itemImage.setSize(SLOT_SIZE, SLOT_SIZE);
+                slot.itemImage.setPosition(slot.x, slot.y);
+                slot.addImageListeners(slot.itemImage);
+                break;
+            }
+        }
+
+        sortSlots();
+        initiateQuickAccessSlots();
         System.out.println(itemToAdd.getName() + " item added to inventory");
         return true;
     }
@@ -186,15 +200,24 @@ public class Inventory {
             Item i = it.next();
             if (i == target || i.equals(target) || i.getId().equals(target.getId())) {
                 i.setAmount(i.getAmount() - target.getAmount());
-                if (i.getAmount() <= 0)
-                    it.remove();                 // <- safe removal
+                if (i.getAmount() <= 0) {
+                    it.remove();
+                    removeItemFromSlot(i);
+                }
                 return true;
             }
         }
         return false;
     }
 
-
+    public void removeItemFromSlot(Item item){
+        for (Slot slot : inventorySlots){
+            if (slot.item == item){
+                slot.item = null;
+                slot.itemImage = null;
+            }
+        }
+    }
 
     public boolean checkExistense(String id, int amount) {
         for (Item item : items) {
@@ -505,7 +528,7 @@ public class Inventory {
             }
         }
 
-        private void addImageListeners(Image itemImage) {
+        public void addImageListeners(Image itemImage) {
             itemImage.addListener(new InputListener() {
                 @Override
                 public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -592,9 +615,18 @@ public class Inventory {
 //            }
 //            fromSlot.inventory.initiateQuickAccessSlots();
             int a = toSlot.index;
+            System.out.println(fromSlot.getItem().getName());
             toSlot.index = fromSlot.index;
             fromSlot.index = a;
+            float b = toSlot.x;
+            toSlot.x = fromSlot.x;
+            fromSlot.x = b;
+            b = toSlot.y;
+            toSlot.y = fromSlot.y;
+            fromSlot.y = b;
             fromSlot.inventory.sortSlots();
+            System.out.println(toSlot.inventory.getInventorySlots().get(fromSlot.index- 1).item.getName());
+            System.out.println("from slot at index: " + toSlot.index + " to lost at index " + fromSlot.index);
         }
 
         private void createNewItemImage() {
