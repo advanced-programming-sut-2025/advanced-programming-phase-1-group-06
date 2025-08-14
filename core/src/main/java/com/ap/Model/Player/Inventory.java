@@ -40,6 +40,7 @@ public class Inventory {
     private ArrayList<Slot> quickAccessSlots;
     private Stage stage;
     private Image selectedBorder;
+    private Player player;
 
     Group itemImages = new Group();
     Group slotImages = new Group();
@@ -52,8 +53,9 @@ public class Inventory {
     Image selectedImage;
     private int QUICK_ACCESS_SLOT_SIZE = 60;
 
-    Inventory() {
+    Inventory(Player player) {
         level = 1;
+        this.player = player;
         inventorySlots = new ArrayList<>();
         quickAccessSlots = new ArrayList<>();
         items = new ArrayList<>();
@@ -64,6 +66,7 @@ public class Inventory {
         selectedImage = new Image(new Texture(Gdx.files.internal("inventory/selected-border.png")));
         initiateInventorySlots();
         addTools();
+        equipItem(1, player);
     }
 
     public void setTrashcanInfo(float x, float y, float width, float height) {
@@ -110,9 +113,9 @@ public class Inventory {
         System.out.println("energy: " + c.getEnergyRestore());
         for (ToolComponent.ToolType toolType : ToolComponent.ToolType.values()) {
             try {
-                if (toolType.equals(ToolComponent.ToolType.FISHING_ROD) || toolType.equals(ToolComponent.ToolType.MILK_PAIL)) {
-                    continue;
-                }
+//                if (toolType.equals(ToolComponent.ToolType.FISHING_ROD) || toolType.equals(ToolComponent.ToolType.MILK_PAIL)) {
+//                    continue;
+//                }
                 Item item = Factory.getInstance().createItemByName(toolType.name());
                 if (item == null) {
                     System.out.println(toolType.name().toLowerCase() + " isn't found");
@@ -424,6 +427,7 @@ public class Inventory {
             selectedImage.setPosition(slot.x - 5, slot.y - 5);
             player.setCurrentItem(slot.getItem());
 //            selectedImage.toFront();
+            Main.getInstance().getGameView().setPlayerToolImage((new Image(new Texture(Gdx.files.internal(player.getHeldItem().getTexturePath())))));
         }
     }
 

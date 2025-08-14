@@ -63,9 +63,9 @@ public class Main extends Game {
         GameAssetManager gameAssetManager = GameAssetManager.getInstance();
         gameAssetManager.initialize();
         GameAssetManager.getInstance().finishLoading();
-        changeScreen(new StartScreen());
-//        gameView = new GameView();
-//        changeScreen(gameView);
+//        changeScreen(new StartScreen());
+        gameView = new GameView();
+        changeScreen(gameView);
     }
 
     public void setGameView(GameView gameView) {

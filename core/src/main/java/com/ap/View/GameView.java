@@ -9,8 +9,10 @@ import com.ap.Model.Player.Player;
 import com.ap.View.InGameMenus.*;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -30,11 +32,11 @@ public class GameView implements Screen, InputProcessor {
     private Viewport uiViewport;
     private Table inventoryTable;
     private Label energyLabel;
+    private Image playerToolImage;
 
     public GameView() {
         Main.getInstance().setGameView(this);
         player = new Player();
-
         Skin skin = new Skin(Gdx.files.internal("skin/NzSkin.json"));
         inventoryTable = new Table(skin);
         energyLabel = new Label("energy: " + player.getEnergy(), skin);
@@ -49,11 +51,14 @@ public class GameView implements Screen, InputProcessor {
         viewport.apply();
         clock = new Clock(new Skin(Gdx.files.internal("skin/NzSkin.json")));
         clock.setPlayer(player);
+        playerToolImage = new Image(new Texture(Gdx.files.internal(player.getHeldItem().getTexturePath())));
+        playerToolImage.setPosition(Gdx.graphics.getWidth()/2f, Gdx.graphics.getHeight()/2f);
         // UI viewport and stage setup
         uiViewport = new ScreenViewport(new OrthographicCamera());
         uiStage = new Stage(uiViewport);
         uiStage.addActor(clock);
         uiStage.addActor(energyLabel);
+        uiStage.addActor(playerToolImage);
     }
 
     @Override
@@ -189,5 +194,13 @@ public class GameView implements Screen, InputProcessor {
         return false;
     }
 
+    public void setPlayerToolImage(Image image){
+        if (playerToolImage != null)
+            playerToolImage.remove();
+        playerToolImage = image;
+        playerToolImage.setPosition(Gdx.graphics.getWidth()/2f, Gdx.graphics.getHeight()/2f);
+        if (playerToolImage != null && uiStage != null)
+            uiStage.addActor(playerToolImage);
+    }
 
 }

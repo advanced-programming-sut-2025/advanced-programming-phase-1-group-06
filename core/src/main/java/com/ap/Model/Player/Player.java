@@ -31,7 +31,7 @@ public class Player {
 
     public Player(){
         money = 500;
-        inventory = new Inventory();
+        inventory = new Inventory(this);
         skills = new ArrayList<>();
         for (Skill.SkillType skillType : Skill.SkillType.values()){
             skills.add(skillType.getSkill());

@@ -1305,6 +1305,23 @@
       "texture": "Items/Iridium_Axe.png"
     },
     {
+      "id": "milk_pail",
+      "name": "Milk Pail",
+      "description": "Used to get milk from animal.",
+      "stackSize": 1,
+      "basePrice": 10000,
+      "componentsData": [
+        {
+          "type": "ToolComponent",
+          "toolType": "MILK_PAIL",
+          "successfulEnergyUse": 1,
+          "unsuccessfulEnergyUse": 0,
+          "capacity": 0
+        }
+      ],
+      "texture": "Items/milk_pail.png"
+    },
+    {
       "id": "watering_can",
       "name": "Watering Can",
       "description": "Used to water crops. Must be refilled at water sources.",
@@ -1424,7 +1441,7 @@
       "texture": "Items/Shears.png"
     },
     {
-      "id": "training_rod",
+      "id": "fishing_rod",
       "name": "Training Rod",
       "description": "A simple fishing rod that can only catch the most common fish.",
       "stackSize": 1,
