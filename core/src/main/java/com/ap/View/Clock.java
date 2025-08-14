@@ -1,6 +1,7 @@
 package com.ap.View;
 
 import com.ap.Main;
+import com.ap.Model.Player.Player;
 import com.ap.Model.Weather;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -56,6 +57,7 @@ public class Clock extends Group {
     private int playerMoney = 500;
     private long totalHour;
     private Weather weather;
+    private Player player;
 
 
     // Timing
@@ -144,6 +146,10 @@ public class Clock extends Group {
             gameHour += (hour % 24);
             day += (gameHour + hour) / 24;
         }
+        if (day - currentDay > 0){
+            player.setEnergy(player.getMaxEnergy());
+        }
+
         while (day > 28){
             advanceSeason();
             day -= 28;
@@ -162,6 +168,7 @@ public class Clock extends Group {
 
             if (gameHour >= 22) {
                 gameHour = 9;
+                player.setEnergy(player.getMaxEnergy());
                 currentDay++;
 
                 // Randomize weather and update icon
@@ -373,4 +380,7 @@ public class Clock extends Group {
         return totalHour;
     }
 
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
 }

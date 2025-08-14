@@ -50,8 +50,8 @@ public class User {
     {
             ("1. what was the name of your first pet?"),
             ("2. what's the name of the first school you went to?"),
-            ("3. what's the name of your favorite movie/show?"),
-            ("4. what's the name your favorite signer/band?"),
+            ("3. what's the name of your favorite movie or show?"),
+            ("4. what's the name your favorite signer or band?"),
             ("5. what's the name of your favorite animal?"),
 //        add some more questions;
     };

@@ -36,7 +36,7 @@ public class MainMenuScreen implements Screen {
         table = new Table(skin);
 
         buttons = new LinkedHashMap<>();
-        buttons.put("resume", new TextButton("resum", skin));
+        buttons.put("resume", new TextButton("resume", skin));
         buttons.put("new game", new TextButton("new game", skin));
         buttons.put("load game", new TextButton("load game", skin));
         buttons.put("profile", new TextButton("profile", skin));

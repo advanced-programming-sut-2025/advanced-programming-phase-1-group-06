@@ -1716,7 +1716,7 @@
       ]
     },
     {
-      "id": "oil_sunflower",
+      "id": "oil",
       "name": "Oil",
       "description": "All purpose cooking oil.",
       "stackSize": 99,
@@ -2054,15 +2054,15 @@
       "name": "Salad"
     },
     {
-      "id": "olmelet",
+      "id": "omelet",
       "componentsData": [
         {
           "type": "ConsumableComponent",
           "energyRestore": 100
         }
       ],
-      "texture": "Items/olmelet.png",
-      "name": "Olmelet"
+      "texture": "Items/omelet.png",
+      "name": "Omelet"
     },
     {
       "id": "pumpkin_pie",
@@ -2252,15 +2252,15 @@
       "name": "Dish O The Sea"
     },
     {
-      "id": "seaform_pudding",
+      "id": "seafoam_pudding",
       "componentsData": [
         {
           "type": "ConsumableComponent",
           "energyRestore": 175
         }
       ],
-      "texture": "Items/seaform_pudding.png",
-      "name": "Seaform Pudding"
+      "texture": "Items/seafoam_pudding.png",
+      "name": "Seafoam Pudding"
     },
     {
       "id": "miners_treat",

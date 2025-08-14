@@ -18,6 +18,7 @@ public class PlayerController {
     private Animation<TextureRegion> right = new Animation<>(0.3f, new TextureAtlas("Player/right.atlas").getRegions());
     private Player player;
     private boolean isWalking = false;
+    private float energyDrain = 0.2f;
 
     private TextureRegion currentFrame = front.getKeyFrame(0, true);
     private Animation<TextureRegion> currentAnimation = front;
@@ -65,6 +66,8 @@ public class PlayerController {
             movement.nor();
             player.position.x += movement.x * player.getSpeed()* delta;
             player.position.y += movement.y * player.getSpeed() * delta;
+            player.setEnergy(player.getEnergy() - (energyDrain * delta * player.getSpeed() / 20));
+            System.out.println(player.getEnergy());
         }
         else {
             isWalking = false;

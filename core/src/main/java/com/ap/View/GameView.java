@@ -48,6 +48,7 @@ public class GameView implements Screen, InputProcessor {
         camera.zoom = 0.2f;
         viewport.apply();
         clock = new Clock(new Skin(Gdx.files.internal("skin/NzSkin.json")));
+        clock.setPlayer(player);
         // UI viewport and stage setup
         uiViewport = new ScreenViewport(new OrthographicCamera());
         uiStage = new Stage(uiViewport);
@@ -80,6 +81,8 @@ public class GameView implements Screen, InputProcessor {
         Main.getInstance().getBatch().end();
 
         // UI rendering (separate from game world)
+        energyLabel.setText("energy: " + (int) player.getEnergy());
+        energyLabel.setPosition(Gdx.graphics.getWidth() - energyLabel.getWidth() - 20, Gdx.graphics.getHeight() * 0.77f);
         uiViewport.apply();
         uiStage.act(v);
         uiStage.draw();

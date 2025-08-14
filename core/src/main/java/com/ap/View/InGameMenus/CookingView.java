@@ -73,6 +73,7 @@ public class CookingView implements Screen, InputProcessor {
                 counter ++;
             } catch (Exception e) {
                 if (r.getItem() != null) {
+                    System.out.println("balls");
                     System.out.println(r.getItem().getName() + ": " + r.getItem().getTexturePath());
                 } else {
                     System.out.println(r.getItemName() + " is null");

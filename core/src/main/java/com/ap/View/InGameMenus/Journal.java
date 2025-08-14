@@ -45,7 +45,7 @@ public class Journal implements Screen, InputProcessor {
         shopButton.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                Main.getInstance().changeScreen(new ShopingView(player));
+                Main.getInstance().changeScreen(new ShoppingView(player));
             }
         });
         cookingButton.addListener(new ClickListener(){
